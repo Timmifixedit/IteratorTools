@@ -8,6 +8,7 @@
 #ifndef ITERATORTOOLS_ITERATORS_HPP
 #define ITERATORTOOLS_ITERATORS_HPP
 
+#include <algorithm>
 #include <tuple>
 #include <memory>
 #include <iterator>
