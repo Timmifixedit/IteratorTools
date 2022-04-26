@@ -8,6 +8,7 @@
 #ifndef ITERATORTOOLS_ITERATORS_HPP
 #define ITERATORTOOLS_ITERATORS_HPP
 
+#include <algorithm>
 #include <tuple>
 
 #define REFERENCE(TYPE) std::declval<std::add_lvalue_reference_t<TYPE>>()
