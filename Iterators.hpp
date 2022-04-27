@@ -706,22 +706,6 @@ namespace iterators {
                 return counter >= other.counter;
             }
 
-            constexpr bool operator<(Unreachable) const noexcept {
-                return true;
-            }
-
-            constexpr bool operator<=(Unreachable) const noexcept {
-                return true;
-            }
-
-            constexpr bool operator>(Unreachable) const noexcept {
-                return false;
-            }
-
-            constexpr bool operator>=(Unreachable) const noexcept {
-                return false;
-            }
-
             constexpr T operator*() const noexcept {
                 return counter;
             }
