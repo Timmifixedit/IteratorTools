@@ -360,7 +360,7 @@ namespace iterators {
              */
             template<bool B = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator-(const ZipIterator &other) const
-                noexcept(noexcept(ZipIterator::minDifference(this->iterators, other.iterators)))
+                noexcept(noexcept(ZipIterator::minDifference(std::declval<Iterators>(), other.iterators)))
                 -> std::enable_if_t<B, difference_type> {
                 return minDifference(iterators, other.iterators);
             }
@@ -373,7 +373,7 @@ namespace iterators {
              * @return
              */
             template<bool B = traits::is_random_accessible_v<Iterators>>
-            constexpr auto operator[](difference_type n) const noexcept(noexcept(*(*this + n)))
+            constexpr auto operator[](difference_type n) const noexcept(noexcept(*(std::declval<ZipIterator>() + n)))
                 -> std::enable_if_t<B, reference> {
                 return *(*this + n);
             }
@@ -387,7 +387,8 @@ namespace iterators {
              */
             template<bool B = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator<(const ZipIterator &other) const
-                noexcept(noexcept(ZipIterator::allLess(this->iterators, other.iterators))) -> std::enable_if_t<B, bool> {
+            noexcept(noexcept(ZipIterator::allLess(std::declval<Iterators>(),
+                                                   other.iterators))) -> std::enable_if_t<B, bool> {
                 return allLess(iterators, other.iterators);
             }
 
@@ -400,7 +401,8 @@ namespace iterators {
              */
             template<bool B = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator>(const ZipIterator &other) const
-            noexcept(noexcept(ZipIterator::allGreater(this->iterators, other.iterators))) -> std::enable_if_t<B, bool> {
+            noexcept(noexcept(ZipIterator::allGreater(std::declval<Iterators>(),
+                                                      other.iterators))) -> std::enable_if_t<B, bool> {
                 return allGreater(iterators, other.iterators);
             }
 
@@ -412,8 +414,8 @@ namespace iterators {
              * @return
              */
             template<bool B = traits::is_random_accessible_v<Iterators>>
-            constexpr auto operator<=(const ZipIterator &other) const noexcept(noexcept(*this > other))
-                -> std::enable_if_t<B, bool> {
+            constexpr auto operator<=(const ZipIterator &other) const
+            noexcept(noexcept(std::declval<ZipIterator>() > other)) -> std::enable_if_t<B, bool> {
                 return !(*this > other);
             }
 
@@ -425,13 +427,13 @@ namespace iterators {
              * @return
              */
             template<bool B = traits::is_random_accessible_v<Iterators>>
-            constexpr auto operator>=(const ZipIterator &other) const noexcept(noexcept(*this < other))
-            -> std::enable_if_t<B, bool> {
+            constexpr auto operator>=(const ZipIterator &other) const
+            noexcept(noexcept(std::declval<ZipIterator>() < other)) -> std::enable_if_t<B, bool> {
                 return !(*this < other);
             }
 
             /**
-             * Returns true if at least one underlying iterators compares equal to the corresponding iterators from
+             * Returns true if at least one underlying iterator compares equal to the corresponding iterator from
              * other.
              * @tparam B
              * @param other
@@ -439,7 +441,7 @@ namespace iterators {
              */
             template<typename Its>
             constexpr bool operator==(const ZipIterator<Its> &other) const
-            noexcept(noexcept(ZipIterator::oneEqual(this->iterators, other.getIterators()))) {
+            noexcept(noexcept(ZipIterator::oneEqual(std::declval<Iterators>(), other.getIterators()))) {
                 return oneEqual(iterators, other.getIterators());
             }
 
@@ -450,7 +452,8 @@ namespace iterators {
              * @return
              */
             template<typename Its>
-            constexpr bool operator!=(const ZipIterator<Its> &other) const noexcept(noexcept(*this == other)) {
+            constexpr bool operator!=(const ZipIterator<Its> &other) const
+            noexcept(noexcept(std::declval<ZipIterator>() == other)) {
                 return !(*this == other);
             }
 
