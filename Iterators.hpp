@@ -249,19 +249,19 @@ namespace iterators {
              */
             constexpr ZipIterator operator++(int) noexcept(traits::is_nothrow_incrementible_v<Iterators>) {
                 ZipIterator tmp = *this;
-                std::apply([](auto &&...it) { (++it, ...); }, iterators);
+                ++*this;
                 return tmp;
             }
 
             /**
              * Decrements all underlying iterators by one. Only available if all iterators support at least
              * bidirectional access
-             * @tparam B
+             * @tparam IsBidirectional
              * @return
              */
-            template<bool B = traits::is_bidirectional_v<Iterators>>
+            template<bool IsBidirectional = traits::is_bidirectional_v<Iterators>>
             constexpr auto operator--() noexcept(traits::is_nothrow_decrementible_v<Iterators>)
-                -> std::enable_if_t<B, ZipIterator &> {
+                -> std::enable_if_t<IsBidirectional, ZipIterator &> {
                 std::apply([](auto &&...it) { (--it, ...); }, iterators);
                 return *this;
             }
@@ -269,27 +269,27 @@ namespace iterators {
             /**
              * Post decrement. Decrements all underlying iterators by one. Only available if all iterators support at
              * least bidirectional access
-             * @tparam B
+             * @tparam IsBidirectional
              * @return
              */
-            template<bool B = traits::is_bidirectional_v<Iterators>>
+            template<bool IsBidirectional = traits::is_bidirectional_v<Iterators>>
             constexpr auto operator--(int) noexcept(traits::is_nothrow_decrementible_v<Iterators>)
-                -> std::enable_if_t<B, ZipIterator> {
+                -> std::enable_if_t<IsBidirectional, ZipIterator> {
                 ZipIterator tmp = *this;
-                std::apply([](auto &&...it) { (--it, ...); }, iterators);
+                --*this;
                 return tmp;
             }
 
             /**
              * Compound assignment increment. Increments all underlying iterators by n. Only available if all underlying
              * iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param n
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator+=(difference_type n) noexcept(traits::is_nothrow_compound_assignable_plus_v<Iterators>)
-                    -> std::enable_if_t<B, ZipIterator &> {
+                    -> std::enable_if_t<IsRandomAccessible, ZipIterator &> {
                 std::apply([n](auto &&...it) {((it += n), ...);}, iterators);
                 return *this;
             }
@@ -297,13 +297,13 @@ namespace iterators {
             /**
              * Compound assignment decrement. Decrements all underlying iterators by n. Only available if all underlying
              * iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param n
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator-=(difference_type n) noexcept(traits::is_nothrow_compound_assignable_minus_v<Iterators>)
-                    -> std::enable_if_t<B, ZipIterator &> {
+                    -> std::enable_if_t<IsRandomAccessible, ZipIterator &> {
                 std::apply([n](auto &&...it) {((it -= n), ...);}, iterators);
                 return *this;
             }
@@ -311,13 +311,14 @@ namespace iterators {
             /**
              * Returns a ZipIterator where all underlying iterators are incremented by n. Only available if all
              * underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param n
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             friend constexpr auto operator+(ZipIterator it, difference_type n)
-                noexcept(traits::is_nothrow_compound_assignable_plus_v<Iterators>) -> std::enable_if_t<B, ZipIterator> {
+            noexcept(traits::is_nothrow_compound_assignable_plus_v<Iterators>)
+            -> std::enable_if_t<IsRandomAccessible, ZipIterator> {
                 it += n;
                 return it;
             }
@@ -325,13 +326,14 @@ namespace iterators {
             /**
              * Returns a ZipIterator where all underlying iterators are incremented by n. Only available if all
              * underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param n
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             friend constexpr auto operator+(difference_type n, ZipIterator it)
-                noexcept(traits::is_nothrow_compound_assignable_plus_v<Iterators>) -> std::enable_if_t<B, ZipIterator> {
+            noexcept(traits::is_nothrow_compound_assignable_plus_v<Iterators>)
+            -> std::enable_if_t<IsRandomAccessible, ZipIterator> {
                 it += n;
                 return it;
             }
@@ -339,13 +341,14 @@ namespace iterators {
             /**
              * Returns a ZipIterator where all underlying iterators are decremented by n. Only available if all
              * underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param n
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             friend constexpr auto operator-(ZipIterator it, difference_type n)
-            noexcept(traits::is_nothrow_compound_assignable_minus_v<Iterators>) -> std::enable_if_t<B, ZipIterator> {
+            noexcept(traits::is_nothrow_compound_assignable_minus_v<Iterators>)
+            -> std::enable_if_t<IsRandomAccessible, ZipIterator> {
                 it -= n;
                 return it;
             }
@@ -354,88 +357,88 @@ namespace iterators {
              * Returns the minimum pairwise difference n between all underlying iterators of *this and other, such that
              * other + n == *this
              * Only available if all underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param other
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator-(const ZipIterator &other) const
-                noexcept(noexcept(ZipIterator::minDifference(std::declval<Iterators>(), other.iterators)))
-                -> std::enable_if_t<B, difference_type> {
+            noexcept(noexcept(ZipIterator::minDifference(std::declval<Iterators>(), other.iterators)))
+            -> std::enable_if_t<IsRandomAccessible, difference_type> {
                 return minDifference(iterators, other.iterators);
             }
 
             /**
              * Given a ZipIterator it, returns *(it + n)
              * Only available if all underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param n
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator[](difference_type n) const noexcept(noexcept(*(std::declval<ZipIterator>() + n)))
-                -> std::enable_if_t<B, reference> {
+            -> std::enable_if_t<IsRandomAccessible, reference> {
                 return *(*this + n);
             }
 
             /**
              * Returns true if all underlying iterators compare less to the corresponding iterators from other
              * Only available if all underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param other
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator<(const ZipIterator &other) const
             noexcept(noexcept(ZipIterator::allLess(std::declval<Iterators>(),
-                                                   other.iterators))) -> std::enable_if_t<B, bool> {
+                                                   other.iterators))) -> std::enable_if_t<IsRandomAccessible, bool> {
                 return allLess(iterators, other.iterators);
             }
 
             /**
              * Returns true if all underlying iterators compare greater to the corresponding iterators from other
              * Only available if all underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param other
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator>(const ZipIterator &other) const
             noexcept(noexcept(ZipIterator::allGreater(std::declval<Iterators>(),
-                                                      other.iterators))) -> std::enable_if_t<B, bool> {
+                                                      other.iterators))) -> std::enable_if_t<IsRandomAccessible, bool> {
                 return allGreater(iterators, other.iterators);
             }
 
             /**
              * Returns true if all underlying iterators compare less or equal to the corresponding iterators from
              * other. Only available if all underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param other
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator<=(const ZipIterator &other) const
-            noexcept(noexcept(std::declval<ZipIterator>() > other)) -> std::enable_if_t<B, bool> {
+            noexcept(noexcept(std::declval<ZipIterator>() > other)) -> std::enable_if_t<IsRandomAccessible, bool> {
                 return !(*this > other);
             }
 
             /**
              * Returns true if all underlying iterators compare greater or equal to the corresponding iterators from
              * other. Only available if all underlying iterators support at least random access
-             * @tparam B
+             * @tparam IsRandomAccessible
              * @param other
              * @return
              */
-            template<bool B = traits::is_random_accessible_v<Iterators>>
+            template<bool IsRandomAccessible = traits::is_random_accessible_v<Iterators>>
             constexpr auto operator>=(const ZipIterator &other) const
-            noexcept(noexcept(std::declval<ZipIterator>() < other)) -> std::enable_if_t<B, bool> {
+            noexcept(noexcept(std::declval<ZipIterator>() < other)) -> std::enable_if_t<IsRandomAccessible, bool> {
                 return !(*this < other);
             }
 
             /**
              * Returns true if at least one underlying iterator compares equal to the corresponding iterator from
              * other.
-             * @tparam B
+             * @tparam Its
              * @param other
              * @return
              */
@@ -447,7 +450,7 @@ namespace iterators {
 
             /**
              * True if *this is not equal to other
-             * @tparam B
+             * @tparam Its
              * @param other
              * @return
              */
