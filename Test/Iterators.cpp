@@ -300,6 +300,32 @@ TEST(Iterators, bidirectional_operators) {
     EXPECT_EQ(n1, n);
     EXPECT_EQ(s1, s);
 }
+
+TEST(Iterators, post_increment_and_decrement) {
+    using namespace iterators;
+    std::array numbers{1, 2, 3, 4};
+    std::list<std::string> strings{"a", "b", "c"};
+    auto zIt = zip(numbers.begin(), strings.begin());
+    auto [n, s] = *++zIt;
+    EXPECT_EQ(n, 2);
+    EXPECT_EQ(s, "b");
+    auto [n1, s1] = *zIt++;
+    EXPECT_EQ(n, n1);
+    EXPECT_EQ(s, s1);
+    auto [n2, s2] = *zIt;
+    EXPECT_EQ(n2, 3);
+    EXPECT_EQ(s2, "c");
+    auto [dn, ds] = *--zIt;
+    EXPECT_EQ(dn, 2);
+    EXPECT_EQ(ds, "b");
+    auto [dn1, ds1] = *zIt--;
+    EXPECT_EQ(dn1, dn);
+    EXPECT_EQ(ds1, ds);
+    auto [dn2, ds2] = *zIt;
+    EXPECT_EQ(dn2, 1);
+    EXPECT_EQ(ds2, "a");
+}
+
 TEST(Iterators, random_access_operators) {
     using namespace iterators;
     std::array numbers{1, 2, 3, 4};
