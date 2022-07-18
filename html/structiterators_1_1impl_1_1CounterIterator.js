@@ -25,7 +25,5 @@ var structiterators_1_1impl_1_1CounterIterator =
     [ "operator[]", "structiterators_1_1impl_1_1CounterIterator.html#a68d98ba2124be7e204d84d1466b48047", null ],
     [ "operator+", "structiterators_1_1impl_1_1CounterIterator.html#a7f12f3ad0e215ad275e865e7314ae722", null ],
     [ "operator+", "structiterators_1_1impl_1_1CounterIterator.html#a37e47b437d88683e9c76afab35d0d112", null ],
-    [ "operator-", "structiterators_1_1impl_1_1CounterIterator.html#abe5ebfce03a098880d6d232772dd1f51", null ],
-    [ "counter", "structiterators_1_1impl_1_1CounterIterator.html#a2bc085a9c4114ebf481be786f2e42b06", null ],
-    [ "increment", "structiterators_1_1impl_1_1CounterIterator.html#a3c540d28d0003c551b817b88076f5fcb", null ]
+    [ "operator-", "structiterators_1_1impl_1_1CounterIterator.html#abe5ebfce03a098880d6d232772dd1f51", null ]
 ];

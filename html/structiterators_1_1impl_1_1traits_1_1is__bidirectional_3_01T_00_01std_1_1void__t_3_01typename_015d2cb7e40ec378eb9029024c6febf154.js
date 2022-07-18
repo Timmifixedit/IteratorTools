@@ -1,4 +1,0 @@
-var structiterators_1_1impl_1_1traits_1_1is__bidirectional_3_01T_00_01std_1_1void__t_3_01typename_015d2cb7e40ec378eb9029024c6febf154 =
-[
-    [ "value", "structiterators_1_1impl_1_1traits_1_1is__bidirectional_3_01T_00_01std_1_1void__t_3_01typename_015d2cb7e40ec378eb9029024c6febf154.html#a8ca8699ecfc27fa488c9b0a6e2e06763", null ]
-];

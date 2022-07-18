@@ -1,9 +1,0 @@
-digraph "Graphical Class Hierarchy"
-{
- // INTERACTIVE_SVG=YES
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="iterators::impl::traits\l::is_bidirectional\< T,\l std::void_t\< typename\l std::iterator_traits\< T\l \>::iterator_category \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structiterators_1_1impl_1_1traits_1_1is__bidirectional_3_01T_00_01std_1_1void__t_3_01typename_015d2cb7e40ec378eb9029024c6febf154.html",tooltip=" "];
-}
