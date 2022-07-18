@@ -1,0 +1,152 @@
+\hypertarget{structiterators_1_1impl_1_1ZipContainer}{}\doxysection{iterators\+::impl\+::Zip\+Container$<$ Iterable $>$ Struct Template Reference}
+\label{structiterators_1_1impl_1_1ZipContainer}\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+
+
+{\ttfamily \#include $<$Iterators.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename ... Container$>$ }\\\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_a6e39ee7fe692efb5d0d4922feb54e578}{Zip\+Container}} (Container \&\&...\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_aebafca2fce0998b7ad42876e85476f42}{containers}})
+\item 
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ab29936c6e9bff9d4d64a1064b92b4f5f}{begin}} ()
+\item 
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_a8b7a49dc772e7fab0b04bda5d95c5559}{end}} ()
+\item 
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ade2b9c3bc3d8508bcad47ffbe14516fb}{begin}} () const
+\item 
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_a0948fc18cd3e09eb473aad79aa3c2237}{end}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ad2a21a1cf58bd59766eb1db9c303da25}{Container\+Tuple}} = std\+::tuple$<$ Iterable... $>$
+\item 
+{\footnotesize template$<$bool Const$>$ }\\using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}{Iterators}} = std\+::tuple$<$ decltype(std\+::begin(std\+::declval$<$ std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}{traits\+::const\+\_\+if\+\_\+t}}$<$ Const, std\+::remove\+\_\+reference\+\_\+t$<$ Iterable $>$ $>$$>$ $>$()))... $>$
+\item 
+{\footnotesize template$<$bool Const$>$ }\\using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}{Sentinels}} = std\+::tuple$<$ decltype(std\+::end(std\+::declval$<$ std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}{traits\+::const\+\_\+if\+\_\+t}}$<$ Const, std\+::remove\+\_\+reference\+\_\+t$<$ Iterable $>$ $>$$>$ $>$()))... $>$
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ab78d597d311975049ab5bdd44c6a403e}{Iterator\+Tuple}} = \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}{Iterators}}$<$ false $>$
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ab9f23befef0cceab32b17ddf9ad82d45}{C\+Iterator\+Tuple}} = \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}{Iterators}}$<$ true $>$
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_a8ff9e5054c026e923999602cd3a74a66}{Sentinel\+Tuple}} = \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}{Sentinels}}$<$ false $>$
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_a7469e7fa34a880d7c42e4c0c1f4b47ba}{C\+Sentinel\+Tuple}} = \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}{Sentinels}}$<$ true $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ad2a21a1cf58bd59766eb1db9c303da25}{Container\+Tuple}} \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_aebafca2fce0998b7ad42876e85476f42}{containers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_ab9f23befef0cceab32b17ddf9ad82d45}\label{structiterators_1_1impl_1_1ZipContainer_ab9f23befef0cceab32b17ddf9ad82d45}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!CIteratorTuple@{CIteratorTuple}}
+\index{CIteratorTuple@{CIteratorTuple}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{CIteratorTuple}{CIteratorTuple}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ab9f23befef0cceab32b17ddf9ad82d45}{C\+Iterator\+Tuple}} =  \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}{Iterators}}$<$true$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_ad2a21a1cf58bd59766eb1db9c303da25}\label{structiterators_1_1impl_1_1ZipContainer_ad2a21a1cf58bd59766eb1db9c303da25}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!ContainerTuple@{ContainerTuple}}
+\index{ContainerTuple@{ContainerTuple}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{ContainerTuple}{ContainerTuple}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ad2a21a1cf58bd59766eb1db9c303da25}{Container\+Tuple}} =  std\+::tuple$<$Iterable...$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_a7469e7fa34a880d7c42e4c0c1f4b47ba}\label{structiterators_1_1impl_1_1ZipContainer_a7469e7fa34a880d7c42e4c0c1f4b47ba}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!CSentinelTuple@{CSentinelTuple}}
+\index{CSentinelTuple@{CSentinelTuple}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{CSentinelTuple}{CSentinelTuple}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_a7469e7fa34a880d7c42e4c0c1f4b47ba}{C\+Sentinel\+Tuple}} =  \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}{Sentinels}}$<$true$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}\label{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!Iterators@{Iterators}}
+\index{Iterators@{Iterators}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{Iterators}{Iterators}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+template$<$bool Const$>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}{Iterators}} =  std\+::tuple$<$decltype(std\+::begin( std\+::declval$<$std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}{traits\+::const\+\_\+if\+\_\+t}}$<$Const, std\+::remove\+\_\+reference\+\_\+t$<$Iterable$>$ $>$$>$ $>$()))...$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_ab78d597d311975049ab5bdd44c6a403e}\label{structiterators_1_1impl_1_1ZipContainer_ab78d597d311975049ab5bdd44c6a403e}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!IteratorTuple@{IteratorTuple}}
+\index{IteratorTuple@{IteratorTuple}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{IteratorTuple}{IteratorTuple}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ab78d597d311975049ab5bdd44c6a403e}{Iterator\+Tuple}} =  \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ae6c00b65c4bd492e9e94fa84f916f916}{Iterators}}$<$false$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}\label{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!Sentinels@{Sentinels}}
+\index{Sentinels@{Sentinels}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{Sentinels}{Sentinels}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+template$<$bool Const$>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}{Sentinels}} =  std\+::tuple$<$decltype(std\+::end( std\+::declval$<$std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}{traits\+::const\+\_\+if\+\_\+t}}$<$Const, std\+::remove\+\_\+reference\+\_\+t$<$Iterable$>$ $>$$>$ $>$()))...$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_a8ff9e5054c026e923999602cd3a74a66}\label{structiterators_1_1impl_1_1ZipContainer_a8ff9e5054c026e923999602cd3a74a66}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!SentinelTuple@{SentinelTuple}}
+\index{SentinelTuple@{SentinelTuple}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{SentinelTuple}{SentinelTuple}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_a8ff9e5054c026e923999602cd3a74a66}{Sentinel\+Tuple}} =  \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ac586b3fdd0a587afc583627a5280f04f}{Sentinels}}$<$false$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_a6e39ee7fe692efb5d0d4922feb54e578}\label{structiterators_1_1impl_1_1ZipContainer_a6e39ee7fe692efb5d0d4922feb54e578}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!ZipContainer@{ZipContainer}}
+\index{ZipContainer@{ZipContainer}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{ZipContainer()}{ZipContainer()}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+template$<$typename ... Container$>$ \\
+\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{Zip\+Container}} (\begin{DoxyParamCaption}\item[{Container \&\&...}]{containers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_ab29936c6e9bff9d4d64a1064b92b4f5f}\label{structiterators_1_1impl_1_1ZipContainer_ab29936c6e9bff9d4d64a1064b92b4f5f}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!begin@{begin}}
+\index{begin@{begin}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_ade2b9c3bc3d8508bcad47ffbe14516fb}\label{structiterators_1_1impl_1_1ZipContainer_ade2b9c3bc3d8508bcad47ffbe14516fb}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!begin@{begin}}
+\index{begin@{begin}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_a8b7a49dc772e7fab0b04bda5d95c5559}\label{structiterators_1_1impl_1_1ZipContainer_a8b7a49dc772e7fab0b04bda5d95c5559}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!end@{end}}
+\index{end@{end}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_a0948fc18cd3e09eb473aad79aa3c2237}\label{structiterators_1_1impl_1_1ZipContainer_a0948fc18cd3e09eb473aad79aa3c2237}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!end@{end}}
+\index{end@{end}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipContainer_aebafca2fce0998b7ad42876e85476f42}\label{structiterators_1_1impl_1_1ZipContainer_aebafca2fce0998b7ad42876e85476f42}} 
+\index{iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}!containers@{containers}}
+\index{containers@{containers}!iterators::impl::ZipContainer$<$ Iterable $>$@{iterators::impl::ZipContainer$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{containers}{containers}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+\mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer_ad2a21a1cf58bd59766eb1db9c303da25}{Container\+Tuple}} \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container}}$<$ Iterable $>$\+::containers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Iterators_8hpp}{Iterators.\+hpp}}\end{DoxyCompactItemize}

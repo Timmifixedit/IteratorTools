@@ -1,0 +1,11 @@
+digraph "iterators::impl::ZipIterator&lt; Iterators &gt;"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="iterators::impl::ZipIterator\l\< Iterators \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="iterators::impl::traits\l::iterator_category_from\l_value\< traits::minimum\l_category_v\< Iterators \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structiterators_1_1impl_1_1traits_1_1iterator__category__from__value.html",tooltip=" "];
+}

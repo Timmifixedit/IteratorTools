@@ -1,0 +1,290 @@
+\hypertarget{structiterators_1_1impl_1_1CounterIterator}{}\doxysection{iterators\+::impl\+::Counter\+Iterator$<$ T $>$ Struct Template Reference}
+\label{structiterators_1_1impl_1_1CounterIterator}\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Iterators.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a204a9ed204918da6ce99f338322d8b01}{value\+\_\+type}} = T
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a400892de5369a77dffdd5a6faef2c124}{reference}} = T
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a7435973e9500a0eab195a3cc14cbc049}{pointer}} = void
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a887a6b6336d08906ee57cded71b3b6e9}{iterator\+\_\+category}} = std\+::random\+\_\+access\+\_\+iterator\+\_\+tag
+\item 
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} = T
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_ae628a33cb0964bde115964409f6da573}{Counter\+Iterator}} (T begin, T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a3c540d28d0003c551b817b88076f5fcb}{increment}}=T(1)) noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a5dbeadffdf20033c49e3d6378c878ba9}{operator++}} () noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_ae5fc9970a648c5c27dfb1268abf67202}{operator++}} (int) noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a23219866167c4ddddac85b0f7cf24998}{operator-\/-\/}} () noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a5f0872fcd959a431e6f58390162a01e5}{operator-\/-\/}} (int) noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a7ff32a27d8542b74b076adbb34eee7e1}{operator+=}} (\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} n) noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a73f12ef1a6e88bdb8b0b09b494825634}{operator-\/=}} (\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} n) noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_aae3503939118a88f236495ad2119a153}{operator-\/}} (const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \&other) const noexcept
+\item 
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a400892de5369a77dffdd5a6faef2c124}{reference}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a68d98ba2124be7e204d84d1466b48047}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} n) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_aa6ff7f1e59a44dae1ad2bea14daed6e3}{operator==}} (const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \&other) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a8e69dd572830736c4ecac7f959c75209}{operator==}} (\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_addfcf78a20015737d5322ca745debc30}{operator!=}} (const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \&other) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a64390e12760f946bf8ff808b5d127184}{operator!=}} (\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_acde3796fad42d4fe454aef93d62f0b81}{operator$<$}} (const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \&other) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a5b51173c8117db8ee96ce0d8f03335f8}{operator$<$=}} (const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \&other) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a65d50acd247099b31723ef38c271f372}{operator$>$}} (const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \&other) const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a9ecafc0275d06d7c3c00d4615ea44d23}{operator$>$=}} (const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \&other) const noexcept
+\item 
+constexpr T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a1d5a1ef5c6ecea7d799ae683427191c3}{operator$\ast$}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2bc085a9c4114ebf481be786f2e42b06}{counter}}
+\item 
+T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a3c540d28d0003c551b817b88076f5fcb}{increment}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+constexpr friend \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a7f12f3ad0e215ad275e865e7314ae722}{operator+}} (\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} it, \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} n) noexcept
+\item 
+constexpr friend \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a37e47b437d88683e9c76afab35d0d112}{operator+}} (\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} n, \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} it) noexcept
+\item 
+constexpr friend \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_abe5ebfce03a098880d6d232772dd1f51}{operator-\/}} (\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} it, \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} n) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}\label{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!difference\_type@{difference\_type}}
+\index{difference\_type@{difference\_type}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{difference\_type}{difference\_type}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} =  T}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a887a6b6336d08906ee57cded71b3b6e9}\label{structiterators_1_1impl_1_1CounterIterator_a887a6b6336d08906ee57cded71b3b6e9}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!iterator\_category@{iterator\_category}}
+\index{iterator\_category@{iterator\_category}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{iterator\_category}{iterator\_category}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a887a6b6336d08906ee57cded71b3b6e9}{iterator\+\_\+category}} =  std\+::random\+\_\+access\+\_\+iterator\+\_\+tag}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a7435973e9500a0eab195a3cc14cbc049}\label{structiterators_1_1impl_1_1CounterIterator_a7435973e9500a0eab195a3cc14cbc049}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a7435973e9500a0eab195a3cc14cbc049}{pointer}} =  void}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a400892de5369a77dffdd5a6faef2c124}\label{structiterators_1_1impl_1_1CounterIterator_a400892de5369a77dffdd5a6faef2c124}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!reference@{reference}}
+\index{reference@{reference}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a400892de5369a77dffdd5a6faef2c124}{reference}} =  T}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a204a9ed204918da6ce99f338322d8b01}\label{structiterators_1_1impl_1_1CounterIterator_a204a9ed204918da6ce99f338322d8b01}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a204a9ed204918da6ce99f338322d8b01}{value\+\_\+type}} =  T}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_ae628a33cb0964bde115964409f6da573}\label{structiterators_1_1impl_1_1CounterIterator_ae628a33cb0964bde115964409f6da573}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!CounterIterator@{CounterIterator}}
+\index{CounterIterator@{CounterIterator}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CounterIterator()}{CounterIterator()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} (\begin{DoxyParamCaption}\item[{T}]{begin,  }\item[{T}]{increment = {\ttfamily T(1)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_addfcf78a20015737d5322ca745debc30}\label{structiterators_1_1impl_1_1CounterIterator_addfcf78a20015737d5322ca745debc30}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a64390e12760f946bf8ff808b5d127184}\label{structiterators_1_1impl_1_1CounterIterator_a64390e12760f946bf8ff808b5d127184}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator!= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a1d5a1ef5c6ecea7d799ae683427191c3}\label{structiterators_1_1impl_1_1CounterIterator_a1d5a1ef5c6ecea7d799ae683427191c3}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a5dbeadffdf20033c49e3d6378c878ba9}\label{structiterators_1_1impl_1_1CounterIterator_a5dbeadffdf20033c49e3d6378c878ba9}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_ae5fc9970a648c5c27dfb1268abf67202}\label{structiterators_1_1impl_1_1CounterIterator_ae5fc9970a648c5c27dfb1268abf67202}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a7ff32a27d8542b74b076adbb34eee7e1}\label{structiterators_1_1impl_1_1CounterIterator_a7ff32a27d8542b74b076adbb34eee7e1}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator+= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_aae3503939118a88f236495ad2119a153}\label{structiterators_1_1impl_1_1CounterIterator_aae3503939118a88f236495ad2119a153}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a23219866167c4ddddac85b0f7cf24998}\label{structiterators_1_1impl_1_1CounterIterator_a23219866167c4ddddac85b0f7cf24998}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a5f0872fcd959a431e6f58390162a01e5}\label{structiterators_1_1impl_1_1CounterIterator_a5f0872fcd959a431e6f58390162a01e5}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a73f12ef1a6e88bdb8b0b09b494825634}\label{structiterators_1_1impl_1_1CounterIterator_a73f12ef1a6e88bdb8b0b09b494825634}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_acde3796fad42d4fe454aef93d62f0b81}\label{structiterators_1_1impl_1_1CounterIterator_acde3796fad42d4fe454aef93d62f0b81}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a5b51173c8117db8ee96ce0d8f03335f8}\label{structiterators_1_1impl_1_1CounterIterator_a5b51173c8117db8ee96ce0d8f03335f8}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_aa6ff7f1e59a44dae1ad2bea14daed6e3}\label{structiterators_1_1impl_1_1CounterIterator_aa6ff7f1e59a44dae1ad2bea14daed6e3}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a8e69dd572830736c4ecac7f959c75209}\label{structiterators_1_1impl_1_1CounterIterator_a8e69dd572830736c4ecac7f959c75209}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a65d50acd247099b31723ef38c271f372}\label{structiterators_1_1impl_1_1CounterIterator_a65d50acd247099b31723ef38c271f372}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a9ecafc0275d06d7c3c00d4615ea44d23}\label{structiterators_1_1impl_1_1CounterIterator_a9ecafc0275d06d7c3c00d4615ea44d23}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a68d98ba2124be7e204d84d1466b48047}\label{structiterators_1_1impl_1_1CounterIterator_a68d98ba2124be7e204d84d1466b48047}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a400892de5369a77dffdd5a6faef2c124}{reference}} \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}}}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a7f12f3ad0e215ad275e865e7314ae722}\label{structiterators_1_1impl_1_1CounterIterator_a7f12f3ad0e215ad275e865e7314ae722}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr friend \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$}]{it,  }\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a37e47b437d88683e9c76afab35d0d112}\label{structiterators_1_1impl_1_1CounterIterator_a37e47b437d88683e9c76afab35d0d112}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr friend \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}}}]{n,  }\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$}]{it }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_abe5ebfce03a098880d6d232772dd1f51}\label{structiterators_1_1impl_1_1CounterIterator_abe5ebfce03a098880d6d232772dd1f51}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr friend \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$}]{it,  }\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a2b6a52d79b52c6d805b991029280f894}{difference\+\_\+type}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a2bc085a9c4114ebf481be786f2e42b06}\label{structiterators_1_1impl_1_1CounterIterator_a2bc085a9c4114ebf481be786f2e42b06}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!counter@{counter}}
+\index{counter@{counter}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::counter\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a3c540d28d0003c551b817b88076f5fcb}\label{structiterators_1_1impl_1_1CounterIterator_a3c540d28d0003c551b817b88076f5fcb}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!increment@{increment}}
+\index{increment@{increment}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{increment}{increment}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::increment\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Iterators_8hpp}{Iterators.\+hpp}}\end{DoxyCompactItemize}
