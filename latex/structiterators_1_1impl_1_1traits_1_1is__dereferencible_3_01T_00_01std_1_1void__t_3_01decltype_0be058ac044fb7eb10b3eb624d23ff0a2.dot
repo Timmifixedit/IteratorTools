@@ -1,0 +1,10 @@
+digraph "iterators::impl::traits::is_dereferencible&lt; T, std::void_t&lt; decltype(*std::declval&lt; T &gt;())&gt; &gt;"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="iterators::impl::traits\l::is_dereferencible\< T,\l std::void_t\< decltype\l(*std::declval\< T \>())\> \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="true_type",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}
