@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getiterators_2',['getIterators',['../classiterators_1_1impl_1_1ZipIterator.html#af72afb220554db01495b519aa0851fd5',1,'iterators::impl::ZipIterator']]]
+  ['enumerate_4',['enumerate',['../namespaceiterators.html#aaea70262053f925d78710baa65075124',1,'iterators']]]
 ];

@@ -1,0 +1,212 @@
+\hypertarget{Iterators_8hpp}{}\doxysection{Iterators.\+hpp File Reference}
+\label{Iterators_8hpp}\index{Iterators.hpp@{Iterators.hpp}}
+
+
+This file contains the definitions of Python-\/like zip-\/ and enumerate-\/functions. They can be used in range based for-\/loops to loop over multiple ranges at the same time, or to index a range while looping respectively.  
+
+
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+Include dependency graph for Iterators.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{Iterators_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator$<$ Iterators $>$}}
+\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container$<$ Iterable $>$}}
+\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{iterators\+::impl\+::\+Unreachable}}
+\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterContainer}{iterators\+::impl\+::\+Counter\+Container$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceiterators}{iterators}}
+\begin{DoxyCompactList}\small\item\em namespace containing zip and enumerate functions \end{DoxyCompactList}\item 
+ \mbox{\hyperlink{namespaceiterators_1_1impl}{iterators\+::impl}}
+\begin{DoxyCompactList}\small\item\em namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly \end{DoxyCompactList}\item 
+ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{iterators\+::impl\+::traits}}
+\begin{DoxyCompactList}\small\item\em namespace containing type traits used in implementation of zip and enumerate \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}\label{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}} 
+\#define {\bfseries R\+E\+F\+E\+R\+E\+N\+CE}(T\+Y\+PE)~std\+::declval$<$std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$T\+Y\+PE$>$$>$()
+\item 
+\#define {\bfseries A\+L\+L\+\_\+\+N\+O\+E\+X\+C\+E\+PT}(OP,  N\+A\+ME)
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}\label{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}} 
+\#define {\bfseries E\+L\+E\+M\+E\+N\+T1}~std\+::get$<$Idx$>$(tuple1)
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}\label{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}} 
+\#define {\bfseries E\+L\+E\+M\+E\+N\+T2}~std\+::get$<$Idx$>$(tuple2)
+\item 
+\#define {\bfseries B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+CH}(O\+P\+E\+R\+A\+T\+I\+ON,  N\+A\+ME)
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_a6a3b1a0ca91042a10f15f0bb9ba5ba14}\label{Iterators_8hpp_a6a3b1a0ca91042a10f15f0bb9ba5ba14}} 
+\#define {\bfseries B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+F\+O\+LD}(O\+P\+E\+R\+A\+T\+I\+ON,  C\+O\+M\+B\+I\+N\+A\+T\+OR,  N\+A\+ME)~B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+CH( ( (O\+P\+E\+R\+A\+T\+I\+ON) C\+O\+M\+B\+I\+N\+A\+T\+OR ...), N\+A\+ME)
+\item 
+\#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+D\+E\+F\+A\+U\+LT}
+\item 
+\#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+AP}(T\+Y\+PE,  V\+A\+L\+UE)
+\item 
+\#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+A\+L\+I\+AS}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a4a3cbf0ec8614d1d1fc3cfae09a8a2fe}\label{namespaceiterators_1_1impl_1_1traits_a4a3cbf0ec8614d1d1fc3cfae09a8a2fe}} 
+{\footnotesize template$<$bool Cond, typename T $>$ }\\using {\bfseries iterators\+::impl\+::traits\+::reference\+\_\+if\+\_\+t} = std\+::conditional\+\_\+t$<$ Cond, std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$ T $>$, T $>$
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}\label{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}} 
+{\footnotesize template$<$bool Cond, typename T $>$ }\\using {\bfseries iterators\+::impl\+::traits\+::const\+\_\+if\+\_\+t} = std\+::conditional\+\_\+t$<$ Cond, std\+::add\+\_\+const\+\_\+t$<$ T $>$, T $>$
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a67009531c5c47280368705756d6cebc8}\label{namespaceiterators_1_1impl_1_1traits_a67009531c5c47280368705756d6cebc8}} 
+{\footnotesize template$<$typename T $>$ }\\using {\bfseries iterators\+::impl\+::traits\+::dereference\+\_\+t} = typename dereference$<$ T, is\+\_\+dereferencible\+\_\+v$<$ T $>$ $>$\+::type
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a4af43604a220ab83ab8718bfd8550fdb}\label{namespaceiterators_1_1impl_1_1traits_a4af43604a220ab83ab8718bfd8550fdb}} 
+{\footnotesize template$<$typename T $>$ }\\using {\bfseries iterators\+::impl\+::traits\+::values\+\_\+t} = typename values$<$ T $>$\+::type
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{iterators\+::zip\+\_\+i}} (Iterators ...iterators) -\/$>$ impl\+::\+Zip\+Iterator$<$ std\+::tuple$<$ Iterators... $>$$>$
+\item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{iterators\+::zip}} (Iterable \&\&...iterable)
+\item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}{iterators\+::const\+\_\+zip}} (Iterable \&\&...iterable)
+\item 
+{\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{iterators\+::enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
+\item 
+{\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}{iterators\+::const\+\_\+enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a6de19d42e17b764cf9cc5d81eaf12120}\label{namespaceiterators_1_1impl_1_1traits_a6de19d42e17b764cf9cc5d81eaf12120}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+container\+\_\+v} = is\+\_\+container$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_adbb9caf8294f288c68ce4a04c6013791}\label{namespaceiterators_1_1impl_1_1traits_adbb9caf8294f288c68ce4a04c6013791}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+dereferencible\+\_\+v} = is\+\_\+dereferencible$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a21d94a39059c419c3437963e01435a51}\label{namespaceiterators_1_1impl_1_1traits_a21d94a39059c419c3437963e01435a51}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr std\+::size\+\_\+t {\bfseries iterators\+::impl\+::traits\+::minimum\+\_\+category\+\_\+v} = minimum\+\_\+category$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a1ede4b4f53772755c30d047fb09e59ff}\label{namespaceiterators_1_1impl_1_1traits_a1ede4b4f53772755c30d047fb09e59ff}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+random\+\_\+accessible\+\_\+v} = is\+\_\+random\+\_\+accessible$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}\label{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+bidirectional\+\_\+v} = is\+\_\+bidirectional$<$T$>$\+::value
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the definitions of Python-\/like zip-\/ and enumerate-\/functions. They can be used in range based for-\/loops to loop over multiple ranges at the same time, or to index a range while looping respectively. 
+
+\begin{DoxyAuthor}{Author}
+tim Luchterhand 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10.\+09.\+21 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}\label{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}} 
+\index{Iterators.hpp@{Iterators.hpp}!ALL\_NOEXCEPT@{ALL\_NOEXCEPT}}
+\index{ALL\_NOEXCEPT@{ALL\_NOEXCEPT}!Iterators.hpp@{Iterators.hpp}}
+\doxysubsubsection{\texorpdfstring{ALL\_NOEXCEPT}{ALL\_NOEXCEPT}}
+{\footnotesize\ttfamily \#define A\+L\+L\+\_\+\+N\+O\+E\+X\+C\+E\+PT(\begin{DoxyParamCaption}\item[{}]{OP,  }\item[{}]{N\+A\+ME }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{        \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \(\backslash\)}
+\DoxyCodeLine{        struct NAME \{ \(\backslash\)}
+\DoxyCodeLine{            static constexpr \textcolor{keywordtype}{bool} value = \textcolor{keyword}{false}; \(\backslash\)}
+\DoxyCodeLine{        \}; \(\backslash\)}
+\DoxyCodeLine{        template<\textcolor{keyword}{typename} ...Ts> \(\backslash\)}
+\DoxyCodeLine{        struct NAME <std::tuple<Ts...>> \{ \(\backslash\)}
+\DoxyCodeLine{            static constexpr \textcolor{keywordtype}{bool} value = (... \&\& noexcept(OP)); \(\backslash\)}
+\DoxyCodeLine{        \};                 \(\backslash\)}
+\DoxyCodeLine{        template<typename T> \(\backslash\)}
+\DoxyCodeLine{        inline constexpr \textcolor{keywordtype}{bool} NAME\#\#\_v = NAME<T>::value;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}\label{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}} 
+\index{Iterators.hpp@{Iterators.hpp}!BINARY\_TUPLE\_FOR\_EACH@{BINARY\_TUPLE\_FOR\_EACH}}
+\index{BINARY\_TUPLE\_FOR\_EACH@{BINARY\_TUPLE\_FOR\_EACH}!Iterators.hpp@{Iterators.hpp}}
+\doxysubsubsection{\texorpdfstring{BINARY\_TUPLE\_FOR\_EACH}{BINARY\_TUPLE\_FOR\_EACH}}
+{\footnotesize\ttfamily \#define B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+CH(\begin{DoxyParamCaption}\item[{}]{O\+P\+E\+R\+A\+T\+I\+ON,  }\item[{}]{N\+A\+ME }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{        \textcolor{keyword}{template}<\textcolor{keyword}{typename} Tuple1, \textcolor{keyword}{typename} Tuple2, std::size\_t ...Idx> \(\backslash\)}
+\DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME\#\#Impl(\textcolor{keyword}{const} Tuple1 \&tuple1, \textcolor{keyword}{const} Tuple2 \&tuple2, std::index\_sequence<Idx...>) \(\backslash\)}
+\DoxyCodeLine{        noexcept(noexcept((OPERATION))) \{ \(\backslash\)}
+\DoxyCodeLine{            return (OPERATION); \(\backslash\)}
+\DoxyCodeLine{        \} \(\backslash\)}
+\DoxyCodeLine{        template<typename Tuple1, typename Tuple2> \(\backslash\)}
+\DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME(\textcolor{keyword}{const} Tuple1 \&tuple1, \textcolor{keyword}{const} Tuple2 \&tuple2) \(\backslash\)}
+\DoxyCodeLine{        noexcept(noexcept(NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\}))) \{ \(\backslash\)}
+\DoxyCodeLine{            static\_assert(std::tuple\_size\_v<Tuple1> == std::tuple\_size\_v<Tuple2>); \(\backslash\)}
+\DoxyCodeLine{            return NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\}); \(\backslash\)}
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}\label{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}} 
+\index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP@{TYPE\_MAP}}
+\index{TYPE\_MAP@{TYPE\_MAP}!Iterators.hpp@{Iterators.hpp}}
+\doxysubsubsection{\texorpdfstring{TYPE\_MAP}{TYPE\_MAP}}
+{\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+AP(\begin{DoxyParamCaption}\item[{}]{T\+Y\+PE,  }\item[{}]{V\+A\+L\+UE }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{        \textcolor{keyword}{template}<>            \(\backslash\)}
+\DoxyCodeLine{        struct type\_to\_value<TYPE> \{ \(\backslash\)}
+\DoxyCodeLine{            static constexpr std::size\_t value = VALUE; \(\backslash\)}
+\DoxyCodeLine{        \};                    \(\backslash\)}
+\DoxyCodeLine{        template<>            \(\backslash\)}
+\DoxyCodeLine{        struct value\_to\_type<VALUE>\{ \(\backslash\)}
+\DoxyCodeLine{            static\_assert(VALUE != 0, \textcolor{stringliteral}{"0 is a reserved value"}); \(\backslash\)}
+\DoxyCodeLine{            using type = TYPE;\(\backslash\)}
+\DoxyCodeLine{        \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{Iterators_8hpp_abebf60cecd85510b3cc37cb415e07dde}\label{Iterators_8hpp_abebf60cecd85510b3cc37cb415e07dde}} 
+\index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP\_ALIAS@{TYPE\_MAP\_ALIAS}}
+\index{TYPE\_MAP\_ALIAS@{TYPE\_MAP\_ALIAS}!Iterators.hpp@{Iterators.hpp}}
+\doxysubsubsection{\texorpdfstring{TYPE\_MAP\_ALIAS}{TYPE\_MAP\_ALIAS}}
+{\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+A\+L\+I\+AS}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{        \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \(\backslash\)}
+\DoxyCodeLine{        constexpr \textcolor{keyword}{inline} std::size\_t type\_to\_value\_v = type\_to\_value<T>::value; \(\backslash\)}
+\DoxyCodeLine{        template<std::size\_t V>                                                 \(\backslash\)}
+\DoxyCodeLine{        using value\_to\_type\_t = \textcolor{keyword}{typename} value\_to\_type<V>::type;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{Iterators_8hpp_a63a8050bf06f087a431b829ba0b230a6}\label{Iterators_8hpp_a63a8050bf06f087a431b829ba0b230a6}} 
+\index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP\_DEFAULT@{TYPE\_MAP\_DEFAULT}}
+\index{TYPE\_MAP\_DEFAULT@{TYPE\_MAP\_DEFAULT}!Iterators.hpp@{Iterators.hpp}}
+\doxysubsubsection{\texorpdfstring{TYPE\_MAP\_DEFAULT}{TYPE\_MAP\_DEFAULT}}
+{\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+D\+E\+F\+A\+U\+LT}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{        \textcolor{keyword}{template}<\textcolor{keyword}{typename}> \(\backslash\)}
+\DoxyCodeLine{        struct type\_to\_value \{\}; \(\backslash\)}
+\DoxyCodeLine{        template<std::size\_t>    \(\backslash\)}
+\DoxyCodeLine{        struct value\_to\_type \{\};}
+
+\end{DoxyCode}

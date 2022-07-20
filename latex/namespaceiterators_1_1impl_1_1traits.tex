@@ -1,0 +1,87 @@
+\hypertarget{namespaceiterators_1_1impl_1_1traits}{}\doxysection{iterators\+::impl\+::traits Namespace Reference}
+\label{namespaceiterators_1_1impl_1_1traits}\index{iterators::impl::traits@{iterators::impl::traits}}
+
+
+namespace containing type traits used in implementation of zip and enumerate  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bfseries dereference}
+\item 
+struct {\bfseries dereference$<$ T, true $>$}
+\item 
+struct {\bfseries is\+\_\+bidirectional}
+\item 
+struct {\bfseries is\+\_\+bidirectional$<$ std\+::tuple$<$ Ts... $>$, std\+::void\+\_\+t$<$ value\+\_\+to\+\_\+type\+\_\+t$<$ minimum\+\_\+category\+\_\+v$<$ std\+::tuple$<$ Ts... $>$ $>$ $>$ $>$ $>$}
+\item 
+struct {\bfseries is\+\_\+bidirectional$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
+\item 
+struct {\bfseries is\+\_\+container}
+\item 
+struct {\bfseries is\+\_\+container$<$ T, std\+::void\+\_\+t$<$ decltype(std\+::begin(std\+::declval$<$ T $>$()), std\+::end(std\+::declval$<$ T $>$()))$>$ $>$}
+\item 
+struct {\bfseries is\+\_\+dereferencible}
+\item 
+struct {\bfseries is\+\_\+dereferencible$<$ T, std\+::void\+\_\+t$<$ decltype($\ast$std\+::declval$<$ T $>$())$>$ $>$}
+\item 
+struct {\bfseries is\+\_\+random\+\_\+accessible}
+\item 
+struct {\bfseries is\+\_\+random\+\_\+accessible$<$ std\+::tuple$<$ Ts... $>$, std\+::void\+\_\+t$<$ value\+\_\+to\+\_\+type\+\_\+t$<$ minimum\+\_\+category\+\_\+v$<$ std\+::tuple$<$ Ts... $>$ $>$ $>$ $>$ $>$}
+\item 
+struct {\bfseries is\+\_\+random\+\_\+accessible$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
+\item 
+struct {\bfseries iterator\+\_\+category\+\_\+from\+\_\+value}
+\item 
+struct {\bfseries iterator\+\_\+category\+\_\+from\+\_\+value$<$ 0 $>$}
+\item 
+struct {\bfseries iterator\+\_\+category\+\_\+value}
+\item 
+struct {\bfseries iterator\+\_\+category\+\_\+value$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
+\item 
+struct {\bfseries minimum\+\_\+category}
+\item 
+struct {\bfseries minimum\+\_\+category$<$ std\+::tuple$<$ Ts... $>$ $>$}
+\item 
+struct {\bfseries values}
+\item 
+struct {\bfseries values$<$ std\+::tuple$<$ Ts... $>$ $>$}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a4a3cbf0ec8614d1d1fc3cfae09a8a2fe}\label{namespaceiterators_1_1impl_1_1traits_a4a3cbf0ec8614d1d1fc3cfae09a8a2fe}} 
+{\footnotesize template$<$bool Cond, typename T $>$ }\\using {\bfseries reference\+\_\+if\+\_\+t} = std\+::conditional\+\_\+t$<$ Cond, std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$ T $>$, T $>$
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}\label{namespaceiterators_1_1impl_1_1traits_aa5811796c3b7d40b89c8518456abfb69}} 
+{\footnotesize template$<$bool Cond, typename T $>$ }\\using {\bfseries const\+\_\+if\+\_\+t} = std\+::conditional\+\_\+t$<$ Cond, std\+::add\+\_\+const\+\_\+t$<$ T $>$, T $>$
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a67009531c5c47280368705756d6cebc8}\label{namespaceiterators_1_1impl_1_1traits_a67009531c5c47280368705756d6cebc8}} 
+{\footnotesize template$<$typename T $>$ }\\using {\bfseries dereference\+\_\+t} = typename dereference$<$ T, is\+\_\+dereferencible\+\_\+v$<$ T $>$ $>$\+::type
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a4af43604a220ab83ab8718bfd8550fdb}\label{namespaceiterators_1_1impl_1_1traits_a4af43604a220ab83ab8718bfd8550fdb}} 
+{\footnotesize template$<$typename T $>$ }\\using {\bfseries values\+\_\+t} = typename values$<$ T $>$\+::type
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a6de19d42e17b764cf9cc5d81eaf12120}\label{namespaceiterators_1_1impl_1_1traits_a6de19d42e17b764cf9cc5d81eaf12120}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries is\+\_\+container\+\_\+v} = is\+\_\+container$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_adbb9caf8294f288c68ce4a04c6013791}\label{namespaceiterators_1_1impl_1_1traits_adbb9caf8294f288c68ce4a04c6013791}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries is\+\_\+dereferencible\+\_\+v} = is\+\_\+dereferencible$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a21d94a39059c419c3437963e01435a51}\label{namespaceiterators_1_1impl_1_1traits_a21d94a39059c419c3437963e01435a51}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr std\+::size\+\_\+t {\bfseries minimum\+\_\+category\+\_\+v} = minimum\+\_\+category$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a1ede4b4f53772755c30d047fb09e59ff}\label{namespaceiterators_1_1impl_1_1traits_a1ede4b4f53772755c30d047fb09e59ff}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries is\+\_\+random\+\_\+accessible\+\_\+v} = is\+\_\+random\+\_\+accessible$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}\label{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries is\+\_\+bidirectional\+\_\+v} = is\+\_\+bidirectional$<$T$>$\+::value
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+namespace containing type traits used in implementation of zip and enumerate 
