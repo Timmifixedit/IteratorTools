@@ -23,6 +23,11 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "zip and enumerate iterators", "index.html", [
+    [ "Python-like Zip and Enumerate Iterators", "index.html", [
+      [ "Properties", "index.html#autotoc_md1", null ],
+      [ "Documentation", "index.html#autotoc_md2", null ],
+      [ "Code Examples", "index.html#autotoc_md3", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

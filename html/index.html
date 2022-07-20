@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>zip and enumerate iterators: Main Page</title>
+<title>zip and enumerate iterators: Python-like Zip and Enumerate Iterators</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,11 +87,81 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">zip and enumerate iterators Documentation</div>  </div>
+<div class="title">Python-like Zip and Enumerate Iterators </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p>C++-implementation of Python-like zip- and enumerate-iterators which can be used in range-based for loops along with structured bindings to iterate over multiple containers at the same time. Requires C++17.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Properties</h1>
+<p>The <code>zip</code>-class is a container-wrapper for arbitrary iterable containers. It provides the member functions <code>begin()</code> and <code>end()</code> enabling it to be used in range-based for loops to iterate over multiple containers at the same time. The <code>enuerate</code>-function is a special case of <code>zip</code> and uses a "counting container" (similar to <code>std::ranges::iota</code>) to provide an index. Additionally, const-versions exist which do not allow the manipulation of the container elements.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Documentation</h1>
+<p><a href="https://timmifixedit.github.io/IteratorTools/html/index.html">Doxygen</a></p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Code Examples</h1>
+<p>The syntax is mostly similar to Python: </p><div class="fragment"><div class="line"> {c++}</div>
+<div class="line">#include &lt;vector&gt;</div>
+<div class="line">#include &lt;list&gt;</div>
+<div class="line">#include &quot;Iterators.hpp&quot;</div>
+<div class="line"> </div>
+<div class="line">using namespace iterators;</div>
+<div class="line">std::list&lt;std::string&gt; strings{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};</div>
+<div class="line">std::vector&lt;int&gt; numbers{1, 2, 3};</div>
+<div class="line">for (auto [string, number] : zip(strings, numbers)) {</div>
+<div class="line">    // &#39;string&#39; and &#39;number&#39; are references to the container element</div>
+<div class="line">    string += std::to_string(number); </div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">// now &#39;strings&#39; contains {&quot;a1&quot;, &quot;b2&quot;, &quot;c3&quot;}</div>
+</div><!-- fragment --><p>The for loop uses so called <code>ZipIterator</code>s which point to tuples which in turn contain references to the container elements. Therefore, no copying occurs and manipulation of the container elements is possible. Observe that the structured binding captures by value (since the values are themselves references).</p>
+<p>If you want to prohibit manipulation, you can use <code>const_zip</code> </p><div class="fragment"><div class="line"> {c++}</div>
+<div class="line">using namespace iterators;</div>
+<div class="line">std::list&lt;std::string&gt; strings{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};</div>
+<div class="line">std::vector&lt;int&gt; numbers{1, 2, 3};</div>
+<div class="line">for (auto [string, number] : const_zip(strings, numbers)) {</div>
+<div class="line">    // string += std::to_string(number);  error, string is readonly!</div>
+<div class="line">    std::cout &lt;&lt; string &lt;&lt; &quot; &quot; &lt;&lt; number &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Additionally, you can use <code>zip_i</code> to manually zip iterators or pointers: </p><div class="fragment"><div class="line"> {c++}</div>
+<div class="line">using namespace iterators;</div>
+<div class="line">std::list&lt;std::string&gt; strings{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};</div>
+<div class="line">std::vector&lt;int&gt; numbers{1, 2, 3};</div>
+<div class="line">auto zipBegin = zip_i(strings.begin(), numbers.begin());</div>
+<div class="line">auto zipEnd = zip_i(strings.end(), numbers.end());</div>
+<div class="line">while (zipBegin != zipEnd) {</div>
+<div class="line">    auto [s, num] = *zipBegin;</div>
+<div class="line">    // ...</div>
+<div class="line">    ++zipBegin;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><code>ZipIterators</code> support the same operations as the least powerful underlying iterator. For example, if you zip a random access iterator (e.g. from <code>std::vector</code>) and a bidirectional iterator (e.g. from <code>std::list</code>), then the resulting <code>ZipIterator</code> will only support bidirectional iteration but no random access.</p>
+<p>As in Python, the shortest range decides the overall range: </p><div class="fragment"><div class="line"> {c++}</div>
+<div class="line">using namespace iterators;</div>
+<div class="line">std::list&lt;std::string&gt; strings{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};</div>
+<div class="line">std::vector&lt;int&gt; numbers{1, 2, 3, 4, 5, 6};</div>
+<div class="line">for (auto [string, number] : zip(strings, numbers)) {</div>
+<div class="line">    std::cout &lt;&lt; string &lt;&lt; &quot; &quot; &lt;&lt; number &lt;&lt; &quot; | &quot;</div>
+<div class="line">}</div>
+<div class="line">// prints a 1 | b 2 | c 3 |</div>
+</div><!-- fragment --><p>The <code>enumerate</code>-function works similarly. </p><div class="fragment"><div class="line"> {c++}</div>
+<div class="line">using namespace iterators;</div>
+<div class="line">std::list&lt;std::string&gt; strings{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};</div>
+<div class="line">for (auto [index, string] : enumerate(strings)) {</div>
+<div class="line">    string += std::to_string(index); </div>
+<div class="line">}</div>
+<div class="line">// now &#39;strings&#39; contains {&quot;a0&quot;, &quot;b1&quot;, &quot;c2&quot;}</div>
+</div><!-- fragment --><p>Also, an optional offset can be specified: </p><div class="fragment"><div class="line"> {c++}</div>
+<div class="line">for (auto [index, string] : enumerate(strings, 4)) { // index starts from 4</div>
+<div class="line">    ...</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>And as with <code>zip</code>, a const version (<code>const_enumerate</code>) exists.</p>
+<p>In case temporary containers are used, <code>zip</code> and <code>enumerate</code> will take ownership of the containers to guarantee well-defined memory access. </p><div class="fragment"><div class="line"> {c++}</div>
+<div class="line">for (auto [index, number] : enumerate(std::array{53, 21, 17})) {</div>
+<div class="line">    // enumerate takes ownership of the array. The elements</div>
+<div class="line">    // can safely be accessed and manipulated</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
