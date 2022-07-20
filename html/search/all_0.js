@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['all_5fnoexcept_0',['ALL_NOEXCEPT',['../Iterators_8hpp.html#a38b58967d6a0fcd398482b43cf8db546',1,'Iterators.hpp']]]
+  ['countercontainer_0',['CounterContainer',['../structiterators_1_1impl_1_1CounterContainer.html',1,'iterators::impl']]],
+  ['counteriterator_1',['CounterIterator',['../structiterators_1_1impl_1_1CounterIterator.html',1,'iterators::impl']]]
 ];
