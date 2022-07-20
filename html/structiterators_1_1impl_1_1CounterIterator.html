@@ -91,7 +91,6 @@ $(document).ready(function(){initNavTree('structiterators_1_1impl_1_1CounterIter
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="structiterators_1_1impl_1_1CounterIterator-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -116,7 +115,7 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae628a33cb0964bde115964409f6da573"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> (T begin, T <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a3c540d28d0003c551b817b88076f5fcb">increment</a>=T(1)) noexcept</td></tr>
+<tr class="memitem:ae628a33cb0964bde115964409f6da573"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> (T begin, T increment=T(1)) noexcept</td></tr>
 <tr class="separator:ae628a33cb0964bde115964409f6da573"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dbeadffdf20033c49e3d6378c878ba9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a5dbeadffdf20033c49e3d6378c878ba9">operator++</a> () noexcept</td></tr>
 <tr class="separator:a5dbeadffdf20033c49e3d6378c878ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,13 +151,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9ecafc0275d06d7c3c00d4615ea44d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d5a1ef5c6ecea7d799ae683427191c3"><td class="memItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a1d5a1ef5c6ecea7d799ae683427191c3">operator*</a> () const noexcept</td></tr>
 <tr class="separator:a1d5a1ef5c6ecea7d799ae683427191c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a2bc085a9c4114ebf481be786f2e42b06"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a2bc085a9c4114ebf481be786f2e42b06">counter</a></td></tr>
-<tr class="separator:a2bc085a9c4114ebf481be786f2e42b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c540d28d0003c551b817b88076f5fcb"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a3c540d28d0003c551b817b88076f5fcb">increment</a></td></tr>
-<tr class="separator:a3c540d28d0003c551b817b88076f5fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -872,55 +864,6 @@ template&lt;typename T &gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2bc085a9c4114ebf481be786f2e42b06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bc085a9c4114ebf481be786f2e42b06">&#9670;&nbsp;</a></span>counter</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::counter</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3c540d28d0003c551b817b88076f5fcb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c540d28d0003c551b817b88076f5fcb">&#9670;&nbsp;</a></span>increment</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::increment</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

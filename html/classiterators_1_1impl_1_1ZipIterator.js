@@ -4,7 +4,6 @@ var classiterators_1_1impl_1_1ZipIterator =
     [ "pointer", "classiterators_1_1impl_1_1ZipIterator.html#a2f8289ac1ce3f6b02fb02dc346783f1b", null ],
     [ "reference", "classiterators_1_1impl_1_1ZipIterator.html#af417f0b9eaced8e24ae16144e67624f0", null ],
     [ "value_type", "classiterators_1_1impl_1_1ZipIterator.html#a51ee486db3f6c520d1a65da6e3600722", null ],
-    [ "ValueTuple", "classiterators_1_1impl_1_1ZipIterator.html#a458f845357ed2612a8f6cf9bc7e05840", null ],
     [ "ZipIterator", "classiterators_1_1impl_1_1ZipIterator.html#a10e1daeed79cf10f1ad54bf4d7d093ad", null ],
     [ "ZipIterator", "classiterators_1_1impl_1_1ZipIterator.html#a7bdd20e0de1b5f5043eb97663bb72636", null ],
     [ "getIterators", "classiterators_1_1impl_1_1ZipIterator.html#af72afb220554db01495b519aa0851fd5", null ],
@@ -25,6 +24,5 @@ var classiterators_1_1impl_1_1ZipIterator =
     [ "operator[]", "classiterators_1_1impl_1_1ZipIterator.html#a75a590f1cc5ec40a5a521b7ae11a52d3", null ],
     [ "operator+", "classiterators_1_1impl_1_1ZipIterator.html#a4f5cbc69acc7742f7db0c8f97d366b82", null ],
     [ "operator+", "classiterators_1_1impl_1_1ZipIterator.html#a95d62599a94727fbfbe183886cc316df", null ],
-    [ "operator-", "classiterators_1_1impl_1_1ZipIterator.html#a4a23a84da6082a48dd24ed87bca3f98a", null ],
-    [ "iterators", "classiterators_1_1impl_1_1ZipIterator.html#af09fd4193a6b0f1e7f66ded871a1dbd2", null ]
+    [ "operator-", "classiterators_1_1impl_1_1ZipIterator.html#a4a23a84da6082a48dd24ed87bca3f98a", null ]
 ];

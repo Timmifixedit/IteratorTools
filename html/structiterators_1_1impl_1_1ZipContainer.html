@@ -90,8 +90,6 @@ $(document).ready(function(){initNavTree('structiterators_1_1impl_1_1ZipContaine
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-types">Private Types</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="structiterators_1_1impl_1_1ZipContainer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">iterators::impl::ZipContainer&lt; Iterable &gt; Struct Template Reference</div>  </div>
@@ -103,7 +101,7 @@ $(document).ready(function(){initNavTree('structiterators_1_1impl_1_1ZipContaine
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af339ce90fe7914b270516609fd7089c4"><td class="memTemplParams" colspan="2">template&lt;typename ... Container&gt; </td></tr>
-<tr class="memitem:af339ce90fe7914b270516609fd7089c4"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#af339ce90fe7914b270516609fd7089c4">ZipContainer</a> (Container &amp;&amp;...<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#aebafca2fce0998b7ad42876e85476f42">containers</a>)</td></tr>
+<tr class="memitem:af339ce90fe7914b270516609fd7089c4"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#af339ce90fe7914b270516609fd7089c4">ZipContainer</a> (Container &amp;&amp;...containers)</td></tr>
 <tr class="separator:af339ce90fe7914b270516609fd7089c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab05d7edd8b4aa02ce2c43ae86724d227"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ab05d7edd8b4aa02ce2c43ae86724d227">begin</a> ()</td></tr>
 <tr class="separator:ab05d7edd8b4aa02ce2c43ae86724d227"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,204 +111,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0c39b800c4cff283ab7f6d344eef7521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7e43b2da398b854a753a338be0576fc"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ab7e43b2da398b854a753a338be0576fc">end</a> () const</td></tr>
 <tr class="separator:ab7e43b2da398b854a753a338be0576fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
-Private Types</h2></td></tr>
-<tr class="memitem:ad2a21a1cf58bd59766eb1db9c303da25"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ad2a21a1cf58bd59766eb1db9c303da25">ContainerTuple</a> = std::tuple&lt; Iterable... &gt;</td></tr>
-<tr class="separator:ad2a21a1cf58bd59766eb1db9c303da25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6c00b65c4bd492e9e94fa84f916f916"><td class="memTemplParams" colspan="2">template&lt;bool Const&gt; </td></tr>
-<tr class="memitem:ae6c00b65c4bd492e9e94fa84f916f916"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ae6c00b65c4bd492e9e94fa84f916f916">Iterators</a> = std::tuple&lt; decltype(std::begin(std::declval&lt; std::add_lvalue_reference_t&lt; <a class="el" href="namespaceiterators_1_1impl_1_1traits.html#aa5811796c3b7d40b89c8518456abfb69">traits::const_if_t</a>&lt; Const, std::remove_reference_t&lt; Iterable &gt; &gt;&gt; &gt;()))... &gt;</td></tr>
-<tr class="separator:ae6c00b65c4bd492e9e94fa84f916f916"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac586b3fdd0a587afc583627a5280f04f"><td class="memTemplParams" colspan="2">template&lt;bool Const&gt; </td></tr>
-<tr class="memitem:ac586b3fdd0a587afc583627a5280f04f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ac586b3fdd0a587afc583627a5280f04f">Sentinels</a> = std::tuple&lt; decltype(std::end(std::declval&lt; std::add_lvalue_reference_t&lt; <a class="el" href="namespaceiterators_1_1impl_1_1traits.html#aa5811796c3b7d40b89c8518456abfb69">traits::const_if_t</a>&lt; Const, std::remove_reference_t&lt; Iterable &gt; &gt;&gt; &gt;()))... &gt;</td></tr>
-<tr class="separator:ac586b3fdd0a587afc583627a5280f04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab78d597d311975049ab5bdd44c6a403e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ab78d597d311975049ab5bdd44c6a403e">IteratorTuple</a> = <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ae6c00b65c4bd492e9e94fa84f916f916">Iterators</a>&lt; false &gt;</td></tr>
-<tr class="separator:ab78d597d311975049ab5bdd44c6a403e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9f23befef0cceab32b17ddf9ad82d45"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ab9f23befef0cceab32b17ddf9ad82d45">CIteratorTuple</a> = <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ae6c00b65c4bd492e9e94fa84f916f916">Iterators</a>&lt; true &gt;</td></tr>
-<tr class="separator:ab9f23befef0cceab32b17ddf9ad82d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff9e5054c026e923999602cd3a74a66"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#a8ff9e5054c026e923999602cd3a74a66">SentinelTuple</a> = <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ac586b3fdd0a587afc583627a5280f04f">Sentinels</a>&lt; false &gt;</td></tr>
-<tr class="separator:a8ff9e5054c026e923999602cd3a74a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7469e7fa34a880d7c42e4c0c1f4b47ba"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#a7469e7fa34a880d7c42e4c0c1f4b47ba">CSentinelTuple</a> = <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ac586b3fdd0a587afc583627a5280f04f">Sentinels</a>&lt; true &gt;</td></tr>
-<tr class="separator:a7469e7fa34a880d7c42e4c0c1f4b47ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aebafca2fce0998b7ad42876e85476f42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ad2a21a1cf58bd59766eb1db9c303da25">ContainerTuple</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#aebafca2fce0998b7ad42876e85476f42">containers</a></td></tr>
-<tr class="separator:aebafca2fce0998b7ad42876e85476f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ab9f23befef0cceab32b17ddf9ad82d45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9f23befef0cceab32b17ddf9ad82d45">&#9670;&nbsp;</a></span>CIteratorTuple</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ab9f23befef0cceab32b17ddf9ad82d45">CIteratorTuple</a> =  <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ae6c00b65c4bd492e9e94fa84f916f916">Iterators</a>&lt;true&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad2a21a1cf58bd59766eb1db9c303da25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2a21a1cf58bd59766eb1db9c303da25">&#9670;&nbsp;</a></span>ContainerTuple</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ad2a21a1cf58bd59766eb1db9c303da25">ContainerTuple</a> =  std::tuple&lt;Iterable...&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7469e7fa34a880d7c42e4c0c1f4b47ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7469e7fa34a880d7c42e4c0c1f4b47ba">&#9670;&nbsp;</a></span>CSentinelTuple</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#a7469e7fa34a880d7c42e4c0c1f4b47ba">CSentinelTuple</a> =  <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ac586b3fdd0a587afc583627a5280f04f">Sentinels</a>&lt;true&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae6c00b65c4bd492e9e94fa84f916f916"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6c00b65c4bd492e9e94fa84f916f916">&#9670;&nbsp;</a></span>Iterators</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<div class="memtemplate">
-template&lt;bool Const&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ae6c00b65c4bd492e9e94fa84f916f916">Iterators</a> =  std::tuple&lt;decltype(std::begin( std::declval&lt;std::add_lvalue_reference_t&lt;<a class="el" href="namespaceiterators_1_1impl_1_1traits.html#aa5811796c3b7d40b89c8518456abfb69">traits::const_if_t</a>&lt;Const, std::remove_reference_t&lt;Iterable&gt; &gt;&gt; &gt;()))...&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab78d597d311975049ab5bdd44c6a403e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab78d597d311975049ab5bdd44c6a403e">&#9670;&nbsp;</a></span>IteratorTuple</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ab78d597d311975049ab5bdd44c6a403e">IteratorTuple</a> =  <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ae6c00b65c4bd492e9e94fa84f916f916">Iterators</a>&lt;false&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac586b3fdd0a587afc583627a5280f04f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac586b3fdd0a587afc583627a5280f04f">&#9670;&nbsp;</a></span>Sentinels</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<div class="memtemplate">
-template&lt;bool Const&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ac586b3fdd0a587afc583627a5280f04f">Sentinels</a> =  std::tuple&lt;decltype(std::end( std::declval&lt;std::add_lvalue_reference_t&lt;<a class="el" href="namespaceiterators_1_1impl_1_1traits.html#aa5811796c3b7d40b89c8518456abfb69">traits::const_if_t</a>&lt;Const, std::remove_reference_t&lt;Iterable&gt; &gt;&gt; &gt;()))...&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8ff9e5054c026e923999602cd3a74a66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ff9e5054c026e923999602cd3a74a66">&#9670;&nbsp;</a></span>SentinelTuple</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::<a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#a8ff9e5054c026e923999602cd3a74a66">SentinelTuple</a> =  <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ac586b3fdd0a587afc583627a5280f04f">Sentinels</a>&lt;false&gt;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af339ce90fe7914b270516609fd7089c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af339ce90fe7914b270516609fd7089c4">&#9670;&nbsp;</a></span>ZipContainer()</h2>
@@ -445,31 +246,6 @@ template&lt;typename ... Iterable&gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aebafca2fce0998b7ad42876e85476f42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebafca2fce0998b7ad42876e85476f42">&#9670;&nbsp;</a></span>containers</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ... Iterable&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html#ad2a21a1cf58bd59766eb1db9c303da25">ContainerTuple</a> <a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer</a>&lt; Iterable &gt;::containers</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

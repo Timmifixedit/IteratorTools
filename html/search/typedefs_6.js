@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['type_167',['type',['../structiterators_1_1impl_1_1traits_1_1dereference.html#a8b794f9f844dce63cc4c709131d61058',1,'iterators::impl::traits::dereference::type()'],['../structiterators_1_1impl_1_1traits_1_1dereference_3_01T_00_01true_01_4.html#a957a371de38b1916dd7e06dd7227e0ba',1,'iterators::impl::traits::dereference&lt; T, true &gt;::type()'],['../structiterators_1_1impl_1_1traits_1_1values_3_01std_1_1tuple_3_01Ts_8_8_8_01_4_01_4.html#a50ab76736ba68fe5f54f42011464c3af',1,'iterators::impl::traits::values&lt; std::tuple&lt; Ts... &gt; &gt;::type()']]]
+  ['value_5ftype_145',['value_type',['../classiterators_1_1impl_1_1ZipIterator.html#a51ee486db3f6c520d1a65da6e3600722',1,'iterators::impl::ZipIterator::value_type()'],['../structiterators_1_1impl_1_1CounterIterator.html#a204a9ed204918da6ce99f338322d8b01',1,'iterators::impl::CounterIterator::value_type()']]],
+  ['values_5ft_146',['values_t',['../namespaceiterators_1_1impl_1_1traits.html#a4af43604a220ab83ab8718bfd8550fdb',1,'iterators::impl::traits']]]
 ];

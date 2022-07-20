@@ -91,7 +91,6 @@ $(document).ready(function(){initNavTree('structiterators_1_1impl_1_1CounterCont
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="structiterators_1_1impl_1_1CounterContainer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">iterators::impl::CounterContainer&lt; T &gt; Struct Template Reference</div>  </div>
@@ -102,7 +101,7 @@ $(document).ready(function(){initNavTree('structiterators_1_1impl_1_1CounterCont
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad85469a2596f30abe28ddcdb7f06cf29"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#ad85469a2596f30abe28ddcdb7f06cf29">CounterContainer</a> (T <a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#aecf0f6ef24a3732e6088c4fa41b45cea">start</a>, T <a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#a3df02a9f4d86dab49155c6f24d1ace3b">increment</a>) noexcept</td></tr>
+<tr class="memitem:ad85469a2596f30abe28ddcdb7f06cf29"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#ad85469a2596f30abe28ddcdb7f06cf29">CounterContainer</a> (T start, T increment) noexcept</td></tr>
 <tr class="separator:ad85469a2596f30abe28ddcdb7f06cf29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03054832f2cd2f3b40b6a2d0b9ffbfdc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#a03054832f2cd2f3b40b6a2d0b9ffbfdc">begin</a> () const noexcept</td></tr>
 <tr class="separator:a03054832f2cd2f3b40b6a2d0b9ffbfdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,13 +110,6 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aadff2992fc219001b555069ddf790000"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#aadff2992fc219001b555069ddf790000">end</a> () noexcept</td></tr>
 <tr class="separator:aadff2992fc219001b555069ddf790000"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aecf0f6ef24a3732e6088c4fa41b45cea"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#aecf0f6ef24a3732e6088c4fa41b45cea">start</a></td></tr>
-<tr class="separator:aecf0f6ef24a3732e6088c4fa41b45cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3df02a9f4d86dab49155c6f24d1ace3b"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html#a3df02a9f4d86dab49155c6f24d1ace3b">increment</a></td></tr>
-<tr class="separator:a3df02a9f4d86dab49155c6f24d1ace3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad85469a2596f30abe28ddcdb7f06cf29"></a>
@@ -207,55 +199,6 @@ template&lt;typename T  = std::size_t&gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a3df02a9f4d86dab49155c6f24d1ace3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3df02a9f4d86dab49155c6f24d1ace3b">&#9670;&nbsp;</a></span>increment</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T  = std::size_t&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="structiterators_1_1impl_1_1CounterContainer.html">iterators::impl::CounterContainer</a>&lt; T &gt;::increment</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aecf0f6ef24a3732e6088c4fa41b45cea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecf0f6ef24a3732e6088c4fa41b45cea">&#9670;&nbsp;</a></span>start</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T  = std::size_t&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T <a class="el" href="structiterators_1_1impl_1_1CounterContainer.html">iterators::impl::CounterContainer</a>&lt; T &gt;::start</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
