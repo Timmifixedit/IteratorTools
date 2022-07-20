@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>zip and enumerate iterators: Python-like Zip and Enumerate Iterators</title>
+<title>zip and enumerate iterators: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,18 +69,21 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Python-like Zip and Enumerate Iterators </div>  </div>
+<div class="title">zip and enumerate iterators Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>C++-implementation of Python-like zip- and enumerate-iterators which can be used in range-based for loops along with structured bindings to iterate over multiple containers at the same time. Requires C++17.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Properties</h1>
+<div class="textblock"><p><a href="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml"><object type="image/svg+xml" data="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml/badge.svg" style="pointer-events: none;">unit tests</object></a> </p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+Python-like Zip and Enumerate Iterators</h1>
+<p>C++-implementation of Python-like zip- and enumerate-iterators which can be used in range-based for loops along with structured bindings to iterate over multiple containers at the same time. Requires C++17.</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Properties</h2>
 <p>The <code>zip</code>-class is a container-wrapper for arbitrary iterable containers. It provides the member functions <code>begin()</code> and <code>end()</code> enabling it to be used in range-based for loops to iterate over multiple containers at the same time. The <code>enuerate</code>-function is a special case of <code>zip</code> and uses a "counting container" (similar to <code>std::ranges::iota</code>) to provide an index. Additionally, const-versions exist which do not allow the manipulation of the container elements.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Documentation</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Documentation</h2>
 <p><a href="https://timmifixedit.github.io/IteratorTools/html/index.html">Doxygen</a></p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Code Examples</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Code Examples</h2>
 <p>The syntax is mostly similar to Python: </p><div class="fragment"><div class="line"> {c++}</div>
 <div class="line">#include &lt;vector&gt;</div>
 <div class="line">#include &lt;list&gt;</div>

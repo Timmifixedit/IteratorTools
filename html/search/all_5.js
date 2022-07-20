@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['python_2dlike_20zip_20and_20enumerate_20iterators_24',['Python-like Zip and Enumerate Iterators',['../index.html',1,'']]]
+  ['unreachable_24',['Unreachable',['../structiterators_1_1impl_1_1Unreachable.html',1,'iterators::impl']]]
 ];
