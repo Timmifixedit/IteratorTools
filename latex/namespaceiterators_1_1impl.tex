@@ -2,7 +2,7 @@
 \label{namespaceiterators_1_1impl}\index{iterators::impl@{iterators::impl}}
 
 
-namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly  
+namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly  
 
 
 \doxysubsection*{Namespaces}
@@ -13,17 +13,23 @@ namespace containing structures and helpers used to implement zip and enumerate.
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterContainer}{Counter\+Container}}
-\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}
-\item 
+\begin{DoxyCompactList}\small\item\em Iterator of an infinite sequence of numbers. Simply increments an internal counter. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{Counter\+Range}}
+\begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}
-\item 
-struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{Zip\+Container}}
-\item 
+\begin{DoxyCompactList}\small\item\em represents the unreachable end of an infinite sequence \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{Zip\+View}}
+\begin{DoxyCompactList}\small\item\em Zip-\/view that provides \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}{begin()}} and \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}{end()}} member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}\label{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr T {\bfseries sgn} (T val) noexcept
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly 
+namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly 

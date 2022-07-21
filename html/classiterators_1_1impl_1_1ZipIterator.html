@@ -75,18 +75,23 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#related">Related Functions</a> &#124;
 <a href="classiterators_1_1impl_1_1ZipIterator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">iterators::impl::ZipIterator&lt; Iterators &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.  
+ <a href="classiterators_1_1impl_1_1ZipIterator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Iterators_8hpp_source.html">Iterators.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for iterators::impl::ZipIterator&lt; Iterators &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classiterators_1_1impl_1_1ZipIterator__inherit__graph.png" border="0" usemap="#iterators_1_1impl_1_1ZipIterator_3_01Iterators_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="iterators_1_1impl_1_1ZipIterator_3_01Iterators_01_4_inherit__map" id="iterators_1_1impl_1_1ZipIterator_3_01Iterators_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="673,20,864,61"/>
+<area shape="rect" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="673,20,864,61"/>
 <area shape="rect" title=" " alt="" coords="423,5,624,76"/>
 <area shape="rect" title=" " alt="" coords="5,13,185,69"/>
 </map>
@@ -96,7 +101,7 @@ Collaboration diagram for iterators::impl::ZipIterator&lt; Iterators &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classiterators_1_1impl_1_1ZipIterator__coll__graph.png" border="0" usemap="#iterators_1_1impl_1_1ZipIterator_3_01Iterators_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="iterators_1_1impl_1_1ZipIterator_3_01Iterators_01_4_coll__map" id="iterators_1_1impl_1_1ZipIterator_3_01Iterators_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="673,20,864,61"/>
+<area shape="rect" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="673,20,864,61"/>
 <area shape="rect" title=" " alt="" coords="423,5,624,76"/>
 <area shape="rect" title=" " alt="" coords="5,13,185,69"/>
 </map>
@@ -104,9 +109,9 @@ Collaboration diagram for iterators::impl::ZipIterator&lt; Iterators &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a51ee486db3f6c520d1a65da6e3600722"><td class="memItemLeft" align="right" valign="top"><a id="a51ee486db3f6c520d1a65da6e3600722"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = ValueTuple</td></tr>
-<tr class="separator:a51ee486db3f6c520d1a65da6e3600722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a238ea91378d253d9e529bc8657e6cdb9"><td class="memItemLeft" align="right" valign="top"><a id="a238ea91378d253d9e529bc8657e6cdb9"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = traits::values_t&lt; Iterators &gt;</td></tr>
+<tr class="separator:a238ea91378d253d9e529bc8657e6cdb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af417f0b9eaced8e24ae16144e67624f0"><td class="memItemLeft" align="right" valign="top"><a id="af417f0b9eaced8e24ae16144e67624f0"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = value_type</td></tr>
 <tr class="separator:af417f0b9eaced8e24ae16144e67624f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,12 +135,38 @@ template&lt;typename ... Its&gt; </td></tr>
 <tr class="separator:afd48a07532bec5c6288557f865342d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a264dc4e02a97e7d99c83214469876c16"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a264dc4e02a97e7d99c83214469876c16">operator++</a> (int) noexcept(traits::is_nothrow_incrementible_v&lt; Iterators &gt;)</td></tr>
 <tr class="separator:a264dc4e02a97e7d99c83214469876c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ce5663f14dc087a19078a1be8e0efc9"><td class="memTemplParams" colspan="2">template&lt;typename Its &gt; </td></tr>
+<tr class="memitem:a7ce5663f14dc087a19078a1be8e0efc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a7ce5663f14dc087a19078a1be8e0efc9">operator==</a> (const <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a>&lt; Its &gt; &amp;other) const noexcept(noexcept(ZipIterator::oneEqual(std::declval&lt; Iterators &gt;(), other.getIterators())))</td></tr>
+<tr class="separator:a7ce5663f14dc087a19078a1be8e0efc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5042d6e631cfa1cf2af2a2c249e4b45"><td class="memTemplParams" colspan="2">template&lt;typename Its &gt; </td></tr>
+<tr class="memitem:ae5042d6e631cfa1cf2af2a2c249e4b45"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#ae5042d6e631cfa1cf2af2a2c249e4b45">operator!=</a> (const <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a>&lt; Its &gt; &amp;other) const noexcept(noexcept(std::declval&lt; <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &gt;()==other))</td></tr>
+<tr class="separator:ae5042d6e631cfa1cf2af2a2c249e4b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cd7d8a548558a0e3c09210f6c036785"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a1cd7d8a548558a0e3c09210f6c036785">operator*</a> () const noexcept(traits::is_nothrow_dereferencible_v&lt; Iterators &gt;)</td></tr>
+<tr class="separator:a1cd7d8a548558a0e3c09210f6c036785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72afb220554db01495b519aa0851fd5"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#af72afb220554db01495b519aa0851fd5">getIterators</a> () const noexcept -&gt; const Iterators &amp;</td></tr>
+<tr class="separator:af72afb220554db01495b519aa0851fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">bidirectional iteration</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>the following operators are only available if all underlying iterators support bidirectional access </p>
+</div></td></tr>
 <tr class="memitem:ae15e1a6fef87300048324c74ec3464af"><td class="memTemplParams" colspan="2">template&lt;bool IsBidirectional = traits::is_bidirectional_v&lt;Iterators&gt;&gt; </td></tr>
 <tr class="memitem:ae15e1a6fef87300048324c74ec3464af"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#ae15e1a6fef87300048324c74ec3464af">operator--</a> () noexcept(traits::is_nothrow_decrementible_v&lt; Iterators &gt;) -&gt; std::enable_if_t&lt; IsBidirectional, <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &amp; &gt;</td></tr>
 <tr class="separator:ae15e1a6fef87300048324c74ec3464af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7639b885fafd6fae99ab7d58bc460088"><td class="memTemplParams" colspan="2">template&lt;bool IsBidirectional = traits::is_bidirectional_v&lt;Iterators&gt;&gt; </td></tr>
 <tr class="memitem:a7639b885fafd6fae99ab7d58bc460088"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a7639b885fafd6fae99ab7d58bc460088">operator--</a> (int) noexcept(traits::is_nothrow_decrementible_v&lt; Iterators &gt;) -&gt; std::enable_if_t&lt; IsBidirectional, <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &gt;</td></tr>
 <tr class="separator:a7639b885fafd6fae99ab7d58bc460088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:aad6554b6b37a9fd1a1163079a83e50bf"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterators&gt; </td></tr>
+<tr class="memitem:aad6554b6b37a9fd1a1163079a83e50bf"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#aad6554b6b37a9fd1a1163079a83e50bf">zip_i</a> (Iterators ...iterators) -&gt; <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">impl::ZipIterator</a>&lt; std::tuple&lt; Iterators... &gt;&gt;</td></tr>
+<tr class="separator:aad6554b6b37a9fd1a1163079a83e50bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
+random access operators</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpdd38315efba184a8aac7f8fc94f1964f"></a>the following operators are only available if all underlying iterators support random access </p>
+</td></tr>
 <tr class="memitem:a59a11fe5cf8970a8e5223da4b16e5faa"><td class="memTemplParams" colspan="2">template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterators&gt;&gt; </td></tr>
 <tr class="memitem:a59a11fe5cf8970a8e5223da4b16e5faa"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a59a11fe5cf8970a8e5223da4b16e5faa">operator+=</a> (difference_type n) noexcept(traits::is_nothrow_compound_assignable_plus_v&lt; Iterators &gt;) -&gt; std::enable_if_t&lt; IsRandomAccessible, <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &amp; &gt;</td></tr>
 <tr class="separator:a59a11fe5cf8970a8e5223da4b16e5faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,19 +191,6 @@ template&lt;typename ... Its&gt; </td></tr>
 <tr class="memitem:aa44036b1cb20f319825b9a5269528508"><td class="memTemplParams" colspan="2">template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterators&gt;&gt; </td></tr>
 <tr class="memitem:aa44036b1cb20f319825b9a5269528508"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#aa44036b1cb20f319825b9a5269528508">operator&gt;=</a> (const <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &amp;other) const noexcept(noexcept(std::declval&lt; <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &gt;()&lt; other)) -&gt; std::enable_if_t&lt; IsRandomAccessible, bool &gt;</td></tr>
 <tr class="separator:aa44036b1cb20f319825b9a5269528508"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ce5663f14dc087a19078a1be8e0efc9"><td class="memTemplParams" colspan="2">template&lt;typename Its &gt; </td></tr>
-<tr class="memitem:a7ce5663f14dc087a19078a1be8e0efc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a7ce5663f14dc087a19078a1be8e0efc9">operator==</a> (const <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a>&lt; Its &gt; &amp;other) const noexcept(noexcept(ZipIterator::oneEqual(std::declval&lt; Iterators &gt;(), other.getIterators())))</td></tr>
-<tr class="separator:a7ce5663f14dc087a19078a1be8e0efc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5042d6e631cfa1cf2af2a2c249e4b45"><td class="memTemplParams" colspan="2">template&lt;typename Its &gt; </td></tr>
-<tr class="memitem:ae5042d6e631cfa1cf2af2a2c249e4b45"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#ae5042d6e631cfa1cf2af2a2c249e4b45">operator!=</a> (const <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a>&lt; Its &gt; &amp;other) const noexcept(noexcept(std::declval&lt; <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &gt;()==other))</td></tr>
-<tr class="separator:ae5042d6e631cfa1cf2af2a2c249e4b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cd7d8a548558a0e3c09210f6c036785"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a1cd7d8a548558a0e3c09210f6c036785">operator*</a> () const noexcept(traits::is_nothrow_dereferencible_v&lt; Iterators &gt;)</td></tr>
-<tr class="separator:a1cd7d8a548558a0e3c09210f6c036785"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af72afb220554db01495b519aa0851fd5"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#af72afb220554db01495b519aa0851fd5">getIterators</a> () const noexcept -&gt; const Iterators &amp;</td></tr>
-<tr class="separator:af72afb220554db01495b519aa0851fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
 <tr class="memitem:a95d62599a94727fbfbe183886cc316df"><td class="memTemplParams" colspan="2">template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterators&gt;&gt; </td></tr>
 <tr class="memitem:a95d62599a94727fbfbe183886cc316df"><td class="memTemplItemLeft" align="right" valign="top">constexpr friend auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a95d62599a94727fbfbe183886cc316df">operator+</a> (<a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> it, difference_type n) noexcept(traits::is_nothrow_compound_assignable_plus_v&lt; Iterators &gt;) -&gt; std::enable_if_t&lt; IsRandomAccessible, <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &gt;</td></tr>
 <tr class="separator:a95d62599a94727fbfbe183886cc316df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,7 +201,21 @@ Friends</h2></td></tr>
 <tr class="memitem:a4a23a84da6082a48dd24ed87bca3f98a"><td class="memTemplItemLeft" align="right" valign="top">constexpr friend auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a4a23a84da6082a48dd24ed87bca3f98a">operator-</a> (<a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> it, difference_type n) noexcept(traits::is_nothrow_compound_assignable_minus_v&lt; Iterators &gt;) -&gt; std::enable_if_t&lt; IsRandomAccessible, <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> &gt;</td></tr>
 <tr class="separator:a4a23a84da6082a48dd24ed87bca3f98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename Iterators&gt;<br />
+class iterators::impl::ZipIterator&lt; Iterators &gt;</h3>
+
+<p>Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. </p>
+<p>ZipIterators only support the operators of the least powerful underling iterator. Zipping a random access iterator (e.g. from std::vector) and a bidirectional iterator (e.g. from std::list) results in a bidirectional iterator. ZipIterators return a tuple of references to the range elements. When using structured bindings, no additional reference binding is necessary.</p>
+<p>Let <code>z</code> be a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> composed from two <code>std::vector&lt;int&gt;</code> </p><div class="fragment"><div class="line"><span class="keyword">auto</span> [val1, val2] = *z; <span class="comment">// val1 and val2 are references to the vector elements</span></div>
+<div class="line">val1 = 17; <span class="comment">// this will change the respective value in the first vector</span></div>
+</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterators</td><td>Underlying iterator types </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af72afb220554db01495b519aa0851fd5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af72afb220554db01495b519aa0851fd5">&#9670;&nbsp;</a></span>getIterators()</h2>
 
@@ -784,7 +816,7 @@ template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterator
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Given a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> it, returns *(it + n) Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Given a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> it, returns *(it + n) Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">IsRandomAccessible</td><td></td></tr>
   </table>
@@ -838,7 +870,7 @@ template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterator
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> where all underlying iterators are incremented by n. Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> where all underlying iterators are incremented by n. Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">IsRandomAccessible</td><td></td></tr>
   </table>
@@ -891,7 +923,7 @@ template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterator
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> where all underlying iterators are incremented by n. Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> where all underlying iterators are incremented by n. Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">IsRandomAccessible</td><td></td></tr>
   </table>
@@ -944,7 +976,7 @@ template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterator
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a> where all underlying iterators are decremented by n. Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> where all underlying iterators are decremented by n. Only available if all underlying iterators support at least random access </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">IsRandomAccessible</td><td></td></tr>
   </table>
@@ -957,6 +989,48 @@ template&lt;bool IsRandomAccessible = traits::is_random_accessible_v&lt;Iterator
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aad6554b6b37a9fd1a1163079a83e50bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad6554b6b37a9fd1a1163079a83e50bf">&#9670;&nbsp;</a></span>zip_i()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ... Iterators&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto zip_i </td>
+          <td>(</td>
+          <td class="paramtype">Iterators ...&#160;</td>
+          <td class="paramname"><em>iterators</em></td><td>)</td>
+          <td> -&gt; <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">impl::ZipIterator</a>&lt;std::tuple&lt;Iterators...&gt;&gt; </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Function that is used to create a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">impl::ZipIterator</a> from an arbitrary number of iterators </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterators</td><td>type of iterators </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iterators</td><td>arbitrary number of iterators </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">impl::ZipIterator</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>ZipIterators have the same iterator category as the least powerful underlying operator. This means that for example, zipping a random access iterator and a bidirectional iterator only yields a bidirectional <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">impl::ZipIterator</a> </dd></dl>
 
 </div>
 </div>

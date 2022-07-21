@@ -100,14 +100,19 @@ Include dependency graph for Iterators.hpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">iterators::impl::ZipIterator&lt; Iterators &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.  <a href="classiterators_1_1impl_1_1ZipIterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">iterators::impl::ZipContainer&lt; Iterable &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipView.html">iterators::impl::ZipView&lt; Iterable &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zip-view that provides <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a504806e68e74b7542545a6f775dc41f6">begin()</a> and <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a6a4b14115b7e488021e4efea81bc496f">end()</a> member functions. Use to loop over multiple ranges at the same time using ranged based for-loops.  <a href="structiterators_1_1impl_1_1ZipView.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1Unreachable.html">iterators::impl::Unreachable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">represents the unreachable end of an infinite sequence  <a href="structiterators_1_1impl_1_1Unreachable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator of an infinite sequence of numbers. Simply increments an internal counter.  <a href="structiterators_1_1impl_1_1CounterIterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html">iterators::impl::CounterContainer&lt; T &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterRange.html">iterators::impl::CounterRange&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an infinite range of numbers.  <a href="structiterators_1_1impl_1_1CounterRange.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -116,7 +121,7 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespaceiterators"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace containing zip and enumerate functions <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceiterators_1_1impl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html">iterators::impl</a></td></tr>
-<tr class="memdesc:namespaceiterators_1_1impl"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly <br /></td></tr>
+<tr class="memdesc:namespaceiterators_1_1impl"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceiterators_1_1impl_1_1traits"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl_1_1traits.html">iterators::impl::traits</a></td></tr>
 <tr class="memdesc:namespaceiterators_1_1impl_1_1traits"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace containing type traits used in implementation of zip and enumerate <br /></td></tr>
@@ -168,6 +173,10 @@ template&lt;typename T &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplParams" colspan="2"><a id="a4a6de0fc2d081e6c204370100dd4d658"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::sgn</b> (T val) noexcept</td></tr>
+<tr class="separator:a4a6de0fc2d081e6c204370100dd4d658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd7ca481d3b479c30879e611baaac1da"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterators&gt; </td></tr>
 <tr class="memitem:acd7ca481d3b479c30879e611baaac1da"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#acd7ca481d3b479c30879e611baaac1da">iterators::zip_i</a> (Iterators ...iterators) -&gt; impl::ZipIterator&lt; std::tuple&lt; Iterators... &gt;&gt;</td></tr>
 <tr class="separator:acd7ca481d3b479c30879e611baaac1da"><td class="memSeparator" colspan="2">&#160;</td></tr>

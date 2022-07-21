@@ -19,22 +19,22 @@ Include dependency graph for Iterators.\+hpp\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator$<$ Iterators $>$}}
-\item 
-struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipContainer}{iterators\+::impl\+::\+Zip\+Container$<$ Iterable $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View$<$ Iterable $>$}}
+\begin{DoxyCompactList}\small\item\em Zip-\/view that provides \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}{begin()}} and \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}{end()}} member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{iterators\+::impl\+::\+Unreachable}}
-\item 
+\begin{DoxyCompactList}\small\item\em represents the unreachable end of an infinite sequence \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator$<$ T $>$}}
-\item 
-struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterContainer}{iterators\+::impl\+::\+Counter\+Container$<$ T $>$}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Iterator of an infinite sequence of numbers. Simply increments an internal counter. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::impl\+::\+Counter\+Range$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespaceiterators}{iterators}}
 \begin{DoxyCompactList}\small\item\em namespace containing zip and enumerate functions \end{DoxyCompactList}\item 
  \mbox{\hyperlink{namespaceiterators_1_1impl}{iterators\+::impl}}
-\begin{DoxyCompactList}\small\item\em namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly \end{DoxyCompactList}\item 
  \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{iterators\+::impl\+::traits}}
 \begin{DoxyCompactList}\small\item\em namespace containing type traits used in implementation of zip and enumerate \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
@@ -79,6 +79,9 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterContainer}{iterators\+
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}\label{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr T {\bfseries iterators\+::impl\+::sgn} (T val) noexcept
 \item 
 {\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{iterators\+::zip\+\_\+i}} (Iterators ...iterators) -\/$>$ impl\+::\+Zip\+Iterator$<$ std\+::tuple$<$ Iterators... $>$$>$
 \item 

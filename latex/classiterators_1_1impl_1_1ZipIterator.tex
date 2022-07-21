@@ -2,6 +2,15 @@
 \label{classiterators_1_1impl_1_1ZipIterator}\index{iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}}
 
 
+Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.  
+
+
+
+
+{\ttfamily \#include $<$Iterators.\+hpp$>$}
+
+
+
 Inheritance diagram for iterators\+::impl\+::Zip\+Iterator$<$ Iterators $>$\+:
 \nopagebreak
 \begin{figure}[H]
@@ -23,8 +32,8 @@ Collaboration diagram for iterators\+::impl\+::Zip\+Iterator$<$ Iterators $>$\+:
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_a51ee486db3f6c520d1a65da6e3600722}\label{classiterators_1_1impl_1_1ZipIterator_a51ee486db3f6c520d1a65da6e3600722}} 
-using {\bfseries value\+\_\+type} = Value\+Tuple
+\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_a238ea91378d253d9e529bc8657e6cdb9}\label{classiterators_1_1impl_1_1ZipIterator_a238ea91378d253d9e529bc8657e6cdb9}} 
+using {\bfseries value\+\_\+type} = traits\+::values\+\_\+t$<$ Iterators $>$
 \item 
 \mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_af417f0b9eaced8e24ae16144e67624f0}\label{classiterators_1_1impl_1_1ZipIterator_af417f0b9eaced8e24ae16144e67624f0}} 
 using {\bfseries reference} = value\+\_\+type
@@ -48,9 +57,30 @@ constexpr \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}
 \item 
 constexpr \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a264dc4e02a97e7d99c83214469876c16}{operator++}} (int) noexcept(traits\+::is\+\_\+nothrow\+\_\+incrementible\+\_\+v$<$ Iterators $>$)
 \item 
+{\footnotesize template$<$typename Its $>$ }\\constexpr bool \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a7ce5663f14dc087a19078a1be8e0efc9}{operator==}} (const \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Its $>$ \&other) const noexcept(noexcept(Zip\+Iterator\+::one\+Equal(std\+::declval$<$ Iterators $>$(), other.\+get\+Iterators())))
+\item 
+{\footnotesize template$<$typename Its $>$ }\\constexpr bool \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae5042d6e631cfa1cf2af2a2c249e4b45}{operator!=}} (const \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Its $>$ \&other) const noexcept(noexcept(std\+::declval$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} $>$()==other))
+\item 
+constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a1cd7d8a548558a0e3c09210f6c036785}{operator$\ast$}} () const noexcept(traits\+::is\+\_\+nothrow\+\_\+dereferencible\+\_\+v$<$ Iterators $>$)
+\item 
+constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_af72afb220554db01495b519aa0851fd5}{get\+Iterators}} () const noexcept -\/$>$ const Iterators \&
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ bidirectional iteration}\par
+{\em the following operators are only available if all underlying iterators support bidirectional access }\begin{DoxyCompactItemize}
+\item 
 {\footnotesize template$<$bool Is\+Bidirectional = traits\+::is\+\_\+bidirectional\+\_\+v$<$\+Iterators$>$$>$ }\\constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae15e1a6fef87300048324c74ec3464af}{operator-\/-\/}} () noexcept(traits\+::is\+\_\+nothrow\+\_\+decrementible\+\_\+v$<$ Iterators $>$) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Is\+Bidirectional, \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} \& $>$
 \item 
 {\footnotesize template$<$bool Is\+Bidirectional = traits\+::is\+\_\+bidirectional\+\_\+v$<$\+Iterators$>$$>$ }\\constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a7639b885fafd6fae99ab7d58bc460088}{operator-\/-\/}} (int) noexcept(traits\+::is\+\_\+nothrow\+\_\+decrementible\+\_\+v$<$ Iterators $>$) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Is\+Bidirectional, \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} $>$
+\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Related Functions}
+(Note that these are not member functions.) \begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_aad6554b6b37a9fd1a1163079a83e50bf}{zip\+\_\+i}} (Iterators ...iterators) -\/$>$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}}$<$ std\+::tuple$<$ Iterators... $>$$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{random access operators}
+\label{_amgrpdd38315efba184a8aac7f8fc94f1964f}%
+the following operators are only available if all underlying iterators support random access \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$bool Is\+Random\+Accessible = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+Iterators$>$$>$ }\\constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a59a11fe5cf8970a8e5223da4b16e5faa}{operator+=}} (difference\+\_\+type n) noexcept(traits\+::is\+\_\+nothrow\+\_\+compound\+\_\+assignable\+\_\+plus\+\_\+v$<$ Iterators $>$) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Is\+Random\+Accessible, \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} \& $>$
 \item 
@@ -68,23 +98,34 @@ constexpr \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}
 \item 
 {\footnotesize template$<$bool Is\+Random\+Accessible = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+Iterators$>$$>$ }\\constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_aa44036b1cb20f319825b9a5269528508}{operator$>$=}} (const \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} \&other) const noexcept(noexcept(std\+::declval$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} $>$()$<$ other)) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Is\+Random\+Accessible, bool $>$
 \item 
-{\footnotesize template$<$typename Its $>$ }\\constexpr bool \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a7ce5663f14dc087a19078a1be8e0efc9}{operator==}} (const \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Its $>$ \&other) const noexcept(noexcept(Zip\+Iterator\+::one\+Equal(std\+::declval$<$ Iterators $>$(), other.\+get\+Iterators())))
-\item 
-{\footnotesize template$<$typename Its $>$ }\\constexpr bool \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae5042d6e631cfa1cf2af2a2c249e4b45}{operator!=}} (const \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Its $>$ \&other) const noexcept(noexcept(std\+::declval$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} $>$()==other))
-\item 
-constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a1cd7d8a548558a0e3c09210f6c036785}{operator$\ast$}} () const noexcept(traits\+::is\+\_\+nothrow\+\_\+dereferencible\+\_\+v$<$ Iterators $>$)
-\item 
-constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_af72afb220554db01495b519aa0851fd5}{get\+Iterators}} () const noexcept -\/$>$ const Iterators \&
-\end{DoxyCompactItemize}
-\doxysubsection*{Friends}
-\begin{DoxyCompactItemize}
-\item 
 {\footnotesize template$<$bool Is\+Random\+Accessible = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+Iterators$>$$>$ }\\constexpr friend auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a95d62599a94727fbfbe183886cc316df}{operator+}} (\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} it, difference\+\_\+type n) noexcept(traits\+::is\+\_\+nothrow\+\_\+compound\+\_\+assignable\+\_\+plus\+\_\+v$<$ Iterators $>$) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Is\+Random\+Accessible, \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} $>$
 \item 
 {\footnotesize template$<$bool Is\+Random\+Accessible = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+Iterators$>$$>$ }\\constexpr friend auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a4f5cbc69acc7742f7db0c8f97d366b82}{operator+}} (difference\+\_\+type n, \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} it) noexcept(traits\+::is\+\_\+nothrow\+\_\+compound\+\_\+assignable\+\_\+plus\+\_\+v$<$ Iterators $>$) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Is\+Random\+Accessible, \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} $>$
 \item 
 {\footnotesize template$<$bool Is\+Random\+Accessible = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+Iterators$>$$>$ }\\constexpr friend auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a4a23a84da6082a48dd24ed87bca3f98a}{operator-\/}} (\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} it, difference\+\_\+type n) noexcept(traits\+::is\+\_\+nothrow\+\_\+compound\+\_\+assignable\+\_\+minus\+\_\+v$<$ Iterators $>$) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Is\+Random\+Accessible, \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} $>$
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Iterators$>$\newline
+class iterators\+::impl\+::\+Zip\+Iterator$<$ Iterators $>$}
+
+Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. 
+
+Zip\+Iterators only support the operators of the least powerful underling iterator. Zipping a random access iterator (e.\+g. from std\+::vector) and a bidirectional iterator (e.\+g. from std\+::list) results in a bidirectional iterator. Zip\+Iterators return a tuple of references to the range elements. When using structured bindings, no additional reference binding is necessary.
+
+Let {\ttfamily z} be a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} composed from two {\ttfamily std\+::vector$<$int$>$} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} [val1, val2] = *z; \textcolor{comment}{// val1 and val2 are references to the vector elements}}
+\DoxyCodeLine{val1 = 17; \textcolor{comment}{// this will change the respective value in the first vector}}
+\end{DoxyCode}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterators} & Underlying iterator types \\
+\hline
+\end{DoxyTemplParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -436,6 +477,29 @@ Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_aad6554b6b37a9fd1a1163079a83e50bf}\label{classiterators_1_1impl_1_1ZipIterator_aad6554b6b37a9fd1a1163079a83e50bf}} 
+\index{iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}!zip\_i@{zip\_i}}
+\index{zip\_i@{zip\_i}!iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}}
+\doxysubsubsection{\texorpdfstring{zip\_i()}{zip\_i()}}
+{\footnotesize\ttfamily template$<$typename ... Iterators$>$ \\
+constexpr auto zip\+\_\+i (\begin{DoxyParamCaption}\item[{Iterators ...}]{iterators }\end{DoxyParamCaption}) -\/$>$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}}$<$std\+::tuple$<$Iterators...$>$$>$ \hspace{0.3cm}{\ttfamily [related]}}
+
+Function that is used to create a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}} from an arbitrary number of iterators 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterators} & type of iterators \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iterators} & arbitrary number of iterators \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}} 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Zip\+Iterators have the same iterator category as the least powerful underlying operator. This means that for example, zipping a random access iterator and a bidirectional iterator only yields a bidirectional \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}} 
+\end{DoxyNote}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

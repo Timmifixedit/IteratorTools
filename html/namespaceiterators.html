@@ -82,7 +82,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceiterators_1_1impl"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html">impl</a></td></tr>
-<tr class="memdesc:namespaceiterators_1_1impl"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly <br /></td></tr>
+<tr class="memdesc:namespaceiterators_1_1impl"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -147,7 +147,10 @@ template&lt;typename Container , typename T  = std::size_t&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>enumerate variant that does not allow manipulation of the container elements </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+
+<p></p>
+<p>enumerate variant that does not allow manipulation of the container elements</p>
+<p>Function that can be used in range based loops to emulate the enumerate iterator from python. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Container</td><td>Container type that supports iteration </td></tr>
     <tr><td class="paramname">T</td><td>type of enumerate counter (default std::size_t) </td></tr>
@@ -162,7 +165,7 @@ template&lt;typename Container , typename T  = std::size_t&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zip-container class that provides begin and end members to be used in range based for-loops. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structiterators_1_1impl_1_1ZipView.html" title="Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa...">impl::ZipView</a> that provides begin and end members to be used in range based for-loops. </dd></dl>
 
 </div>
 </div>
@@ -191,7 +194,10 @@ template&lt;typename ... Iterable&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Zip variant that does not allow manipulation of the container elements </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+
+<p></p>
+<p>Zip variant that does not allow manipulation of the container elements</p>
+<p>Function that can be used in range based loops to emulate the zip iterator from python. As in python: if the passed containers have different lengths, the container with the least items decides the overall range </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Iterable</td><td>Container types that support iteration </td></tr>
   </table>
@@ -203,7 +209,7 @@ template&lt;typename ... Iterable&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zip-container class that provides begin and end members to be used in range based for-loops. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>zip-container class that provides begin and end members to be used in range based for-loops </dd></dl>
 
 </div>
 </div>
@@ -263,7 +269,7 @@ template&lt;typename Container , typename T  = std::size_t&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>zip-container class that provides begin and end members to be used in range based for-loops. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structiterators_1_1impl_1_1ZipView.html" title="Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa...">impl::ZipView</a> that provides begin and end members to be used in range based for-loops. </dd></dl>
 
 </div>
 </div>
@@ -333,7 +339,7 @@ template&lt;typename ... Iterators&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Function that is used to create a ZipIterator from an arbitrary number of iterators </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Function that is used to create a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">impl::ZipIterator</a> from an arbitrary number of iterators </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Iterators</td><td>type of iterators </td></tr>
   </table>
@@ -345,8 +351,8 @@ template&lt;typename ... Iterators&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>ZipIterator </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>ZipIterators have the same iterator category as the least powerful underlying operator. This means that for example, zipping a random access iterator and a bidirectional iterator only yields a bidirectional ZipIterator </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">impl::ZipIterator</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>ZipIterators have the same iterator category as the least powerful underlying operator. This means that for example, zipping a random access iterator and a bidirectional iterator only yields a bidirectional <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">impl::ZipIterator</a> </dd></dl>
 
 </div>
 </div>

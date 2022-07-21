@@ -74,13 +74,14 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">iterators::impl Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly  
+<p>namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly  
 <a href="namespaceiterators_1_1impl.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -91,19 +92,31 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterContainer.html">CounterContainer</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator of an infinite sequence of numbers. Simply increments an internal counter.  <a href="structiterators_1_1impl_1_1CounterIterator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterRange.html">CounterRange</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an infinite range of numbers.  <a href="structiterators_1_1impl_1_1CounterRange.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipContainer.html">ZipContainer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">represents the unreachable end of an infinite sequence  <a href="structiterators_1_1impl_1_1Unreachable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.  <a href="classiterators_1_1impl_1_1ZipIterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipView.html">ZipView</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zip-view that provides <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a504806e68e74b7542545a6f775dc41f6">begin()</a> and <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a6a4b14115b7e488021e4efea81bc496f">end()</a> member functions. Use to loop over multiple ranges at the same time using ranged based for-loops.  <a href="structiterators_1_1impl_1_1ZipView.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplParams" colspan="2"><a id="a4a6de0fc2d081e6c204370100dd4d658"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>sgn</b> (T val) noexcept</td></tr>
+<tr class="separator:a4a6de0fc2d081e6c204370100dd4d658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>namespace containing structures and helpers used to implement zip and enumerate. Normally you should not need to use any of its members directly </p>
+<div class="textblock"><p>namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

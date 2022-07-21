@@ -1,5 +1,5 @@
 <map id="iterators::impl::ZipIterator&lt; Iterators &gt;" name="iterators::impl::ZipIterator&lt; Iterators &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="673,20,864,61"/>
+<area shape="rect" id="node1" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="673,20,864,61"/>
 <area shape="rect" id="node2" title=" " alt="" coords="423,5,624,76"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,13,185,69"/>
 </map>

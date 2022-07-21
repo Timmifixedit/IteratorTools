@@ -1,0 +1,173 @@
+\hypertarget{structiterators_1_1impl_1_1ZipView}{}\doxysection{iterators\+::impl\+::Zip\+View$<$ Iterable $>$ Struct Template Reference}
+\label{structiterators_1_1impl_1_1ZipView}\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+
+
+Zip-\/view that provides \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}{begin()}} and \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}{end()}} member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops.  
+
+
+
+
+{\ttfamily \#include $<$Iterators.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename ... Container$>$ }\\constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_afa061dfcc7ae50a25def20bc81b681ef}{Zip\+View}} (Container \&\&...containers)
+\item 
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}{begin}} ()
+\item 
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}{end}} ()
+\item 
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a7cd254dd4bbf31692f3d1b96803d2119}{begin}} () const
+\item 
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_aeed0f6a2bb8c5adb72fa409d4c9cf915}{end}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Related Functions}
+(Note that these are not member functions.) \begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a026be8457a68be9d4d06112251bc9a38}{zip}} (Iterable \&\&...iterable)
+\item 
+{\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a4c8c6849391d6b4576cb63ec05a725f3}{enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename ... Iterable$>$\newline
+struct iterators\+::impl\+::\+Zip\+View$<$ Iterable $>$}
+
+Zip-\/view that provides \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}{begin()}} and \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}{end()}} member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. 
+
+Ranges are captured by lvalue reference, no copying occurs. Temporaries are allowed as well in which case storage is moved into the zip-\/view. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterable} & Underlying range types \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_afa061dfcc7ae50a25def20bc81b681ef}\label{structiterators_1_1impl_1_1ZipView_afa061dfcc7ae50a25def20bc81b681ef}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!ZipView@{ZipView}}
+\index{ZipView@{ZipView}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{ZipView()}{ZipView()}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+template$<$typename ... Container$>$ \\
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{Zip\+View}} (\begin{DoxyParamCaption}\item[{Container \&\&...}]{containers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}}
+
+C\+Tor. Binds reference to ranges or takes ownership in case of rvalue references 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & range types \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em containers} & arbitrary number of ranges \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}\label{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!begin@{begin}}
+\index{begin@{begin}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} to the first elements of the underlying ranges \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} created by invoking std\+::begin on all underlying ranges 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a7cd254dd4bbf31692f3d1b96803d2119}\label{structiterators_1_1impl_1_1ZipView_a7cd254dd4bbf31692f3d1b96803d2119}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!begin@{begin}}
+\index{begin@{begin}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+
+
+Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} to the first elements of the underlying ranges \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} created by invoking std\+::begin on all underlying ranges 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} that does not allow changing the ranges\textquotesingle{} elements 
+\end{DoxyNote}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}\label{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!end@{end}}
+\index{end@{end}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} to the elements following the last elements of the the underlying ranges \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} created by invoking std\+::end on all underlying ranges 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_aeed0f6a2bb8c5adb72fa409d4c9cf915}\label{structiterators_1_1impl_1_1ZipView_aeed0f6a2bb8c5adb72fa409d4c9cf915}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!end@{end}}
+\index{end@{end}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+
+
+Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} to the elements following the last elements of the the underlying ranges \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} created by invoking std\+::end on all underlying ranges 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a4c8c6849391d6b4576cb63ec05a725f3}\label{structiterators_1_1impl_1_1ZipView_a4c8c6849391d6b4576cb63ec05a725f3}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!enumerate@{enumerate}}
+\index{enumerate@{enumerate}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{enumerate()}{enumerate()}}
+{\footnotesize\ttfamily template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ \\
+constexpr auto enumerate (\begin{DoxyParamCaption}\item[{Container \&\&}]{container,  }\item[{T}]{start = {\ttfamily T(0)},  }\item[{T}]{increment = {\ttfamily T(1)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [related]}}
+
+Function that can be used in range based loops to emulate the enumerate iterator from python. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & Container type that supports iteration \\
+\hline
+{\em T} & type of enumerate counter (default std\+::size\+\_\+t) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em container} & Source container \\
+\hline
+{\em start} & Optional index offset (default 0) \\
+\hline
+{\em increment} & Optional index increment (default 1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{impl\+::\+Zip\+View}} that provides begin and end members to be used in range based for-\/loops. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a026be8457a68be9d4d06112251bc9a38}\label{structiterators_1_1impl_1_1ZipView_a026be8457a68be9d4d06112251bc9a38}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!zip@{zip}}
+\index{zip@{zip}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxysubsubsection{\texorpdfstring{zip()}{zip()}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+constexpr auto zip (\begin{DoxyParamCaption}\item[{Iterable \&\&...}]{iterable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [related]}}
+
+Function that can be used in range based loops to emulate the zip iterator from python. As in python\+: if the passed containers have different lengths, the container with the least items decides the overall range 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterable} & Container types that support iteration \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iterable} & Arbitrary number of containers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+zip-\/container class that provides begin and end members to be used in range based for-\/loops 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Iterators_8hpp}{Iterators.\+hpp}}\end{DoxyCompactItemize}

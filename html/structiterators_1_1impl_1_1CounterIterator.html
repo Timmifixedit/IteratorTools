@@ -81,6 +81,11 @@ $(function() {
 <div class="title">iterators::impl::CounterIterator&lt; T &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Iterator of an infinite sequence of numbers. Simply increments an internal counter.  
+ <a href="structiterators_1_1impl_1_1CounterIterator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Iterators_8hpp_source.html">Iterators.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -96,83 +101,884 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = void</
 <tr class="memitem:a887a6b6336d08906ee57cded71b3b6e9"><td class="memItemLeft" align="right" valign="top"><a id="a887a6b6336d08906ee57cded71b3b6e9"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator_category</b> = std::random_access_iterator_tag</td></tr>
 <tr class="separator:a887a6b6336d08906ee57cded71b3b6e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b6a52d79b52c6d805b991029280f894"><td class="memItemLeft" align="right" valign="top"><a id="a2b6a52d79b52c6d805b991029280f894"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b> = T</td></tr>
-<tr class="separator:a2b6a52d79b52c6d805b991029280f894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96782f78fd906df0920dc8cd4dbf5ed"><td class="memItemLeft" align="right" valign="top"><a id="aa96782f78fd906df0920dc8cd4dbf5ed"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b> = std::ptrdiff_t</td></tr>
+<tr class="separator:aa96782f78fd906df0920dc8cd4dbf5ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae628a33cb0964bde115964409f6da573"><td class="memItemLeft" align="right" valign="top"><a id="ae628a33cb0964bde115964409f6da573"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>CounterIterator</b> (T begin, T increment=T(1)) noexcept</td></tr>
+<tr class="memitem:ae628a33cb0964bde115964409f6da573"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> (T begin, T increment=T(1)) noexcept</td></tr>
 <tr class="separator:ae628a33cb0964bde115964409f6da573"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dbeadffdf20033c49e3d6378c878ba9"><td class="memItemLeft" align="right" valign="top"><a id="a5dbeadffdf20033c49e3d6378c878ba9"></a>
-constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> () noexcept</td></tr>
+<tr class="memitem:a5dbeadffdf20033c49e3d6378c878ba9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a5dbeadffdf20033c49e3d6378c878ba9">operator++</a> () noexcept</td></tr>
 <tr class="separator:a5dbeadffdf20033c49e3d6378c878ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5fc9970a648c5c27dfb1268abf67202"><td class="memItemLeft" align="right" valign="top"><a id="ae5fc9970a648c5c27dfb1268abf67202"></a>
-constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int) noexcept</td></tr>
+<tr class="memitem:ae5fc9970a648c5c27dfb1268abf67202"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#ae5fc9970a648c5c27dfb1268abf67202">operator++</a> (int) noexcept</td></tr>
 <tr class="separator:ae5fc9970a648c5c27dfb1268abf67202"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23219866167c4ddddac85b0f7cf24998"><td class="memItemLeft" align="right" valign="top"><a id="a23219866167c4ddddac85b0f7cf24998"></a>
-constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> () noexcept</td></tr>
+<tr class="memitem:a23219866167c4ddddac85b0f7cf24998"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a23219866167c4ddddac85b0f7cf24998">operator--</a> () noexcept</td></tr>
 <tr class="separator:a23219866167c4ddddac85b0f7cf24998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f0872fcd959a431e6f58390162a01e5"><td class="memItemLeft" align="right" valign="top"><a id="a5f0872fcd959a431e6f58390162a01e5"></a>
-constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> (int) noexcept</td></tr>
+<tr class="memitem:a5f0872fcd959a431e6f58390162a01e5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a5f0872fcd959a431e6f58390162a01e5">operator--</a> (int) noexcept</td></tr>
 <tr class="separator:a5f0872fcd959a431e6f58390162a01e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ff32a27d8542b74b076adbb34eee7e1"><td class="memItemLeft" align="right" valign="top"><a id="a7ff32a27d8542b74b076adbb34eee7e1"></a>
-constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (difference_type n) noexcept</td></tr>
+<tr class="memitem:a7ff32a27d8542b74b076adbb34eee7e1"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a7ff32a27d8542b74b076adbb34eee7e1">operator+=</a> (difference_type n) noexcept</td></tr>
 <tr class="separator:a7ff32a27d8542b74b076adbb34eee7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73f12ef1a6e88bdb8b0b09b494825634"><td class="memItemLeft" align="right" valign="top"><a id="a73f12ef1a6e88bdb8b0b09b494825634"></a>
-constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (difference_type n) noexcept</td></tr>
+<tr class="memitem:a73f12ef1a6e88bdb8b0b09b494825634"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a73f12ef1a6e88bdb8b0b09b494825634">operator-=</a> (difference_type n) noexcept</td></tr>
 <tr class="separator:a73f12ef1a6e88bdb8b0b09b494825634"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae3503939118a88f236495ad2119a153"><td class="memItemLeft" align="right" valign="top"><a id="aae3503939118a88f236495ad2119a153"></a>
-constexpr difference_type&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
+<tr class="memitem:aae3503939118a88f236495ad2119a153"><td class="memItemLeft" align="right" valign="top">constexpr difference_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#aae3503939118a88f236495ad2119a153">operator-</a> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
 <tr class="separator:aae3503939118a88f236495ad2119a153"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68d98ba2124be7e204d84d1466b48047"><td class="memItemLeft" align="right" valign="top"><a id="a68d98ba2124be7e204d84d1466b48047"></a>
-constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (difference_type n) const noexcept</td></tr>
+<tr class="memitem:a68d98ba2124be7e204d84d1466b48047"><td class="memItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a68d98ba2124be7e204d84d1466b48047">operator[]</a> (difference_type n) const noexcept</td></tr>
 <tr class="separator:a68d98ba2124be7e204d84d1466b48047"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6ff7f1e59a44dae1ad2bea14daed6e3"><td class="memItemLeft" align="right" valign="top"><a id="aa6ff7f1e59a44dae1ad2bea14daed6e3"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
+<tr class="memitem:aa6ff7f1e59a44dae1ad2bea14daed6e3"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#aa6ff7f1e59a44dae1ad2bea14daed6e3">operator==</a> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
 <tr class="separator:aa6ff7f1e59a44dae1ad2bea14daed6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e69dd572830736c4ecac7f959c75209"><td class="memItemLeft" align="right" valign="top"><a id="a8e69dd572830736c4ecac7f959c75209"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (<a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>) const noexcept</td></tr>
+<tr class="memitem:a8e69dd572830736c4ecac7f959c75209"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a8e69dd572830736c4ecac7f959c75209">operator==</a> (<a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>) const noexcept</td></tr>
 <tr class="separator:a8e69dd572830736c4ecac7f959c75209"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addfcf78a20015737d5322ca745debc30"><td class="memItemLeft" align="right" valign="top"><a id="addfcf78a20015737d5322ca745debc30"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
-<tr class="separator:addfcf78a20015737d5322ca745debc30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64390e12760f946bf8ff808b5d127184"><td class="memItemLeft" align="right" valign="top"><a id="a64390e12760f946bf8ff808b5d127184"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (<a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>) const noexcept</td></tr>
-<tr class="separator:a64390e12760f946bf8ff808b5d127184"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acde3796fad42d4fe454aef93d62f0b81"><td class="memItemLeft" align="right" valign="top"><a id="acde3796fad42d4fe454aef93d62f0b81"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
+<tr class="memitem:a4772ad9d4cc4a10ac7e4108bb0e49d68"><td class="memTemplParams" colspan="2">template&lt;typename It &gt; </td></tr>
+<tr class="memitem:a4772ad9d4cc4a10ac7e4108bb0e49d68"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a4772ad9d4cc4a10ac7e4108bb0e49d68">operator!=</a> (const It &amp;other) const noexcept</td></tr>
+<tr class="separator:a4772ad9d4cc4a10ac7e4108bb0e49d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30fbd6dd0a835f490ef1008f80bcfaf"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#aa30fbd6dd0a835f490ef1008f80bcfaf">operator&lt;</a> (<a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>) const noexcept</td></tr>
+<tr class="separator:aa30fbd6dd0a835f490ef1008f80bcfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5082ea2ecec1361ff2955f1b9f3c52f1"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a5082ea2ecec1361ff2955f1b9f3c52f1">operator&gt;</a> (<a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>) const noexcept</td></tr>
+<tr class="separator:a5082ea2ecec1361ff2955f1b9f3c52f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acde3796fad42d4fe454aef93d62f0b81"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#acde3796fad42d4fe454aef93d62f0b81">operator&lt;</a> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
 <tr class="separator:acde3796fad42d4fe454aef93d62f0b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b51173c8117db8ee96ce0d8f03335f8"><td class="memItemLeft" align="right" valign="top"><a id="a5b51173c8117db8ee96ce0d8f03335f8"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
-<tr class="separator:a5b51173c8117db8ee96ce0d8f03335f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65d50acd247099b31723ef38c271f372"><td class="memItemLeft" align="right" valign="top"><a id="a65d50acd247099b31723ef38c271f372"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;</b> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
+<tr class="memitem:a65d50acd247099b31723ef38c271f372"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a65d50acd247099b31723ef38c271f372">operator&gt;</a> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
 <tr class="separator:a65d50acd247099b31723ef38c271f372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ecafc0275d06d7c3c00d4615ea44d23"><td class="memItemLeft" align="right" valign="top"><a id="a9ecafc0275d06d7c3c00d4615ea44d23"></a>
-constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> &amp;other) const noexcept</td></tr>
-<tr class="separator:a9ecafc0275d06d7c3c00d4615ea44d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d5a1ef5c6ecea7d799ae683427191c3"><td class="memItemLeft" align="right" valign="top"><a id="a1d5a1ef5c6ecea7d799ae683427191c3"></a>
-constexpr T&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const noexcept</td></tr>
+<tr class="memitem:a82795e9bce2dfedcad8f0286718a9da4"><td class="memTemplParams" colspan="2">template&lt;typename It &gt; </td></tr>
+<tr class="memitem:a82795e9bce2dfedcad8f0286718a9da4"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a82795e9bce2dfedcad8f0286718a9da4">operator&lt;=</a> (const It &amp;other) const noexcept</td></tr>
+<tr class="separator:a82795e9bce2dfedcad8f0286718a9da4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4319e09342760ad0e5147fc003d80c3b"><td class="memTemplParams" colspan="2">template&lt;typename It &gt; </td></tr>
+<tr class="memitem:a4319e09342760ad0e5147fc003d80c3b"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a4319e09342760ad0e5147fc003d80c3b">operator&gt;=</a> (const It &amp;other) const noexcept</td></tr>
+<tr class="separator:a4319e09342760ad0e5147fc003d80c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5a1ef5c6ecea7d799ae683427191c3"><td class="memItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a1d5a1ef5c6ecea7d799ae683427191c3">operator*</a> () const noexcept</td></tr>
 <tr class="separator:a1d5a1ef5c6ecea7d799ae683427191c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a7f12f3ad0e215ad275e865e7314ae722"><td class="memItemLeft" align="right" valign="top"><a id="a7f12f3ad0e215ad275e865e7314ae722"></a>
-constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (<a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> it, difference_type n) noexcept</td></tr>
+<tr class="memitem:a7f12f3ad0e215ad275e865e7314ae722"><td class="memItemLeft" align="right" valign="top">constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a7f12f3ad0e215ad275e865e7314ae722">operator+</a> (<a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> it, difference_type n) noexcept</td></tr>
 <tr class="separator:a7f12f3ad0e215ad275e865e7314ae722"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37e47b437d88683e9c76afab35d0d112"><td class="memItemLeft" align="right" valign="top"><a id="a37e47b437d88683e9c76afab35d0d112"></a>
-constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (difference_type n, <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> it) noexcept</td></tr>
+<tr class="memitem:a37e47b437d88683e9c76afab35d0d112"><td class="memItemLeft" align="right" valign="top">constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a37e47b437d88683e9c76afab35d0d112">operator+</a> (difference_type n, <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> it) noexcept</td></tr>
 <tr class="separator:a37e47b437d88683e9c76afab35d0d112"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe5ebfce03a098880d6d232772dd1f51"><td class="memItemLeft" align="right" valign="top"><a id="abe5ebfce03a098880d6d232772dd1f51"></a>
-constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (<a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> it, difference_type n) noexcept</td></tr>
+<tr class="memitem:abe5ebfce03a098880d6d232772dd1f51"><td class="memItemLeft" align="right" valign="top">constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#abe5ebfce03a098880d6d232772dd1f51">operator-</a> (<a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> it, difference_type n) noexcept</td></tr>
 <tr class="separator:abe5ebfce03a098880d6d232772dd1f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+struct iterators::impl::CounterIterator&lt; T &gt;</h3>
+
+<p>Iterator of an infinite sequence of numbers. Simply increments an internal counter. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>of the counter (most of the time this is <code>std::size_t</code>) </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae628a33cb0964bde115964409f6da573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae628a33cb0964bde115964409f6da573">&#9670;&nbsp;</a></span>CounterIterator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::<a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>increment</em> = <code>T(1)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>CTor. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>start of number sequence </td></tr>
+    <tr><td class="paramname">increment</td><td>step size (default is 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Depending on the template type T, increment can also be negative. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4772ad9d4cc4a10ac7e4108bb0e49d68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4772ad9d4cc4a10ac7e4108bb0e49d68">&#9670;&nbsp;</a></span>operator!=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename It &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const It &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Inequality comparison. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">It</td><td>Type of right hand side </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if counter of left and right hand side are not equal </dd></dl>
+
+</div>
+</div>
+<a id="a1d5a1ef5c6ecea7d799ae683427191c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5a1ef5c6ecea7d799ae683427191c3">&#9670;&nbsp;</a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Produces the counter value </p><dl class="section return"><dt>Returns</dt><dd>value of internal counter </dd></dl>
+
+</div>
+</div>
+<a id="a5dbeadffdf20033c49e3d6378c878ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dbeadffdf20033c49e3d6378c878ba9">&#9670;&nbsp;</a></span>operator++() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&amp; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Increments value by increment </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ae5fc9970a648c5c27dfb1268abf67202"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5fc9970a648c5c27dfb1268abf67202">&#9670;&nbsp;</a></span>operator++() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Post increment</p>
+<p>Increments value by increment </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a7ff32a27d8542b74b076adbb34eee7e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ff32a27d8542b74b076adbb34eee7e1">&#9670;&nbsp;</a></span>operator+=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&amp; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">difference_type&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compound assignment increment. Increments value by n times increment </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>number of steps </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aae3503939118a88f236495ad2119a153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae3503939118a88f236495ad2119a153">&#9670;&nbsp;</a></span>operator-()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr difference_type <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Difference between two CounterIterators </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>integer <code>n</code> such that <code>other + n &lt;= *this</code> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>When other has the same increment as <code>*this</code>, then the returned value is guaranteed to fulfil <code>other + n == *this</code>. In the following example, this is not the case: <div class="fragment"><div class="line"> {c++}</div>
+<div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> a(8, 1);</div>
+<div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> b(4, 3);</div>
+<div class="line"><span class="keyword">auto</span> diff = a - b; <span class="comment">// yields 1 since b + 1 &lt;= a</span></div>
+</div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a id="a23219866167c4ddddac85b0f7cf24998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23219866167c4ddddac85b0f7cf24998">&#9670;&nbsp;</a></span>operator--() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&amp; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator-- </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Decrements value by increment </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a5f0872fcd959a431e6f58390162a01e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f0872fcd959a431e6f58390162a01e5">&#9670;&nbsp;</a></span>operator--() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator-- </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Post decrement</p>
+<p>Decrements value by increment </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a73f12ef1a6e88bdb8b0b09b494825634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73f12ef1a6e88bdb8b0b09b494825634">&#9670;&nbsp;</a></span>operator-=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&amp; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">difference_type&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compound assignment increment. Increments value by n times increment </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>number of steps </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="acde3796fad42d4fe454aef93d62f0b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acde3796fad42d4fe454aef93d62f0b81">&#9670;&nbsp;</a></span>operator&lt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Less comparison </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>returns true if there exists an integer <code>n</code> such that <code>(*this) + n = other</code> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If increment is negative then equality comparison is done by multiplying both side with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &lt; it2</code> is true. </dd></dl>
+
+</div>
+</div>
+<a id="aa30fbd6dd0a835f490ef1008f80bcfaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa30fbd6dd0a835f490ef1008f80bcfaf">&#9670;&nbsp;</a></span>operator&lt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Less than comparison with <a class="el" href="structiterators_1_1impl_1_1Unreachable.html" title="represents the unreachable end of an infinite sequence">Unreachable</a> sentinel </p><dl class="section return"><dt>Returns</dt><dd>true </dd></dl>
+
+</div>
+</div>
+<a id="a82795e9bce2dfedcad8f0286718a9da4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82795e9bce2dfedcad8f0286718a9da4">&#9670;&nbsp;</a></span>operator&lt;=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename It &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator&lt;= </td>
+          <td>(</td>
+          <td class="paramtype">const It &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Less or equal comparison </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">type</td><td>of right hand side </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if left hand side is not greater than right hand side </dd></dl>
+
+</div>
+</div>
+<a id="aa6ff7f1e59a44dae1ad2bea14daed6e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6ff7f1e59a44dae1ad2bea14daed6e3">&#9670;&nbsp;</a></span>operator==() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Equality comparison. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if counter of left and right hand side are equal </dd></dl>
+
+</div>
+</div>
+<a id="a8e69dd572830736c4ecac7f959c75209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e69dd572830736c4ecac7f959c75209">&#9670;&nbsp;</a></span>operator==() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Equality comparison with unreachable sentinel </p><dl class="section return"><dt>Returns</dt><dd>false </dd></dl>
+
+</div>
+</div>
+<a id="a65d50acd247099b31723ef38c271f372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d50acd247099b31723ef38c271f372">&#9670;&nbsp;</a></span>operator&gt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Greater comparison </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>returns true if there exists an integer <code>n</code> such that <code>(*this) - n = other</code> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If increment is negative then equality comparison is done by multiplying both side with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &gt; it2</code> is false. </dd></dl>
+
+</div>
+</div>
+<a id="a5082ea2ecec1361ff2955f1b9f3c52f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5082ea2ecec1361ff2955f1b9f3c52f1">&#9670;&nbsp;</a></span>operator&gt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator&gt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Greater than comparison with <a class="el" href="structiterators_1_1impl_1_1Unreachable.html" title="represents the unreachable end of an infinite sequence">Unreachable</a> sentinel </p><dl class="section return"><dt>Returns</dt><dd>false </dd></dl>
+
+</div>
+</div>
+<a id="a4319e09342760ad0e5147fc003d80c3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4319e09342760ad0e5147fc003d80c3b">&#9670;&nbsp;</a></span>operator&gt;=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename It &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator&gt;= </td>
+          <td>(</td>
+          <td class="paramtype">const It &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Greater or equal comparison </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">type</td><td>of right hand side </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if left hand side is not less than right hand side </dd></dl>
+
+</div>
+</div>
+<a id="a68d98ba2124be7e204d84d1466b48047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d98ba2124be7e204d84d1466b48047">&#9670;&nbsp;</a></span>operator[]()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr reference <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">iterators::impl::CounterIterator</a>&lt; T &gt;::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">difference_type&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Given a <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter.">CounterIterator</a> <code>it</code> returns <code>*(it + n)</code> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>number of steps </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a7f12f3ad0e215ad275e865e7314ae722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f12f3ad0e215ad275e865e7314ae722">&#9670;&nbsp;</a></span>operator+ <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">difference_type&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter.">CounterIterator</a> where the counter is incremented by n times increment </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>Instance of <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter.">CounterIterator</a> </td></tr>
+    <tr><td class="paramname">n</td><td>number of steps </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a37e47b437d88683e9c76afab35d0d112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37e47b437d88683e9c76afab35d0d112">&#9670;&nbsp;</a></span>operator+ <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">difference_type&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>it</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Returns a <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter.">CounterIterator</a> where the counter is incremented by n times increment </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>Instance of <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter.">CounterIterator</a> </td></tr>
+    <tr><td class="paramname">n</td><td>number of steps </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="abe5ebfce03a098880d6d232772dd1f51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe5ebfce03a098880d6d232772dd1f51">&#9670;&nbsp;</a></span>operator-</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr friend <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">difference_type&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter.">CounterIterator</a> where the counter is incremented by n times increment </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>Instance of <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter.">CounterIterator</a> </td></tr>
+    <tr><td class="paramname">n</td><td>number of steps </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="Iterators_8hpp_source.html">Iterators.hpp</a></li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="astructiterators_1_1impl_1_1CounterIterator_html_ae628a33cb0964bde115964409f6da573"><div class="ttname"><a href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">iterators::impl::CounterIterator::CounterIterator</a></div><div class="ttdeci">constexpr CounterIterator(T begin, T increment=T(1)) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:625</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
