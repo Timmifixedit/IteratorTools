@@ -282,7 +282,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Increments value by increment </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Increments value by increment </p><dl class="section return"><dt>Returns</dt><dd>reference to this </dd></dl>
 
 </div>
 </div>
@@ -317,7 +317,7 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>reference to this </dd></dl>
 
 </div>
 </div>
@@ -348,13 +348,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>Difference between two CounterIterators </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td></td></tr>
+    <tr><td class="paramname">other</td><td>right hand side </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>integer <code>n</code> such that <code>other + n &lt;= *this</code> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>When other has the same increment as <code>*this</code>, then the returned value is guaranteed to fulfil <code>other + n == *this</code>. In the following example, this is not the case: <div class="fragment"><div class="line"> {c++}</div>
-<div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> a(8, 1);</div>
+<dl class="section return"><dt>Returns</dt><dd>integer <code>n</code> with the smallest possible absolute value such that <code>other + n &lt;= *this</code> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>When other has the same increment as <code>*this</code>, then the returned value is guaranteed to fulfil <code>other + n == *this</code>. In the following example, this is not the case: <div class="fragment"><div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> a(8, 1);</div>
 <div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> b(4, 3);</div>
 <div class="line"><span class="keyword">auto</span> diff = a - b; <span class="comment">// yields 1 since b + 1 &lt;= a</span></div>
 </div><!-- fragment --> </dd></dl>
@@ -385,7 +384,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Decrements value by increment </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Decrements value by increment </p><dl class="section return"><dt>Returns</dt><dd>reference to this </dd></dl>
 
 </div>
 </div>
@@ -420,7 +419,7 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>reference to this </dd></dl>
 
 </div>
 </div>
@@ -449,14 +448,15 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Less comparison </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Less comparison of internal counters with respect to increment of this instance </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td></td></tr>
+    <tr><td class="paramname">other</td><td>right hand side </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>returns true if there exists an integer <code>n</code> such that <code>(*this) + n = other</code> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>If increment is negative then equality comparison is done by multiplying both side with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &lt; it2</code> is true. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if <div class="fragment"><div class="line"><a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment) **<span class="keyword">this</span> &lt; *other <a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment)</div>
+</div><!-- fragment --></dd></dl>
+<p>where <code>sgn</code> is the signum function </p><dl class="section note"><dt>Note</dt><dd>If increment is negative then both sides of the inequality are multiplied with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &lt; it2</code> is true. </dd></dl>
 
 </div>
 </div>
@@ -487,7 +487,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>Equality comparison. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td></td></tr>
+    <tr><td class="paramname">other</td><td>right hand side </td></tr>
   </table>
   </dd>
 </dl>
@@ -520,14 +520,15 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Greater comparison </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Greater comparison of internal counters with respect to increment of this instance </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td></td></tr>
+    <tr><td class="paramname">other</td><td>right hand side </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>returns true if there exists an integer <code>n</code> such that <code>(*this) - n = other</code> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>If increment is negative then equality comparison is done by multiplying both side with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &gt; it2</code> is false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if <div class="fragment"><div class="line"><a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment) **<span class="keyword">this</span> &gt; *other <a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment)</div>
+</div><!-- fragment --></dd></dl>
+<p>where <code>sgn</code> is the signum </p><dl class="section note"><dt>Note</dt><dd>If increment is negative then both sides of the inequality are multiplied with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &gt; it2</code> is false. </dd></dl>
 
 </div>
 </div>
@@ -617,6 +618,7 @@ template&lt;typename T &gt; </div>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="astructiterators_1_1impl_1_1CounterIterator_html_ae628a33cb0964bde115964409f6da573"><div class="ttname"><a href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">iterators::impl::CounterIterator::CounterIterator</a></div><div class="ttdeci">constexpr CounterIterator(T begin, T increment=T(1)) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:698</div></div>
+<div class="ttc" id="anamespaceiterators_1_1impl_html_a4a6de0fc2d081e6c204370100dd4d658"><div class="ttname"><a href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">iterators::impl::sgn</a></div><div class="ttdeci">constexpr T sgn(T val) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:672</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

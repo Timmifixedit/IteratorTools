@@ -134,7 +134,7 @@ value of internal counter
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Increments value by increment \begin{DoxyReturn}{Returns}
-
+reference to this 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a7ff32a27d8542b74b076adbb34eee7e1}\label{structiterators_1_1impl_1_1CounterIterator_a7ff32a27d8542b74b076adbb34eee7e1}} 
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator+=@{operator+=}}
@@ -149,7 +149,7 @@ Compound assignment increment. Increments value by n times increment
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+reference to this 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_aae3503939118a88f236495ad2119a153}\label{structiterators_1_1impl_1_1CounterIterator_aae3503939118a88f236495ad2119a153}} 
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/@{operator-\/}}
@@ -160,16 +160,15 @@ constexpr difference\+\_\+type \mbox{\hyperlink{structiterators_1_1impl_1_1Count
 
 Difference between two Counter\+Iterators 
 \begin{DoxyParams}{Parameters}
-{\em other} & \\
+{\em other} & right hand side \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-integer {\ttfamily n} such that {\ttfamily other + n $<$= $\ast$this} 
+integer {\ttfamily n} with the smallest possible absolute value such that {\ttfamily other + n $<$= $\ast$this} 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
 When other has the same increment as {\ttfamily $\ast$this}, then the returned value is guaranteed to fulfil {\ttfamily other + n == $\ast$this}. In the following example, this is not the case\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_ae628a33cb0964bde115964409f6da573}{CounterIterator}} a(8, 1);}
 \DoxyCodeLine{\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_ae628a33cb0964bde115964409f6da573}{CounterIterator}} b(4, 3);}
 \DoxyCodeLine{\textcolor{keyword}{auto} diff = a -\/ b; \textcolor{comment}{// yields 1 since b + 1 <= a}}
@@ -184,7 +183,7 @@ When other has the same increment as {\ttfamily $\ast$this}, then the returned v
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Decrements value by increment \begin{DoxyReturn}{Returns}
-
+reference to this 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_a73f12ef1a6e88bdb8b0b09b494825634}\label{structiterators_1_1impl_1_1CounterIterator_a73f12ef1a6e88bdb8b0b09b494825634}} 
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/=@{operator-\/=}}
@@ -199,7 +198,7 @@ Compound assignment decrement. Increments value by n times increment
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+reference to this 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_acde3796fad42d4fe454aef93d62f0b81}\label{structiterators_1_1impl_1_1CounterIterator_acde3796fad42d4fe454aef93d62f0b81}} 
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$<$@{operator$<$}}
@@ -208,16 +207,20 @@ Compound assignment decrement. Increments value by n times increment
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
-Less comparison 
+Less comparison of internal counters with respect to increment of this instance 
 \begin{DoxyParams}{Parameters}
-{\em other} & \\
+{\em other} & right hand side \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-returns true if there exists an integer {\ttfamily n} such that {\ttfamily ($\ast$this) + n = other} 
+true if 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}}(increment) **\textcolor{keyword}{this} < *other \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}}(increment)}
+\end{DoxyCode}
+
 \end{DoxyReturn}
-\begin{DoxyNote}{Note}
-If increment is negative then equality comparison is done by multiplying both side with -\/1. For example\+: let {\ttfamily it1 = 5} and {\ttfamily it2 = -\/2} be two Counter\+Iterators where {\ttfamily it1} has negative increment. Then {\ttfamily it1 $<$ it2} is true. 
+where {\ttfamily sgn} is the signum function \begin{DoxyNote}{Note}
+If increment is negative then both sides of the inequality are multiplied with -\/1. For example\+: let {\ttfamily it1 = 5} and {\ttfamily it2 = -\/2} be two Counter\+Iterators where {\ttfamily it1} has negative increment. Then {\ttfamily it1 $<$ it2} is true. 
 \end{DoxyNote}
 \mbox{\Hypertarget{structiterators_1_1impl_1_1CounterIterator_aa6ff7f1e59a44dae1ad2bea14daed6e3}\label{structiterators_1_1impl_1_1CounterIterator_aa6ff7f1e59a44dae1ad2bea14daed6e3}} 
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator==@{operator==}}
@@ -228,7 +231,7 @@ constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iter
 
 Equality comparison. 
 \begin{DoxyParams}{Parameters}
-{\em other} & \\
+{\em other} & right hand side \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -241,16 +244,20 @@ true if counter of left and right hand side are equal
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
-Greater comparison 
+Greater comparison of internal counters with respect to increment of this instance 
 \begin{DoxyParams}{Parameters}
-{\em other} & \\
+{\em other} & right hand side \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-returns true if there exists an integer {\ttfamily n} such that {\ttfamily ($\ast$this) -\/ n = other} 
+true if 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}}(increment) **\textcolor{keyword}{this} > *other \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}}(increment)}
+\end{DoxyCode}
+
 \end{DoxyReturn}
-\begin{DoxyNote}{Note}
-If increment is negative then equality comparison is done by multiplying both side with -\/1. For example\+: let {\ttfamily it1 = 5} and {\ttfamily it2 = -\/2} be two Counter\+Iterators where {\ttfamily it1} has negative increment. Then {\ttfamily it1 $>$ it2} is false. 
+where {\ttfamily sgn} is the signum \begin{DoxyNote}{Note}
+If increment is negative then both sides of the inequality are multiplied with -\/1. For example\+: let {\ttfamily it1 = 5} and {\ttfamily it2 = -\/2} be two Counter\+Iterators where {\ttfamily it1} has negative increment. Then {\ttfamily it1 $>$ it2} is false. 
 \end{DoxyNote}
 
 
