@@ -4,7 +4,6 @@ The {\ttfamily zip}-\/class is a container-\/wrapper for arbitrary iterable cont
 \href{https://timmifixedit.github.io/IteratorTools/html/index.html}{\texttt{ Doxygen}}\hypertarget{index_autotoc_md3}{}\doxysubsection{Code Examples}\label{index_autotoc_md3}
 The syntax is mostly similar to Python\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{\#include <vector>}
 \DoxyCodeLine{\#include <list>}
 \DoxyCodeLine{\#include "Iterators.hpp"}
@@ -25,7 +24,6 @@ The for loop uses so called {\ttfamily Zip\+Iterator}s which point to tuples whi
 
 If you want to prohibit manipulation, you can use {\ttfamily const\+\_\+zip} 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{using namespace iterators;}
 \DoxyCodeLine{std::list<std::string> strings\{"a", "b", "c"\};}
 \DoxyCodeLine{std::vector<int> numbers\{1, 2, 3\};}
@@ -38,7 +36,6 @@ If you want to prohibit manipulation, you can use {\ttfamily const\+\_\+zip}
 
 Additionally, you can use {\ttfamily zip\+\_\+i} to manually zip iterators or pointers\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{using namespace iterators;}
 \DoxyCodeLine{std::list<std::string> strings\{"a", "b", "c"\};}
 \DoxyCodeLine{std::vector<int> numbers\{1, 2, 3\};}
@@ -56,7 +53,6 @@ Additionally, you can use {\ttfamily zip\+\_\+i} to manually zip iterators or po
 
 As in Python, the shortest range decides the overall range\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{using namespace iterators;}
 \DoxyCodeLine{std::list<std::string> strings\{"a", "b", "c"\};}
 \DoxyCodeLine{std::vector<int> numbers\{1, 2, 3, 4, 5, 6\};}
@@ -69,7 +65,6 @@ As in Python, the shortest range decides the overall range\+:
 
 The {\ttfamily enumerate}-\/function works similarly. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{using namespace iterators;}
 \DoxyCodeLine{std::list<std::string> strings\{"a", "b", "c"\};}
 \DoxyCodeLine{for (auto [index, string] : enumerate(strings)) \{}
@@ -81,7 +76,6 @@ The {\ttfamily enumerate}-\/function works similarly.
 
 Also, an optional offset can be specified\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{for (auto [index, string] : enumerate(strings, 4)) \{ // index starts from 4}
 \DoxyCodeLine{    ...}
 \DoxyCodeLine{\}}
@@ -92,7 +86,6 @@ And as with {\ttfamily zip}, a const version ({\ttfamily const\+\_\+enumerate}) 
 
 In case temporary containers are used, {\ttfamily zip} and {\ttfamily enumerate} will take ownership of the containers to guarantee well-\/defined memory access. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{ \{c++\}}
 \DoxyCodeLine{for (auto [index, number] : enumerate(std::array\{53, 21, 17\})) \{}
 \DoxyCodeLine{    // enumerate takes ownership of the array. The elements}
 \DoxyCodeLine{    // can safely be accessed and manipulated}
