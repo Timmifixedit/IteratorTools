@@ -1,0 +1,5 @@
+<map id="iterators::impl::CounterIterator&lt; T &gt;" name="iterators::impl::CounterIterator&lt; T &gt;">
+<area shape="rect" id="node1" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="45,215,219,256"/>
+<area shape="rect" id="node2" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="5,124,259,165"/>
+<area shape="rect" id="node3" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="31,5,233,47"/>
+</map>

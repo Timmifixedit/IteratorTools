@@ -17,6 +17,8 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Ite
 \begin{DoxyCompactList}\small\item\em Iterator of an infinite sequence of numbers. Simply increments an internal counter. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{Counter\+Range}}
 \begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{Synthesized\+Operators}}
+\begin{DoxyCompactList}\small\item\em C\+R\+T\+P-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}
 \begin{DoxyCompactList}\small\item\em represents the unreachable end of an infinite sequence \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}
@@ -26,10 +28,31 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{Zip\+View}}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}\label{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}} 
-{\footnotesize template$<$typename T $>$ }\\constexpr T {\bfseries sgn} (T val) noexcept
+{\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}} (T val) noexcept
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}\label{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}} 
+\index{iterators::impl@{iterators::impl}!sgn@{sgn}}
+\index{sgn@{sgn}!iterators::impl@{iterators::impl}}
+\doxysubsubsection{\texorpdfstring{sgn()}{sgn()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr T iterators\+::impl\+::sgn (\begin{DoxyParamCaption}\item[{T}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+Signum function 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & arbitrary scalar type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em val} & function argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
++1 if val $>$= 0, -\/1 else 
+\end{DoxyReturn}

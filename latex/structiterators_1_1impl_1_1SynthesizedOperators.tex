@@ -1,0 +1,268 @@
+\hypertarget{structiterators_1_1impl_1_1SynthesizedOperators}{}\doxysection{iterators\+::impl\+::Synthesized\+Operators$<$ Impl $>$ Struct Template Reference}
+\label{structiterators_1_1impl_1_1SynthesizedOperators}\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+
+
+C\+R\+T\+P-\/class that provides additional pointer arithmetic operators synthesized from basic operators.  
+
+
+
+
+{\ttfamily \#include $<$Iterators.\+hpp$>$}
+
+
+
+Inheritance diagram for iterators\+::impl\+::Synthesized\+Operators$<$ Impl $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structiterators_1_1impl_1_1SynthesizedOperators__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, $\ast$(\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L+\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type))) $>$ }\\constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) const noexcept(noexcept($\ast$(std\+::declval$<$ Impl $>$()+n)))
+\item 
+{\footnotesize template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl,++\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L) $>$ }\\constexpr Impl \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{operator++}} (int) noexcept(noexcept(++std\+::declval$<$ Impl $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ Impl $>$)
+\item 
+{\footnotesize template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, -\/-\/\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L) $>$ }\\constexpr Impl \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{operator-\/-\/}} (int) noexcept(noexcept(-\/-\/std\+::declval$<$ Impl $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ Impl $>$)
+\item 
+{\footnotesize template$<$typename T , R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L==\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(\+T)) $>$ }\\constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ae717fa1d3db284c846e8252a04578586}{operator!=}} (const T \&other) const noexcept(noexcept(I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+PL==other))
+\item 
+{\footnotesize template$<$typename T , R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L $>$ I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(\+T)) $>$ }\\constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a9c1c35b51fc142d9ab4ed9c4f98cda23}{operator$<$=}} (const T \&rhs) const noexcept(noexcept(I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+PL $>$ rhs))
+\item 
+{\footnotesize template$<$typename T , R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L$<$ I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(\+T)) $>$ }\\constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a030d4bf4dbe3b8f1a2c5d32255045ca1}{operator$>$=}} (const T \&rhs) const noexcept(noexcept(I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+PL$<$ rhs))
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L+=\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type)) $>$ }\\constexpr friend auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a7a3172ec0484b1a271a4c89863578fd7}{operator+}} (Impl it, typename Implementation\+::difference\+\_\+type n) noexcept(noexcept(std\+::declval$<$ Impl $>$()+=n))
+\item 
+{\footnotesize template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L+=\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type)) $>$ }\\constexpr friend auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_afe47e6e31154589110339a926ae1fc84}{operator+}} (typename Implementation\+::difference\+\_\+type n, Impl it) noexcept(noexcept(std\+::declval$<$ Impl $>$()+=n))
+\item 
+{\footnotesize template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L -\/=\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type)) $>$ }\\constexpr friend auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a26e71bdf9be3cc341490bae085dffbca}{operator-\/}} (Impl it, typename Implementation\+::difference\+\_\+type n) noexcept(noexcept(std\+::declval$<$ Impl $>$() -\/=n))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Impl$>$\newline
+struct iterators\+::impl\+::\+Synthesized\+Operators$<$ Impl $>$}
+
+C\+R\+T\+P-\/class that provides additional pointer arithmetic operators synthesized from basic operators. 
+
+Adds the following operators
+\begin{DoxyItemize}
+\item postfix increment and decrement (requires the respective prefix operators)
+\item array subscript operator\mbox{[}\mbox{]} (requires operator+ and dereference operator)
+\item binary arithmetic operators (requires compound assignment operators)
+\item inequality comparison (requires operator==)
+\item less than or equal comparison (requires operator$>$)
+\item greater than or equal comparison (requires operator$<$) 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Impl} & Base class \\
+\hline
+\end{DoxyTemplParams}
+
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_ae717fa1d3db284c846e8252a04578586}\label{structiterators_1_1impl_1_1SynthesizedOperators_ae717fa1d3db284c846e8252a04578586}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$typename T , R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L==\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(\+T)) $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ Impl $>$\+::operator!= (\begin{DoxyParamCaption}\item[{const T \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+Inequality comparison 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of right hand side \\
+\hline
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & right hand side \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this is not equal to other 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}\label{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl,++\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L) $>$ \\
+constexpr Impl \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ Impl $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+Postfix increment. Synthesized from prefix increment 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Instance of Impl 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}\label{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, -\/-\/\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L) $>$ \\
+constexpr Impl \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ Impl $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+Postfix decrement. Synthesized from prefix decrement 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Instance of Impl 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a9c1c35b51fc142d9ab4ed9c4f98cda23}\label{structiterators_1_1impl_1_1SynthesizedOperators_a9c1c35b51fc142d9ab4ed9c4f98cda23}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$typename T , R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L $>$ I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(\+T)) $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ Impl $>$\+::operator$<$= (\begin{DoxyParamCaption}\item[{const T \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+Less than or equal comparison 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of right hand side \\
+\hline
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & right hand side \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this is not greater than other 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a030d4bf4dbe3b8f1a2c5d32255045ca1}\label{structiterators_1_1impl_1_1SynthesizedOperators_a030d4bf4dbe3b8f1a2c5d32255045ca1}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$typename T , R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L$<$ I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(\+T)) $>$ \\
+constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ Impl $>$\+::operator$>$= (\begin{DoxyParamCaption}\item[{const T \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+Greater than or equal comparison 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of right hand side \\
+\hline
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & right hand side \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this is not less than other 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}\label{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, $\ast$(\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L+\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type))) $>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ Impl $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+Array subscript operator 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+$\ast$($\ast$this + n) 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a7a3172ec0484b1a271a4c89863578fd7}\label{structiterators_1_1impl_1_1SynthesizedOperators_a7a3172ec0484b1a271a4c89863578fd7}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L+=\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type)) $>$ \\
+constexpr friend auto operator+ (\begin{DoxyParamCaption}\item[{Impl}]{it,  }\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Binary +plus operator. Synthesized from compound assignment operator+= 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em it} & left hand side \\
+\hline
+{\em n} & right hand side \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance of Impl 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_afe47e6e31154589110339a926ae1fc84}\label{structiterators_1_1impl_1_1SynthesizedOperators_afe47e6e31154589110339a926ae1fc84}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L+=\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type)) $>$ \\
+constexpr friend auto operator+ (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n,  }\item[{Impl}]{it }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Binary +plus operator. Synthesized from compound assignment operator+= 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & left hand side \\
+\hline
+{\em it} & right hand side \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance of Impl 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a26e71bdf9be3cc341490bae085dffbca}\label{structiterators_1_1impl_1_1SynthesizedOperators_a26e71bdf9be3cc341490bae085dffbca}} 
+\index{iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!iterators::impl::SynthesizedOperators$<$ Impl $>$@{iterators::impl::SynthesizedOperators$<$ Impl $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}}
+{\footnotesize\ttfamily template$<$typename Impl $>$ \\
+template$<$R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+P\+L(\+Impl, I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+P\+L -\/=\+I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F(typename Implementation\+::difference\+\_\+type)) $>$ \\
+constexpr friend auto operator-\/ (\begin{DoxyParamCaption}\item[{Impl}]{it,  }\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Binary minus operator. Synthesized from compound assignment operator-\/= 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Implementation} & S\+F\+I\+N\+AE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em it} & left hand side \\
+\hline
+{\em n} & right hand side \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance of Impl 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Iterators_8hpp}{Iterators.\+hpp}}\end{DoxyCompactItemize}

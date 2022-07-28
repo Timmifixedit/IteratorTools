@@ -1,5 +1,7 @@
 <map id="iterators::impl::ZipIterator&lt; Iterators &gt;" name="iterators::impl::ZipIterator&lt; Iterators &gt;">
-<area shape="rect" id="node1" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="673,20,864,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="423,5,624,76"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,13,185,69"/>
+<area shape="rect" id="node1" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="695,65,885,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="444,5,645,76"/>
+<area shape="rect" id="node3" title=" " alt="" coords="16,13,196,69"/>
+<area shape="rect" id="node4" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="444,101,645,157"/>
+<area shape="rect" id="node5" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="5,108,207,149"/>
 </map>

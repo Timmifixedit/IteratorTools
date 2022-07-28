@@ -102,7 +102,15 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_dereferencible</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_dereferencible&lt; std::tuple&lt; Ts... &gt;, void &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_dereferencible&lt; T, std::void_t&lt; decltype(*std::declval&lt; T &gt;())&gt; &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_incrementable</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_incrementable&lt; std::tuple&lt; Ts... &gt;, void &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_incrementable&lt; T, std::void_t&lt; decltype(++REFERENCE(T))&gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>is_random_accessible</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,6 +164,10 @@ template&lt;typename T &gt; </td></tr>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:adbb9caf8294f288c68ce4a04c6013791"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>is_dereferencible_v</b> = is_dereferencible&lt;T&gt;::value</td></tr>
 <tr class="separator:adbb9caf8294f288c68ce4a04c6013791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5f5c2479b3915f780b08928bf1d97f1"><td class="memTemplParams" colspan="2"><a id="ab5f5c2479b3915f780b08928bf1d97f1"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab5f5c2479b3915f780b08928bf1d97f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>is_incrementable_v</b> = is_incrementable&lt;T&gt;::value</td></tr>
+<tr class="separator:ab5f5c2479b3915f780b08928bf1d97f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21d94a39059c419c3437963e01435a51"><td class="memTemplParams" colspan="2"><a id="a21d94a39059c419c3437963e01435a51"></a>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a21d94a39059c419c3437963e01435a51"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><b>minimum_category_v</b> = minimum_category&lt;T&gt;::value</td></tr>

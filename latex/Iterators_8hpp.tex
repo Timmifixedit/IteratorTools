@@ -18,6 +18,8 @@ Include dependency graph for Iterators.\+hpp\+:
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators$<$ Impl $>$}}
+\begin{DoxyCompactList}\small\item\em C\+R\+T\+P-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator$<$ Iterators $>$}}
 \begin{DoxyCompactList}\small\item\em Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View$<$ Iterable $>$}}
@@ -61,6 +63,18 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+AP}(T\+Y\+PE,  V\+A\+L\+UE)
 \item 
 \#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+A\+L\+I\+AS}
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}\label{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}} 
+\#define {\bfseries I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+OF}(T\+Y\+P\+E\+N\+A\+ME)~std\+::declval$<$T\+Y\+P\+E\+N\+A\+ME$>$()
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}\label{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}} 
+\#define {\bfseries I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+PL}~I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+OF(Implementation)
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}\label{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}} 
+\#define {\bfseries R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+PL}(T\+Y\+P\+E\+N\+A\+ME,  E\+X\+P\+R\+E\+S\+S\+I\+ON)~typename Implementation = T\+Y\+P\+E\+N\+A\+ME, typename = std\+::void\+\_\+t$<$decltype(E\+X\+P\+R\+E\+S\+S\+I\+ON)$>$
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}\label{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}} 
+\#define {\bfseries R\+E\+Q\+U\+I\+R\+ES}(E\+X\+P\+R\+E\+S\+S\+I\+ON)~typename = std\+::void\+\_\+t$<$decltype(E\+X\+P\+R\+E\+S\+S\+I\+ON)$>$
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -80,8 +94,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}\label{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}} 
-{\footnotesize template$<$typename T $>$ }\\constexpr T {\bfseries iterators\+::impl\+::sgn} (T val) noexcept
+{\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{iterators\+::impl\+::sgn}} (T val) noexcept
 \item 
 {\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{iterators\+::zip\+\_\+i}} (Iterators ...iterators) -\/$>$ impl\+::\+Zip\+Iterator$<$ std\+::tuple$<$ Iterators... $>$$>$
 \item 
@@ -101,6 +114,9 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_adbb9caf8294f288c68ce4a04c6013791}\label{namespaceiterators_1_1impl_1_1traits_adbb9caf8294f288c68ce4a04c6013791}} 
 {\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+dereferencible\+\_\+v} = is\+\_\+dereferencible$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_ab5f5c2479b3915f780b08928bf1d97f1}\label{namespaceiterators_1_1impl_1_1traits_ab5f5c2479b3915f780b08928bf1d97f1}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+incrementable\+\_\+v} = is\+\_\+incrementable$<$T$>$\+::value
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a21d94a39059c419c3437963e01435a51}\label{namespaceiterators_1_1impl_1_1traits_a21d94a39059c419c3437963e01435a51}} 
 {\footnotesize template$<$typename T $>$ }\\constexpr std\+::size\+\_\+t {\bfseries iterators\+::impl\+::traits\+::minimum\+\_\+category\+\_\+v} = minimum\+\_\+category$<$T$>$\+::value
@@ -155,12 +171,13 @@ tim Luchterhand
 \begin{DoxyCode}{0}
 \DoxyCodeLine{        \textcolor{keyword}{template}<\textcolor{keyword}{typename} Tuple1, \textcolor{keyword}{typename} Tuple2, std::size\_t ...Idx> \(\backslash\)}
 \DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME\#\#Impl(\textcolor{keyword}{const} Tuple1 \&tuple1, \textcolor{keyword}{const} Tuple2 \&tuple2, std::index\_sequence<Idx...>) \(\backslash\)}
-\DoxyCodeLine{        noexcept(noexcept((OPERATION))) \{ \(\backslash\)}
+\DoxyCodeLine{        noexcept(noexcept((OPERATION))) -\/> decltype(OPERATION) \{ \(\backslash\)}
 \DoxyCodeLine{            return (OPERATION); \(\backslash\)}
 \DoxyCodeLine{        \} \(\backslash\)}
 \DoxyCodeLine{        template<typename Tuple1, typename Tuple2> \(\backslash\)}
 \DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME(\textcolor{keyword}{const} Tuple1 \&tuple1, \textcolor{keyword}{const} Tuple2 \&tuple2) \(\backslash\)}
-\DoxyCodeLine{        noexcept(noexcept(NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\}))) \{ \(\backslash\)}
+\DoxyCodeLine{        noexcept(noexcept(NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\}))) \(\backslash\)}
+\DoxyCodeLine{        -\/> decltype(NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\})) \{ \(\backslash\)}
 \DoxyCodeLine{            static\_assert(std::tuple\_size\_v<Tuple1> == std::tuple\_size\_v<Tuple2>); \(\backslash\)}
 \DoxyCodeLine{            return NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\}); \(\backslash\)}
 \DoxyCodeLine{        \}}
