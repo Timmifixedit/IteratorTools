@@ -1,4 +1,4 @@
-\hypertarget{Iterators_8hpp}{}\doxysection{Iterators.\+hpp File Reference}
+\hypertarget{Iterators_8hpp}{}\doxysubsection{Iterators.\+hpp File Reference}
 \label{Iterators_8hpp}\index{Iterators.hpp@{Iterators.hpp}}
 
 
@@ -15,7 +15,7 @@ Include dependency graph for Iterators.\+hpp\+:
 \includegraphics[width=204pt]{Iterators_8hpp__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Classes}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators$<$ Impl $>$}}
@@ -30,7 +30,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+:
 \begin{DoxyCompactList}\small\item\em Iterator of an infinite sequence of numbers. Simply increments an internal counter. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::impl\+::\+Counter\+Range$<$ T $>$}}
 \begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Namespaces}
+\doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespaceiterators}{iterators}}
@@ -39,7 +39,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \begin{DoxyCompactList}\small\item\em namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly \end{DoxyCompactList}\item 
  \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{iterators\+::impl\+::traits}}
 \begin{DoxyCompactList}\small\item\em namespace containing type traits used in implementation of zip and enumerate \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Macros}
+\doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}\label{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}} 
@@ -76,7 +76,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \mbox{\Hypertarget{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}\label{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}} 
 \#define {\bfseries R\+E\+Q\+U\+I\+R\+ES}(E\+X\+P\+R\+E\+S\+S\+I\+ON)~typename = std\+::void\+\_\+t$<$decltype(E\+X\+P\+R\+E\+S\+S\+I\+ON)$>$
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a4a3cbf0ec8614d1d1fc3cfae09a8a2fe}\label{namespaceiterators_1_1impl_1_1traits_a4a3cbf0ec8614d1d1fc3cfae09a8a2fe}} 
@@ -91,7 +91,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a4af43604a220ab83ab8718bfd8550fdb}\label{namespaceiterators_1_1impl_1_1traits_a4af43604a220ab83ab8718bfd8550fdb}} 
 {\footnotesize template$<$typename T $>$ }\\using {\bfseries iterators\+::impl\+::traits\+::values\+\_\+t} = typename values$<$ T $>$\+::type
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{iterators\+::impl\+::sgn}} (T val) noexcept
@@ -106,7 +106,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \item 
 {\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}{iterators\+::const\+\_\+enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
 \end{DoxyCompactItemize}
-\doxysubsection*{Variables}
+\doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a6de19d42e17b764cf9cc5d81eaf12120}\label{namespaceiterators_1_1impl_1_1traits_a6de19d42e17b764cf9cc5d81eaf12120}} 
@@ -129,7 +129,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsubsection{Detailed Description}
 This file contains the definitions of Python-\/like zip-\/ and enumerate-\/functions. They can be used in range based for-\/loops to loop over multiple ranges at the same time, or to index a range while looping respectively. 
 
 \begin{DoxyAuthor}{Author}
@@ -140,11 +140,11 @@ tim Luchterhand
 \end{DoxyDate}
 
 
-\doxysubsection{Macro Definition Documentation}
+\doxysubsubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}\label{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}} 
 \index{Iterators.hpp@{Iterators.hpp}!ALL\_NOEXCEPT@{ALL\_NOEXCEPT}}
 \index{ALL\_NOEXCEPT@{ALL\_NOEXCEPT}!Iterators.hpp@{Iterators.hpp}}
-\doxysubsubsection{\texorpdfstring{ALL\_NOEXCEPT}{ALL\_NOEXCEPT}}
+\doxyparagraph{\texorpdfstring{ALL\_NOEXCEPT}{ALL\_NOEXCEPT}}
 {\footnotesize\ttfamily \#define A\+L\+L\+\_\+\+N\+O\+E\+X\+C\+E\+PT(\begin{DoxyParamCaption}\item[{}]{OP,  }\item[{}]{N\+A\+ME }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
@@ -164,7 +164,7 @@ tim Luchterhand
 \mbox{\Hypertarget{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}\label{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}} 
 \index{Iterators.hpp@{Iterators.hpp}!BINARY\_TUPLE\_FOR\_EACH@{BINARY\_TUPLE\_FOR\_EACH}}
 \index{BINARY\_TUPLE\_FOR\_EACH@{BINARY\_TUPLE\_FOR\_EACH}!Iterators.hpp@{Iterators.hpp}}
-\doxysubsubsection{\texorpdfstring{BINARY\_TUPLE\_FOR\_EACH}{BINARY\_TUPLE\_FOR\_EACH}}
+\doxyparagraph{\texorpdfstring{BINARY\_TUPLE\_FOR\_EACH}{BINARY\_TUPLE\_FOR\_EACH}}
 {\footnotesize\ttfamily \#define B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+CH(\begin{DoxyParamCaption}\item[{}]{O\+P\+E\+R\+A\+T\+I\+ON,  }\item[{}]{N\+A\+ME }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
@@ -186,7 +186,7 @@ tim Luchterhand
 \mbox{\Hypertarget{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}\label{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}} 
 \index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP@{TYPE\_MAP}}
 \index{TYPE\_MAP@{TYPE\_MAP}!Iterators.hpp@{Iterators.hpp}}
-\doxysubsubsection{\texorpdfstring{TYPE\_MAP}{TYPE\_MAP}}
+\doxyparagraph{\texorpdfstring{TYPE\_MAP}{TYPE\_MAP}}
 {\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+AP(\begin{DoxyParamCaption}\item[{}]{T\+Y\+PE,  }\item[{}]{V\+A\+L\+UE }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
@@ -205,7 +205,7 @@ tim Luchterhand
 \mbox{\Hypertarget{Iterators_8hpp_abebf60cecd85510b3cc37cb415e07dde}\label{Iterators_8hpp_abebf60cecd85510b3cc37cb415e07dde}} 
 \index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP\_ALIAS@{TYPE\_MAP\_ALIAS}}
 \index{TYPE\_MAP\_ALIAS@{TYPE\_MAP\_ALIAS}!Iterators.hpp@{Iterators.hpp}}
-\doxysubsubsection{\texorpdfstring{TYPE\_MAP\_ALIAS}{TYPE\_MAP\_ALIAS}}
+\doxyparagraph{\texorpdfstring{TYPE\_MAP\_ALIAS}{TYPE\_MAP\_ALIAS}}
 {\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+A\+L\+I\+AS}
 
 {\bfseries Value\+:}
@@ -219,7 +219,7 @@ tim Luchterhand
 \mbox{\Hypertarget{Iterators_8hpp_a63a8050bf06f087a431b829ba0b230a6}\label{Iterators_8hpp_a63a8050bf06f087a431b829ba0b230a6}} 
 \index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP\_DEFAULT@{TYPE\_MAP\_DEFAULT}}
 \index{TYPE\_MAP\_DEFAULT@{TYPE\_MAP\_DEFAULT}!Iterators.hpp@{Iterators.hpp}}
-\doxysubsubsection{\texorpdfstring{TYPE\_MAP\_DEFAULT}{TYPE\_MAP\_DEFAULT}}
+\doxyparagraph{\texorpdfstring{TYPE\_MAP\_DEFAULT}{TYPE\_MAP\_DEFAULT}}
 {\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+D\+E\+F\+A\+U\+LT}
 
 {\bfseries Value\+:}
