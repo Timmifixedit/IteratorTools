@@ -1,11 +1,15 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.10)
 project(IteratorTools)
 
-option(BUILD_ITERATOR_TESTS "Build unit tests" OFF)
+option(BUILD_TESTS "Build unit tests" OFF)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -fsanitize=address")
-
-if (${BUILD_ITERATOR_TESTS})
+if (${BUILD_TESTS})
+    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_FLAGS "-Wall -Wpedantic -Wextra")
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
+    else ()
+        message("Disabling address sanitizer when building for release")
+    endif()
     add_subdirectory(Test)
 endif ()

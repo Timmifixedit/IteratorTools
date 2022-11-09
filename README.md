@@ -1,3 +1,4 @@
+[![unit tests](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml)
 # Python-like Zip and Enumerate Iterators
 C++-implementation of Python-like zip- and enumerate-iterators which can be used in range-based
 for loops along with structured bindings to iterate over multiple containers at the same
@@ -10,6 +11,10 @@ iterate over multiple containers at the same time. The `enuerate`-function is a 
 case of `zip` and uses a "counting container" (similar to `std::ranges::iota`) to provide
 an index. Additionally, const-versions exist which do not allow the manipulation of the
 container elements.
+
+## Doxygen Documentation
+* [HTML](https://timmifixedit.github.io/IteratorTools/html/index.html)
+* [PDF](https://timmifixedit.github.io/IteratorTools/ZipEnumerateCppDocs.pdf)
 
 ## Code Examples
 The syntax is mostly similar to Python:
@@ -43,13 +48,13 @@ for (auto [string, number] : const_zip(strings, numbers)) {
     std::cout << string << " " << number << std::endl;
 }
 ```
-Additionally, using an overload of `zip`, the direct use of iterators is also possible:
+Additionally, you can use `zip_i` to manually zip iterators or pointers:
 ```c++
 using namespace iterators;
 std::list<std::string> strings{"a", "b", "c"};
 std::vector<int> numbers{1, 2, 3};
-auto zipBegin = zip(strings.begin(), numbers.begin());
-auto zipEnd = zip(strings.end(), numbers.end());
+auto zipBegin = zip_i(strings.begin(), numbers.begin());
+auto zipEnd = zip_i(strings.end(), numbers.end());
 while (zipBegin != zipEnd) {
     auto [s, num] = *zipBegin;
     // ...

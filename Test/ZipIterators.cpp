@@ -3,9 +3,64 @@
 #include <list>
 #include <string>
 #include <type_traits>
+#include <deque>
 #include <unordered_map>
 #include "Iterators.hpp"
 #include "utils.hpp"
+
+#define UNUSED(x) ((void) (x))
+
+DETECT(pre_inc, ++INSTANCE_OF(T))
+DETECT(pre_dec, --INSTANCE_OF(T))
+DETECT(post_inc, INSTANCE_OF(T)++)
+DETECT(post_dec, INSTANCE_OF(T)--)
+DETECT(plus_comp, INSTANCE_OF(T) += INSTANCE_OF(std::size_t))
+DETECT(minus_comp, INSTANCE_OF(T) -= INSTANCE_OF(std::size_t))
+DETECT(plus_left, INSTANCE_OF(T) + INSTANCE_OF(std::size_t))
+DETECT(plus_right, INSTANCE_OF(std::size_t) + INSTANCE_OF(T))
+DETECT(minus_left, INSTANCE_OF(T) - INSTANCE_OF(std::size_t))
+DETECT(difference, INSTANCE_OF(T) - INSTANCE_OF(T))
+DETECT(less, INSTANCE_OF(T) < INSTANCE_OF(T))
+DETECT(greater, INSTANCE_OF(T) > INSTANCE_OF(T))
+DETECT(leq, INSTANCE_OF(T) <= INSTANCE_OF(T))
+DETECT(geq, INSTANCE_OF(T) >= INSTANCE_OF(T))
+DETECT(eq, INSTANCE_OF(T) == INSTANCE_OF(T))
+DETECT(ineq, INSTANCE_OF(T) != INSTANCE_OF(T))
+DETECT(subsc, INSTANCE_OF(T)[INSTANCE_OF(std::size_t)])
+DETECT(deref, *INSTANCE_OF(T))
+
+DETECT_BINARY(eq_with, INSTANCE_OF(T) == INSTANCE_OF(U))
+DETECT_BINARY(neq_with, INSTANCE_OF(T) != INSTANCE_OF(U))
+DETECT_BINARY(less_with, INSTANCE_OF(T) < INSTANCE_OF(U))
+DETECT_BINARY(greater_with, INSTANCE_OF(T) > INSTANCE_OF(U))
+DETECT_BINARY(le_with, INSTANCE_OF(T) <= INSTANCE_OF(U))
+DETECT_BINARY(ge_with, INSTANCE_OF(T) >= INSTANCE_OF(U))
+
+template<typename Vec1, typename Vec2>
+constexpr auto dot(const Vec1 &x, const Vec2 &y) {
+    using T = decltype(*std::begin(x) * *std::begin(y));
+    T res = 0;
+    for (auto [v1, v2] : iterators::zip(x, y)) {
+        res += v1 * v2;
+    }
+
+    return res;
+}
+
+template<std::size_t N, typename T>
+constexpr T initArrayAndSum(T start, T increment) {
+    T numbers[N] = {0};
+    for (auto [number, i] : iterators::enumerate(numbers, start, increment)) {
+        i = number;
+    }
+
+    T sum = 0;
+    for (auto i : numbers) {
+        sum += i;
+    }
+
+    return sum;
+}
 
 TEST(ZipIterators, zip_elements) {
     using namespace iterators;
@@ -82,9 +137,9 @@ TEST(ZipIterators, zip_constness) {
     EXPECT_TRUE(std::is_const_v<std::remove_reference_t<decltype(std::get<0>(*zip(constStrings, numbers).begin()))>>);
     EXPECT_FALSE(std::is_const_v<std::remove_reference_t<decltype(std::get<1>(*zip(constStrings, numbers).begin()))>>);
     EXPECT_TRUE(
-            std::is_const_v<std::remove_reference_t<decltype(std::get<0>(*zip(strings.cbegin(), numbers.begin())))>>);
+            std::is_const_v<std::remove_reference_t<decltype(std::get<0>(*zip_i(strings.cbegin(), numbers.begin())))>>);
     EXPECT_FALSE(
-            std::is_const_v<std::remove_reference_t<decltype(std::get<1>(*zip(strings.cbegin(), numbers.begin())))>>);
+            std::is_const_v<std::remove_reference_t<decltype(std::get<1>(*zip_i(strings.cbegin(), numbers.begin())))>>);
     EXPECT_FALSE(std::is_const_v<std::remove_reference_t<decltype(std::get<0>(*zipView.begin()))>>);
     EXPECT_TRUE(std::is_const_v<std::remove_reference_t<decltype(std::get<0>(*constZipView.begin()))>>);
 }
@@ -96,16 +151,17 @@ TEST(ZipIterators, zip_iterator_types) {
     auto zipView = const_zip(forward, backward);
     constexpr bool res = std::is_same_v<decltype(zipView.begin()), decltype(zipView.end())>;
     EXPECT_TRUE(res);
-    constexpr bool res1 = std::is_same_v<decltype(zip(forward.begin(), backward.begin())), decltype(zip(forward.end(), backward.end()))>;
+    constexpr bool res1 = std::is_same_v<decltype(zip_i(forward.begin(), backward.begin())),
+            decltype(zip_i(forward.end(), backward.end()))>;
     EXPECT_TRUE(res1);
 }
 
-TEST(Iterators, zip_iterator_manual) {
+TEST(ZipIterators, zip_iterator_manual) {
     using namespace iterators;
     std::list<int> forward {1, 2, 3};
     std::vector<int> backward{3, 2, 1};
-    auto start = zip(forward.cbegin(), backward.cbegin());
-    auto end = zip(forward.cend(), backward.cend());
+    auto start = zip_i(forward.cbegin(), backward.cbegin());
+    auto end = zip_i(forward.cend(), backward.cend());
     std::size_t counter = 0;
     while (start != end) {
         EXPECT_EQ(std::get<0>(*start) + std::get<1>(*start), 4);
@@ -114,6 +170,17 @@ TEST(Iterators, zip_iterator_manual) {
     }
 
     EXPECT_EQ(counter, 3);
+}
+
+TEST(ZipIterators, zip_c_arrays_manual) {
+    using namespace iterators;
+    int numbers[] = {1, 2, 3};
+    const char * strings[] = {"a", "b", "c"};
+    strings[1] = "4";
+    auto zBegin = zip_i(numbers, strings);
+    zBegin[1] = std::tuple{10, "f"};
+    EXPECT_EQ(strings[1], "f");
+    EXPECT_EQ(numbers[1], 10);
 }
 
 TEST(ZipIterators, elements_no_copy) {
@@ -273,24 +340,24 @@ TEST(ZipIterators, bool_vector) {
     EXPECT_TRUE(std::equal(booleans.begin(), booleans.end(), expected.begin()));
 }
 
-TEST(Iterators, type_traits) {
+TEST(ZipIterators, type_traits) {
     using namespace iterators;
     std::array<int, 1> array;
     std::list<int> list;
     std::unordered_map<int, int> map;
-    auto zipIt = zip(array.begin(), list.begin());
+    auto zipIt = zip_i(array.begin(), list.begin());
     constexpr bool correctCategory = std::is_same_v<decltype(zipIt)::iterator_category, std::bidirectional_iterator_tag>;
     EXPECT_TRUE(correctCategory);
-    auto zipIt1 = zip(array.begin(), map.begin());
+    auto zipIt1 = zip_i(array.begin(), map.begin());
     constexpr bool correctCategory1 = std::is_same_v<decltype(zipIt1)::iterator_category, std::forward_iterator_tag>;
     EXPECT_TRUE(correctCategory1);
 }
 
-TEST(Iterators, bidirectional_operators) {
+TEST(ZipIterators, bidirectional_operators) {
     using namespace iterators;
     std::array numbers{1, 2, 3, 4};
     std::list<std::string> strings{"a", "b", "c"};
-    auto zIt = zip(numbers.begin(), strings.begin());
+    auto zIt = zip_i(numbers.begin(), strings.begin());
     zIt++;
     auto [n, s] =*zIt;
     EXPECT_EQ(n, 2);
@@ -301,11 +368,11 @@ TEST(Iterators, bidirectional_operators) {
     EXPECT_EQ(s1, s);
 }
 
-TEST(Iterators, post_increment_and_decrement) {
+TEST(ZipIterators, post_increment_and_decrement) {
     using namespace iterators;
     std::array numbers{1, 2, 3, 4};
     std::list<std::string> strings{"a", "b", "c"};
-    auto zIt = zip(numbers.begin(), strings.begin());
+    auto zIt = zip_i(numbers.begin(), strings.begin());
     auto [n, s] = *++zIt;
     EXPECT_EQ(n, 2);
     EXPECT_EQ(s, "b");
@@ -326,17 +393,17 @@ TEST(Iterators, post_increment_and_decrement) {
     EXPECT_EQ(ds2, "a");
 }
 
-TEST(Iterators, random_access_operators) {
+TEST(ZipIterators, random_access_operators) {
     using namespace iterators;
     std::array numbers{1, 2, 3, 4};
     std::vector<std::string> strings{"a", "b", "c"};
-    const auto zBegin = zip(numbers.begin(), strings.begin());
-    const auto zEnd = zip(numbers.end(), strings.end());
+    const auto zBegin = zip_i(numbers.begin(), strings.begin());
+    const auto zEnd = zip_i(numbers.end(), strings.end());
     EXPECT_EQ(*(zBegin + 2), zBegin[2]);
     EXPECT_LT(zBegin, zEnd);
     auto tmp = zBegin;
     tmp += 2;
-    EXPECT_EQ(zBegin, zip(numbers.begin(), strings.begin()));
+    EXPECT_EQ(zBegin, zip_i(numbers.begin(), strings.begin()));
     EXPECT_EQ(*tmp, zBegin[2]);
     EXPECT_EQ(zBegin + 3, zEnd);
     EXPECT_LE(zBegin + 3, zEnd);
@@ -346,17 +413,166 @@ TEST(Iterators, random_access_operators) {
     EXPECT_EQ(zEnd - zBegin, 3);
 }
 
-TEST(Iterators, stl_algos) {
+TEST(ZipIterators, comparisons_with_different_types) {
+    using namespace iterators;
+    int numbers[] = {7, 8, 9};
+    auto curr = enumerate(numbers).begin();
+    auto cCurr = const_enumerate(numbers).begin();
+    auto end = enumerate(numbers).end();
+    EXPECT_TRUE(curr <= cCurr);
+    EXPECT_FALSE(cCurr < cCurr);
+    ++curr;
+    EXPECT_EQ(curr - cCurr, 1);
+    EXPECT_EQ(cCurr - curr, -1);
+    EXPECT_TRUE(cCurr <= curr);
+    EXPECT_TRUE(curr > cCurr);
+    EXPECT_TRUE(curr >= cCurr);
+    EXPECT_TRUE(curr != cCurr);
+    EXPECT_TRUE(cCurr < curr);
+    EXPECT_TRUE(curr != end);
+    EXPECT_TRUE(end != cCurr);
+}
+
+TEST(ZipIterators, SFINAE_forward_operators) {
+    using namespace iterators;
+    using ForwardZipIt = decltype(zip(std::declval<std::unordered_map<int, std::string>>(),
+                                      std::declval<std::add_lvalue_reference_t<int[3]>>()).begin());
+    EXPECT_TRUE(has_pre_inc_v<ForwardZipIt>);
+    EXPECT_TRUE(has_post_inc_v<ForwardZipIt>);
+    EXPECT_TRUE(has_eq_v<ForwardZipIt>);
+    EXPECT_TRUE(has_ineq_v<ForwardZipIt>);
+    EXPECT_TRUE(has_deref_v<ForwardZipIt>);
+
+    EXPECT_FALSE(has_pre_dec_v<ForwardZipIt>);
+    EXPECT_FALSE(has_post_dec_v<ForwardZipIt>);
+    EXPECT_FALSE(has_plus_comp_v<ForwardZipIt>);
+    EXPECT_FALSE(has_minus_comp_v<ForwardZipIt>);
+    EXPECT_FALSE(has_plus_left_v<ForwardZipIt>);
+    EXPECT_FALSE(has_plus_right_v<ForwardZipIt>);
+    EXPECT_FALSE(has_minus_left_v<ForwardZipIt>);
+    EXPECT_FALSE(has_difference_v<ForwardZipIt>);
+    EXPECT_FALSE(has_less_v<ForwardZipIt>);
+    EXPECT_FALSE(has_greater_v<ForwardZipIt>);
+    EXPECT_FALSE(has_leq_v<ForwardZipIt>);
+    EXPECT_FALSE(has_geq_v<ForwardZipIt>);
+    EXPECT_FALSE(has_subsc_v<ForwardZipIt>);
+}
+
+TEST(ZipIterators, SFINAE_bidirectional_operators) {
+    using namespace iterators;
+    using BidirZipIt = decltype(zip(std::declval<std::list<int>>(), std::declval<std::vector<std::string>>()).begin());
+    EXPECT_TRUE(has_pre_inc_v<BidirZipIt>);
+    EXPECT_TRUE(has_post_inc_v<BidirZipIt>);
+    EXPECT_TRUE(has_eq_v<BidirZipIt>);
+    EXPECT_TRUE(has_ineq_v<BidirZipIt>);
+    EXPECT_TRUE(has_deref_v<BidirZipIt>);
+    EXPECT_TRUE(has_pre_dec_v<BidirZipIt>);
+    EXPECT_TRUE(has_post_dec_v<BidirZipIt>);
+
+    EXPECT_FALSE(has_plus_comp_v<BidirZipIt>);
+    EXPECT_FALSE(has_minus_comp_v<BidirZipIt>);
+    EXPECT_FALSE(has_plus_left_v<BidirZipIt>);
+    EXPECT_FALSE(has_plus_right_v<BidirZipIt>);
+    EXPECT_FALSE(has_minus_left_v<BidirZipIt>);
+    EXPECT_FALSE(has_difference_v<BidirZipIt>);
+    EXPECT_FALSE(has_less_v<BidirZipIt>);
+    EXPECT_FALSE(has_greater_v<BidirZipIt>);
+    EXPECT_FALSE(has_leq_v<BidirZipIt>);
+    EXPECT_FALSE(has_geq_v<BidirZipIt>);
+    EXPECT_FALSE(has_subsc_v<BidirZipIt>);
+}
+
+TEST(ZipIterators, SFINAE_random_access_operators) {
+    using namespace iterators;
+    using RandomAccessIterator = decltype(zip(std::declval<std::array<int, 4>>(),
+                                              std::declval<std::vector<std::string>>()).begin());
+    EXPECT_TRUE(has_pre_inc_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_post_inc_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_eq_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_ineq_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_deref_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_pre_dec_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_post_dec_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_plus_comp_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_minus_comp_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_plus_left_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_plus_right_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_minus_left_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_difference_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_less_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_greater_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_leq_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_geq_v<RandomAccessIterator>);
+    EXPECT_TRUE(has_subsc_v<RandomAccessIterator>);
+}
+
+TEST(ZipIterators, SFINAE_invalid_iterators) {
+    using namespace iterators::impl;
+    using BrokenIt = ZipIterator<std::tuple<int *, int>>;
+    EXPECT_TRUE(has_pre_inc_v<BrokenIt>);
+    EXPECT_TRUE(has_post_inc_v<BrokenIt>);
+    EXPECT_TRUE(has_eq_v<BrokenIt>);
+    EXPECT_TRUE(has_ineq_v<BrokenIt>);
+
+    EXPECT_FALSE(has_deref_v<BrokenIt>);
+    EXPECT_FALSE(has_pre_dec_v<BrokenIt>);
+    EXPECT_FALSE(has_post_dec_v<BrokenIt>);
+    EXPECT_FALSE(has_plus_comp_v<BrokenIt>);
+    EXPECT_FALSE(has_minus_comp_v<BrokenIt>);
+    EXPECT_FALSE(has_plus_left_v<BrokenIt>);
+    EXPECT_FALSE(has_plus_right_v<BrokenIt>);
+    EXPECT_FALSE(has_minus_left_v<BrokenIt>);
+    EXPECT_FALSE(has_difference_v<BrokenIt>);
+    EXPECT_FALSE(has_less_v<BrokenIt>);
+    EXPECT_FALSE(has_greater_v<BrokenIt>);
+    EXPECT_FALSE(has_leq_v<BrokenIt>);
+    EXPECT_FALSE(has_geq_v<BrokenIt>);
+    EXPECT_FALSE(has_subsc_v<BrokenIt>);
+}
+
+TEST(ZipIterators, SFINAE_differnt_zip_types) {
+    using namespace iterators::impl;
+    using NormaleIt = ZipIterator<std::tuple<int*>>;
+    using ConstIt = ZipIterator<std::tuple<const int*>>;
+    using DequeIt = ZipIterator<std::tuple<decltype(std::declval<std::deque<double>>().begin())>>;
+    auto res = has_eq_with_v<NormaleIt, ConstIt>;
+    EXPECT_TRUE(res);
+    res = has_neq_with_v<NormaleIt, ConstIt>;
+    EXPECT_TRUE(res);
+    res = has_less_with_v<NormaleIt, ConstIt>;
+    EXPECT_TRUE(res);
+    res = has_greater_with_v<NormaleIt, ConstIt>;
+    EXPECT_TRUE(res);
+    res = has_le_with_v<NormaleIt, ConstIt>;
+    EXPECT_TRUE(res);
+    res = has_ge_with_v<NormaleIt, ConstIt>;
+    EXPECT_TRUE(res);
+
+    res = has_eq_with_v<NormaleIt, DequeIt>;
+    EXPECT_FALSE(res);
+    res = has_neq_with_v<NormaleIt, DequeIt>;
+    EXPECT_FALSE(res);
+    res = has_less_with_v<NormaleIt, DequeIt>;
+    EXPECT_FALSE(res);
+    res = has_greater_with_v<NormaleIt, DequeIt>;
+    EXPECT_FALSE(res);
+    res = has_le_with_v<NormaleIt, DequeIt>;
+    EXPECT_FALSE(res);
+    res = has_ge_with_v<NormaleIt, DequeIt>;
+    EXPECT_FALSE(res);
+}
+
+TEST(ZipIterators, stl_algos) {
     using namespace iterators;
     std::array numbers{4, 2, 3, 1, 0};
-    auto zBegin = zip(numbers.begin(), numbers.rbegin());
-    auto zEnd = zip(numbers.end(), numbers.rend());
+    auto zBegin = zip_i(numbers.begin(), numbers.rbegin());
+    auto zEnd = zip_i(numbers.end(), numbers.rend());
     auto res = std::find_if(zBegin, zEnd, [](const auto &tuple) { return std::get<0>(tuple) == std::get<1>(tuple); });
     ASSERT_NE(res, zEnd);
     EXPECT_EQ(std::get<0>(*res), 3);
 }
 
-TEST(Iterators, noexcept_stl_containers) {
+TEST(ZipIterators, noexcept_stl_containers) {
     using namespace iterators;
     std::array numbers {1, 2, 3};
     std::list<std::string> strings{"1", "2" , "3"};
@@ -373,26 +589,84 @@ TEST(Iterators, noexcept_stl_containers) {
     EXPECT_EQ(noexcept(*zipIt), noexcept(*nIt) && noexcept(*sIt) && noexcept(*mapIt));
 }
 
-TEST(Iterators, noexcept_throwing_iterator) {
+TEST(ZipIterators, noexcept_true) {
+    using namespace iterators;
+    int numbers[] = {1, 2, 3};
+    auto begin = enumerate(numbers).begin();
+    auto end = begin + 2;
+    EXPECT_TRUE(noexcept(begin == end));
+    EXPECT_TRUE(noexcept(begin != end));
+    EXPECT_TRUE(noexcept(begin < end));
+    EXPECT_TRUE(noexcept(begin > end));
+    EXPECT_TRUE(noexcept(begin <= end));
+    EXPECT_TRUE(noexcept(begin >= end));
+    EXPECT_TRUE(noexcept(begin[1]));
+    EXPECT_TRUE(noexcept(*begin));
+    EXPECT_TRUE(noexcept(1 + begin + 1));
+    EXPECT_TRUE(noexcept(begin - 1));
+    EXPECT_TRUE(noexcept(begin += 1));
+    EXPECT_TRUE(noexcept(begin -= 1));
+    EXPECT_TRUE(noexcept(++begin++));
+    EXPECT_TRUE(noexcept(--begin--));
+}
+
+TEST(ZipIterators, noexcept_throwing_iterator) {
     using namespace iterators;
     std::array numbers{1, 2, 3};
     BadIterator badIt;
     // zip order is necessary so the comparison operators of BadIterator actually get called
-    auto zipIt = zip(badIt, numbers.begin());
+    auto zipIt = zip_i(badIt, numbers.begin());
     EXPECT_THROW(++zipIt, std::runtime_error);
     EXPECT_THROW(zipIt++, std::runtime_error);
     EXPECT_THROW(--zipIt, std::runtime_error);
     EXPECT_THROW(zipIt--, std::runtime_error);
-    EXPECT_THROW(zipIt == zipIt, std::runtime_error);
-    EXPECT_THROW(zipIt != zipIt, std::runtime_error);
-    EXPECT_THROW(zipIt < zipIt, std::runtime_error);
-    EXPECT_THROW(zipIt > zipIt, std::runtime_error);
-    EXPECT_THROW(zipIt <= zipIt, std::runtime_error);
-    EXPECT_THROW(zipIt >= zipIt, std::runtime_error);
+    EXPECT_THROW(UNUSED(zipIt == zipIt), std::runtime_error);
+    EXPECT_THROW(UNUSED(zipIt != zipIt), std::runtime_error);
+    EXPECT_THROW(UNUSED(zipIt < zipIt), std::runtime_error);
+    EXPECT_THROW(UNUSED(zipIt > zipIt), std::runtime_error);
+    EXPECT_THROW(UNUSED(zipIt <= zipIt), std::runtime_error);
+    EXPECT_THROW(UNUSED(zipIt >= zipIt), std::runtime_error);
     EXPECT_THROW(zipIt + 1, std::runtime_error);
     EXPECT_THROW(1 + zipIt, std::runtime_error);
     EXPECT_THROW(zipIt - 1, std::runtime_error);
     EXPECT_THROW(zipIt[1], std::runtime_error);
     EXPECT_THROW(*zipIt, std::runtime_error);
     EXPECT_THROW(zipIt - zipIt, std::runtime_error);
+}
+
+TEST(ZipIterators, compiletime_foreach) {
+    using namespace iterators;
+    constexpr int x[4] = {3, 2, 1, 5};
+    constexpr double y[4] = {10.21, 100.0014, 221.3009, 177.04};
+    constexpr auto res = dot(x, y);
+    EXPECT_DOUBLE_EQ(res, 1337.1337);
+}
+
+TEST(ZipIterators, compiletime_enumerate) {
+    constexpr auto sum = initArrayAndSum<4>(-1, -1);
+    EXPECT_EQ(sum, -10);
+}
+
+TEST(ZipIterators, compiletime_iterator) {
+    using namespace iterators;
+    static constexpr int x[] = {1, 2, 3, 4};
+    static constexpr double y[] = {3, 2, 1, 4};
+    constexpr auto res = zip(x, y).begin()[2];
+    EXPECT_EQ(std::get<0>(res), 3);
+    EXPECT_EQ(std::get<1>(res), 1);
+    constexpr bool less = zip_i(x + 2, y + 1) < zip_i(x + 3, y + 3);
+    EXPECT_TRUE(less);
+    constexpr bool greater = zip_i(x + 2, y + 1) > zip_i(x + 1, y);
+    EXPECT_TRUE(greater);
+    constexpr auto diff = zip_i(x + 2, y + 1) - zip_i(x + 1, y + 1);
+    EXPECT_EQ(diff, 0);
+    constexpr auto minus = zip_i(x + 2, y + 3) - 1;
+    constexpr auto plus = zip_i(x, y + 1) + 1;
+    constexpr bool equal = plus == minus;
+    EXPECT_TRUE(equal);
+    constexpr auto plusComp = zip_i(x + 1, y) += 1;
+    constexpr auto minusComp = zip_i(x + 3, y + 2) -= 1;
+    EXPECT_EQ(plusComp, minusComp);
+    constexpr bool decrementEq = --zip_i(x + 1, y + 3) == zip_i(x, y + 2);
+    EXPECT_TRUE(decrementEq);
 }
