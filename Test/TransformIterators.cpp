@@ -71,8 +71,8 @@ TEST(TransformIterators, manual) {
     auto tBegin = iterators::transform(map.begin(), value);
     auto tEnd = iterators::transform(map.end(), value);
     std::array expected{"1", "2", "3"};
-    auto zBegin = iterators::zip(tBegin, expected.begin());
-    auto zEnd = iterators::zip(tEnd, expected.end());
+    auto zBegin = iterators::zip_i(tBegin, expected.begin());
+    auto zEnd = iterators::zip_i(tEnd, expected.end());
     while (zBegin != zEnd) {
         EXPECT_EQ(std::get<0>(*zBegin), std::get<1>(*zBegin));
         ++zBegin;
