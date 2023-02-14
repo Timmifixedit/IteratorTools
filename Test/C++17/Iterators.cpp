@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <ranges>
 #include <vector>
 #include <list>
 #include <string>
