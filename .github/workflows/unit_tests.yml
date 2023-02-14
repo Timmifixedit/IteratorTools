@@ -50,4 +50,6 @@ jobs:
         cd build
         make -j$(nproc)
     - name: run tests
-      run: ./build/Test/Tests --gtest_color=yes
+      run: |
+        ./build/Test/C++17/Tests_C++17 --gtest_color=yes
+        ./build/Test/C++20/Tests_C++20 --gtest_color=yes
