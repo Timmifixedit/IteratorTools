@@ -76,6 +76,13 @@
 
 #define REQUIRES(EXPRESSION) typename = std::void_t<decltype(EXPRESSION)>
 
+#ifdef __cpp_lib_ranges
+#include <ranges>
+#define DERIVE_VIEW_INTERFACE(CLASS) : std::ranges::view_interface<CLASS>
+#else
+#define DERIVE_VIEW_INTERFACE(CLASS)
+#endif
+
 /**
  * @brief namespace containing zip and enumerate functions
  */
@@ -594,7 +601,7 @@ namespace iterators {
          * @tparam Iterable Underlying range types
          */
         template<typename ...Iterable>
-        struct ZipView {
+        struct ZipView DERIVE_VIEW_INTERFACE(ZipView<Iterable...>) {
         private:
             using ContainerTuple = std::tuple<Iterable...>;
             template<bool Const>
