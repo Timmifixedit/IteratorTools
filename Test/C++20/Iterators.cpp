@@ -30,6 +30,17 @@ TEST(cpp20_compat, view_concat_pipe) {
     auto indexRange = enumerate(vecA) | elements<0>;
     EXPECT_TRUE(std::ranges::equal(indices, indexRange));
 }
+
+TEST(cpp20_compat, multiple_concatenations) {
+    using namespace iterators;
+    using namespace std::views;
+    std::vector numbers{1, 2, 3, 4, 5, 6, 7, 8, 9};
+    auto gt = {2, 5, 8};
+    auto div3IndexRange = enumerate(numbers) |
+            filter([](auto tuple) { return std::get<1>(tuple) % 3 == 0; }) | elements<0>;
+    EXPECT_TRUE(std::ranges::equal(div3IndexRange, gt));
+}
+
 TEST(cpp20_compat, range_algo) {
     using namespace iterators;
     using namespace std::views;

@@ -684,7 +684,7 @@ namespace iterators {
          * @brief Iterator of an infinite sequence of numbers. Simply increments an internal counter
          * @tparam Type of the counter (most of the time this is ```std::size_t```)
          */
-        template<typename T>
+        template<typename T = std::size_t>
         struct CounterIterator : public SynthesizedOperators<CounterIterator<T>> {
             using value_type = T;
             using reference = T;
@@ -704,6 +704,8 @@ namespace iterators {
              */
             explicit constexpr CounterIterator(T begin, T increment = T(1)) noexcept:
                     counter(begin), increment(increment) {}
+
+            constexpr CounterIterator() noexcept: CounterIterator(T(0)) {}
 
             /**
              * Increments value by increment
