@@ -48,8 +48,6 @@ jobs:
     - name: build
       run: |
         cd build
-        make -j$(nproc)
+        ../Test/build_tests_ci.sh
     - name: run tests
-      run: |
-        ./build/Test/C++17/Tests_C++17 --gtest_color=yes
-        ./build/Test/C++20/Tests_C++20 --gtest_color=yes
+      run: ./Test/run_tests_ci.sh
