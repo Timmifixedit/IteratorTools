@@ -35,5 +35,6 @@ jobs:
       - name: build and run
         run: |
           cd build
+          $CXX --version
           make Tests_C++20 -j$(nproc)
           ./Test/C++20/Tests_C++20 --gtest_color=yes
