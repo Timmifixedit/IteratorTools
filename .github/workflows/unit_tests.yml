@@ -18,22 +18,22 @@ jobs:
       CXX: ${{ matrix.cxx }}
 
     steps:
-    - uses: actions/checkout@v3
-    - name: dependencies
-      run: |
-        chmod +x .github/workflows/install_deps_ci.sh
-        ./.github/workflows/install_deps_ci.sh
+      - uses: actions/checkout@v3
+      - name: dependencies
+        run: |
+          chmod +x .github/workflows/install_deps_ci.sh
+          ./.github/workflows/install_deps_ci.sh
 
-    - name: Install Gtest
-      run: |
-        chmod +x .github/workflows/install_gtest.sh
-        ./.github/workflows/install_gtest.sh
-    - name: run cmake
-      run: |
-        mkdir build && cd build
-        cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{ matrix.build }} ..
-    - name: build and run
-      run: |
-        cd build
-        make Tests_C++17 -j$(nproc)
-        ./Test/C++17/Tests_C++17 --gtest_color=yes
+      - name: Install Gtest
+        run: |
+          chmod +x .github/workflows/install_gtest.sh
+          ./.github/workflows/install_gtest.sh
+      - name: run cmake
+        run: |
+          mkdir build && cd build
+          cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{ matrix.build }} ..
+      - name: build and run
+        run: |
+          cd build
+          make Tests_C++17 -j$(nproc)
+          ./Test/C++17/Tests_C++17 --gtest_color=yes
