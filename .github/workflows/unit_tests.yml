@@ -47,7 +47,10 @@ jobs:
         cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{ matrix.build }} ..
     - name: build
       run: |
+        chmod +x Test/build_tests_ci.sh
         cd build
         ../Test/build_tests_ci.sh
     - name: run tests
-      run: ./Test/run_tests_ci.sh
+      run: |
+        chmod +x Test/tun_tests_ci.sh
+        ./Test/run_tests_ci.sh
