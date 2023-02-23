@@ -1,4 +1,5 @@
 echo The current compiler is "$CXX"
+$($CXX --version)
 make Tests_C++17 -j"$(nproc)"
 ./Test/C++17/Tests_C++17 --gtest_color=yes
 if [[ $CXX == g++-1* ]]; then
