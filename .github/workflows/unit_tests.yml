@@ -52,5 +52,5 @@ jobs:
         ../Test/build_tests_ci.sh
     - name: run tests
       run: |
-        chmod +x Test/tun_tests_ci.sh
+        chmod +x Test/run_tests_ci.sh
         ./Test/run_tests_ci.sh
