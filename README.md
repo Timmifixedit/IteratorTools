@@ -1,5 +1,5 @@
 [![unit tests](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml)
-[![c++20 range compatibility](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests_c++20_ranges.yml)
+[![c++20 range compatibility](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests_c++20_ranges.yml/badge.svg)](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests_c++20_ranges.yml)
 # Python-like Zip and Enumerate Iterators
 C++-implementation of Python-like zip- and enumerate-iterators which can be used in range-based
 for loops along with structured bindings to iterate over multiple containers at the same
