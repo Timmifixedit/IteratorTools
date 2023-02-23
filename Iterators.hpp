@@ -625,6 +625,8 @@ namespace iterators {
             constexpr explicit ZipView(Container &&...containers) :
                 containers(std::in_place, std::forward<Container>(containers)...) {}
 
+            ZipView() = default;
+
 
             /**
             * Returns a ZipIterator to the first elements of the underlying ranges
