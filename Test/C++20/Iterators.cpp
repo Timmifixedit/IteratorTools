@@ -28,15 +28,6 @@ TEST(cpp20_compat, view_concat_pipe) {
 
     auto indices = {0, 1, 2};
     auto indexRange = enumerate(vecA) | elements<0>;
-    for (auto i : indexRange) {
-        std::cout << i << std::endl;
-    }
-
-    std::cout << std::endl;
-
-    for (auto i : indices) {
-        std::cout << i << std::endl;
-    }
     EXPECT_TRUE(std::ranges::equal(indices, indexRange));
 }
 
