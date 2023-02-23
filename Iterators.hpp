@@ -11,6 +11,7 @@
 
 #include <algorithm>
 #include <tuple>
+#include <optional>
 
 #define REFERENCE(TYPE) std::declval<std::add_lvalue_reference_t<TYPE>>()
 
@@ -622,7 +623,7 @@ namespace iterators {
              */
             template<typename ...Container>
             constexpr explicit ZipView(Container &&...containers) :
-                containers(std::forward<Container>(containers)...) {}
+                containers(std::in_place, std::forward<Container>(containers)...) {}
 
 
             /**
@@ -631,7 +632,7 @@ namespace iterators {
             */
             constexpr auto begin() {
                 return ZipIterator<IteratorTuple>(
-                        std::apply([](auto &&...c) { return IteratorTuple(std::begin(c)...); }, containers));
+                        std::apply([](auto &&...c) { return IteratorTuple(std::begin(c)...); }, *containers));
             }
 
             /**
@@ -640,7 +641,7 @@ namespace iterators {
             */
             constexpr auto end() {
                 return ZipIterator<SentinelTuple>(
-                        std::apply([](auto &&...c) { return SentinelTuple(std::end(c)...); }, containers));
+                        std::apply([](auto &&...c) { return SentinelTuple(std::end(c)...); }, *containers));
             }
 
             /**
@@ -649,7 +650,7 @@ namespace iterators {
              */
             constexpr auto begin() const {
                 return ZipIterator<CIteratorTuple>(
-                        std::apply([](auto &&...c) { return CIteratorTuple(std::begin(c)...); }, containers));
+                        std::apply([](auto &&...c) { return CIteratorTuple(std::begin(c)...); }, *containers));
             }
 
             /**
@@ -657,11 +658,11 @@ namespace iterators {
              */
             constexpr auto end() const {
                 return ZipIterator<CSentinelTuple>(
-                        std::apply([](auto &&...c) { return CSentinelTuple(std::end(c)...); }, containers));
+                        std::apply([](auto &&...c) { return CSentinelTuple(std::end(c)...); }, *containers));
             }
 
         private:
-            ContainerTuple containers;
+            std::optional<ContainerTuple> containers;
         };
 
         /**
