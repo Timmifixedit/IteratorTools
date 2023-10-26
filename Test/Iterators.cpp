@@ -28,6 +28,7 @@ DETECT(eq, INSTANCE_OF(T) == INSTANCE_OF(T))
 DETECT(ineq, INSTANCE_OF(T) != INSTANCE_OF(T))
 DETECT(subsc, INSTANCE_OF(T)[INSTANCE_OF(std::size_t)])
 DETECT(deref, *INSTANCE_OF(T))
+DETECT(size, INSTANCE_OF(T).size())
 
 DETECT_BINARY(eq_with, INSTANCE_OF(T) == INSTANCE_OF(U))
 DETECT_BINARY(neq_with, INSTANCE_OF(T) != INSTANCE_OF(U))
@@ -725,4 +726,30 @@ TEST(Iterators, compiletime_iterator) {
     EXPECT_EQ(plusComp, minusComp);
     constexpr bool decrementEq = --zip_i(x + 1, y + 3) == zip_i(x, y + 2);
     EXPECT_TRUE(decrementEq);
+}
+
+TEST(Iterators, size) {
+    using namespace iterators;
+    static constexpr int numbers[] = {1, 2, 3 , 4};
+    static constexpr auto strings = {"a", "b", "c"};
+    static constexpr std::array numbers1{1, 4};
+    std::list doubles{0.1, 0.4, 0.2, 1.9, 1.4};
+    auto zipView = zip(numbers, strings, doubles);
+    EXPECT_EQ(zipView.size(), 3);
+    constexpr auto zipC = zip(numbers, numbers1, strings);
+    constexpr auto size = zipC.size();
+    EXPECT_EQ(size, 2);
+    using namespace iterators;
+    EXPECT_FALSE(has_size_v<decltype(enumerate(numbers))>);
+}
+
+TEST(Iterators, zip_subscript) {
+    using namespace iterators;
+    static constexpr int numbers[] = {1, 2, 3 , 4};
+    static constexpr auto strings = {"a", "b", "c"};
+    constexpr auto res = zip(numbers, strings)[2];
+    EXPECT_EQ(std::get<0>(res), 3);
+    EXPECT_EQ(std::get<1>(res), "c");
+    std::list list{1, 2, 3};
+    EXPECT_FALSE(has_subsc_v<decltype(zip(numbers, list))>);
 }
