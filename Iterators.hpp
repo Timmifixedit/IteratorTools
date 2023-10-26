@@ -674,6 +674,28 @@ namespace iterators {
             }
 
             /**
+             * Array subscript operator (no bounds are checked)
+             * @tparam IsRandomAccess SFINAE helper, do not specify explicitly
+             * @param index index
+             * @return zip view element at given index
+             */
+            template<bool IsRandomAccess = traits::is_random_accessible_v<IteratorTuple>,
+                    typename = std::enable_if_t<IsRandomAccess>>
+            constexpr auto operator[](std::size_t index) {
+                return begin()[index];
+            }
+
+            /**
+             * @copydoc ZipView::operator[](std::size_t index)
+             */
+            template<bool IsRandomAccess = traits::is_random_accessible_v<CIteratorTuple>,
+                    typename = std::enable_if_t<IsRandomAccess>>
+            constexpr auto operator[](std::size_t index) const {
+                return begin()[index];
+            }
+
+
+            /**
              * Returns the smallest size of all containers. Only available if all containers know their size
              * @tparam HasSize SFINAE guard, do not specify explicitly
              * @return smallest size of all containers

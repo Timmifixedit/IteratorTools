@@ -686,3 +686,14 @@ TEST(Iterators, size) {
     using namespace iterators;
     EXPECT_FALSE(has_size_v<decltype(enumerate(numbers))>);
 }
+
+TEST(Iterators, zip_subscript) {
+    using namespace iterators;
+    static constexpr int numbers[] = {1, 2, 3 , 4};
+    static constexpr auto strings = {"a", "b", "c"};
+    constexpr auto res = zip(numbers, strings)[2];
+    EXPECT_EQ(std::get<0>(res), 3);
+    EXPECT_EQ(std::get<1>(res), "c");
+    std::list list{1, 2, 3};
+    EXPECT_FALSE(has_subsc_v<decltype(zip(numbers, list))>);
+}
