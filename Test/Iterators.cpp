@@ -341,6 +341,62 @@ TEST(Iterators, bool_vector) {
     EXPECT_TRUE(std::equal(booleans.begin(), booleans.end(), expected.begin()));
 }
 
+TEST(Iterators, zip_enumerate) {
+    using namespace iterators;
+    auto numbers = {1, 2, 3};
+    auto strings = std::array{"a", "b", "c"};
+    std::vector<std::string> results;
+    for (auto [index, n, s] : zip_enumerate(numbers, strings)) {
+        results.emplace_back(s + std::to_string(n) + std::to_string(index));
+    }
+
+    EXPECT_EQ(results, (std::vector<std::string>{"a10", "b21", "c32"}));
+}
+
+TEST(Iterators, zip_enumerate_offset) {
+    using namespace iterators;
+    auto numbers = {1, 2, 3};
+    auto strings = std::array{"a", "b", "c"};
+    std::vector<std::string> results;
+    for (auto [index, n, s] : zip_enumerate(numbers, strings, 4, 2)) {
+        results.emplace_back(s + std::to_string(n) + std::to_string(index));
+    }
+
+    EXPECT_EQ(results, (std::vector<std::string>{"a14", "b26", "c38"}));
+    results.clear();
+    for (auto [index, n, s] : zip_enumerate(numbers, strings, 4)) {
+        results.emplace_back(s + std::to_string(n) + std::to_string(index));
+    }
+
+    EXPECT_EQ(results, (std::vector<std::string>{"a14", "b25", "c36"}));
+}
+
+TEST(Iterators, zip_enumerate_offset_no_copy) {
+    using namespace iterators;
+    auto numbers = {1, 2, 3};
+    std::vector<MustNotCopy> strings;
+    strings.emplace_back("a");
+    strings.emplace_back("b");
+    strings.emplace_back("c");
+    bool allowedToDie = false;
+    for (auto [index, n, s, _] : zip_enumerate(LifeTimeChecker<int>({1, 2, 3}, allowedToDie), strings, numbers, 4)) {
+        s.s += std::to_string(n) + std::to_string(index);
+        if (index == 6) {
+            allowedToDie = true;
+        }
+    }
+}
+
+TEST(Iterators, const_zip_enumerate) {
+    using namespace iterators;
+    std::vector<int> numbers;
+    EXPECT_TRUE((std::is_const_v<std::remove_reference_t<decltype(std::get<1>(
+            *const_zip_enumerate(numbers, numbers).begin()))>>));
+    EXPECT_TRUE((std::is_const_v<std::remove_reference_t<decltype(std::get<1>(
+            *const_zip_enumerate(numbers, numbers, 2, 4).begin()))>>));
+
+}
+
 TEST(Iterators, type_traits) {
     using namespace iterators;
     std::array<int, 1> array;

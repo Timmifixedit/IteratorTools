@@ -86,7 +86,6 @@ namespace iterators {
      * Normally there is no need to use any of its members directly
      */
     namespace impl {
-
         /**
          * @brief namespace containing type traits used in implementation of zip and enumerate
          */
@@ -261,6 +260,41 @@ namespace iterators {
             template<typename T>
             constexpr inline bool has_size_v = has_size<T>::value;
         }
+
+
+        template<std::size_t Offset, std::size_t ...Idx>
+        constexpr auto index_seq_impl(std::index_sequence<Idx...>) noexcept {
+            return std::index_sequence<(Idx + Offset)...>{};
+        }
+
+        template<std::size_t Start, std::size_t End>
+        constexpr auto index_seq() noexcept {
+            return index_seq_impl<Start>(std::make_index_sequence<End - Start>());
+        }
+
+        template<typename Tuple, std::size_t ...Idx1, std::size_t ...Idx2>
+        constexpr auto tuple_split_impl(Tuple &&tuple, std::index_sequence<Idx1...>, std::index_sequence<Idx2...>) {
+            return std::make_pair(std::tuple<std::tuple_element_t<Idx1, Tuple>&&...>(std::get<Idx1>(std::forward<Tuple>(tuple))...),
+                                  std::tuple<std::tuple_element_t<Idx2, Tuple>&&...>(std::get<Idx2>(std::forward<Tuple>(tuple))...));
+        }
+
+        template<std::size_t Idx, typename Tuple>
+        constexpr auto tuple_split(Tuple &&tuple) {
+            return tuple_split_impl(std::forward<Tuple>(tuple),
+                                    std::make_index_sequence<Idx>(),
+                                    index_seq<Idx, std::tuple_size_v<Tuple>>());
+        }
+
+        template<template<typename> typename Predicate, std::size_t Idx, typename ...Ts>
+        constexpr std::size_t index_of() noexcept {
+            static_assert(Idx < sizeof...(Ts));
+            if constexpr (Predicate<std::tuple_element_t<Idx, std::tuple<Ts...>>>::value) {
+                return Idx;
+            } else {
+                return index_of<Predicate, Idx + 1, Ts...>();
+            }
+        }
+
 
         /**
          * @brief CRTP-class that provides additional pointer arithmetic operators synthesized from basic operators
@@ -890,7 +924,8 @@ namespace iterators {
              * @param increment step size
              * @note Depending on the template type T, increment can also be negative.
              */
-            explicit constexpr CounterRange(T start, T increment) noexcept: start(start), increment(increment) {}
+            explicit constexpr CounterRange(T start = T(0), T increment = T(1)) noexcept:
+                start(start), increment(increment) {}
 
             /**
              * @return CounterIterator representing the beginning of the sequence
@@ -952,6 +987,26 @@ namespace iterators {
                 std::add_const_t<std::remove_reference_t<Iterable>>>...>(std::forward<Iterable>(iterable)...);
     }
 
+    namespace impl{
+        template<typename TZip, typename ...Iterable>
+        constexpr auto zip_enumerate_impl(TZip &&tZip, Iterable &&...iterable) {
+            if constexpr (sizeof...(Iterable) == 0 || !(std::is_integral_v<std::remove_reference_t<Iterable>> || ...)) {
+                return std::forward<TZip>(tZip)(impl::CounterRange(0ul, 1ul), std::forward<Iterable>(iterable)...);
+            } else {
+                constexpr auto CtrRangeArgsIdx = impl::index_of<std::is_integral, 0,
+                                                                std::remove_reference_t<Iterable>...>();
+                static_assert(CtrRangeArgsIdx >= sizeof...(Iterable) - 2);
+                auto [its, enumArgs] = impl::tuple_split<CtrRangeArgsIdx>(
+                        std::forward_as_tuple(std::forward<Iterable>(iterable)...));
+                return std::apply([&tZip](auto &&... args) { return std::forward<TZip>(tZip)(std::forward<decltype(args)>(args)...); },
+                                  std::tuple_cat(std::make_tuple(
+                                          std::make_from_tuple<impl::CounterRange<
+                                                  std::remove_reference_t<std::tuple_element_t<0, decltype(enumArgs)>>>>(
+                                                  enumArgs)), std::move(its)));
+            }
+        }
+    }
+
     /**
      * Function that can be used in range based loops to emulate the enumerate iterator from python.
      * @tparam Container Container type that supports iteration
@@ -975,6 +1030,29 @@ namespace iterators {
     template<typename Container, typename T = std::size_t>
     constexpr auto const_enumerate(Container &&container, T start = T(0), T increment = T(1)) {
         return const_zip(impl::CounterRange(start, increment), std::forward<Container>(container));
+    }
+
+    /**
+     * combination of zip and enumerate, i.e. returns an impl::ZipView that contains an enumerator at the first position
+     * @tparam Iterable Types of arguments
+     * @param iterable arbitrary number of iterables followed by optionally a start and an increment
+     * @return impl::ZipView with prepended enumerator
+     */
+    template<typename ...Iterable>
+    constexpr auto zip_enumerate(Iterable &&...iterable) {
+        return impl::zip_enumerate_impl([](auto &&... args) { return zip(std::forward<decltype(args)>(args)...); },
+                                        std::forward<Iterable>(iterable)...);
+    }
+
+    /**
+     * zip_enumerate variant that does not allow manipulation of the container elements
+     *
+     * @copydoc zip_enumerate
+     */
+    template<typename ...Iterable>
+    constexpr auto const_zip_enumerate(Iterable &&...iterable) {
+        return impl::zip_enumerate_impl([](auto &&... args) { return const_zip(std::forward<decltype(args)>(args)...); },
+                                        std::forward<Iterable>(iterable)...);
     }
 
 }
