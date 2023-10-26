@@ -245,6 +245,21 @@ namespace iterators {
 
             template<typename T>
             constexpr inline bool is_bidirectional_v = is_bidirectional<T>::value;
+
+            template<typename T, typename = std::void_t<>>
+            struct has_size : std::false_type {};
+
+            template<typename T>
+            struct has_size<T, std::void_t<decltype(std::size(std::declval<std::remove_reference_t<T>>()))>>
+                    : std::true_type {};
+
+            template<typename ...Ts>
+            struct has_size<std::tuple<Ts...>> {
+                static constexpr bool value = (has_size<Ts>::value &&...);
+            };
+
+            template<typename T>
+            constexpr inline bool has_size_v = has_size<T>::value;
         }
 
         /**
@@ -607,6 +622,11 @@ namespace iterators {
             using CIteratorTuple = Iterators<true>;
             using SentinelTuple = Sentinels<false>;
             using CSentinelTuple = Sentinels<true>;
+
+            template<typename Tuple, std::size_t ...Idx>
+            constexpr auto sizeImpl(const Tuple &contTuple, std::index_sequence<Idx...>) const {
+                return std::min({std::size(std::get<Idx>(contTuple))...});
+            }
         public:
             /**
              * CTor. Binds reference to ranges or takes ownership in case of rvalue references
@@ -651,6 +671,16 @@ namespace iterators {
             constexpr auto end() const {
                 return ZipIterator<CSentinelTuple>(
                         std::apply([](auto &&...c) { return CSentinelTuple(std::end(c)...); }, containers));
+            }
+
+            /**
+             * Returns the smallest size of all containers. Only available if all containers know their size
+             * @tparam HasSize SFINAE guard, do not specify explicitly
+             * @return smallest size of all containers
+             */
+            template<bool HasSize = traits::has_size_v<ContainerTuple>>
+            constexpr auto size() const -> std::enable_if_t<HasSize, std::size_t> {
+                return sizeImpl(containers, std::make_index_sequence<std::tuple_size_v<ContainerTuple>>());
             }
 
         private:
