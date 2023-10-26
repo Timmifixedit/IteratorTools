@@ -8,53 +8,59 @@ namespace containing type traits used in implementation of zip and enumerate
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bfseries dereference}
-\item 
-struct {\bfseries dereference$<$ T, true $>$}
-\item 
-struct {\bfseries is\+\_\+bidirectional}
-\item 
-struct {\bfseries is\+\_\+bidirectional$<$ std\+::tuple$<$ Ts... $>$, std\+::void\+\_\+t$<$ value\+\_\+to\+\_\+type\+\_\+t$<$ minimum\+\_\+category\+\_\+v$<$ std\+::tuple$<$ Ts... $>$ $>$ $>$ $>$ $>$}
-\item 
-struct {\bfseries is\+\_\+bidirectional$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
-\item 
 struct {\bfseries is\+\_\+container}
 \item 
 struct {\bfseries is\+\_\+container$<$ T, std\+::void\+\_\+t$<$ decltype(std\+::begin(std\+::declval$<$ T $>$()), std\+::end(std\+::declval$<$ T $>$()))$>$ $>$}
 \item 
 struct {\bfseries is\+\_\+dereferencible}
 \item 
-struct {\bfseries is\+\_\+dereferencible$<$ std\+::tuple$<$ Ts... $>$, void $>$}
-\item 
 struct {\bfseries is\+\_\+dereferencible$<$ T, std\+::void\+\_\+t$<$ decltype($\ast$std\+::declval$<$ T $>$())$>$ $>$}
+\item 
+struct {\bfseries is\+\_\+dereferencible$<$ std\+::tuple$<$ Ts... $>$, void $>$}
 \item 
 struct {\bfseries is\+\_\+incrementable}
 \item 
+struct {\bfseries is\+\_\+incrementable$<$ T, std\+::void\+\_\+t$<$ decltype(++\+REFERENCE(\+T))$>$ $>$}
+\item 
 struct {\bfseries is\+\_\+incrementable$<$ std\+::tuple$<$ Ts... $>$, void $>$}
 \item 
-struct {\bfseries is\+\_\+incrementable$<$ T, std\+::void\+\_\+t$<$ decltype(++\+R\+E\+F\+E\+R\+E\+N\+C\+E(\+T))$>$ $>$}
+struct {\bfseries dereference}
 \item 
-struct {\bfseries is\+\_\+random\+\_\+accessible}
+struct {\bfseries dereference$<$ T, true $>$}
 \item 
-struct {\bfseries is\+\_\+random\+\_\+accessible$<$ std\+::tuple$<$ Ts... $>$, std\+::void\+\_\+t$<$ value\+\_\+to\+\_\+type\+\_\+t$<$ minimum\+\_\+category\+\_\+v$<$ std\+::tuple$<$ Ts... $>$ $>$ $>$ $>$ $>$}
+struct {\bfseries values}
 \item 
-struct {\bfseries is\+\_\+random\+\_\+accessible$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
-\item 
-struct {\bfseries iterator\+\_\+category\+\_\+from\+\_\+value}
-\item 
-struct {\bfseries iterator\+\_\+category\+\_\+from\+\_\+value$<$ 0 $>$}
+struct {\bfseries values$<$ std\+::tuple$<$ Ts... $>$ $>$}
 \item 
 struct {\bfseries iterator\+\_\+category\+\_\+value}
 \item 
 struct {\bfseries iterator\+\_\+category\+\_\+value$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
 \item 
+struct {\bfseries iterator\+\_\+category\+\_\+from\+\_\+value}
+\item 
+struct {\bfseries iterator\+\_\+category\+\_\+from\+\_\+value$<$ 0 $>$}
+\item 
 struct {\bfseries minimum\+\_\+category}
 \item 
 struct {\bfseries minimum\+\_\+category$<$ std\+::tuple$<$ Ts... $>$ $>$}
 \item 
-struct {\bfseries values}
+struct {\bfseries is\+\_\+random\+\_\+accessible}
 \item 
-struct {\bfseries values$<$ std\+::tuple$<$ Ts... $>$ $>$}
+struct {\bfseries is\+\_\+random\+\_\+accessible$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
+\item 
+struct {\bfseries is\+\_\+random\+\_\+accessible$<$ std\+::tuple$<$ Ts... $>$, std\+::void\+\_\+t$<$ value\+\_\+to\+\_\+type\+\_\+t$<$ minimum\+\_\+category\+\_\+v$<$ std\+::tuple$<$ Ts... $>$ $>$ $>$ $>$ $>$}
+\item 
+struct {\bfseries is\+\_\+bidirectional}
+\item 
+struct {\bfseries is\+\_\+bidirectional$<$ T, std\+::void\+\_\+t$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::iterator\+\_\+category $>$ $>$}
+\item 
+struct {\bfseries is\+\_\+bidirectional$<$ std\+::tuple$<$ Ts... $>$, std\+::void\+\_\+t$<$ value\+\_\+to\+\_\+type\+\_\+t$<$ minimum\+\_\+category\+\_\+v$<$ std\+::tuple$<$ Ts... $>$ $>$ $>$ $>$ $>$}
+\item 
+struct {\bfseries has\+\_\+size}
+\item 
+struct {\bfseries has\+\_\+size$<$ T, std\+::void\+\_\+t$<$ decltype(std\+::size(std\+::declval$<$ std\+::remove\+\_\+reference\+\_\+t$<$ T $>$$>$()))$>$ $>$}
+\item 
+struct {\bfseries has\+\_\+size$<$ std\+::tuple$<$ Ts... $>$ $>$}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -91,6 +97,9 @@ struct {\bfseries values$<$ std\+::tuple$<$ Ts... $>$ $>$}
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}\label{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}} 
 {\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries is\+\_\+bidirectional\+\_\+v} = is\+\_\+bidirectional$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}\label{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries has\+\_\+size\+\_\+v} = has\+\_\+size$<$T$>$\+::value
 \end{DoxyCompactItemize}
 
 

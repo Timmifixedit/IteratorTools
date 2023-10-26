@@ -19,7 +19,7 @@ Include dependency graph for Iterators.\+hpp\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators$<$ Impl $>$}}
-\begin{DoxyCompactList}\small\item\em C\+R\+T\+P-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em CRTP-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator$<$ Iterators $>$}}
 \begin{DoxyCompactList}\small\item\em Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View$<$ Iterable $>$}}
@@ -43,38 +43,38 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}\label{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}} 
-\#define {\bfseries R\+E\+F\+E\+R\+E\+N\+CE}(T\+Y\+PE)~std\+::declval$<$std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$T\+Y\+PE$>$$>$()
+\#define {\bfseries REFERENCE}(TYPE)~std\+::declval$<$std\+::add\+\_\+lvalue\+\_\+reference\+\_\+t$<$TYPE$>$$>$()
 \item 
-\#define {\bfseries A\+L\+L\+\_\+\+N\+O\+E\+X\+C\+E\+PT}(OP,  N\+A\+ME)
+\#define {\bfseries ALL\+\_\+\+NOEXCEPT}(OP,  NAME)
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}\label{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}} 
-\#define {\bfseries E\+L\+E\+M\+E\+N\+T1}~std\+::get$<$Idx$>$(tuple1)
+\#define {\bfseries ELEMENT1}~std\+::get$<$Idx$>$(tuple1)
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}\label{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}} 
-\#define {\bfseries E\+L\+E\+M\+E\+N\+T2}~std\+::get$<$Idx$>$(tuple2)
+\#define {\bfseries ELEMENT2}~std\+::get$<$Idx$>$(tuple2)
 \item 
-\#define {\bfseries B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+CH}(O\+P\+E\+R\+A\+T\+I\+ON,  N\+A\+ME)
+\#define {\bfseries BINARY\+\_\+\+TUPLE\+\_\+\+FOR\+\_\+\+EACH}(OPERATION,  NAME)
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a6a3b1a0ca91042a10f15f0bb9ba5ba14}\label{Iterators_8hpp_a6a3b1a0ca91042a10f15f0bb9ba5ba14}} 
-\#define {\bfseries B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+C\+H\+\_\+\+F\+O\+LD}(O\+P\+E\+R\+A\+T\+I\+ON,  C\+O\+M\+B\+I\+N\+A\+T\+OR,  N\+A\+ME)~B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+CH( ( (O\+P\+E\+R\+A\+T\+I\+ON) C\+O\+M\+B\+I\+N\+A\+T\+OR ...), N\+A\+ME)
+\#define {\bfseries BINARY\+\_\+\+TUPLE\+\_\+\+FOR\+\_\+\+EACH\+\_\+\+FOLD}(OPERATION,  COMBINATOR,  NAME)~BINARY\+\_\+\+TUPLE\+\_\+\+FOR\+\_\+\+EACH( ( (OPERATION) COMBINATOR ...), NAME)
 \item 
-\#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+D\+E\+F\+A\+U\+LT}
+\#define {\bfseries TYPE\+\_\+\+MAP\+\_\+\+DEFAULT}
 \item 
-\#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+AP}(T\+Y\+PE,  V\+A\+L\+UE)
+\#define {\bfseries TYPE\+\_\+\+MAP}(TYPE,  VALUE)
 \item 
-\#define {\bfseries T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+A\+L\+I\+AS}
+\#define {\bfseries TYPE\+\_\+\+MAP\+\_\+\+ALIAS}
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}\label{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}} 
-\#define {\bfseries I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+OF}(T\+Y\+P\+E\+N\+A\+ME)~std\+::declval$<$T\+Y\+P\+E\+N\+A\+ME$>$()
+\#define {\bfseries INSTANCE\+\_\+\+OF}(TYPENAME)~std\+::declval$<$TYPENAME$>$()
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}\label{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}} 
-\#define {\bfseries I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+O\+F\+\_\+\+I\+M\+PL}~I\+N\+S\+T\+A\+N\+C\+E\+\_\+\+OF(Implementation)
+\#define {\bfseries INSTANCE\+\_\+\+OF\+\_\+\+IMPL}~INSTANCE\+\_\+\+OF(Implementation)
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}\label{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}} 
-\#define {\bfseries R\+E\+Q\+U\+I\+R\+E\+S\+\_\+\+I\+M\+PL}(T\+Y\+P\+E\+N\+A\+ME,  E\+X\+P\+R\+E\+S\+S\+I\+ON)~typename Implementation = T\+Y\+P\+E\+N\+A\+ME, typename = std\+::void\+\_\+t$<$decltype(E\+X\+P\+R\+E\+S\+S\+I\+ON)$>$
+\#define {\bfseries REQUIRES\+\_\+\+IMPL}(TYPENAME,  EXPRESSION)~typename Implementation = TYPENAME, typename = std\+::void\+\_\+t$<$decltype(EXPRESSION)$>$
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}\label{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}} 
-\#define {\bfseries R\+E\+Q\+U\+I\+R\+ES}(E\+X\+P\+R\+E\+S\+S\+I\+ON)~typename = std\+::void\+\_\+t$<$decltype(E\+X\+P\+R\+E\+S\+S\+I\+ON)$>$
+\#define {\bfseries REQUIRES}(EXPRESSION)~typename = std\+::void\+\_\+t$<$decltype(EXPRESSION)$>$
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -126,6 +126,9 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}\label{namespaceiterators_1_1impl_1_1traits_a08a64e484682b5a56739b221eeeb6183}} 
 {\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+bidirectional\+\_\+v} = is\+\_\+bidirectional$<$T$>$\+::value
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}\label{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}} 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::has\+\_\+size\+\_\+v} = has\+\_\+size$<$T$>$\+::value
 \end{DoxyCompactItemize}
 
 
@@ -145,7 +148,7 @@ tim Luchterhand
 \index{Iterators.hpp@{Iterators.hpp}!ALL\_NOEXCEPT@{ALL\_NOEXCEPT}}
 \index{ALL\_NOEXCEPT@{ALL\_NOEXCEPT}!Iterators.hpp@{Iterators.hpp}}
 \doxyparagraph{\texorpdfstring{ALL\_NOEXCEPT}{ALL\_NOEXCEPT}}
-{\footnotesize\ttfamily \#define A\+L\+L\+\_\+\+N\+O\+E\+X\+C\+E\+PT(\begin{DoxyParamCaption}\item[{}]{OP,  }\item[{}]{N\+A\+ME }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define ALL\+\_\+\+NOEXCEPT(\begin{DoxyParamCaption}\item[{}]{OP,  }\item[{}]{NAME }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
@@ -165,7 +168,7 @@ tim Luchterhand
 \index{Iterators.hpp@{Iterators.hpp}!BINARY\_TUPLE\_FOR\_EACH@{BINARY\_TUPLE\_FOR\_EACH}}
 \index{BINARY\_TUPLE\_FOR\_EACH@{BINARY\_TUPLE\_FOR\_EACH}!Iterators.hpp@{Iterators.hpp}}
 \doxyparagraph{\texorpdfstring{BINARY\_TUPLE\_FOR\_EACH}{BINARY\_TUPLE\_FOR\_EACH}}
-{\footnotesize\ttfamily \#define B\+I\+N\+A\+R\+Y\+\_\+\+T\+U\+P\+L\+E\+\_\+\+F\+O\+R\+\_\+\+E\+A\+CH(\begin{DoxyParamCaption}\item[{}]{O\+P\+E\+R\+A\+T\+I\+ON,  }\item[{}]{N\+A\+ME }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define BINARY\+\_\+\+TUPLE\+\_\+\+FOR\+\_\+\+EACH(\begin{DoxyParamCaption}\item[{}]{OPERATION,  }\item[{}]{NAME }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
@@ -187,7 +190,7 @@ tim Luchterhand
 \index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP@{TYPE\_MAP}}
 \index{TYPE\_MAP@{TYPE\_MAP}!Iterators.hpp@{Iterators.hpp}}
 \doxyparagraph{\texorpdfstring{TYPE\_MAP}{TYPE\_MAP}}
-{\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+AP(\begin{DoxyParamCaption}\item[{}]{T\+Y\+PE,  }\item[{}]{V\+A\+L\+UE }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define TYPE\+\_\+\+MAP(\begin{DoxyParamCaption}\item[{}]{TYPE,  }\item[{}]{VALUE }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
@@ -197,7 +200,7 @@ tim Luchterhand
 \DoxyCodeLine{        \};                    \(\backslash\)}
 \DoxyCodeLine{        template<>            \(\backslash\)}
 \DoxyCodeLine{        struct value\_to\_type<VALUE>\{ \(\backslash\)}
-\DoxyCodeLine{            static\_assert(VALUE != 0, \textcolor{stringliteral}{"0 is a reserved value"}); \(\backslash\)}
+\DoxyCodeLine{            static\_assert(VALUE != 0, \textcolor{stringliteral}{"{}0 is a reserved value"{}}); \(\backslash\)}
 \DoxyCodeLine{            using type = TYPE;\(\backslash\)}
 \DoxyCodeLine{        \};}
 
@@ -206,7 +209,7 @@ tim Luchterhand
 \index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP\_ALIAS@{TYPE\_MAP\_ALIAS}}
 \index{TYPE\_MAP\_ALIAS@{TYPE\_MAP\_ALIAS}!Iterators.hpp@{Iterators.hpp}}
 \doxyparagraph{\texorpdfstring{TYPE\_MAP\_ALIAS}{TYPE\_MAP\_ALIAS}}
-{\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+A\+L\+I\+AS}
+{\footnotesize\ttfamily \#define TYPE\+\_\+\+MAP\+\_\+\+ALIAS}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
@@ -220,7 +223,7 @@ tim Luchterhand
 \index{Iterators.hpp@{Iterators.hpp}!TYPE\_MAP\_DEFAULT@{TYPE\_MAP\_DEFAULT}}
 \index{TYPE\_MAP\_DEFAULT@{TYPE\_MAP\_DEFAULT}!Iterators.hpp@{Iterators.hpp}}
 \doxyparagraph{\texorpdfstring{TYPE\_MAP\_DEFAULT}{TYPE\_MAP\_DEFAULT}}
-{\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+M\+A\+P\+\_\+\+D\+E\+F\+A\+U\+LT}
+{\footnotesize\ttfamily \#define TYPE\+\_\+\+MAP\+\_\+\+DEFAULT}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}

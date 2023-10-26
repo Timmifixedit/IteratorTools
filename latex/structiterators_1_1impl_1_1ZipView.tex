@@ -21,6 +21,12 @@ constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e
 constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a7cd254dd4bbf31692f3d1b96803d2119}{begin}} () const
 \item 
 constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_aeed0f6a2bb8c5adb72fa409d4c9cf915}{end}} () const
+\item 
+{\footnotesize template$<$bool Is\+Random\+Access = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+Iterator\+Tuple$>$, typename  = std\+::enable\+\_\+if\+\_\+t$<$\+Is\+Random\+Access$>$$>$ }\\constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a2b4c13082b1619f86eb31cae7fac41fb}{operator\mbox{[}$\,$\mbox{]}}} (std\+::size\+\_\+t index)
+\item 
+{\footnotesize template$<$bool Is\+Random\+Access = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+CIterator\+Tuple$>$, typename  = std\+::enable\+\_\+if\+\_\+t$<$\+Is\+Random\+Access$>$$>$ }\\constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a23ca91e37307af6b8d3bd408e52f123b}{operator\mbox{[}$\,$\mbox{]}}} (std\+::size\+\_\+t index) const
+\item 
+{\footnotesize template$<$bool Has\+Size = traits\+::has\+\_\+size\+\_\+v$<$\+Container\+Tuple$>$$>$ }\\constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a1c26ab07317961e4a7c93c503aaaf170}{size}} () const -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ Has\+Size, std\+::size\+\_\+t $>$
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Related Functions}
 (Note that these are not member functions.) \begin{DoxyCompactItemize}
@@ -53,7 +59,7 @@ Ranges are captured by lvalue reference, no copying occurs. Temporaries are allo
 template$<$typename ... Container$>$ \\
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{Zip\+View}} (\begin{DoxyParamCaption}\item[{Container \&\&...}]{containers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}}
 
-C\+Tor. Binds reference to ranges or takes ownership in case of rvalue references 
+CTor. Binds reference to ranges or takes ownership in case of rvalue references 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Container} & range types \\
 \hline
@@ -116,6 +122,68 @@ constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+:
 
 Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} to the elements following the last elements of the the underlying ranges \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} created by invoking std\+::end on all underlying ranges 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a2b4c13082b1619f86eb31cae7fac41fb}\label{structiterators_1_1impl_1_1ZipView_a2b4c13082b1619f86eb31cae7fac41fb}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+template$<$bool Is\+Random\+Access = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+Iterator\+Tuple$>$, typename  = std\+::enable\+\_\+if\+\_\+t$<$\+Is\+Random\+Access$>$$>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+Array subscript operator (no bounds are checked) 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Is\+Random\+Access} & SFINAE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+zip view element at given index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a23ca91e37307af6b8d3bd408e52f123b}\label{structiterators_1_1impl_1_1ZipView_a23ca91e37307af6b8d3bd408e52f123b}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+template$<$bool Is\+Random\+Access = traits\+::is\+\_\+random\+\_\+accessible\+\_\+v$<$\+CIterator\+Tuple$>$, typename  = std\+::enable\+\_\+if\+\_\+t$<$\+Is\+Random\+Access$>$$>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+
+
+Array subscript operator (no bounds are checked) 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Is\+Random\+Access} & SFINAE helper, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+zip view element at given index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1ZipView_a1c26ab07317961e4a7c93c503aaaf170}\label{structiterators_1_1impl_1_1ZipView_a1c26ab07317961e4a7c93c503aaaf170}} 
+\index{iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}!size@{size}}
+\index{size@{size}!iterators::impl::ZipView$<$ Iterable $>$@{iterators::impl::ZipView$<$ Iterable $>$}}
+\doxyparagraph{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+template$<$bool Has\+Size = traits\+::has\+\_\+size\+\_\+v$<$\+Container\+Tuple$>$$>$ \\
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View}}$<$ Iterable $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$Has\+Size, std\+::size\+\_\+t$>$ \hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+Returns the smallest size of all containers. Only available if all containers know their size 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Has\+Size} & SFINAE guard, do not specify explicitly \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+smallest size of all containers 
 \end{DoxyReturn}
 
 
