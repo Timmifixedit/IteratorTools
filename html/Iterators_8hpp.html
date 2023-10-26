@@ -188,6 +188,26 @@ template&lt;typename T &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a4e0f27aa5bf98ed2680b215a975d3bdd"><td class="memTemplParams" colspan="2"><a id="a4e0f27aa5bf98ed2680b215a975d3bdd"></a>
+template&lt;std::size_t Offset, std::size_t ... Idx&gt; </td></tr>
+<tr class="memitem:a4e0f27aa5bf98ed2680b215a975d3bdd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::index_seq_impl</b> (std::index_sequence&lt; Idx... &gt;) noexcept</td></tr>
+<tr class="separator:a4e0f27aa5bf98ed2680b215a975d3bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110c3ccb102f725455b0bc991938493a"><td class="memTemplParams" colspan="2"><a id="a110c3ccb102f725455b0bc991938493a"></a>
+template&lt;std::size_t Start, std::size_t End&gt; </td></tr>
+<tr class="memitem:a110c3ccb102f725455b0bc991938493a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::index_seq</b> () noexcept</td></tr>
+<tr class="separator:a110c3ccb102f725455b0bc991938493a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab92c47cfbee44190b2bd7fe40800df5"><td class="memTemplParams" colspan="2"><a id="aab92c47cfbee44190b2bd7fe40800df5"></a>
+template&lt;typename Tuple , std::size_t ... Idx1, std::size_t ... Idx2&gt; </td></tr>
+<tr class="memitem:aab92c47cfbee44190b2bd7fe40800df5"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::tuple_split_impl</b> (Tuple &amp;&amp;tuple, std::index_sequence&lt; Idx1... &gt;, std::index_sequence&lt; Idx2... &gt;)</td></tr>
+<tr class="separator:aab92c47cfbee44190b2bd7fe40800df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26a39d27b24543092a4594fa6b2d585a"><td class="memTemplParams" colspan="2"><a id="a26a39d27b24543092a4594fa6b2d585a"></a>
+template&lt;std::size_t Idx, typename Tuple &gt; </td></tr>
+<tr class="memitem:a26a39d27b24543092a4594fa6b2d585a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::tuple_split</b> (Tuple &amp;&amp;tuple)</td></tr>
+<tr class="separator:a26a39d27b24543092a4594fa6b2d585a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60af380e2d8600b5a36e97a305cfb189"><td class="memTemplParams" colspan="2"><a id="a60af380e2d8600b5a36e97a305cfb189"></a>
+template&lt;template&lt; typename &gt; typename Predicate, std::size_t Idx, typename ... Ts&gt; </td></tr>
+<tr class="memitem:a60af380e2d8600b5a36e97a305cfb189"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::index_of</b> () noexcept</td></tr>
+<tr class="separator:a60af380e2d8600b5a36e97a305cfb189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">iterators::impl::sgn</a> (T val) noexcept</td></tr>
 <tr class="separator:a4a6de0fc2d081e6c204370100dd4d658"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,12 +220,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a12e6f5a7c31da947017d513b58e57dd4"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
 <tr class="memitem:a12e6f5a7c31da947017d513b58e57dd4"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#a12e6f5a7c31da947017d513b58e57dd4">iterators::const_zip</a> (Iterable &amp;&amp;...iterable)</td></tr>
 <tr class="separator:a12e6f5a7c31da947017d513b58e57dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d17f112e09f27269d91c03f2a511cd8"><td class="memTemplParams" colspan="2"><a id="a4d17f112e09f27269d91c03f2a511cd8"></a>
+template&lt;typename TZip , typename ... Iterable&gt; </td></tr>
+<tr class="memitem:a4d17f112e09f27269d91c03f2a511cd8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::zip_enumerate_impl</b> (TZip &amp;&amp;tZip, Iterable &amp;&amp;...iterable)</td></tr>
+<tr class="separator:a4d17f112e09f27269d91c03f2a511cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaea70262053f925d78710baa65075124"><td class="memTemplParams" colspan="2">template&lt;typename Container , typename T  = std::size_t&gt; </td></tr>
 <tr class="memitem:aaea70262053f925d78710baa65075124"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#aaea70262053f925d78710baa65075124">iterators::enumerate</a> (Container &amp;&amp;container, T start=T(0), T increment=T(1))</td></tr>
 <tr class="separator:aaea70262053f925d78710baa65075124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3be2fcec3205019f5a2fe3806adc6848"><td class="memTemplParams" colspan="2">template&lt;typename Container , typename T  = std::size_t&gt; </td></tr>
 <tr class="memitem:a3be2fcec3205019f5a2fe3806adc6848"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#a3be2fcec3205019f5a2fe3806adc6848">iterators::const_enumerate</a> (Container &amp;&amp;container, T start=T(0), T increment=T(1))</td></tr>
 <tr class="separator:a3be2fcec3205019f5a2fe3806adc6848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe2a1812cc476954035d3148aa8a05fa"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
+<tr class="memitem:afe2a1812cc476954035d3148aa8a05fa"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#afe2a1812cc476954035d3148aa8a05fa">iterators::zip_enumerate</a> (Iterable &amp;&amp;...iterable)</td></tr>
+<tr class="separator:afe2a1812cc476954035d3148aa8a05fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b9f472bc8b0244a8224a550967002a3"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
+<tr class="memitem:a1b9f472bc8b0244a8224a550967002a3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#a1b9f472bc8b0244a8224a550967002a3">iterators::const_zip_enumerate</a> (Iterable &amp;&amp;...iterable)</td></tr>
+<tr class="separator:a1b9f472bc8b0244a8224a550967002a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>

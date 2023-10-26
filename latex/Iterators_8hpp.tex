@@ -94,6 +94,21 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd}\label{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd}} 
+{\footnotesize template$<$std\+::size\+\_\+t Offset, std\+::size\+\_\+t ... Idx$>$ }\\constexpr auto {\bfseries iterators\+::impl\+::index\+\_\+seq\+\_\+impl} (std\+::index\+\_\+sequence$<$ Idx... $>$) noexcept
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a}\label{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a}} 
+{\footnotesize template$<$std\+::size\+\_\+t Start, std\+::size\+\_\+t End$>$ }\\constexpr auto {\bfseries iterators\+::impl\+::index\+\_\+seq} () noexcept
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5}\label{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5}} 
+{\footnotesize template$<$typename Tuple , std\+::size\+\_\+t ... Idx1, std\+::size\+\_\+t ... Idx2$>$ }\\constexpr auto {\bfseries iterators\+::impl\+::tuple\+\_\+split\+\_\+impl} (Tuple \&\&tuple, std\+::index\+\_\+sequence$<$ Idx1... $>$, std\+::index\+\_\+sequence$<$ Idx2... $>$)
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a}\label{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a}} 
+{\footnotesize template$<$std\+::size\+\_\+t Idx, typename Tuple $>$ }\\constexpr auto {\bfseries iterators\+::impl\+::tuple\+\_\+split} (Tuple \&\&tuple)
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}\label{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}} 
+{\footnotesize template$<$template$<$ typename $>$ typename Predicate, std\+::size\+\_\+t Idx, typename ... Ts$>$ }\\constexpr std\+::size\+\_\+t {\bfseries iterators\+::impl\+::index\+\_\+of} () noexcept
+\item 
 {\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{iterators\+::impl\+::sgn}} (T val) noexcept
 \item 
 {\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{iterators\+::zip\+\_\+i}} (Iterators ...iterators) -\/$>$ impl\+::\+Zip\+Iterator$<$ std\+::tuple$<$ Iterators... $>$$>$
@@ -102,9 +117,16 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \item 
 {\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}{iterators\+::const\+\_\+zip}} (Iterable \&\&...iterable)
 \item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a4d17f112e09f27269d91c03f2a511cd8}\label{namespaceiterators_1_1impl_a4d17f112e09f27269d91c03f2a511cd8}} 
+{\footnotesize template$<$typename TZip , typename ... Iterable$>$ }\\constexpr auto {\bfseries iterators\+::impl\+::zip\+\_\+enumerate\+\_\+impl} (TZip \&\&t\+Zip, Iterable \&\&...iterable)
+\item 
 {\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{iterators\+::enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
 \item 
 {\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}{iterators\+::const\+\_\+enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
+\item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}{iterators\+::zip\+\_\+enumerate}} (Iterable \&\&...iterable)
+\item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}{iterators\+::const\+\_\+zip\+\_\+enumerate}} (Iterable \&\&...iterable)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}

@@ -102,6 +102,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a3be2fcec3205019f5a2fe3806adc6848"><td class="memTemplParams" colspan="2">template&lt;typename Container , typename T  = std::size_t&gt; </td></tr>
 <tr class="memitem:a3be2fcec3205019f5a2fe3806adc6848"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#a3be2fcec3205019f5a2fe3806adc6848">const_enumerate</a> (Container &amp;&amp;container, T start=T(0), T increment=T(1))</td></tr>
 <tr class="separator:a3be2fcec3205019f5a2fe3806adc6848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe2a1812cc476954035d3148aa8a05fa"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
+<tr class="memitem:afe2a1812cc476954035d3148aa8a05fa"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#afe2a1812cc476954035d3148aa8a05fa">zip_enumerate</a> (Iterable &amp;&amp;...iterable)</td></tr>
+<tr class="separator:afe2a1812cc476954035d3148aa8a05fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b9f472bc8b0244a8224a550967002a3"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
+<tr class="memitem:a1b9f472bc8b0244a8224a550967002a3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators.html#a1b9f472bc8b0244a8224a550967002a3">const_zip_enumerate</a> (Iterable &amp;&amp;...iterable)</td></tr>
+<tr class="separator:a1b9f472bc8b0244a8224a550967002a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>namespace containing zip and enumerate functions </p>
@@ -213,6 +219,50 @@ template&lt;typename ... Iterable&gt; </div>
 
 </div>
 </div>
+<a id="a1b9f472bc8b0244a8224a550967002a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b9f472bc8b0244a8224a550967002a3">&#9670;&nbsp;</a></span>const_zip_enumerate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ... Iterable&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto iterators::const_zip_enumerate </td>
+          <td>(</td>
+          <td class="paramtype">Iterable &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>iterable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>zip_enumerate variant that does not allow manipulation of the container elements</p>
+<p>combination of zip and enumerate, i.e. returns an <a class="el" href="structiterators_1_1impl_1_1ZipView.html" title="Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa...">impl::ZipView</a> that contains an enumerator at the first position </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterable</td><td>Types of arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iterable</td><td>arbitrary number of iterables followed by optionally a start and an increment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structiterators_1_1impl_1_1ZipView.html" title="Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa...">impl::ZipView</a> with prepended enumerator </dd></dl>
+
+</div>
+</div>
 <a id="aaea70262053f925d78710baa65075124"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaea70262053f925d78710baa65075124">&#9670;&nbsp;</a></span>enumerate()</h2>
 
@@ -311,6 +361,47 @@ template&lt;typename ... Iterable&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structiterators_1_1impl_1_1ZipView.html" title="Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa...">impl::ZipView</a> class that provides begin and end members to be used in range based for-loops </dd></dl>
+
+</div>
+</div>
+<a id="afe2a1812cc476954035d3148aa8a05fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe2a1812cc476954035d3148aa8a05fa">&#9670;&nbsp;</a></span>zip_enumerate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ... Iterable&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto iterators::zip_enumerate </td>
+          <td>(</td>
+          <td class="paramtype">Iterable &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>iterable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>combination of zip and enumerate, i.e. returns an <a class="el" href="structiterators_1_1impl_1_1ZipView.html" title="Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa...">impl::ZipView</a> that contains an enumerator at the first position </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterable</td><td>Types of arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iterable</td><td>arbitrary number of iterables followed by optionally a start and an increment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structiterators_1_1impl_1_1ZipView.html" title="Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa...">impl::ZipView</a> with prepended enumerator </dd></dl>
 
 </div>
 </div>

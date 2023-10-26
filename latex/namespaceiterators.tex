@@ -22,6 +22,10 @@ namespace containing zip and enumerate functions
 {\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
 \item 
 {\footnotesize template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}{const\+\_\+enumerate}} (Container \&\&container, T start=T(0), T increment=T(1))
+\item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}{zip\+\_\+enumerate}} (Iterable \&\&...iterable)
+\item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}{const\+\_\+zip\+\_\+enumerate}} (Iterable \&\&...iterable)
 \end{DoxyCompactItemize}
 
 
@@ -87,6 +91,32 @@ Function that can be used in range based loops to emulate the zip iterator from 
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{impl\+::\+Zip\+View}} class that provides begin and end members to be used in range based for-\/loops 
 \end{DoxyReturn}
+\mbox{\Hypertarget{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}\label{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}} 
+\index{iterators@{iterators}!const\_zip\_enumerate@{const\_zip\_enumerate}}
+\index{const\_zip\_enumerate@{const\_zip\_enumerate}!iterators@{iterators}}
+\doxyparagraph{\texorpdfstring{const\_zip\_enumerate()}{const\_zip\_enumerate()}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+constexpr auto iterators\+::const\+\_\+zip\+\_\+enumerate (\begin{DoxyParamCaption}\item[{Iterable \&\&...}]{iterable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+
+
+zip\+\_\+enumerate variant that does not allow manipulation of the container elements
+
+combination of zip and enumerate, i.\+e. returns an \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{impl\+::\+Zip\+View}} that contains an enumerator at the first position 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterable} & Types of arguments \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iterable} & arbitrary number of iterables followed by optionally a start and an increment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{impl\+::\+Zip\+View}} with prepended enumerator 
+\end{DoxyReturn}
 \mbox{\Hypertarget{namespaceiterators_aaea70262053f925d78710baa65075124}\label{namespaceiterators_aaea70262053f925d78710baa65075124}} 
 \index{iterators@{iterators}!enumerate@{enumerate}}
 \index{enumerate@{enumerate}!iterators@{iterators}}
@@ -132,6 +162,26 @@ Function that can be used in range based loops to emulate the zip iterator from 
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{impl\+::\+Zip\+View}} class that provides begin and end members to be used in range based for-\/loops 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}\label{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}} 
+\index{iterators@{iterators}!zip\_enumerate@{zip\_enumerate}}
+\index{zip\_enumerate@{zip\_enumerate}!iterators@{iterators}}
+\doxyparagraph{\texorpdfstring{zip\_enumerate()}{zip\_enumerate()}}
+{\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
+constexpr auto iterators\+::zip\+\_\+enumerate (\begin{DoxyParamCaption}\item[{Iterable \&\&...}]{iterable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+combination of zip and enumerate, i.\+e. returns an \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{impl\+::\+Zip\+View}} that contains an enumerator at the first position 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterable} & Types of arguments \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iterable} & arbitrary number of iterables followed by optionally a start and an increment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{impl\+::\+Zip\+View}} with prepended enumerator 
 \end{DoxyReturn}
 \mbox{\Hypertarget{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}\label{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}} 
 \index{iterators@{iterators}!zip\_i@{zip\_i}}

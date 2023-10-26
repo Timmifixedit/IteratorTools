@@ -28,7 +28,25 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{Counter\+Range}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd}\label{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd}} 
+{\footnotesize template$<$std\+::size\+\_\+t Offset, std\+::size\+\_\+t ... Idx$>$ }\\constexpr auto {\bfseries index\+\_\+seq\+\_\+impl} (std\+::index\+\_\+sequence$<$ Idx... $>$) noexcept
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a}\label{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a}} 
+{\footnotesize template$<$std\+::size\+\_\+t Start, std\+::size\+\_\+t End$>$ }\\constexpr auto {\bfseries index\+\_\+seq} () noexcept
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5}\label{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5}} 
+{\footnotesize template$<$typename Tuple , std\+::size\+\_\+t ... Idx1, std\+::size\+\_\+t ... Idx2$>$ }\\constexpr auto {\bfseries tuple\+\_\+split\+\_\+impl} (Tuple \&\&tuple, std\+::index\+\_\+sequence$<$ Idx1... $>$, std\+::index\+\_\+sequence$<$ Idx2... $>$)
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a}\label{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a}} 
+{\footnotesize template$<$std\+::size\+\_\+t Idx, typename Tuple $>$ }\\constexpr auto {\bfseries tuple\+\_\+split} (Tuple \&\&tuple)
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}\label{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}} 
+{\footnotesize template$<$template$<$ typename $>$ typename Predicate, std\+::size\+\_\+t Idx, typename ... Ts$>$ }\\constexpr std\+::size\+\_\+t {\bfseries index\+\_\+of} () noexcept
+\item 
 {\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}} (T val) noexcept
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a4d17f112e09f27269d91c03f2a511cd8}\label{namespaceiterators_1_1impl_a4d17f112e09f27269d91c03f2a511cd8}} 
+{\footnotesize template$<$typename TZip , typename ... Iterable$>$ }\\constexpr auto {\bfseries zip\+\_\+enumerate\+\_\+impl} (TZip \&\&t\+Zip, Iterable \&\&...iterable)
 \end{DoxyCompactItemize}
 
 
