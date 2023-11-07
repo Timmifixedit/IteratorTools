@@ -16,6 +16,7 @@ jobs:
         build: [Release, Debug]
     env:
       CXX: ${{ matrix.cxx }}
+      BUILD: ${{ matrix.build }}
 
     steps:
     - uses: actions/checkout@v3
