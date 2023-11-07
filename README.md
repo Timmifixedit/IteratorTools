@@ -10,8 +10,8 @@ The library has been tested on the following compilers:
   * C++17 support: g++-9 to g++-12
   * C++20 ranges compatibility: g++-10 to g++-12
 * clang:
-  * C++17 support: clang-9 to clang-15
-  * C++20 ranges compatibility: as of 23. Feb 2023 **does not work** (c++20 ranges don't really seem to work with clang in general)
+  * C++17 support: clang-9 to clang-17
+  * C++20 ranges compatibility: clang-16 and clang-17
 
 ## Properties
 The `zip`-class is a container-wrapper for arbitrary iterable containers. It provides the
