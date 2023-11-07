@@ -98,9 +98,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.  <a href="classiterators_1_1impl_1_1ZipIterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipView.html">ZipView</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zip-view that provides <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a504806e68e74b7542545a6f775dc41f6">begin()</a> and <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a6a4b14115b7e488021e4efea81bc496f">end()</a> member functions. Use to loop over multiple ranges at the same time using ranged based for-loops.  <a href="structiterators_1_1impl_1_1ZipView.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1Unreachable.html">Unreachable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">represents the unreachable end of an infinite sequence  <a href="structiterators_1_1impl_1_1Unreachable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,6 +130,10 @@ template&lt;std::size_t Idx, typename Tuple &gt; </td></tr>
 template&lt;template&lt; typename &gt; typename Predicate, std::size_t Idx, typename ... Ts&gt; </td></tr>
 <tr class="memitem:a60af380e2d8600b5a36e97a305cfb189"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><b>index_of</b> () noexcept</td></tr>
 <tr class="separator:a60af380e2d8600b5a36e97a305cfb189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1458ff0b91eca33d4f79aecb8421319"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
+<tr class="memitem:ae1458ff0b91eca33d4f79aecb8421319"><td class="memTemplItemLeft" align="right" valign="top">struct ZipView&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html#ae1458ff0b91eca33d4f79aecb8421319">DERIVE_VIEW_INTERFACE</a> (ZipView&lt; Iterable... &gt;)</td></tr>
+<tr class="memdesc:ae1458ff0b91eca33d4f79aecb8421319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-loops.  <a href="namespaceiterators_1_1impl.html#ae1458ff0b91eca33d4f79aecb8421319">More...</a><br /></td></tr>
+<tr class="separator:ae1458ff0b91eca33d4f79aecb8421319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a> (T val) noexcept</td></tr>
 <tr class="separator:a4a6de0fc2d081e6c204370100dd4d658"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +145,81 @@ template&lt;typename TZip , typename ... Iterable&gt; </td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae1458ff0b91eca33d4f79aecb8421319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1458ff0b91eca33d4f79aecb8421319">&#9670;&nbsp;</a></span>DERIVE_VIEW_INTERFACE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ... Iterable&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">struct ZipView iterators::impl::DERIVE_VIEW_INTERFACE </td>
+          <td>(</td>
+          <td class="paramtype">ZipView&lt; Iterable... &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-loops. </p>
+<p>Ranges are captured by lvalue reference, no copying occurs. Temporaries are allowed as well in which case storage is moved into the zip-view. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Iterable</td><td>Underlying range types </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>CTor. Binds reference to ranges or takes ownership in case of rvalue references </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Container</td><td>range types </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">containers</td><td>arbitrary number of ranges</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> to the first elements of the underlying ranges </p><dl class="section return"><dt>Returns</dt><dd><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> created by invoking std::begin on all underlying ranges</dd></dl>
+<p>Returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> to the elements following the last elements of the the underlying ranges </p><dl class="section return"><dt>Returns</dt><dd><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> created by invoking std::end on all underlying ranges</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>returns a <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.">ZipIterator</a> that does not allow changing the ranges' elements</dd></dl>
+<p>Array subscript operator (no bounds are checked) </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">IsRandomAccess</td><td>SFINAE helper, do not specify explicitly </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zip view element at given index</dd></dl>
+<p>Returns the smallest size of all containers. Only available if all containers know their size </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">HasSize</td><td>SFINAE guard, do not specify explicitly </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>smallest size of all containers</dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="namespaceiterators.html#a12e6f5a7c31da947017d513b58e57dd4">iterators::const_zip()</a>, and <a class="el" href="namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62">iterators::zip()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319_icgraph.png" border="0" usemap="#anamespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319_icgraph" alt=""/></div>
+<map name="anamespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319_icgraph" id="anamespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319_icgraph">
+<area shape="rect" title="Zip&#45;view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa..." alt="" coords="200,23,371,65"/>
+<area shape="rect" href="namespaceiterators.html#a12e6f5a7c31da947017d513b58e57dd4" title=" " alt="" coords="5,5,152,32"/>
+<area shape="rect" href="namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62" title=" " alt="" coords="27,56,131,83"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a4a6de0fc2d081e6c204370100dd4d658"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a6de0fc2d081e6c204370100dd4d658">&#9670;&nbsp;</a></span>sgn()</h2>
 

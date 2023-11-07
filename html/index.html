@@ -72,20 +72,26 @@ $(function() {
 <div class="title">zip and enumerate iterators Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml"><img src="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml/badge.svg" alt="unit tests" style="pointer-events: none;" class="inline"/></a> </p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml"><img src="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml/badge.svg" alt="unit tests" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests_c++20_ranges.yml"><img src="https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests_c++20_ranges.yml/badge.svg" alt="c++20 range compatibility" style="pointer-events: none;" class="inline"/></a> </p>
 <h1><a class="anchor" id="autotoc_md0"></a>
 Python-like Zip and Enumerate Iterators</h1>
 <p>C++-implementation of Python-like zip- and enumerate-iterators which can be used in range-based for loops along with structured bindings to iterate over multiple containers at the same time. Requires C++17.</p>
+<p>The library has been tested on the following compilers:</p><ul>
+<li>g++:<ul>
+<li>C++17 support: g++-9 to g++-12</li>
+<li>C++20 ranges compatibility: g++-10 to g++-12</li>
+</ul>
+</li>
+<li>clang:<ul>
+<li>C++17 support: clang-9 to clang-17</li>
+<li>C++20 ranges compatibility: clang-16 and clang-17</li>
+</ul>
+</li>
+</ul>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Properties</h2>
 <p>The <code>zip</code>-class is a container-wrapper for arbitrary iterable containers. It provides the member functions <code>begin()</code> and <code>end()</code> enabling it to be used in range-based for loops to iterate over multiple containers at the same time. The <code>enuerate</code>-function is a special case of <code>zip</code> and uses a "counting container" (similar to <code>std::ranges::iota</code>) to provide an index. Additionally, const-versions exist which do not allow the manipulation of the container elements.</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
-Doxygen Documentation</h2>
-<ul>
-<li><a href="https://timmifixedit.github.io/IteratorTools/html/index.html">HTML</a></li>
-<li><a href="https://timmifixedit.github.io/IteratorTools/ZipEnumerateCppDocs.pdf">PDF</a></li>
-</ul>
-<h2><a class="anchor" id="autotoc_md3"></a>
 Code Examples</h2>
 <p>The syntax is mostly similar to Python: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;list&gt;</span></div>
@@ -101,8 +107,8 @@ Code Examples</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// now &#39;strings&#39; contains {&quot;a1&quot;, &quot;b2&quot;, &quot;c3&quot;}</span></div>
 <div class="ttc" id="aIterators_8hpp_html"><div class="ttname"><a href="Iterators_8hpp.html">Iterators.hpp</a></div><div class="ttdoc">This file contains the definitions of Python-like zip- and enumerate-functions. They can be used in r...</div></div>
-<div class="ttc" id="anamespaceiterators_html"><div class="ttname"><a href="namespaceiterators.html">iterators</a></div><div class="ttdoc">namespace containing zip and enumerate functions</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:82</div></div>
-<div class="ttc" id="anamespaceiterators_html_a420098bf63d0d2600a2c5afdf6602f62"><div class="ttname"><a href="namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62">iterators::zip</a></div><div class="ttdeci">constexpr auto zip(Iterable &amp;&amp;...iterable)</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:975</div></div>
+<div class="ttc" id="anamespaceiterators_html"><div class="ttname"><a href="namespaceiterators.html">iterators</a></div><div class="ttdoc">namespace containing zip and enumerate functions</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:89</div></div>
+<div class="ttc" id="anamespaceiterators_html_a420098bf63d0d2600a2c5afdf6602f62"><div class="ttname"><a href="namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62">iterators::zip</a></div><div class="ttdeci">constexpr auto zip(Iterable &amp;&amp;...iterable)</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:987</div></div>
 </div><!-- fragment --><p> The for loop uses so called <code>ZipIterator</code>s which point to tuples which in turn contain references to the container elements. Therefore, no copying occurs and manipulation of the container elements is possible. Observe that the structured binding captures by value (since the values are themselves references).</p>
 <p>If you want to prohibit manipulation, you can use <code>const_zip</code> </p><div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceiterators.html">iterators</a>;</div>
 <div class="line">std::list&lt;std::string&gt; strings{<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>};</div>
@@ -111,7 +117,7 @@ Code Examples</h2>
 <div class="line">    <span class="comment">// string += std::to_string(number);  error, string is readonly!</span></div>
 <div class="line">    std::cout &lt;&lt; <span class="keywordtype">string</span> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; number &lt;&lt; std::endl;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceiterators_html_a12e6f5a7c31da947017d513b58e57dd4"><div class="ttname"><a href="namespaceiterators.html#a12e6f5a7c31da947017d513b58e57dd4">iterators::const_zip</a></div><div class="ttdeci">constexpr auto const_zip(Iterable &amp;&amp;...iterable)</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:985</div></div>
+<div class="ttc" id="anamespaceiterators_html_a12e6f5a7c31da947017d513b58e57dd4"><div class="ttname"><a href="namespaceiterators.html#a12e6f5a7c31da947017d513b58e57dd4">iterators::const_zip</a></div><div class="ttdeci">constexpr auto const_zip(Iterable &amp;&amp;...iterable)</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:997</div></div>
 </div><!-- fragment --><p> Additionally, you can use <code>zip_i</code> to manually zip iterators or pointers: </p><div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceiterators.html">iterators</a>;</div>
 <div class="line">std::list&lt;std::string&gt; strings{<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>};</div>
 <div class="line">std::vector&lt;int&gt; numbers{1, 2, 3};</div>
@@ -122,7 +128,7 @@ Code Examples</h2>
 <div class="line">    <span class="comment">// ...</span></div>
 <div class="line">    ++zipBegin;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceiterators_html_acd7ca481d3b479c30879e611baaac1da"><div class="ttname"><a href="namespaceiterators.html#acd7ca481d3b479c30879e611baaac1da">iterators::zip_i</a></div><div class="ttdeci">constexpr auto zip_i(Iterators ...iterators) -&gt; impl::ZipIterator&lt; std::tuple&lt; Iterators... &gt;&gt;</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:961</div></div>
+<div class="ttc" id="anamespaceiterators_html_acd7ca481d3b479c30879e611baaac1da"><div class="ttname"><a href="namespaceiterators.html#acd7ca481d3b479c30879e611baaac1da">iterators::zip_i</a></div><div class="ttdeci">constexpr auto zip_i(Iterators ...iterators) -&gt; impl::ZipIterator&lt; std::tuple&lt; Iterators... &gt;&gt;</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:972</div></div>
 </div><!-- fragment --><p> <code>ZipIterators</code> support the same operations as the least powerful underlying iterator. For example, if you zip a random access iterator (e.g. from <code>std::vector</code>) and a bidirectional iterator (e.g. from <code>std::list</code>), then the resulting <code>ZipIterator</code> will only support bidirectional iteration but no random access.</p>
 <p>As in Python, the shortest range decides the overall range: </p><div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceiterators.html">iterators</a>;</div>
 <div class="line">std::list&lt;std::string&gt; strings{<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;b&quot;</span>, <span class="stringliteral">&quot;c&quot;</span>};</div>
@@ -137,17 +143,22 @@ Code Examples</h2>
 <div class="line">    <span class="keywordtype">string</span> += std::to_string(index); </div>
 <div class="line">}</div>
 <div class="line"><span class="comment">// now &#39;strings&#39; contains {&quot;a0&quot;, &quot;b1&quot;, &quot;c2&quot;}</span></div>
-<div class="ttc" id="anamespaceiterators_html_aaea70262053f925d78710baa65075124"><div class="ttname"><a href="namespaceiterators.html#aaea70262053f925d78710baa65075124">iterators::enumerate</a></div><div class="ttdeci">constexpr auto enumerate(Container &amp;&amp;container, T start=T(0), T increment=T(1))</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:1021</div></div>
-</div><!-- fragment --><p> Also, an optional offset can be specified: </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> [index, <span class="keywordtype">string</span>] : <a class="code" href="structiterators_1_1impl_1_1ZipView.html#a4c8c6849391d6b4576cb63ec05a725f3">enumerate</a>(strings, 4)) { <span class="comment">// index starts from 4</span></div>
+<div class="ttc" id="anamespaceiterators_html_aaea70262053f925d78710baa65075124"><div class="ttname"><a href="namespaceiterators.html#aaea70262053f925d78710baa65075124">iterators::enumerate</a></div><div class="ttdeci">constexpr auto enumerate(Container &amp;&amp;container, T start=T(0), T increment=T(1))</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:1033</div></div>
+</div><!-- fragment --><p> Also, an optional offset can be specified: </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> [index, <span class="keywordtype">string</span>] : <a class="code" href="namespaceiterators.html#aaea70262053f925d78710baa65075124">enumerate</a>(strings, 4)) { <span class="comment">// index starts from 4</span></div>
 <div class="line">    ...</div>
 <div class="line">}</div>
-<div class="ttc" id="astructiterators_1_1impl_1_1ZipView_html_a4c8c6849391d6b4576cb63ec05a725f3"><div class="ttname"><a href="structiterators_1_1impl_1_1ZipView.html#a4c8c6849391d6b4576cb63ec05a725f3">iterators::impl::ZipView::enumerate</a></div><div class="ttdeci">constexpr auto enumerate(Container &amp;&amp;container, T start=T(0), T increment=T(1))</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:1021</div></div>
 </div><!-- fragment --><p> And as with <code>zip</code>, a const version (<code>const_enumerate</code>) exists.</p>
-<p>In case temporary containers are used, <code>zip</code> and <code>enumerate</code> will take ownership of the containers to guarantee well-defined memory access. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> [index, number] : <a class="code" href="structiterators_1_1impl_1_1ZipView.html#a4c8c6849391d6b4576cb63ec05a725f3">enumerate</a>(std::array{53, 21, 17})) {</div>
+<p>In case temporary containers are used, <code>zip</code> and <code>enumerate</code> will take ownership of the containers to guarantee well-defined memory access. </p><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> [index, number] : <a class="code" href="namespaceiterators.html#aaea70262053f925d78710baa65075124">enumerate</a>(std::array{53, 21, 17})) {</div>
 <div class="line">    <span class="comment">// enumerate takes ownership of the array. The elements</span></div>
 <div class="line">    <span class="comment">// can safely be accessed and manipulated</span></div>
 <div class="line">}</div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+Doxygen Documentation</h2>
+<ul>
+<li><a href="https://timmifixedit.github.io/IteratorTools/html/index.html">HTML</a></li>
+<li><a href="https://timmifixedit.github.io/IteratorTools/ZipEnumerateCppDocs.pdf">PDF</a> </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

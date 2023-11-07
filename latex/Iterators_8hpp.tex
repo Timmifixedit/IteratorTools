@@ -22,8 +22,6 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterato
 \begin{DoxyCompactList}\small\item\em CRTP-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator$<$ Iterators $>$}}
 \begin{DoxyCompactList}\small\item\em Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView}{iterators\+::impl\+::\+Zip\+View$<$ Iterable $>$}}
-\begin{DoxyCompactList}\small\item\em Zip-\/view that provides \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a504806e68e74b7542545a6f775dc41f6}{begin()}} and \mbox{\hyperlink{structiterators_1_1impl_1_1ZipView_a6a4b14115b7e488021e4efea81bc496f}{end()}} member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{iterators\+::impl\+::\+Unreachable}}
 \begin{DoxyCompactList}\small\item\em represents the unreachable end of an infinite sequence \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator$<$ T $>$}}
@@ -75,6 +73,9 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}\label{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}} 
 \#define {\bfseries REQUIRES}(EXPRESSION)~typename = std\+::void\+\_\+t$<$decltype(EXPRESSION)$>$
+\item 
+\mbox{\Hypertarget{Iterators_8hpp_a0eb8636970b600380a4ca8a50506cca5}\label{Iterators_8hpp_a0eb8636970b600380a4ca8a50506cca5}} 
+\#define {\bfseries DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE}(CLASS)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -109,6 +110,8 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \mbox{\Hypertarget{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}\label{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}} 
 {\footnotesize template$<$template$<$ typename $>$ typename Predicate, std\+::size\+\_\+t Idx, typename ... Ts$>$ }\\constexpr std\+::size\+\_\+t {\bfseries iterators\+::impl\+::index\+\_\+of} () noexcept
 \item 
+{\footnotesize template$<$typename ... Iterable$>$ }\\struct Zip\+View \mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{iterators\+::impl\+::\+DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE}} (Zip\+View$<$ Iterable... $>$)
+\begin{DoxyCompactList}\small\item\em Zip-\/view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{iterators\+::impl\+::sgn}} (T val) noexcept
 \item 
 {\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{iterators\+::zip\+\_\+i}} (Iterators ...iterators) -\/$>$ impl\+::\+Zip\+Iterator$<$ std\+::tuple$<$ Iterators... $>$$>$

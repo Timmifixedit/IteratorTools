@@ -16,7 +16,7 @@ Inheritance diagram for iterators\+::impl\+::Counter\+Iterator$<$ T $>$\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=272pt]{structiterators_1_1impl_1_1CounterIterator__inherit__graph}
+\includegraphics[width=253pt]{structiterators_1_1impl_1_1CounterIterator__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -26,7 +26,7 @@ Collaboration diagram for iterators\+::impl\+::Counter\+Iterator$<$ T $>$\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=272pt]{structiterators_1_1impl_1_1CounterIterator__coll__graph}
+\includegraphics[width=253pt]{structiterators_1_1impl_1_1CounterIterator__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Types}
@@ -70,11 +70,11 @@ constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a65d5
 \item 
 constexpr T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a1d5a1ef5c6ecea7d799ae683427191c3}{operator$\ast$}} () const noexcept
 \item 
-constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) const noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ $>$()+n)))
+constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) const noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$()+n)))
 \item 
-constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{operator++}} (int) noexcept(noexcept(++std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ $>$)
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{operator++}} (int) noexcept(noexcept(++std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$)
 \item 
-constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{operator-\/-\/}} (int) noexcept(noexcept(-\/-\/std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ $>$)
+constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{operator-\/-\/}} (int) noexcept(noexcept(-\/-\/std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$)
 \item 
 constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ae717fa1d3db284c846e8252a04578586}{operator!=}} (const T \&other) const noexcept(noexcept(INSTANCE\+\_\+\+OF\+\_\+\+IMPL==other))
 \item 
@@ -95,7 +95,7 @@ constexpr friend bool {\bfseries operator!=} (\mbox{\hyperlink{structiterators_1
 
 
 \doxysubsubsection{Detailed Description}
-\subsubsection*{template$<$typename T$>$\newline
+\subsubsection*{template$<$typename T = std\+::size\+\_\+t$>$\newline
 struct iterators\+::impl\+::\+Counter\+Iterator$<$ T $>$}
 
 Iterator of an infinite sequence of numbers. Simply increments an internal counter. 
@@ -112,7 +112,7 @@ Iterator of an infinite sequence of numbers. Simply increments an internal count
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!CounterIterator@{CounterIterator}}
 \index{CounterIterator@{CounterIterator}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{CounterIterator()}{CounterIterator()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}} (\begin{DoxyParamCaption}\item[{T}]{begin,  }\item[{T}]{increment = {\ttfamily T(1)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 CTor. 
@@ -132,7 +132,7 @@ Depending on the template type T, increment can also be negative.
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator"!=@{operator"!=}}
 \index{operator"!=@{operator"!=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator"!=()}{operator!=()}}
-{\footnotesize\ttfamily constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  $>$\+::operator!= (\begin{DoxyParamCaption}\item[{const T \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator!= (\begin{DoxyParamCaption}\item[{const T \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Inequality comparison 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -153,7 +153,7 @@ true if this is not equal to other
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator$\ast$()}{operator*()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Produces the counter value \begin{DoxyReturn}{Returns}
@@ -163,7 +163,7 @@ value of internal counter
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator++@{operator++}}
 \index{operator++@{operator++}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Increments value by increment \begin{DoxyReturn}{Returns}
@@ -173,7 +173,7 @@ reference to this
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator++@{operator++}}
 \index{operator++@{operator++}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Postfix increment. Synthesized from prefix increment 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -187,7 +187,7 @@ Instance of Impl
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator+=@{operator+=}}
 \index{operator+=@{operator+=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator+=()}{operator+=()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator+= (\begin{DoxyParamCaption}\item[{difference\+\_\+type}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Compound assignment increment. Increments value by n times increment 
@@ -202,7 +202,7 @@ reference to this
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/@{operator-\/}}
 \index{operator-\/@{operator-\/}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator-\/()}{operator-()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr difference\+\_\+type \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Difference between two Counter\+Iterators 
@@ -227,7 +227,7 @@ When other has the same increment as {\ttfamily $\ast$this}, then the returned v
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/-\/@{operator-\/-\/}}
 \index{operator-\/-\/@{operator-\/-\/}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Decrements value by increment \begin{DoxyReturn}{Returns}
@@ -237,7 +237,7 @@ reference to this
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/-\/@{operator-\/-\/}}
 \index{operator-\/-\/@{operator-\/-\/}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Postfix decrement. Synthesized from prefix decrement 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -251,7 +251,7 @@ Instance of Impl
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator-\/=@{operator-\/=}}
 \index{operator-\/=@{operator-\/=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator-\/=()}{operator-=()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}\& \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{difference\+\_\+type}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Compound assignment decrement. Increments value by n times increment 
@@ -266,7 +266,7 @@ reference to this
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator$<$()}{operator<()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Less comparison of internal counters with respect to increment of this instance 
@@ -289,7 +289,7 @@ If increment is negative then both sides of the inequality are multiplied with -
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$<$=@{operator$<$=}}
 \index{operator$<$=@{operator$<$=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator$<$=()}{operator<=()}}
-{\footnotesize\ttfamily constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  $>$\+::operator$<$= (\begin{DoxyParamCaption}\item[{const T \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator$<$= (\begin{DoxyParamCaption}\item[{const T \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Less than or equal comparison 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -310,7 +310,7 @@ true if this is not greater than other
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator==@{operator==}}
 \index{operator==@{operator==}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Equality comparison. 
@@ -325,7 +325,7 @@ true if counter of left and right hand side are equal
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$>$@{operator$>$}}
 \index{operator$>$@{operator$>$}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator$>$()}{operator>()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator}}$<$ T $>$\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Greater comparison of internal counters with respect to increment of this instance 
@@ -348,7 +348,7 @@ If increment is negative then both sides of the inequality are multiplied with -
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator$>$=@{operator$>$=}}
 \index{operator$>$=@{operator$>$=}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator$>$=()}{operator>=()}}
-{\footnotesize\ttfamily constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  $>$\+::operator$>$= (\begin{DoxyParamCaption}\item[{const T \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator$>$= (\begin{DoxyParamCaption}\item[{const T \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Greater than or equal comparison 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -369,7 +369,7 @@ true if this is not less than other
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}}
-{\footnotesize\ttfamily constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+{\footnotesize\ttfamily constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Array subscript operator 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -391,7 +391,7 @@ $\ast$($\ast$this + n)
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator==@{operator==}}
 \index{operator==@{operator==}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator==}{operator==}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr friend bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{,  }\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
 Equality comparison with \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}} sentinel \begin{DoxyReturn}{Returns}
@@ -401,7 +401,7 @@ false
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator==@{operator==}}
 \index{operator==@{operator==}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
 \doxyparagraph{\texorpdfstring{operator==}{operator==}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
+{\footnotesize\ttfamily template$<$typename T  = std\+::size\+\_\+t$>$ \\
 constexpr friend bool operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}}]{,  }\item[{const \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
 

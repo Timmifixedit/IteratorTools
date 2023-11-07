@@ -91,9 +91,9 @@ Inheritance diagram for iterators::impl::CounterIterator&lt; T &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="structiterators_1_1impl_1_1CounterIterator__inherit__graph.png" border="0" usemap="#aiterators_1_1impl_1_1CounterIterator_3_01T_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aiterators_1_1impl_1_1CounterIterator_3_01T_01_4_inherit__map" id="aiterators_1_1impl_1_1CounterIterator_3_01T_01_4_inherit__map">
-<area shape="rect" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="45,215,219,256"/>
-<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="5,124,259,165"/>
-<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="31,5,233,47"/>
+<area shape="rect" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="19,229,193,271"/>
+<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="5,124,207,180"/>
+<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="5,5,207,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -101,9 +101,9 @@ Collaboration diagram for iterators::impl::CounterIterator&lt; T &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="structiterators_1_1impl_1_1CounterIterator__coll__graph.png" border="0" usemap="#aiterators_1_1impl_1_1CounterIterator_3_01T_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aiterators_1_1impl_1_1CounterIterator_3_01T_01_4_coll__map" id="aiterators_1_1impl_1_1CounterIterator_3_01T_01_4_coll__map">
-<area shape="rect" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="45,215,219,256"/>
-<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="5,124,259,165"/>
-<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="31,5,233,47"/>
+<area shape="rect" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="19,229,193,271"/>
+<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="5,124,207,180"/>
+<area shape="rect" href="structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="5,5,207,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -147,11 +147,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a65d50acd247099b31723ef38c271f372"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d5a1ef5c6ecea7d799ae683427191c3"><td class="memItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1CounterIterator.html#a1d5a1ef5c6ecea7d799ae683427191c3">operator*</a> () const noexcept</td></tr>
 <tr class="separator:a1d5a1ef5c6ecea7d799ae683427191c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12958402afc74049d23a573c02b67582"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a12958402afc74049d23a573c02b67582">operator[]</a> (typename Implementation::difference_type n) const noexcept(noexcept(*(std::declval&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &gt;()+n)))</td></tr>
+<tr class="memitem:a12958402afc74049d23a573c02b67582"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a12958402afc74049d23a573c02b67582">operator[]</a> (typename Implementation::difference_type n) const noexcept(noexcept(*(std::declval&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt; &gt;()+n)))</td></tr>
 <tr class="separator:a12958402afc74049d23a573c02b67582"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac127a6481c354fab3db40d5a5d1578a9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#ac127a6481c354fab3db40d5a5d1578a9">operator++</a> (int) noexcept(noexcept(++std::declval&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &gt;()) &amp;&amp;std::is_nothrow_copy_constructible_v&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &gt;)</td></tr>
+<tr class="memitem:ac127a6481c354fab3db40d5a5d1578a9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#ac127a6481c354fab3db40d5a5d1578a9">operator++</a> (int) noexcept(noexcept(++std::declval&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt; &gt;()) &amp;&amp;std::is_nothrow_copy_constructible_v&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt; &gt;)</td></tr>
 <tr class="separator:ac127a6481c354fab3db40d5a5d1578a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4abbb126cce4b732e12e165649d4931d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a4abbb126cce4b732e12e165649d4931d">operator--</a> (int) noexcept(noexcept(--std::declval&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &gt;()) &amp;&amp;std::is_nothrow_copy_constructible_v&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt; &gt;)</td></tr>
+<tr class="memitem:a4abbb126cce4b732e12e165649d4931d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a4abbb126cce4b732e12e165649d4931d">operator--</a> (int) noexcept(noexcept(--std::declval&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt; &gt;()) &amp;&amp;std::is_nothrow_copy_constructible_v&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt; &gt;)</td></tr>
 <tr class="separator:a4abbb126cce4b732e12e165649d4931d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae717fa1d3db284c846e8252a04578586"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#ae717fa1d3db284c846e8252a04578586">operator!=</a> (const T &amp;other) const noexcept(noexcept(INSTANCE_OF_IMPL==other))</td></tr>
 <tr class="separator:ae717fa1d3db284c846e8252a04578586"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,7 +171,7 @@ constexpr friend bool&#160;</td><td class="memItemRight" valign="bottom"><b>oper
 <tr class="separator:a7cce50b96bbdb60fbd37a27324375f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename T&gt;<br />
+<div class="textblock"><h3>template&lt;typename T = std::size_t&gt;<br />
 struct iterators::impl::CounterIterator&lt; T &gt;</h3>
 
 <p>Iterator of an infinite sequence of numbers. Simply increments an internal counter. </p>
@@ -188,7 +188,7 @@ struct iterators::impl::CounterIterator&lt; T &gt;</h3>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -239,7 +239,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  &gt;::operator!= </td>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  &gt;::operator!= </td>
           <td>(</td>
           <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
@@ -275,7 +275,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -303,7 +303,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -335,7 +335,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  &gt;::operator++ </td>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  &gt;::operator++ </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -364,7 +364,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -399,7 +399,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -428,7 +428,7 @@ template&lt;typename T &gt; </div>
 <dl class="section note"><dt>Note</dt><dd>When other has the same increment as <code>*this</code>, then the returned value is guaranteed to fulfil <code>other + n == *this</code>. In the following example, this is not the case: <div class="fragment"><div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> a(8, 1);</div>
 <div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> b(4, 3);</div>
 <div class="line"><span class="keyword">auto</span> diff = a - b; <span class="comment">// yields 1 since b + 1 &lt;= a</span></div>
-<div class="ttc" id="astructiterators_1_1impl_1_1CounterIterator_html_ae628a33cb0964bde115964409f6da573"><div class="ttname"><a href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">iterators::impl::CounterIterator::CounterIterator</a></div><div class="ttdeci">constexpr CounterIterator(T begin, T increment=T(1)) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:784</div></div>
+<div class="ttc" id="astructiterators_1_1impl_1_1CounterIterator_html_ae628a33cb0964bde115964409f6da573"><div class="ttname"><a href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">iterators::impl::CounterIterator::CounterIterator</a></div><div class="ttdeci">constexpr CounterIterator(T begin, T increment=T(1)) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:793</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
@@ -439,7 +439,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -471,7 +471,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  &gt;::operator-- </td>
+          <td class="memname">constexpr <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  &gt;::operator-- </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -500,7 +500,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -535,7 +535,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -561,7 +561,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if <div class="fragment"><div class="line"><a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment) **<span class="keyword">this</span> &lt; *other <a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment)</div>
-<div class="ttc" id="anamespaceiterators_1_1impl_html_a4a6de0fc2d081e6c204370100dd4d658"><div class="ttname"><a href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">iterators::impl::sgn</a></div><div class="ttdeci">constexpr T sgn(T val) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:758</div></div>
+<div class="ttc" id="anamespaceiterators_1_1impl_html_a4a6de0fc2d081e6c204370100dd4d658"><div class="ttname"><a href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">iterators::impl::sgn</a></div><div class="ttdeci">constexpr T sgn(T val) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:767</div></div>
 </div><!-- fragment --> where <code>sgn</code> is the signum function </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If increment is negative then both sides of the inequality are multiplied with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &lt; it2</code> is true. </dd></dl>
 
@@ -577,7 +577,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  &gt;::operator&lt;= </td>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  &gt;::operator&lt;= </td>
           <td>(</td>
           <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>rhs</em></td><td>)</td>
@@ -613,7 +613,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -648,7 +648,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -689,7 +689,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  &gt;::operator&gt;= </td>
+          <td class="memname">constexpr bool <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  &gt;::operator&gt;= </td>
           <td>(</td>
           <td class="paramtype">const T &amp;&#160;</td>
           <td class="paramname"><em>rhs</em></td><td>)</td>
@@ -729,7 +729,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; T &gt;  &gt;::operator[] </td>
+          <td class="memname">constexpr auto <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; <a class="el" href="structiterators_1_1impl_1_1CounterIterator.html">CounterIterator</a>&lt; std::size_t &gt;  &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype">typename Implementation::difference_type&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -765,7 +765,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -804,7 +804,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T  = std::size_t&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">

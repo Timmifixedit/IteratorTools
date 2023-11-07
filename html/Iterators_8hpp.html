@@ -105,9 +105,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">iterators::impl::ZipIterator&lt; Iterators &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time.  <a href="classiterators_1_1impl_1_1ZipIterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1ZipView.html">iterators::impl::ZipView&lt; Iterable &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zip-view that provides <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a504806e68e74b7542545a6f775dc41f6">begin()</a> and <a class="el" href="structiterators_1_1impl_1_1ZipView.html#a6a4b14115b7e488021e4efea81bc496f">end()</a> member functions. Use to loop over multiple ranges at the same time using ranged based for-loops.  <a href="structiterators_1_1impl_1_1ZipView.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1Unreachable.html">iterators::impl::Unreachable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">represents the unreachable end of an infinite sequence  <a href="structiterators_1_1impl_1_1Unreachable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +163,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a90361d8eaf2535bfbf5596fa333eba6c"><td class="memItemLeft" align="right" valign="top"><a id="a90361d8eaf2535bfbf5596fa333eba6c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>REQUIRES</b>(EXPRESSION)&#160;&#160;&#160;typename = std::void_t&lt;decltype(EXPRESSION)&gt;</td></tr>
 <tr class="separator:a90361d8eaf2535bfbf5596fa333eba6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb8636970b600380a4ca8a50506cca5"><td class="memItemLeft" align="right" valign="top"><a id="a0eb8636970b600380a4ca8a50506cca5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DERIVE_VIEW_INTERFACE</b>(CLASS)</td></tr>
+<tr class="separator:a0eb8636970b600380a4ca8a50506cca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -208,6 +208,10 @@ template&lt;std::size_t Idx, typename Tuple &gt; </td></tr>
 template&lt;template&lt; typename &gt; typename Predicate, std::size_t Idx, typename ... Ts&gt; </td></tr>
 <tr class="memitem:a60af380e2d8600b5a36e97a305cfb189"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><b>iterators::impl::index_of</b> () noexcept</td></tr>
 <tr class="separator:a60af380e2d8600b5a36e97a305cfb189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1458ff0b91eca33d4f79aecb8421319"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
+<tr class="memitem:ae1458ff0b91eca33d4f79aecb8421319"><td class="memTemplItemLeft" align="right" valign="top">struct ZipView&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html#ae1458ff0b91eca33d4f79aecb8421319">iterators::impl::DERIVE_VIEW_INTERFACE</a> (ZipView&lt; Iterable... &gt;)</td></tr>
+<tr class="memdesc:ae1458ff0b91eca33d4f79aecb8421319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-loops.  <a href="namespaceiterators_1_1impl.html#ae1458ff0b91eca33d4f79aecb8421319">More...</a><br /></td></tr>
+<tr class="separator:ae1458ff0b91eca33d4f79aecb8421319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a4a6de0fc2d081e6c204370100dd4d658"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">iterators::impl::sgn</a> (T val) noexcept</td></tr>
 <tr class="separator:a4a6de0fc2d081e6c204370100dd4d658"><td class="memSeparator" colspan="2">&#160;</td></tr>
