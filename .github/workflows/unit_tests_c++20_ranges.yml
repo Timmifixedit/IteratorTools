@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cxx: [g++-10, g++-11, g++-12]
+        cxx: [g++-10, g++-11, g++-12, clang-16, clang17]
         build: [Release, Debug]
     env:
       CXX: ${{ matrix.cxx }}

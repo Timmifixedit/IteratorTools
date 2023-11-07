@@ -28,6 +28,7 @@ DETECT(eq, INSTANCE_OF(T) == INSTANCE_OF(T))
 DETECT(ineq, INSTANCE_OF(T) != INSTANCE_OF(T))
 DETECT(subsc, INSTANCE_OF(T)[INSTANCE_OF(std::size_t)])
 DETECT(deref, *INSTANCE_OF(T))
+DETECT(size, INSTANCE_OF(T).size())
 
 DETECT_BINARY(eq_with, INSTANCE_OF(T) == INSTANCE_OF(U))
 DETECT_BINARY(neq_with, INSTANCE_OF(T) != INSTANCE_OF(U))
@@ -338,6 +339,62 @@ TEST(Iterators, bool_vector) {
 
     std::vector<bool> expected{false, false, true, true};
     EXPECT_TRUE(std::equal(booleans.begin(), booleans.end(), expected.begin()));
+}
+
+TEST(Iterators, zip_enumerate) {
+    using namespace iterators;
+    auto numbers = {1, 2, 3};
+    auto strings = std::array{"a", "b", "c"};
+    std::vector<std::string> results;
+    for (auto [index, n, s] : zip_enumerate(numbers, strings)) {
+        results.emplace_back(s + std::to_string(n) + std::to_string(index));
+    }
+
+    EXPECT_EQ(results, (std::vector<std::string>{"a10", "b21", "c32"}));
+}
+
+TEST(Iterators, zip_enumerate_offset) {
+    using namespace iterators;
+    auto numbers = {1, 2, 3};
+    auto strings = std::array{"a", "b", "c"};
+    std::vector<std::string> results;
+    for (auto [index, n, s] : zip_enumerate(numbers, strings, 4, 2)) {
+        results.emplace_back(s + std::to_string(n) + std::to_string(index));
+    }
+
+    EXPECT_EQ(results, (std::vector<std::string>{"a14", "b26", "c38"}));
+    results.clear();
+    for (auto [index, n, s] : zip_enumerate(numbers, strings, 4)) {
+        results.emplace_back(s + std::to_string(n) + std::to_string(index));
+    }
+
+    EXPECT_EQ(results, (std::vector<std::string>{"a14", "b25", "c36"}));
+}
+
+TEST(Iterators, zip_enumerate_offset_no_copy) {
+    using namespace iterators;
+    auto numbers = {1, 2, 3};
+    std::vector<MustNotCopy> strings;
+    strings.emplace_back("a");
+    strings.emplace_back("b");
+    strings.emplace_back("c");
+    bool allowedToDie = false;
+    for (auto [index, n, s, _] : zip_enumerate(LifeTimeChecker<int>({1, 2, 3}, allowedToDie), strings, numbers, 4)) {
+        s.s += std::to_string(n) + std::to_string(index);
+        if (index == 6) {
+            allowedToDie = true;
+        }
+    }
+}
+
+TEST(Iterators, const_zip_enumerate) {
+    using namespace iterators;
+    std::vector<int> numbers;
+    EXPECT_TRUE((std::is_const_v<std::remove_reference_t<decltype(std::get<1>(
+            *const_zip_enumerate(numbers, numbers).begin()))>>));
+    EXPECT_TRUE((std::is_const_v<std::remove_reference_t<decltype(std::get<1>(
+            *const_zip_enumerate(numbers, numbers, 2, 4).begin()))>>));
+
 }
 
 TEST(Iterators, type_traits) {
@@ -669,4 +726,30 @@ TEST(Iterators, compiletime_iterator) {
     EXPECT_EQ(plusComp, minusComp);
     constexpr bool decrementEq = --zip_i(x + 1, y + 3) == zip_i(x, y + 2);
     EXPECT_TRUE(decrementEq);
+}
+
+TEST(Iterators, size) {
+    using namespace iterators;
+    static constexpr int numbers[] = {1, 2, 3 , 4};
+    static constexpr auto strings = {"a", "b", "c"};
+    static constexpr std::array numbers1{1, 4};
+    std::list doubles{0.1, 0.4, 0.2, 1.9, 1.4};
+    auto zipView = zip(numbers, strings, doubles);
+    EXPECT_EQ(zipView.size(), 3);
+    constexpr auto zipC = zip(numbers, numbers1, strings);
+    constexpr auto size = zipC.size();
+    EXPECT_EQ(size, 2);
+    using namespace iterators;
+    EXPECT_FALSE(has_size_v<decltype(enumerate(numbers))>);
+}
+
+TEST(Iterators, zip_subscript) {
+    using namespace iterators;
+    static constexpr int numbers[] = {1, 2, 3 , 4};
+    static constexpr auto strings = {"a", "b", "c"};
+    constexpr auto res = zip(numbers, strings)[2];
+    EXPECT_EQ(std::get<0>(res), 3);
+    EXPECT_EQ(std::get<1>(res), "c");
+    std::list list{1, 2, 3};
+    EXPECT_FALSE(has_subsc_v<decltype(zip(numbers, list))>);
 }
