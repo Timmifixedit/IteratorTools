@@ -883,7 +883,8 @@ namespace iterators {
      */
     template<typename ...Iterators>
     constexpr auto zip_i(Iterators ...iterators) -> impl::ZipIterator<std::tuple<Iterators...>> {
-        return impl::ZipIterator<std::tuple<Iterators...>>(std::move(iterators)...);
+        using IteratorTuple = std::tuple<Iterators...>;
+        return impl::ZipIterator<IteratorTuple>(IteratorTuple(std::move(iterators)...));
     }
 
     /**

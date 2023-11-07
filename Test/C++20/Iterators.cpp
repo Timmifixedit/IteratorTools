@@ -63,3 +63,16 @@ TEST(cpp20_compat, range_members) {
     EXPECT_TRUE(zipView);
     EXPECT_FALSE(zipView.empty());
 }
+
+TEST(cpp20_compat, sentinel) {
+    using namespace iterators;
+    using namespace std::views;
+    std::vector<int> numbers{1, 2, 3};
+    EXPECT_TRUE((std::sentinel_for<impl::Unreachable, impl::CounterIterator<std::size_t>>));
+    auto enumVew = enumerate(numbers);
+    EXPECT_TRUE((std::sentinel_for<decltype(enumVew.end()), decltype(enumVew.begin())>));
+    auto commonView = enumVew | common;
+    std::vector<std::ranges::range_value_t<decltype(enumVew)>> target(commonView.begin(), commonView.end());
+    std::vector<std::tuple<std::size_t, int>> gt{{0, 1}, {1, 2}, {2, 3}};
+    EXPECT_TRUE(std::ranges::equal(target, gt));
+}
