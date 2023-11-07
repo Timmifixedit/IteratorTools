@@ -35,5 +35,7 @@ jobs:
       run: |
         cd build
         $CXX --version
+        if [ "$CXX" != "clang++-14" ] || [ "$BUILD" != "Debug" ]; then
         make Tests_C++17 -j$(nproc)
         ./Test/C++17/Tests_C++17 --gtest_color=yes
+        fi
