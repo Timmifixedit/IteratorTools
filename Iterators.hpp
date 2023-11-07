@@ -76,6 +76,13 @@
 
 #define REQUIRES(EXPRESSION) typename = std::void_t<decltype(EXPRESSION)>
 
+#ifdef __cpp_lib_ranges
+#include <ranges>
+#define DERIVE_VIEW_INTERFACE(CLASS) : std::ranges::view_interface<CLASS>
+#else
+#define DERIVE_VIEW_INTERFACE(CLASS)
+#endif
+
 /**
  * @brief namespace containing zip and enumerate functions
  */
@@ -643,7 +650,7 @@ namespace iterators {
          * @tparam Iterable Underlying range types
          */
         template<typename ...Iterable>
-        struct ZipView {
+        struct ZipView DERIVE_VIEW_INTERFACE(ZipView<Iterable...>) {
         private:
             using ContainerTuple = std::tuple<Iterable...>;
             template<bool Const>
@@ -670,6 +677,8 @@ namespace iterators {
             template<typename ...Container>
             constexpr explicit ZipView(Container &&...containers) :
                 containers(std::forward<Container>(containers)...) {}
+
+            ZipView() = default;
 
 
             /**
@@ -763,7 +772,7 @@ namespace iterators {
          * @brief Iterator of an infinite sequence of numbers. Simply increments an internal counter
          * @tparam Type of the counter (most of the time this is ```std::size_t```)
          */
-        template<typename T>
+        template<typename T = std::size_t>
         struct CounterIterator : public SynthesizedOperators<CounterIterator<T>> {
             using value_type = T;
             using reference = T;
@@ -783,6 +792,8 @@ namespace iterators {
              */
             explicit constexpr CounterIterator(T begin, T increment = T(1)) noexcept:
                     counter(begin), increment(increment) {}
+
+            constexpr CounterIterator() noexcept: CounterIterator(T(0)) {}
 
             /**
              * Increments value by increment
@@ -959,7 +970,8 @@ namespace iterators {
      */
     template<typename ...Iterators>
     constexpr auto zip_i(Iterators ...iterators) -> impl::ZipIterator<std::tuple<Iterators...>> {
-        return impl::ZipIterator<std::tuple<Iterators...>>(std::move(iterators)...);
+        using IteratorTuple = std::tuple<Iterators...>;
+        return impl::ZipIterator<IteratorTuple>(IteratorTuple(std::move(iterators)...));
     }
 
     /**

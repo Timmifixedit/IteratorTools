@@ -7,5 +7,4 @@ elif [[ $CXX == clang* ]]; then
   chmod +x llvm.sh
   CLANG_VERSION=$(echo "$CXX" | tr -d -c 0-9)
   sudo ./llvm.sh "$CLANG_VERSION"
-  sudo ldconfig
 fi

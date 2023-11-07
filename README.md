@@ -1,8 +1,17 @@
 [![unit tests](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml)
+[![c++20 range compatibility](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests_c++20_ranges.yml/badge.svg)](https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests_c++20_ranges.yml)
 # Python-like Zip and Enumerate Iterators
 C++-implementation of Python-like zip- and enumerate-iterators which can be used in range-based
 for loops along with structured bindings to iterate over multiple containers at the same
 time. Requires C++17.
+
+The library has been tested on the following compilers:
+* g++:
+  * C++17 support: g++-9 to g++-12
+  * C++20 ranges compatibility: g++-10 to g++-12
+* clang:
+  * C++17 support: clang-9 to clang-17
+  * C++20 ranges compatibility: clang-16 and clang-17
 
 ## Properties
 The `zip`-class is a container-wrapper for arbitrary iterable containers. It provides the
@@ -11,10 +20,6 @@ iterate over multiple containers at the same time. The `enuerate`-function is a 
 case of `zip` and uses a "counting container" (similar to `std::ranges::iota`) to provide
 an index. Additionally, const-versions exist which do not allow the manipulation of the
 container elements.
-
-## Doxygen Documentation
-* [HTML](https://timmifixedit.github.io/IteratorTools/html/index.html)
-* [PDF](https://timmifixedit.github.io/IteratorTools/ZipEnumerateCppDocs.pdf)
 
 ## Code Examples
 The syntax is mostly similar to Python:
@@ -102,3 +107,8 @@ for (auto [index, number] : enumerate(std::array{53, 21, 17})) {
     // can safely be accessed and manipulated
 }
 ```
+
+## Doxygen Documentation
+* [HTML](https://timmifixedit.github.io/IteratorTools/html/index.html)
+* [PDF](https://timmifixedit.github.io/IteratorTools/ZipEnumerateCppDocs.pdf)
+

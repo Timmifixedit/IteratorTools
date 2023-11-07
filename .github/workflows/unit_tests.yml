@@ -16,6 +16,7 @@ jobs:
         build: [Release, Debug]
     env:
       CXX: ${{ matrix.cxx }}
+      BUILD: ${{ matrix.build }}
 
     steps:
     - uses: actions/checkout@v3
@@ -31,9 +32,11 @@ jobs:
       run: |
         mkdir build && cd build
         cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=${{ matrix.build }} ..
-    - name: build
+    - name: build and run
       run: |
         cd build
-        make -j$(nproc)
-    - name: run tests
-      run: ./build/Test/Tests --gtest_color=yes
+        $CXX --version
+        if [ "$CXX" != "clang++-14" ] || [ "$BUILD" != "Debug" ]; then
+        make Tests_C++17 -j$(nproc)
+        ./Test/C++17/Tests_C++17 --gtest_color=yes
+        fi

@@ -23,6 +23,12 @@ TEST(CounterIterator, basic) {
     EXPECT_EQ(test[4], 6);
 }
 
+TEST(CounterIterator, default_ctor) {
+    using namespace iterators::impl;
+    CounterIterator ct;
+    EXPECT_EQ(ct, CounterIterator<std::size_t>(0));
+}
+
 TEST(CounterIterator, sentinel) {
     using namespace iterators::impl;
     CounterIterator test(3);
