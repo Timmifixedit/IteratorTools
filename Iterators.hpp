@@ -159,11 +159,22 @@ namespace iterators {
 
             template<typename ...Ts>
             struct values<std::tuple<Ts...>> {
-                using type = std::tuple<dereference_t<Ts>...>;
+                using type = std::tuple<std::remove_const_t<std::remove_reference_t<dereference_t<Ts>>>...>;
             };
 
             template<typename T>
             using values_t = typename values<T>::type;
+
+            template<typename T>
+            struct references{};
+
+            template<typename ...Ts>
+            struct references<std::tuple<Ts...>> {
+                using type = std::tuple<dereference_t<Ts>...>;
+            };
+
+            template<typename T>
+            using references_t = typename references<T>::type;
 
             ALL_NOEXCEPT(++REFERENCE(Ts), is_nothrow_incrementible)
             ALL_NOEXCEPT(--REFERENCE(Ts), is_nothrow_decrementible)
@@ -471,7 +482,7 @@ namespace iterators {
 
         public:
             using value_type = traits::values_t<Iterators>;
-            using reference = value_type;
+            using reference = traits::references_t<Iterators>;
             using pointer = void;
             using difference_type = std::ptrdiff_t;
 
@@ -628,8 +639,8 @@ namespace iterators {
              * @return tuple of references to range elements
              */
             template<typename Its = Iterators, typename = std::enable_if_t<traits::is_dereferencible_v<Its>>>
-            constexpr auto operator*() const noexcept(traits::is_nothrow_dereferencible_v<Iterators>) {
-                return std::apply([](auto &&...it) { return value_type(*it...); }, iterators);
+            constexpr reference operator*() const noexcept(traits::is_nothrow_dereferencible_v<Iterators>) {
+                return std::apply([](auto &&...it) { return reference(*it...); }, iterators);
             }
 
             /**
