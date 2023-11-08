@@ -753,3 +753,21 @@ TEST(Iterators, zip_subscript) {
     std::list list{1, 2, 3};
     EXPECT_FALSE(has_subsc_v<decltype(zip(numbers, list))>);
 }
+
+TEST(Iterators, value_reference_types) {
+    using namespace iterators;
+    std::vector<int> numbers;
+    std::list<std::string> strings;
+    using zIt = decltype(const_zip(numbers, strings).begin());
+    using value = zIt::value_type;
+    using reference = zIt::reference;
+    EXPECT_TRUE((std::is_convertible_v<reference, value>));
+    EXPECT_TRUE((std::is_lvalue_reference_v<std::tuple_element_t<0, reference>>));
+    EXPECT_TRUE((std::is_lvalue_reference_v<std::tuple_element_t<1, reference>>));
+    EXPECT_TRUE((std::is_const_v<std::remove_reference_t<std::tuple_element_t<0, reference>>>));
+    EXPECT_TRUE((std::is_const_v<std::remove_reference_t<std::tuple_element_t<1, reference>>>));
+    EXPECT_FALSE((std::is_lvalue_reference_v<std::tuple_element_t<0, value>>));
+    EXPECT_FALSE((std::is_lvalue_reference_v<std::tuple_element_t<1, value>>));
+    EXPECT_FALSE((std::is_const_v<std::tuple_element_t<0, value>>));
+    EXPECT_FALSE((std::is_const_v<std::tuple_element_t<1, value>>));
+}
