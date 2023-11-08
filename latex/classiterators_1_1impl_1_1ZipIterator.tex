@@ -35,8 +35,8 @@ Collaboration diagram for iterators\+::impl\+::Zip\+Iterator$<$ Iterators $>$\+:
 \mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_a238ea91378d253d9e529bc8657e6cdb9}\label{classiterators_1_1impl_1_1ZipIterator_a238ea91378d253d9e529bc8657e6cdb9}} 
 using {\bfseries value\+\_\+type} = traits\+::values\+\_\+t$<$ Iterators $>$
 \item 
-\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_af417f0b9eaced8e24ae16144e67624f0}\label{classiterators_1_1impl_1_1ZipIterator_af417f0b9eaced8e24ae16144e67624f0}} 
-using {\bfseries reference} = value\+\_\+type
+\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_ab65cd85da7be993b50a1a79d784d9e29}\label{classiterators_1_1impl_1_1ZipIterator_ab65cd85da7be993b50a1a79d784d9e29}} 
+using {\bfseries reference} = traits\+::references\+\_\+t$<$ Iterators $>$
 \item 
 \mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_a2f8289ac1ce3f6b02fb02dc346783f1b}\label{classiterators_1_1impl_1_1ZipIterator_a2f8289ac1ce3f6b02fb02dc346783f1b}} 
 using {\bfseries pointer} = void
@@ -57,7 +57,7 @@ constexpr {\bfseries Zip\+Iterator} (const Iterators \&iterators) noexcept(std\+
 \item 
 {\footnotesize template$<$typename Its , REQUIRES(\+Zip\+Iterator\+::one\+Equal(\+INSTANCE\+\_\+\+OF(\+Iterators), INSTANCE\+\_\+\+OF(\+Its))) $>$ }\\constexpr bool \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{operator==}} (const \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Its $>$ \&other) const noexcept(noexcept(Zip\+Iterator\+::one\+Equal(std\+::declval$<$ Iterators $>$(), other.\+get\+Iterators())))
 \item 
-{\footnotesize template$<$typename Its  = Iterators, typename  = std\+::enable\+\_\+if\+\_\+t$<$traits\+::is\+\_\+dereferencible\+\_\+v$<$\+Its$>$$>$$>$ }\\constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a034c055f759cc39b5a88b9d594e91180}{operator$\ast$}} () const noexcept(traits\+::is\+\_\+nothrow\+\_\+dereferencible\+\_\+v$<$ Iterators $>$)
+{\footnotesize template$<$typename Its  = Iterators, typename  = std\+::enable\+\_\+if\+\_\+t$<$traits\+::is\+\_\+dereferencible\+\_\+v$<$\+Its$>$$>$$>$ }\\constexpr reference \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae5b01da779596bfc50fd5e897cfee667}{operator$\ast$}} () const noexcept(traits\+::is\+\_\+nothrow\+\_\+dereferencible\+\_\+v$<$ Iterators $>$)
 \item 
 constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_af72afb220554db01495b519aa0851fd5}{get\+Iterators}} () const noexcept -\/$>$ const Iterators \&
 \item 
@@ -155,13 +155,13 @@ Inequality comparison
 \begin{DoxyReturn}{Returns}
 true if this is not equal to other 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_a034c055f759cc39b5a88b9d594e91180}\label{classiterators_1_1impl_1_1ZipIterator_a034c055f759cc39b5a88b9d594e91180}} 
+\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_ae5b01da779596bfc50fd5e897cfee667}\label{classiterators_1_1impl_1_1ZipIterator_ae5b01da779596bfc50fd5e897cfee667}} 
 \index{iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}}
 \doxyparagraph{\texorpdfstring{operator$\ast$()}{operator*()}}
 {\footnotesize\ttfamily template$<$typename Iterators $>$ \\
 template$<$typename Its  = Iterators, typename  = std\+::enable\+\_\+if\+\_\+t$<$traits\+::is\+\_\+dereferencible\+\_\+v$<$\+Its$>$$>$$>$ \\
-constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator}}$<$ Iterators $>$\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+constexpr reference \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator}}$<$ Iterators $>$\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 Dereferences all underlying iterators and returns a tuple of the resulting range reference types 
 \begin{DoxyTemplParams}{Template Parameters}

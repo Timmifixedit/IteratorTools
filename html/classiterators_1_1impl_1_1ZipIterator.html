@@ -116,9 +116,9 @@ Public Types</h2></td></tr>
 <tr class="memitem:a238ea91378d253d9e529bc8657e6cdb9"><td class="memItemLeft" align="right" valign="top"><a id="a238ea91378d253d9e529bc8657e6cdb9"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = traits::values_t&lt; Iterators &gt;</td></tr>
 <tr class="separator:a238ea91378d253d9e529bc8657e6cdb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af417f0b9eaced8e24ae16144e67624f0"><td class="memItemLeft" align="right" valign="top"><a id="af417f0b9eaced8e24ae16144e67624f0"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = value_type</td></tr>
-<tr class="separator:af417f0b9eaced8e24ae16144e67624f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65cd85da7be993b50a1a79d784d9e29"><td class="memItemLeft" align="right" valign="top"><a id="ab65cd85da7be993b50a1a79d784d9e29"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = traits::references_t&lt; Iterators &gt;</td></tr>
+<tr class="separator:ab65cd85da7be993b50a1a79d784d9e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f8289ac1ce3f6b02fb02dc346783f1b"><td class="memItemLeft" align="right" valign="top"><a id="a2f8289ac1ce3f6b02fb02dc346783f1b"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = void</td></tr>
 <tr class="separator:a2f8289ac1ce3f6b02fb02dc346783f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,9 +141,9 @@ template&lt;typename ... Its&gt; </td></tr>
 <tr class="memitem:a6a6b8e94ab0837d630a3fdfa7d4222da"><td class="memTemplParams" colspan="2">template&lt;typename Its , REQUIRES(ZipIterator::oneEqual(INSTANCE_OF(Iterators), INSTANCE_OF(Its))) &gt; </td></tr>
 <tr class="memitem:a6a6b8e94ab0837d630a3fdfa7d4222da"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a6a6b8e94ab0837d630a3fdfa7d4222da">operator==</a> (const <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a>&lt; Its &gt; &amp;other) const noexcept(noexcept(ZipIterator::oneEqual(std::declval&lt; Iterators &gt;(), other.getIterators())))</td></tr>
 <tr class="separator:a6a6b8e94ab0837d630a3fdfa7d4222da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034c055f759cc39b5a88b9d594e91180"><td class="memTemplParams" colspan="2">template&lt;typename Its  = Iterators, typename  = std::enable_if_t&lt;traits::is_dereferencible_v&lt;Its&gt;&gt;&gt; </td></tr>
-<tr class="memitem:a034c055f759cc39b5a88b9d594e91180"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#a034c055f759cc39b5a88b9d594e91180">operator*</a> () const noexcept(traits::is_nothrow_dereferencible_v&lt; Iterators &gt;)</td></tr>
-<tr class="separator:a034c055f759cc39b5a88b9d594e91180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5b01da779596bfc50fd5e897cfee667"><td class="memTemplParams" colspan="2">template&lt;typename Its  = Iterators, typename  = std::enable_if_t&lt;traits::is_dereferencible_v&lt;Its&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ae5b01da779596bfc50fd5e897cfee667"><td class="memTemplItemLeft" align="right" valign="top">constexpr reference&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#ae5b01da779596bfc50fd5e897cfee667">operator*</a> () const noexcept(traits::is_nothrow_dereferencible_v&lt; Iterators &gt;)</td></tr>
+<tr class="separator:ae5b01da779596bfc50fd5e897cfee667"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af72afb220554db01495b519aa0851fd5"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiterators_1_1impl_1_1ZipIterator.html#af72afb220554db01495b519aa0851fd5">getIterators</a> () const noexcept -&gt; const Iterators &amp;</td></tr>
 <tr class="separator:af72afb220554db01495b519aa0851fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12958402afc74049d23a573c02b67582"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a12958402afc74049d23a573c02b67582">operator[]</a> (typename Implementation::difference_type n) const noexcept(noexcept(*(std::declval&lt; <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">ZipIterator</a>&lt; Iterators &gt; &gt;()+n)))</td></tr>
@@ -275,8 +275,8 @@ template&lt;typename Iterators &gt; </div>
 
 </div>
 </div>
-<a id="a034c055f759cc39b5a88b9d594e91180"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a034c055f759cc39b5a88b9d594e91180">&#9670;&nbsp;</a></span>operator*()</h2>
+<a id="ae5b01da779596bfc50fd5e897cfee667"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5b01da779596bfc50fd5e897cfee667">&#9670;&nbsp;</a></span>operator*()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -289,7 +289,7 @@ template&lt;typename Its  = Iterators, typename  = std::enable_if_t&lt;traits::i
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">iterators::impl::ZipIterator</a>&lt; Iterators &gt;::operator* </td>
+          <td class="memname">constexpr reference <a class="el" href="classiterators_1_1impl_1_1ZipIterator.html">iterators::impl::ZipIterator</a>&lt; Iterators &gt;::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
