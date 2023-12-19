@@ -428,7 +428,7 @@ template&lt;typename T  = std::size_t&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>When other has the same increment as <code>*this</code>, then the returned value is guaranteed to fulfil <code>other + n == *this</code>. In the following example, this is not the case: <div class="fragment"><div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> a(8, 1);</div>
 <div class="line"><a class="code" href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">CounterIterator</a> b(4, 3);</div>
 <div class="line"><span class="keyword">auto</span> diff = a - b; <span class="comment">// yields 1 since b + 1 &lt;= a</span></div>
-<div class="ttc" id="astructiterators_1_1impl_1_1CounterIterator_html_ae628a33cb0964bde115964409f6da573"><div class="ttname"><a href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">iterators::impl::CounterIterator::CounterIterator</a></div><div class="ttdeci">constexpr CounterIterator(T begin, T increment=T(1)) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:804</div></div>
+<div class="ttc" id="astructiterators_1_1impl_1_1CounterIterator_html_ae628a33cb0964bde115964409f6da573"><div class="ttname"><a href="structiterators_1_1impl_1_1CounterIterator.html#ae628a33cb0964bde115964409f6da573">iterators::impl::CounterIterator::CounterIterator</a></div><div class="ttdeci">constexpr CounterIterator(T begin, T increment=T(1)) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:809</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
@@ -561,7 +561,7 @@ template&lt;typename T  = std::size_t&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if <div class="fragment"><div class="line"><a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment) **<span class="keyword">this</span> &lt; *other <a class="code" href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">sgn</a>(increment)</div>
-<div class="ttc" id="anamespaceiterators_1_1impl_html_a4a6de0fc2d081e6c204370100dd4d658"><div class="ttname"><a href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">iterators::impl::sgn</a></div><div class="ttdeci">constexpr T sgn(T val) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:778</div></div>
+<div class="ttc" id="anamespaceiterators_1_1impl_html_a4a6de0fc2d081e6c204370100dd4d658"><div class="ttname"><a href="namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658">iterators::impl::sgn</a></div><div class="ttdeci">constexpr T sgn(T val) noexcept</div><div class="ttdef"><b>Definition:</b> Iterators.hpp:783</div></div>
 </div><!-- fragment --> where <code>sgn</code> is the signum function </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If increment is negative then both sides of the inequality are multiplied with -1. For example: let <code>it1 = 5</code> and <code>it2 = -2</code> be two CounterIterators where <code>it1</code> has negative increment. Then <code>it1 &lt; it2</code> is true. </dd></dl>
 
