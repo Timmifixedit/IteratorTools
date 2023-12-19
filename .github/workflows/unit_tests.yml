@@ -40,12 +40,6 @@ jobs:
         make Tests_C++17 -j$(nproc)
         ./Test/C++17/Tests_C++17 --gtest_color=yes
         fi
-    - name: build and run c++20 tests
-      run: |
-        cd build
-        $CXX --version
-        make Tests_C++20 -j$(nproc)
-        ./Test/C++20/Tests_C++20 --gtest_color=yes
 
   unit_tests_latest_compilers:
     runs-on: ubuntu-latest
