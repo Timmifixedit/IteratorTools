@@ -10,6 +10,7 @@
 #define ITERATORTOOLS_ITERATORS_HPP
 
 #include <algorithm>
+#include <iterator>
 #include <tuple>
 
 #define REFERENCE(TYPE) std::declval<std::add_lvalue_reference_t<TYPE>>()
@@ -76,9 +77,13 @@
 
 #define REQUIRES(EXPRESSION) typename = std::void_t<decltype(EXPRESSION)>
 
+#ifndef __STD_RANGES_DISABLED__
 #ifdef __cpp_lib_ranges
 #include <ranges>
 #define DERIVE_VIEW_INTERFACE(CLASS) : std::ranges::view_interface<CLASS>
+#else
+#define DERIVE_VIEW_INTERFACE(CLASS)
+#endif
 #else
 #define DERIVE_VIEW_INTERFACE(CLASS)
 #endif
