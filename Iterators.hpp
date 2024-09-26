@@ -1026,11 +1026,10 @@ namespace iterators {
                 static_assert(CtrRangeArgsIdx >= sizeof...(Iterable) - 2);
                 auto [its, enumArgs] = impl::tuple_split<CtrRangeArgsIdx>(
                         std::forward_as_tuple(std::forward<Iterable>(iterable)...));
-                return std::apply([&tZip](auto &&... args) { return std::forward<TZip>(tZip)(std::forward<decltype(args)>(args)...); },
-                                  std::tuple_cat(std::make_tuple(
-                                          std::make_from_tuple<impl::CounterRange<
-                                                  std::remove_reference_t<std::tuple_element_t<0, decltype(enumArgs)>>>>(
-                                                  enumArgs)), std::move(its)));
+                return std::apply(std::forward<TZip>(tZip), std::tuple_cat(std::make_tuple(
+                        std::make_from_tuple<impl::CounterRange<
+                                std::remove_reference_t<std::tuple_element_t<0, decltype(enumArgs)>>>>(
+                                enumArgs)), std::move(its)));
             }
         }
     }
