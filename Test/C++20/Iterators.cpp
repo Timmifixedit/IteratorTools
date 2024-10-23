@@ -76,3 +76,13 @@ TEST(cpp20_compat, sentinel) {
     std::vector<std::tuple<std::size_t, int>> gt{{0, 1}, {1, 2}, {2, 3}};
     EXPECT_TRUE(std::ranges::equal(target, gt));
 }
+
+TEST(cpp20_compat, subrange) {
+    using namespace iterators;
+    std::vector nums{1, 2, 3};
+    auto range = std::ranges::subrange(zip_i(nums.begin()), zip_i(nums.end())) | std::views::elements<0>;
+    EXPECT_EQ(range[2], 3);
+    EXPECT_EQ(range.size(), 3);
+    range[1] = 17;
+    EXPECT_EQ(nums[1], 17);
+}
