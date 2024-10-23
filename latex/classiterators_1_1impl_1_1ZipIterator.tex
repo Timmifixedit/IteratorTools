@@ -50,9 +50,6 @@ using {\bfseries difference\+\_\+type} = std\+::ptrdiff\+\_\+t
 \mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_a10e1daeed79cf10f1ad54bf4d7d093ad}\label{classiterators_1_1impl_1_1ZipIterator_a10e1daeed79cf10f1ad54bf4d7d093ad}} 
 constexpr {\bfseries Zip\+Iterator} (const Iterators \&iterators) noexcept(std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ Iterators $>$)
 \item 
-\mbox{\Hypertarget{classiterators_1_1impl_1_1ZipIterator_a7bdd20e0de1b5f5043eb97663bb72636}\label{classiterators_1_1impl_1_1ZipIterator_a7bdd20e0de1b5f5043eb97663bb72636}} 
-{\footnotesize template$<$typename ... Its$>$ }\\constexpr {\bfseries Zip\+Iterator} (Its \&\&...its)
-\item 
 {\footnotesize template$<$typename Its  = Iterators, typename  = std\+::enable\+\_\+if\+\_\+t$<$traits\+::is\+\_\+incrementable\+\_\+v$<$\+Its$>$$>$$>$ }\\constexpr \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} \& \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_aa3ecd150188025f7a9f0c89540b8c1f1}{operator++}} () noexcept(traits\+::is\+\_\+nothrow\+\_\+incrementible\+\_\+v$<$ Iterators $>$)
 \item 
 {\footnotesize template$<$typename Its , REQUIRES(\+Zip\+Iterator\+::one\+Equal(\+INSTANCE\+\_\+\+OF(\+Iterators), INSTANCE\+\_\+\+OF(\+Its))) $>$ }\\constexpr bool \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{operator==}} (const \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Its $>$ \&other) const noexcept(noexcept(Zip\+Iterator\+::one\+Equal(std\+::declval$<$ Iterators $>$(), other.\+get\+Iterators())))
@@ -61,7 +58,9 @@ constexpr {\bfseries Zip\+Iterator} (const Iterators \&iterators) noexcept(std\+
 \item 
 constexpr auto \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_af72afb220554db01495b519aa0851fd5}{get\+Iterators}} () const noexcept -\/$>$ const Iterators \&
 \item 
-constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) const noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$ $>$()+n)))
+constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) const noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$ $>$()+n)))
+\item 
+constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$ $>$()+n)))
 \item 
 constexpr \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{operator++}} (int) noexcept(noexcept(++std\+::declval$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$ $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$ $>$)
 \item 
@@ -405,11 +404,11 @@ Greater than or equal comparison
 \begin{DoxyReturn}{Returns}
 true if this is not less than other 
 \end{DoxyReturn}
-\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}\label{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}} 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}\label{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}} 
 \index{iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}}
-\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}}
-{\footnotesize\ttfamily constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Array subscript operator 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -424,6 +423,16 @@ Array subscript operator
 \begin{DoxyReturn}{Returns}
 $\ast$($\ast$this + n) 
 \end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}\label{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}} 
+\index{iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::ZipIterator$<$ Iterators $>$@{iterators::impl::ZipIterator$<$ Iterators $>$}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}$<$ Iterators $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+
+
+
+
+
 
 
 \doxysubsubsection{Friends And Related Function Documentation}

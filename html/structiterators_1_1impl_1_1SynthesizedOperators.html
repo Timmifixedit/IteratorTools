@@ -100,9 +100,12 @@ Inheritance diagram for iterators::impl::SynthesizedOperators&lt; Impl &gt;:</di
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a12958402afc74049d23a573c02b67582"><td class="memTemplParams" colspan="2">template&lt;REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL+INSTANCE_OF(typename Implementation::difference_type))) &gt; </td></tr>
-<tr class="memitem:a12958402afc74049d23a573c02b67582"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a12958402afc74049d23a573c02b67582">operator[]</a> (typename Implementation::difference_type n) const noexcept(noexcept(*(std::declval&lt; Impl &gt;()+n)))</td></tr>
-<tr class="separator:a12958402afc74049d23a573c02b67582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88d31e111d1908c2b427c4838827ba4d"><td class="memTemplParams" colspan="2">template&lt;REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL+INSTANCE_OF(typename Implementation::difference_type))) &gt; </td></tr>
+<tr class="memitem:a88d31e111d1908c2b427c4838827ba4d"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a88d31e111d1908c2b427c4838827ba4d">operator[]</a> (typename Implementation::difference_type n) const noexcept(noexcept(*(std::declval&lt; Impl &gt;()+n)))</td></tr>
+<tr class="separator:a88d31e111d1908c2b427c4838827ba4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a55fe2137ee76e8a35ce6776962283"><td class="memTemplParams" colspan="2">template&lt;REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL+INSTANCE_OF(typename Implementation::difference_type))) &gt; </td></tr>
+<tr class="memitem:a64a55fe2137ee76e8a35ce6776962283"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#a64a55fe2137ee76e8a35ce6776962283">operator[]</a> (typename Implementation::difference_type n) noexcept(noexcept(*(std::declval&lt; Impl &gt;()+n)))</td></tr>
+<tr class="separator:a64a55fe2137ee76e8a35ce6776962283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac127a6481c354fab3db40d5a5d1578a9"><td class="memTemplParams" colspan="2">template&lt;REQUIRES_IMPL(Impl,++INSTANCE_OF_IMPL) &gt; </td></tr>
 <tr class="memitem:ac127a6481c354fab3db40d5a5d1578a9"><td class="memTemplItemLeft" align="right" valign="top">constexpr Impl&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html#ac127a6481c354fab3db40d5a5d1578a9">operator++</a> (int) noexcept(noexcept(++std::declval&lt; Impl &gt;()) &amp;&amp;std::is_nothrow_copy_constructible_v&lt; Impl &gt;)</td></tr>
 <tr class="separator:ac127a6481c354fab3db40d5a5d1578a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -357,8 +360,8 @@ template&lt;typename T , REQUIRES_IMPL(Impl, INSTANCE_OF_IMPL&lt; INSTANCE_OF(T)
 
 </div>
 </div>
-<a id="a12958402afc74049d23a573c02b67582"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12958402afc74049d23a573c02b67582">&#9670;&nbsp;</a></span>operator[]()</h2>
+<a id="a88d31e111d1908c2b427c4838827ba4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88d31e111d1908c2b427c4838827ba4d">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -371,7 +374,7 @@ template&lt;REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL+INSTANCE_OF(typename Implemen
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; Impl &gt;::operator[] </td>
+          <td class="memname">constexpr decltype(auto) <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; Impl &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype">typename Implementation::difference_type&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -397,6 +400,38 @@ template&lt;REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL+INSTANCE_OF(typename Implemen
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>*(*this + n) </dd></dl>
+
+</div>
+</div>
+<a id="a64a55fe2137ee76e8a35ce6776962283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a55fe2137ee76e8a35ce6776962283">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Impl &gt; </div>
+<div class="memtemplate">
+template&lt;REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL+INSTANCE_OF(typename Implementation::difference_type))) &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr decltype(auto) <a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">iterators::impl::SynthesizedOperators</a>&lt; Impl &gt;::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">typename Implementation::difference_type&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
 
 </div>
 </div>

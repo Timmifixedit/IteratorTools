@@ -70,7 +70,9 @@ constexpr bool \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a65d5
 \item 
 constexpr T \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a1d5a1ef5c6ecea7d799ae683427191c3}{operator$\ast$}} () const noexcept
 \item 
-constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) const noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$()+n)))
+constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) const noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$()+n)))
+\item 
+constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}{operator\mbox{[}$\,$\mbox{]}}} (typename Implementation\+::difference\+\_\+type n) noexcept(noexcept($\ast$(std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$()+n)))
 \item 
 constexpr \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{operator++}} (int) noexcept(noexcept(++std\+::declval$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$()) \&\&std\+::is\+\_\+nothrow\+\_\+copy\+\_\+constructible\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$ $>$)
 \item 
@@ -365,11 +367,11 @@ Greater than or equal comparison
 \begin{DoxyReturn}{Returns}
 true if this is not less than other 
 \end{DoxyReturn}
-\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}\label{structiterators_1_1impl_1_1SynthesizedOperators_a12958402afc74049d23a573c02b67582}} 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}\label{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}} 
 \index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
-\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}}
-{\footnotesize\ttfamily constexpr auto \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
 
 Array subscript operator 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -384,6 +386,16 @@ Array subscript operator
 \begin{DoxyReturn}{Returns}
 $\ast$($\ast$this + n) 
 \end{DoxyReturn}
+\mbox{\Hypertarget{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}\label{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}} 
+\index{iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!iterators::impl::CounterIterator$<$ T $>$@{iterators::impl::CounterIterator$<$ T $>$}}
+\doxyparagraph{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr decltype(auto) \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators}}$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}$<$ std\+::size\+\_\+t $>$  $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{typename Implementation\+::difference\+\_\+type}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}, {\ttfamily [inherited]}}
+
+
+
+
+
 
 
 \doxysubsubsection{Friends And Related Function Documentation}
