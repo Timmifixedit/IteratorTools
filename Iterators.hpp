@@ -342,7 +342,16 @@ namespace iterators {
              * @return *(*this + n)
              */
             template<REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL + INSTANCE_OF(typename Implementation::difference_type)))>
-            constexpr auto operator[](typename Implementation::difference_type n) const
+            constexpr decltype(auto) operator[](typename Implementation::difference_type n) const
+            noexcept(noexcept(*(std::declval<Impl>() + n))) {
+                return *(this->getImpl() + n);
+            }
+
+            /**
+             * @copydoc SynthesizedOperators::operator[](typename Implementation::difference_type n)
+             */
+            template<REQUIRES_IMPL(Impl, *(INSTANCE_OF_IMPL + INSTANCE_OF(typename Implementation::difference_type)))>
+            constexpr decltype(auto) operator[](typename Implementation::difference_type n)
             noexcept(noexcept(*(std::declval<Impl>() + n))) {
                 return *(this->getImpl() + n);
             }
@@ -503,12 +512,11 @@ namespace iterators {
             using SynthesizedOperators<ZipIterator>::operator++;
             using SynthesizedOperators<ZipIterator>::operator--;
 
+            constexpr ZipIterator() noexcept = default;
+
             explicit constexpr ZipIterator(
                     const Iterators &iterators) noexcept(std::is_nothrow_copy_constructible_v<Iterators>)
                     : iterators(iterators) {}
-
-            template<typename ...Its>
-            explicit constexpr ZipIterator(Its &&...its) : iterators(std::forward<Its>(its)...) {}
 
             /**
              * Increments all underlying iterators by one
