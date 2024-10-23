@@ -81,6 +81,7 @@
 #ifdef __cpp_lib_ranges
 #include <ranges>
 #define DERIVE_VIEW_INTERFACE(CLASS) : std::ranges::view_interface<CLASS>
+#define __USE_VIEW_INTERFACE__
 #else
 #define DERIVE_VIEW_INTERFACE(CLASS)
 #endif
@@ -732,6 +733,7 @@ namespace iterators {
                         std::apply([](auto &&...c) { return CSentinelTuple(std::end(c)...); }, containers));
             }
 
+#ifndef __USE_VIEW_INTERFACE__
             /**
              * Array subscript operator (no bounds are checked)
              * @tparam IsRandomAccess SFINAE helper, do not specify explicitly
@@ -763,6 +765,8 @@ namespace iterators {
             constexpr auto size() const -> std::enable_if_t<HasSize, std::size_t> {
                 return sizeImpl(containers, std::make_index_sequence<std::tuple_size_v<ContainerTuple>>());
             }
+
+#endif
 
         private:
             ContainerTuple containers;
