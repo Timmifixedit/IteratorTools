@@ -27,21 +27,24 @@
         template<typename T> \
         inline constexpr bool NAME##_v = NAME<T>::value;
 
-#define ELEMENT1 std::get<Idx>(tuple1)
-#define ELEMENT2 std::get<Idx>(tuple2)
+#define ELEMENT1 std::get<Idx>(std::forward<Tuple1>(tuple1))
+#define ELEMENT2 std::get<Idx>(std::forward<Tuple2>(tuple2))
 
 #define BINARY_TUPLE_FOR_EACH(OPERATION, NAME) \
         template<typename Tuple1, typename Tuple2, std::size_t ...Idx> \
-        static constexpr auto NAME##Impl(const Tuple1 &tuple1, const Tuple2 &tuple2, std::index_sequence<Idx...>) \
+        static constexpr auto NAME##Impl(Tuple1 &&tuple1, Tuple2 &&tuple2, std::index_sequence<Idx...>) \
         noexcept(noexcept((OPERATION))) -> decltype(OPERATION) { \
             return (OPERATION); \
         } \
         template<typename Tuple1, typename Tuple2> \
-        static constexpr auto NAME(const Tuple1 &tuple1, const Tuple2 &tuple2) \
-        noexcept(noexcept(NAME##Impl(tuple1, tuple2, std::make_index_sequence<std::tuple_size_v<Tuple1>>{}))) \
-        -> decltype(NAME##Impl(tuple1, tuple2, std::make_index_sequence<std::tuple_size_v<Tuple1>>{})) { \
-            static_assert(std::tuple_size_v<Tuple1> == std::tuple_size_v<Tuple2>); \
-            return NAME##Impl(tuple1, tuple2, std::make_index_sequence<std::tuple_size_v<Tuple1>>{}); \
+        static constexpr auto NAME(Tuple1 &&tuple1, Tuple2 &&tuple2) \
+        noexcept(noexcept(NAME##Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),        \
+            std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<Tuple1>>>{}))) \
+        -> decltype(NAME##Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),              \
+            std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<Tuple1>>>{})) { \
+            static_assert(std::tuple_size_v<std::remove_reference_t<Tuple1>> == std::tuple_size_v<std::remove_reference_t<Tuple2>>); \
+            return NAME##Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),               \
+                std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<Tuple1>>>{}); \
         }
 
 #define BINARY_TUPLE_FOR_EACH_FOLD(OPERATION, COMBINATOR, NAME) BINARY_TUPLE_FOR_EACH( ( (OPERATION) COMBINATOR ...), NAME)
