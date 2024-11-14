@@ -102,6 +102,65 @@ namespace iterators {
      * Normally there is no need to use any of its members directly
      */
     namespace impl {
+        template<typename ...Ts>
+        struct RefTuple : public std::tuple<Ts...> {
+            using std::tuple<Ts...>::tuple;
+
+            template<typename ...Us>
+            decltype(auto) operator=(const std::tuple<Us...> &other) const {
+                if (selfAssignGuard(other)) {
+                    return *this;
+                }
+
+                copyAssign(*this, other);
+                return *this;
+            }
+
+            template<typename ...Us>
+            decltype(auto) operator=(std::tuple<Us...> &&other) const {
+                if (selfAssignGuard(other)) {
+                    return *this;
+                }
+
+                moveAssign(*this, other);
+                return *this;
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() const & noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...>const &>(*this));
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() & noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...> &>(*this));
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() const && noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...> const &&>(*this));
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() && noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...> &&>(*this));
+            }
+
+
+        private:
+            template<typename T>
+            constexpr bool selfAssignGuard(const T &t) const noexcept {
+                if constexpr (std::is_same_v<T, RefTuple>) {
+                    return &t == this;
+                } else {
+                    return false;
+                }
+            }
+
+            BINARY_TUPLE_FOR_EACH(((ELEMENT1 = ELEMENT2), ...), copyAssign)
+            BINARY_TUPLE_FOR_EACH(((ELEMENT1 = std::move(ELEMENT2)), ...), moveAssign)
+        };
+
         /**
          * @brief namespace containing type traits used in implementation of zip and enumerate
          */
@@ -179,7 +238,7 @@ namespace iterators {
 
             template<typename ...Ts>
             struct references<std::tuple<Ts...>> {
-                using type = std::tuple<dereference_t<Ts>...>;
+                using type = RefTuple<dereference_t<Ts>...>;
             };
 
             template<typename T>
@@ -1097,6 +1156,17 @@ namespace iterators {
                                         std::forward<Iterable>(iterable)...);
     }
 
+}
+
+namespace std {
+
+    template<typename ...Ts>
+    struct tuple_size<iterators::impl::RefTuple < Ts...>> : integral_constant<std::size_t, sizeof...(Ts)> {};
+
+    template<std::size_t Idx, typename ...Ts>
+    struct tuple_element<Idx, iterators::impl::RefTuple<Ts...>> {
+        using type = std::tuple_element_t<Idx, std::tuple<Ts...>>;
+    };
 }
 
 #endif //ITERATORTOOLS_ITERATORS_HPP
