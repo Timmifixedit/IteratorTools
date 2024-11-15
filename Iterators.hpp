@@ -102,9 +102,28 @@ namespace iterators {
      * Normally there is no need to use any of its members directly
      */
     namespace impl {
+        /**
+         * @brief Proxy reference type that supports assignment and swap even on const instances.
+         * @details @copybrief
+         * Actual constness is determined by element constness
+         * @tparam Ts
+         */
         template<typename ...Ts>
         struct RefTuple : public std::tuple<Ts...> {
             using std::tuple<Ts...>::tuple;
+
+            static constexpr bool Assignable = (not std::is_const_v<std::remove_reference_t<Ts>> && ...);
+
+            template<typename Dummy = int>
+            constexpr auto operator=(RefTuple &&other) noexcept((std::is_nothrow_move_assignable_v<std::remove_reference_t<Ts>> && ...))
+                    -> std::enable_if_t<std::is_same_v<Dummy, int> and Assignable, RefTuple &> {
+                if (selfAssignGuard(other)) {
+                    return *this;
+                }
+
+                moveAssign(*this, other);
+                return *this;
+            }
 
             template<typename ...Us>
             decltype(auto) operator=(const std::tuple<Us...> &other) const {
@@ -144,6 +163,14 @@ namespace iterators {
             template<std::size_t Idx>
             constexpr decltype(auto) get() && noexcept {
                 return std::get<Idx>(static_cast<std::tuple<Ts...> &&>(*this));
+            }
+
+            template<typename Tuple>
+            constexpr auto swap(Tuple &&other) const -> std::enable_if_t<std::is_same_v<Tuple, RefTuple> and Assignable> {
+                auto tmp = std::move(*this);
+                // move of forwarding reference because we always move, even const ref.
+                moveAssign(*this, std::move(other));
+                moveAssign(other, std::move(tmp));
             }
 
 
@@ -345,6 +372,16 @@ namespace iterators {
 
             template<typename T>
             constexpr inline bool has_size_v = has_size<T>::value;
+
+            template<template<typename...> typename Template, typename T>
+            struct is_same_template : std::false_type {};
+
+            template<template<typename...> typename Template, typename... Args>
+            struct is_same_template<Template, Template<Args...>> : std::true_type {};
+
+            template<template<typename ...> typename Template, typename T>
+            constexpr inline bool is_same_template_v = is_same_template<Template,
+                    std::remove_const_t<std::remove_reference_t<T>>>::value;
         }
 
 
@@ -379,6 +416,12 @@ namespace iterators {
             } else {
                 return index_of<Predicate, Idx + 1, Ts...>();
             }
+        }
+
+        template<typename Tuple>
+        constexpr auto swap(Tuple &&a, Tuple &&b)
+        -> std::enable_if_t<iterators::impl::traits::is_same_template_v<iterators::impl::RefTuple, Tuple>> {
+            std::forward<Tuple>(a).swap(std::forward<Tuple>(b));
         }
 
 
