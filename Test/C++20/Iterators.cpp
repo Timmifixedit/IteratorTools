@@ -51,6 +51,26 @@ TEST(cpp20_compat, range_algo) {
     EXPECT_EQ(std::get<0>(*res), 3);
 }
 
+TEST(cpp20_compat, range_algo_copy) {
+    using namespace iterators;
+    std::array numbers{4, 2, 3, 1, 0};
+    std::vector numbers1{0, 1, 2, 3, 4};
+    auto zView = zip(numbers, numbers1);
+    std::ranges::copy(zView | std::views::drop(1), zView.begin());
+    EXPECT_EQ(numbers, (std::array{2, 3, 1, 0, 0}));
+    EXPECT_EQ(numbers1, (std::vector{1, 2, 3, 4, 4}));
+}
+
+TEST(cpp20_compat, range_algo_sort) {
+    using namespace iterators;
+    std::array<std::string, 4> strings{"a", "b", "c", "d"};
+    std::array priorities{7, 1, 2, 0};
+    auto zView = zip(strings, priorities);
+    std::ranges::sort(zView, {}, [](const auto &tpl) { return std::get<1>(tpl); });
+    EXPECT_EQ(strings, (std::array<std::string, 4>{"d", "b", "c", "a"}));
+    EXPECT_EQ(priorities, (std::array{0, 1, 2, 7}));
+}
+
 TEST(cpp20_compat, range_members) {
     using namespace iterators;
     using namespace std::views;

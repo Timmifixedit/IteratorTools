@@ -619,7 +619,7 @@ TEST(Iterators, SFINAE_differnt_zip_types) {
     EXPECT_FALSE(res);
 }
 
-TEST(Iterators, stl_algos) {
+TEST(Iterators, stl_algos_find) {
     using namespace iterators;
     std::array numbers{4, 2, 3, 1, 0};
     auto zBegin = zip_i(numbers.begin(), numbers.rbegin());
@@ -627,6 +627,26 @@ TEST(Iterators, stl_algos) {
     auto res = std::find_if(zBegin, zEnd, [](const auto &tuple) { return std::get<0>(tuple) == std::get<1>(tuple); });
     ASSERT_NE(res, zEnd);
     EXPECT_EQ(std::get<0>(*res), 3);
+}
+
+TEST(Iterators, stl_algos_copy) {
+    using namespace iterators;
+    std::array numbers{4, 2, 3, 1, 0};
+    std::vector numbers1{0, 1, 2, 3, 4};
+    auto zView = zip(numbers, numbers1);
+    std::copy(zView.begin() + 1, zView.end(), zView.begin());
+    EXPECT_EQ(numbers, (std::array{2, 3, 1, 0, 0}));
+    EXPECT_EQ(numbers1, (std::vector{1, 2, 3, 4, 4}));
+}
+
+TEST(Iterators, stl_algos_sort) {
+    using namespace iterators;
+    std::array<std::string, 4> strings{"a", "b", "c", "d"};
+    std::array priorities{7, 1, 2, 0};
+    auto zView = zip(strings, priorities);
+    std::sort(zView.begin(), zView.end(), [](auto a, auto b) { return std::get<1>(a) < std::get<1>(b); });
+    EXPECT_EQ(strings, (std::array<std::string, 4>{"d", "b", "c", "a"}));
+    EXPECT_EQ(priorities, (std::array{0, 1, 2, 7}));
 }
 
 TEST(Iterators, noexcept_stl_containers) {
