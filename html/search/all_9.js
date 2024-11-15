@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['zip_33',['zip',['../namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62',1,'iterators']]],
-  ['zip_5fenumerate_34',['zip_enumerate',['../namespaceiterators.html#afe2a1812cc476954035d3148aa8a05fa',1,'iterators']]],
-  ['zip_5fi_35',['zip_i',['../classiterators_1_1impl_1_1ZipIterator.html#aad6554b6b37a9fd1a1163079a83e50bf',1,'iterators::impl::ZipIterator::zip_i()'],['../namespaceiterators.html#acd7ca481d3b479c30879e611baaac1da',1,'iterators::zip_i()']]],
-  ['zipiterator_36',['ZipIterator',['../classiterators_1_1impl_1_1ZipIterator.html',1,'iterators::impl']]]
+  ['tuple_5felement_3c_20idx_2c_20iterators_3a_3aimpl_3a_3areftuple_3c_20ts_2e_2e_2e_20_3e_20_3e_33',['tuple_element&lt; Idx, iterators::impl::RefTuple&lt; Ts... &gt; &gt;',['../structstd_1_1tuple__element_3_01Idx_00_01iterators_1_1impl_1_1RefTuple_3_01Ts_8_8_8_01_4_01_4.html',1,'std']]],
+  ['tuple_5fsize_3c_20iterators_3a_3aimpl_3a_3areftuple_3c_20ts_2e_2e_2e_20_3e_20_3e_34',['tuple_size&lt; iterators::impl::RefTuple&lt; Ts... &gt; &gt;',['../structstd_1_1tuple__size_3_01iterators_1_1impl_1_1RefTuple_3_01Ts_8_8_8_01_4_01_4.html',1,'std']]]
 ];

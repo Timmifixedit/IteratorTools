@@ -65,6 +65,10 @@ struct {\bfseries has\+\_\+size}
 struct {\bfseries has\+\_\+size$<$ T, std\+::void\+\_\+t$<$ decltype(std\+::size(std\+::declval$<$ std\+::remove\+\_\+reference\+\_\+t$<$ T $>$$>$()))$>$ $>$}
 \item 
 struct {\bfseries has\+\_\+size$<$ std\+::tuple$<$ Ts... $>$ $>$}
+\item 
+struct {\bfseries is\+\_\+same\+\_\+template}
+\item 
+struct {\bfseries is\+\_\+same\+\_\+template$<$ Template, Template$<$ Args... $>$ $>$}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -107,8 +111,25 @@ struct {\bfseries has\+\_\+size$<$ std\+::tuple$<$ Ts... $>$ $>$}
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}\label{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}} 
 {\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries has\+\_\+size\+\_\+v} = has\+\_\+size$<$T$>$\+::value
+\item 
+{\footnotesize template$<$template$<$ typename ... $>$ typename Template, typename T $>$ }\\constexpr bool {\bfseries is\+\_\+same\+\_\+template\+\_\+v}
 \end{DoxyCompactItemize}
 
 
 \doxysubsubsection{Detailed Description}
 namespace containing type traits used in implementation of zip and enumerate 
+
+\doxysubsubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a94fb823a56eafb664e23b438980759c3}\label{namespaceiterators_1_1impl_1_1traits_a94fb823a56eafb664e23b438980759c3}} 
+\index{iterators::impl::traits@{iterators::impl::traits}!is\_same\_template\_v@{is\_same\_template\_v}}
+\index{is\_same\_template\_v@{is\_same\_template\_v}!iterators::impl::traits@{iterators::impl::traits}}
+\doxyparagraph{\texorpdfstring{is\_same\_template\_v}{is\_same\_template\_v}}
+{\footnotesize\ttfamily template$<$template$<$ typename ... $>$ typename Template, typename T $>$ \\
+constexpr bool iterators\+::impl\+::traits\+::is\+\_\+same\+\_\+template\+\_\+v\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= is\_same\_template<Template,}
+\DoxyCodeLine{                    std::remove\_const\_t<std::remove\_reference\_t<T>>>::value}
+
+\end{DoxyCode}

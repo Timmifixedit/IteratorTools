@@ -92,6 +92,9 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1RefTuple.html">RefTuple</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Proxy reference type that supports assignment and swap even on const instances.  <a href="structiterators_1_1impl_1_1RefTuple.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structiterators_1_1impl_1_1SynthesizedOperators.html">SynthesizedOperators</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRTP-class that provides additional pointer arithmetic operators synthesized from basic operators.  <a href="structiterators_1_1impl_1_1SynthesizedOperators.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,6 +133,10 @@ template&lt;std::size_t Idx, typename Tuple &gt; </td></tr>
 template&lt;template&lt; typename &gt; typename Predicate, std::size_t Idx, typename ... Ts&gt; </td></tr>
 <tr class="memitem:a60af380e2d8600b5a36e97a305cfb189"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><b>index_of</b> () noexcept</td></tr>
 <tr class="separator:a60af380e2d8600b5a36e97a305cfb189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03b10fa21c536027d355f789fe8a133c"><td class="memTemplParams" colspan="2"><a id="a03b10fa21c536027d355f789fe8a133c"></a>
+template&lt;typename Tuple &gt; </td></tr>
+<tr class="memitem:a03b10fa21c536027d355f789fe8a133c"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>swap</b> (Tuple &amp;&amp;a, Tuple &amp;&amp;b) -&gt; std::enable_if_t&lt; iterators::impl::traits::is_same_template_v&lt; <a class="el" href="structiterators_1_1impl_1_1RefTuple.html">iterators::impl::RefTuple</a>, Tuple &gt;&gt;</td></tr>
+<tr class="separator:a03b10fa21c536027d355f789fe8a133c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1458ff0b91eca33d4f79aecb8421319"><td class="memTemplParams" colspan="2">template&lt;typename ... Iterable&gt; </td></tr>
 <tr class="memitem:ae1458ff0b91eca33d4f79aecb8421319"><td class="memTemplItemLeft" align="right" valign="top">struct ZipView&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceiterators_1_1impl.html#ae1458ff0b91eca33d4f79aecb8421319">DERIVE_VIEW_INTERFACE</a> (ZipView&lt; Iterable... &gt;)</td></tr>
 <tr class="memdesc:ae1458ff0b91eca33d4f79aecb8421319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zip-view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-loops.  <a href="namespaceiterators_1_1impl.html#ae1458ff0b91eca33d4f79aecb8421319">More...</a><br /></td></tr>

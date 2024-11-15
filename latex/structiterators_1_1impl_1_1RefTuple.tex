@@ -1,0 +1,82 @@
+\hypertarget{structiterators_1_1impl_1_1RefTuple}{}\doxysubsection{iterators\+::impl\+::Ref\+Tuple$<$ Ts $>$ Struct Template Reference}
+\label{structiterators_1_1impl_1_1RefTuple}\index{iterators::impl::RefTuple$<$ Ts $>$@{iterators::impl::RefTuple$<$ Ts $>$}}
+
+
+Proxy reference type that supports assignment and swap even on const instances.  
+
+
+
+
+{\ttfamily \#include $<$Iterators.\+hpp$>$}
+
+
+
+Inheritance diagram for iterators\+::impl\+::Ref\+Tuple$<$ Ts $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{structiterators_1_1impl_1_1RefTuple__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for iterators\+::impl\+::Ref\+Tuple$<$ Ts $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{structiterators_1_1impl_1_1RefTuple__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_abf60d346d3362edf45f07c6b0e72fb82}\label{structiterators_1_1impl_1_1RefTuple_abf60d346d3362edf45f07c6b0e72fb82}} 
+{\footnotesize template$<$typename Dummy  = int$>$ }\\constexpr auto {\bfseries operator=} (\mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{Ref\+Tuple}} \&\&other) noexcept((std\+::is\+\_\+nothrow\+\_\+move\+\_\+assignable\+\_\+v$<$ std\+::remove\+\_\+reference\+\_\+t$<$ Ts $>$$>$ \&\&...)) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same\+\_\+v$<$ Dummy, int $>$ and Assignable, \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{Ref\+Tuple}} \& $>$
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_a2d92b4f370a9ed56dd78fe9330642866}\label{structiterators_1_1impl_1_1RefTuple_a2d92b4f370a9ed56dd78fe9330642866}} 
+{\footnotesize template$<$typename ... Us$>$ }\\decltype(auto) {\bfseries operator=} (const std\+::tuple$<$ Us... $>$ \&other) const
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_aa752ce6292c2c642c79e3a58d7899f59}\label{structiterators_1_1impl_1_1RefTuple_aa752ce6292c2c642c79e3a58d7899f59}} 
+{\footnotesize template$<$typename ... Us$>$ }\\decltype(auto) {\bfseries operator=} (std\+::tuple$<$ Us... $>$ \&\&other) const
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_a5ef3e3fe58fd800e16288eec79669c13}\label{structiterators_1_1impl_1_1RefTuple_a5ef3e3fe58fd800e16288eec79669c13}} 
+{\footnotesize template$<$std\+::size\+\_\+t Idx$>$ }\\constexpr decltype(auto) {\bfseries get} () const \&noexcept
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_afb13d09a48399729ac5cde1ad9b55ff1}\label{structiterators_1_1impl_1_1RefTuple_afb13d09a48399729ac5cde1ad9b55ff1}} 
+{\footnotesize template$<$std\+::size\+\_\+t Idx$>$ }\\constexpr decltype(auto) {\bfseries get} () \&noexcept
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_a5958c47ad3368cc1440f67436bedd409}\label{structiterators_1_1impl_1_1RefTuple_a5958c47ad3368cc1440f67436bedd409}} 
+{\footnotesize template$<$std\+::size\+\_\+t Idx$>$ }\\constexpr decltype(auto) {\bfseries get} () const \&\&noexcept
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_ac95a49be7a18217b9f3b4eebac3a45ce}\label{structiterators_1_1impl_1_1RefTuple_ac95a49be7a18217b9f3b4eebac3a45ce}} 
+{\footnotesize template$<$std\+::size\+\_\+t Idx$>$ }\\constexpr decltype(auto) {\bfseries get} () \&\&noexcept
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_ae47b49107dd8185b09028cd5a5142660}\label{structiterators_1_1impl_1_1RefTuple_ae47b49107dd8185b09028cd5a5142660}} 
+{\footnotesize template$<$typename Tuple $>$ }\\constexpr auto {\bfseries swap} (Tuple \&\&other) const -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same\+\_\+v$<$ Tuple, \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{Ref\+Tuple}} $>$ and Assignable $>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structiterators_1_1impl_1_1RefTuple_af6317e1ce0a71ced2c7b3d268342ab0b}\label{structiterators_1_1impl_1_1RefTuple_af6317e1ce0a71ced2c7b3d268342ab0b}} 
+static constexpr bool {\bfseries Assignable} = (not std\+::is\+\_\+const\+\_\+v$<$std\+::remove\+\_\+reference\+\_\+t$<$Ts$>$$>$ \&\& ...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\subsubsection*{template$<$typename ... Ts$>$\newline
+struct iterators\+::impl\+::\+Ref\+Tuple$<$ Ts $>$}
+
+Proxy reference type that supports assignment and swap even on const instances. 
+
+Actual constness is determined by element constness 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Ts} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Iterators_8hpp}{Iterators.\+hpp}}\end{DoxyCompactItemize}

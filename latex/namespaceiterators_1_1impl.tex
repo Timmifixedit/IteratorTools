@@ -13,6 +13,8 @@ namespace containing structures and helpers used to implement zip and enumerate.
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{Ref\+Tuple}}
+\begin{DoxyCompactList}\small\item\em Proxy reference type that supports assignment and swap even on const instances. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{Synthesized\+Operators}}
 \begin{DoxyCompactList}\small\item\em CRTP-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}
@@ -40,6 +42,9 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{Counter\+Range}
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}\label{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}} 
 {\footnotesize template$<$template$<$ typename $>$ typename Predicate, std\+::size\+\_\+t Idx, typename ... Ts$>$ }\\constexpr std\+::size\+\_\+t {\bfseries index\+\_\+of} () noexcept
+\item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a03b10fa21c536027d355f789fe8a133c}\label{namespaceiterators_1_1impl_a03b10fa21c536027d355f789fe8a133c}} 
+{\footnotesize template$<$typename Tuple $>$ }\\constexpr auto {\bfseries swap} (Tuple \&\&a, Tuple \&\&b) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ iterators\+::impl\+::traits\+::is\+\_\+same\+\_\+template\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{iterators\+::impl\+::\+Ref\+Tuple}}, Tuple $>$$>$
 \item 
 {\footnotesize template$<$typename ... Iterable$>$ }\\struct Zip\+View \mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE}} (Zip\+View$<$ Iterable... $>$)
 \begin{DoxyCompactList}\small\item\em Zip-\/view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. \end{DoxyCompactList}\item 

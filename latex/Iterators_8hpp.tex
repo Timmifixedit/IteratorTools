@@ -19,6 +19,8 @@ Include dependency graph for Iterators.\+hpp\+:
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{iterators\+::impl\+::\+Ref\+Tuple$<$ Ts $>$}}
+\begin{DoxyCompactList}\small\item\em Proxy reference type that supports assignment and swap even on const instances. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{iterators\+::impl\+::\+Synthesized\+Operators$<$ Impl $>$}}
 \begin{DoxyCompactList}\small\item\em CRTP-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{iterators\+::impl\+::\+Zip\+Iterator$<$ Iterators $>$}}
@@ -28,7 +30,11 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{iterators\+::imp
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{iterators\+::impl\+::\+Counter\+Iterator$<$ T $>$}}
 \begin{DoxyCompactList}\small\item\em Iterator of an infinite sequence of numbers. Simply increments an internal counter. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::impl\+::\+Counter\+Range$<$ T $>$}}
-\begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structstd_1_1tuple__size_3_01iterators_1_1impl_1_1RefTuple_3_01Ts_8_8_8_01_4_01_4}{std\+::tuple\+\_\+size$<$ iterators\+::impl\+::\+Ref\+Tuple$<$ Ts... $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{structstd_1_1tuple__element_3_01Idx_00_01iterators_1_1impl_1_1RefTuple_3_01Ts_8_8_8_01_4_01_4}{std\+::tuple\+\_\+element$<$ Idx, iterators\+::impl\+::\+Ref\+Tuple$<$ Ts... $>$ $>$}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,10 +53,10 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \#define {\bfseries ALL\+\_\+\+NOEXCEPT}(OP,  NAME)
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}\label{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}} 
-\#define {\bfseries ELEMENT1}~std\+::get$<$Idx$>$(tuple1)
+\#define {\bfseries ELEMENT1}~std\+::get$<$Idx$>$(std\+::forward$<$Tuple1$>$(tuple1))
 \item 
 \mbox{\Hypertarget{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}\label{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}} 
-\#define {\bfseries ELEMENT2}~std\+::get$<$Idx$>$(tuple2)
+\#define {\bfseries ELEMENT2}~std\+::get$<$Idx$>$(std\+::forward$<$Tuple2$>$(tuple2))
 \item 
 \#define {\bfseries BINARY\+\_\+\+TUPLE\+\_\+\+FOR\+\_\+\+EACH}(OPERATION,  NAME)
 \item 
@@ -114,6 +120,9 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \mbox{\Hypertarget{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}\label{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}} 
 {\footnotesize template$<$template$<$ typename $>$ typename Predicate, std\+::size\+\_\+t Idx, typename ... Ts$>$ }\\constexpr std\+::size\+\_\+t {\bfseries iterators\+::impl\+::index\+\_\+of} () noexcept
 \item 
+\mbox{\Hypertarget{namespaceiterators_1_1impl_a03b10fa21c536027d355f789fe8a133c}\label{namespaceiterators_1_1impl_a03b10fa21c536027d355f789fe8a133c}} 
+{\footnotesize template$<$typename Tuple $>$ }\\constexpr auto {\bfseries iterators\+::impl\+::swap} (Tuple \&\&a, Tuple \&\&b) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ iterators\+::impl\+::traits\+::is\+\_\+same\+\_\+template\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{iterators\+::impl\+::\+Ref\+Tuple}}, Tuple $>$$>$
+\item 
 {\footnotesize template$<$typename ... Iterable$>$ }\\struct Zip\+View \mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{iterators\+::impl\+::\+DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE}} (Zip\+View$<$ Iterable... $>$)
 \begin{DoxyCompactList}\small\item\em Zip-\/view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{iterators\+::impl\+::sgn}} (T val) noexcept
@@ -158,6 +167,8 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{iterators\+::im
 \item 
 \mbox{\Hypertarget{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}\label{namespaceiterators_1_1impl_1_1traits_a53f67a1e7555ba2dcfcb2d411a101b32}} 
 {\footnotesize template$<$typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::has\+\_\+size\+\_\+v} = has\+\_\+size$<$T$>$\+::value
+\item 
+{\footnotesize template$<$template$<$ typename ... $>$ typename Template, typename T $>$ }\\constexpr bool {\bfseries iterators\+::impl\+::traits\+::is\+\_\+same\+\_\+template\+\_\+v}
 \end{DoxyCompactItemize}
 
 
@@ -202,16 +213,19 @@ tim Luchterhand
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{        \textcolor{keyword}{template}<\textcolor{keyword}{typename} Tuple1, \textcolor{keyword}{typename} Tuple2, std::size\_t ...Idx> \(\backslash\)}
-\DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME\#\#Impl(\textcolor{keyword}{const} Tuple1 \&tuple1, \textcolor{keyword}{const} Tuple2 \&tuple2, std::index\_sequence<Idx...>) \(\backslash\)}
+\DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME\#\#Impl(Tuple1 \&\&tuple1, Tuple2 \&\&tuple2, std::index\_sequence<Idx...>) \(\backslash\)}
 \DoxyCodeLine{        noexcept(noexcept((OPERATION))) -\/> decltype(OPERATION) \{ \(\backslash\)}
 \DoxyCodeLine{            return (OPERATION); \(\backslash\)}
 \DoxyCodeLine{        \} \(\backslash\)}
 \DoxyCodeLine{        template<typename Tuple1, typename Tuple2> \(\backslash\)}
-\DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME(\textcolor{keyword}{const} Tuple1 \&tuple1, \textcolor{keyword}{const} Tuple2 \&tuple2) \(\backslash\)}
-\DoxyCodeLine{        noexcept(noexcept(NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\}))) \(\backslash\)}
-\DoxyCodeLine{        -\/> decltype(NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\})) \{ \(\backslash\)}
-\DoxyCodeLine{            static\_assert(std::tuple\_size\_v<Tuple1> == std::tuple\_size\_v<Tuple2>); \(\backslash\)}
-\DoxyCodeLine{            return NAME\#\#Impl(tuple1, tuple2, std::make\_index\_sequence<std::tuple\_size\_v<Tuple1>>\{\}); \(\backslash\)}
+\DoxyCodeLine{        static constexpr \textcolor{keyword}{auto} NAME(Tuple1 \&\&tuple1, Tuple2 \&\&tuple2) \(\backslash\)}
+\DoxyCodeLine{        noexcept(noexcept(NAME\#\#Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),        \(\backslash\)}
+\DoxyCodeLine{            std::make\_index\_sequence<std::tuple\_size\_v<std::remove\_reference\_t<Tuple1>>>\{\}))) \(\backslash\)}
+\DoxyCodeLine{        -\/> decltype(NAME\#\#Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),              \(\backslash\)}
+\DoxyCodeLine{            std::make\_index\_sequence<std::tuple\_size\_v<std::remove\_reference\_t<Tuple1>>>\{\})) \{ \(\backslash\)}
+\DoxyCodeLine{            static\_assert(std::tuple\_size\_v<std::remove\_reference\_t<Tuple1>> == std::tuple\_size\_v<std::remove\_reference\_t<Tuple2>>); \(\backslash\)}
+\DoxyCodeLine{            return NAME\#\#Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),               \(\backslash\)}
+\DoxyCodeLine{                std::make\_index\_sequence<std::tuple\_size\_v<std::remove\_reference\_t<Tuple1>>>\{\}); \(\backslash\)}
 \DoxyCodeLine{        \}}
 
 \end{DoxyCode}

@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="5,5,207,61"/>
-<area shape="rect" id="node2" href="$structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="255,13,428,54"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,88,39"/>
+<area shape="rect" id="node2" href="$structiterators_1_1impl_1_1RefTuple.html" title="Proxy reference type that supports assignment and swap even on const instances." alt="" coords="136,5,315,47"/>
 </map>
