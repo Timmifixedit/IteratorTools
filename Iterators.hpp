@@ -27,21 +27,24 @@
         template<typename T> \
         inline constexpr bool NAME##_v = NAME<T>::value;
 
-#define ELEMENT1 std::get<Idx>(tuple1)
-#define ELEMENT2 std::get<Idx>(tuple2)
+#define ELEMENT1 std::get<Idx>(std::forward<Tuple1>(tuple1))
+#define ELEMENT2 std::get<Idx>(std::forward<Tuple2>(tuple2))
 
 #define BINARY_TUPLE_FOR_EACH(OPERATION, NAME) \
         template<typename Tuple1, typename Tuple2, std::size_t ...Idx> \
-        static constexpr auto NAME##Impl(const Tuple1 &tuple1, const Tuple2 &tuple2, std::index_sequence<Idx...>) \
+        static constexpr auto NAME##Impl(Tuple1 &&tuple1, Tuple2 &&tuple2, std::index_sequence<Idx...>) \
         noexcept(noexcept((OPERATION))) -> decltype(OPERATION) { \
             return (OPERATION); \
         } \
         template<typename Tuple1, typename Tuple2> \
-        static constexpr auto NAME(const Tuple1 &tuple1, const Tuple2 &tuple2) \
-        noexcept(noexcept(NAME##Impl(tuple1, tuple2, std::make_index_sequence<std::tuple_size_v<Tuple1>>{}))) \
-        -> decltype(NAME##Impl(tuple1, tuple2, std::make_index_sequence<std::tuple_size_v<Tuple1>>{})) { \
-            static_assert(std::tuple_size_v<Tuple1> == std::tuple_size_v<Tuple2>); \
-            return NAME##Impl(tuple1, tuple2, std::make_index_sequence<std::tuple_size_v<Tuple1>>{}); \
+        static constexpr auto NAME(Tuple1 &&tuple1, Tuple2 &&tuple2) \
+        noexcept(noexcept(NAME##Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),        \
+            std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<Tuple1>>>{}))) \
+        -> decltype(NAME##Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),              \
+            std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<Tuple1>>>{})) { \
+            static_assert(std::tuple_size_v<std::remove_reference_t<Tuple1>> == std::tuple_size_v<std::remove_reference_t<Tuple2>>); \
+            return NAME##Impl(std::forward<Tuple1>(tuple1), std::forward<Tuple2>(tuple2),               \
+                std::make_index_sequence<std::tuple_size_v<std::remove_reference_t<Tuple1>>>{}); \
         }
 
 #define BINARY_TUPLE_FOR_EACH_FOLD(OPERATION, COMBINATOR, NAME) BINARY_TUPLE_FOR_EACH( ( (OPERATION) COMBINATOR ...), NAME)
@@ -99,6 +102,92 @@ namespace iterators {
      * Normally there is no need to use any of its members directly
      */
     namespace impl {
+        /**
+         * @brief Proxy reference type that supports assignment and swap even on const instances.
+         * @details @copybrief
+         * Actual constness is determined by element constness
+         * @tparam Ts
+         */
+        template<typename ...Ts>
+        struct RefTuple : public std::tuple<Ts...> {
+            using std::tuple<Ts...>::tuple;
+
+            static constexpr bool Assignable = (not std::is_const_v<std::remove_reference_t<Ts>> && ...);
+
+            template<typename Dummy = int>
+            constexpr auto operator=(RefTuple &&other) noexcept((std::is_nothrow_move_assignable_v<std::remove_reference_t<Ts>> && ...))
+                    -> std::enable_if_t<std::is_same_v<Dummy, int> and Assignable, RefTuple &> {
+                if (selfAssignGuard(other)) {
+                    return *this;
+                }
+
+                moveAssign(*this, other);
+                return *this;
+            }
+
+            template<typename ...Us>
+            decltype(auto) operator=(const std::tuple<Us...> &other) const {
+                if (selfAssignGuard(other)) {
+                    return *this;
+                }
+
+                copyAssign(*this, other);
+                return *this;
+            }
+
+            template<typename ...Us>
+            decltype(auto) operator=(std::tuple<Us...> &&other) const {
+                if (selfAssignGuard(other)) {
+                    return *this;
+                }
+
+                moveAssign(*this, other);
+                return *this;
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() const & noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...>const &>(*this));
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() & noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...> &>(*this));
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() const && noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...> const &&>(*this));
+            }
+
+            template<std::size_t Idx>
+            constexpr decltype(auto) get() && noexcept {
+                return std::get<Idx>(static_cast<std::tuple<Ts...> &&>(*this));
+            }
+
+            template<typename Tuple>
+            constexpr auto swap(Tuple &&other) const -> std::enable_if_t<std::is_same_v<Tuple, RefTuple> and Assignable> {
+                auto tmp = std::move(*this);
+                // move of forwarding reference because we always move, even const ref.
+                moveAssign(*this, std::move(other));
+                moveAssign(other, std::move(tmp));
+            }
+
+
+        private:
+            template<typename T>
+            constexpr bool selfAssignGuard(const T &t) const noexcept {
+                if constexpr (std::is_same_v<T, RefTuple>) {
+                    return &t == this;
+                } else {
+                    return false;
+                }
+            }
+
+            BINARY_TUPLE_FOR_EACH(((ELEMENT1 = ELEMENT2), ...), copyAssign)
+            BINARY_TUPLE_FOR_EACH(((ELEMENT1 = std::move(ELEMENT2)), ...), moveAssign)
+        };
+
         /**
          * @brief namespace containing type traits used in implementation of zip and enumerate
          */
@@ -176,7 +265,7 @@ namespace iterators {
 
             template<typename ...Ts>
             struct references<std::tuple<Ts...>> {
-                using type = std::tuple<dereference_t<Ts>...>;
+                using type = RefTuple<dereference_t<Ts>...>;
             };
 
             template<typename T>
@@ -283,6 +372,16 @@ namespace iterators {
 
             template<typename T>
             constexpr inline bool has_size_v = has_size<T>::value;
+
+            template<template<typename...> typename Template, typename T>
+            struct is_same_template : std::false_type {};
+
+            template<template<typename...> typename Template, typename... Args>
+            struct is_same_template<Template, Template<Args...>> : std::true_type {};
+
+            template<template<typename ...> typename Template, typename T>
+            constexpr inline bool is_same_template_v = is_same_template<Template,
+                    std::remove_const_t<std::remove_reference_t<T>>>::value;
         }
 
 
@@ -317,6 +416,12 @@ namespace iterators {
             } else {
                 return index_of<Predicate, Idx + 1, Ts...>();
             }
+        }
+
+        template<typename Tuple>
+        constexpr auto swap(Tuple &&a, Tuple &&b)
+        -> std::enable_if_t<iterators::impl::traits::is_same_template_v<iterators::impl::RefTuple, Tuple>> {
+            std::forward<Tuple>(a).swap(std::forward<Tuple>(b));
         }
 
 
@@ -1094,6 +1199,17 @@ namespace iterators {
                                         std::forward<Iterable>(iterable)...);
     }
 
+}
+
+namespace std {
+
+    template<typename ...Ts>
+    struct tuple_size<iterators::impl::RefTuple < Ts...>> : integral_constant<std::size_t, sizeof...(Ts)> {};
+
+    template<std::size_t Idx, typename ...Ts>
+    struct tuple_element<Idx, iterators::impl::RefTuple<Ts...>> {
+        using type = std::tuple_element_t<Idx, std::tuple<Ts...>>;
+    };
 }
 
 #endif //ITERATORTOOLS_ITERATORS_HPP
