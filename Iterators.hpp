@@ -573,9 +573,6 @@ namespace iterators {
             constexpr const Impl &getImpl() const noexcept {
                 return static_cast<const Impl &>(*this);
             }
-
-            SynthesizedOperators() = default;
-            friend Impl;
         };
 
         /**
