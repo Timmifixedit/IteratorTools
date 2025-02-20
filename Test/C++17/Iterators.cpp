@@ -29,6 +29,8 @@ DETECT(ineq, INSTANCE_OF(T) != INSTANCE_OF(T))
 DETECT(subsc, INSTANCE_OF(T)[INSTANCE_OF(std::size_t)])
 DETECT(deref, *INSTANCE_OF(T))
 DETECT(size, INSTANCE_OF(T).size())
+DETECT(const_begin, INSTANCE_OF(const T).begin())
+DETECT(const_end, INSTANCE_OF(const T).end())
 
 DETECT_BINARY(eq_with, INSTANCE_OF(T) == INSTANCE_OF(U))
 DETECT_BINARY(neq_with, INSTANCE_OF(T) != INSTANCE_OF(U))
@@ -790,4 +792,15 @@ TEST(Iterators, value_reference_types) {
     EXPECT_FALSE((std::is_lvalue_reference_v<std::tuple_element_t<1, value>>));
     EXPECT_FALSE((std::is_const_v<std::tuple_element_t<0, value>>));
     EXPECT_FALSE((std::is_const_v<std::tuple_element_t<1, value>>));
+}
+
+TEST(Iterators, non_const_bounds) {
+    using namespace iterators;
+    NonConstVec numbers{1, 2, 3};
+    for (auto [gt, n] : enumerate(numbers, 1)) {
+        EXPECT_EQ(gt, n);
+    }
+
+    EXPECT_FALSE(has_const_begin_v<decltype(zip(numbers))>);
+    EXPECT_FALSE(has_const_end_v<decltype(zip(numbers))>);
 }

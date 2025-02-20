@@ -106,3 +106,16 @@ TEST(cpp20_compat, subrange) {
     range[1] = 17;
     EXPECT_EQ(nums[1], 17);
 }
+
+TEST(cpp20_compat, filter) {
+    using namespace iterators;
+    auto numbers = {1, 2, 3, 4, 5, 6};
+    auto even = numbers | std::views::filter([](int i) { return i % 2 == 0; });
+    unsigned size = 0;
+    for (auto [n, e] : zip(numbers, even)) {
+        ++size;
+        EXPECT_EQ(e, 2 * n);
+    }
+
+    EXPECT_EQ(size, 3);
+}

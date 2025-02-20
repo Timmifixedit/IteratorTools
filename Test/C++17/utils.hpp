@@ -172,4 +172,16 @@ struct BadIterator {
     int* operator->() const;
 };
 
+class NonConstVec: std::vector<int> {
+public:
+    using std::vector<int>::vector;
+    [[nodiscard]] auto begin() {
+        return vector::begin();
+    }
+
+    [[nodiscard]] auto end()  {
+        return vector::end();
+    }
+};
+
 #endif //BIDIRECTIONALMAP_MUSTNOTCOPY_HPP

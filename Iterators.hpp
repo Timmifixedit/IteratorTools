@@ -790,9 +790,7 @@ namespace iterators {
             using Sentinels = std::tuple<decltype(std::end(
                     std::declval<std::add_lvalue_reference_t<traits::const_if_t<Const, std::remove_reference_t<Iterable>>>>()))...>;
             using IteratorTuple = Iterators<false>;
-            using CIteratorTuple = Iterators<true>;
             using SentinelTuple = Sentinels<false>;
-            using CSentinelTuple = Sentinels<true>;
 
             template<typename Tuple, std::size_t ...Idx>
             constexpr auto sizeImpl(const Tuple &contTuple, std::index_sequence<Idx...>) const {
@@ -833,17 +831,19 @@ namespace iterators {
              * @copydoc ZipView::begin()
              * @note returns a ZipIterator that does not allow changing the ranges' elements
              */
-            constexpr auto begin() const {
-                return ZipIterator<CIteratorTuple>(
-                        std::apply([](auto &&...c) { return CIteratorTuple(std::begin(c)...); }, containers));
+            template<bool C = true>
+            constexpr auto begin() const -> ZipIterator<Iterators<C>> {
+                return ZipIterator<Iterators<true>>(
+                        std::apply([](auto &&...c) { return Iterators<true>(std::begin(c)...); }, containers));
             }
 
             /**
              * @copydoc ZipView::end()
              */
-            constexpr auto end() const {
-                return ZipIterator<CSentinelTuple>(
-                        std::apply([](auto &&...c) { return CSentinelTuple(std::end(c)...); }, containers));
+            template<bool C = true>
+            constexpr auto end() const -> ZipIterator<Sentinels<C>> {
+                return ZipIterator<Sentinels<true>>(
+                        std::apply([](auto &&...c) { return Sentinels<true>(std::end(c)...); }, containers));
             }
 
 #ifndef __USE_VIEW_INTERFACE__
@@ -854,7 +854,7 @@ namespace iterators {
              * @return zip view element at given index
              */
             template<bool IsRandomAccess = traits::is_random_accessible_v<IteratorTuple>,
-                    typename = std::enable_if_t<IsRandomAccess>>
+                typename = std::enable_if_t<IsRandomAccess>>
             constexpr auto operator[](std::size_t index) {
                 return begin()[index];
             }
@@ -862,8 +862,8 @@ namespace iterators {
             /**
              * @copydoc ZipView::operator[](std::size_t index)
              */
-            template<bool IsRandomAccess = traits::is_random_accessible_v<CIteratorTuple>,
-                    typename = std::enable_if_t<IsRandomAccess>>
+            template<bool C = true, bool IsRandomAccess = traits::is_random_accessible_v<Iterators<C>>,
+                typename = std::enable_if_t<IsRandomAccess>>
             constexpr auto operator[](std::size_t index) const {
                 return begin()[index];
             }
