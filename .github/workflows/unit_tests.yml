@@ -42,7 +42,7 @@ jobs:
         fi
 
   unit_tests_latest_compilers:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
