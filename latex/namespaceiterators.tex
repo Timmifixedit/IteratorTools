@@ -1,19 +1,19 @@
-\hypertarget{namespaceiterators}{}\doxysubsection{iterators Namespace Reference}
-\label{namespaceiterators}\index{iterators@{iterators}}
+\doxysubsection{iterators Namespace Reference}
+\hypertarget{namespaceiterators}{}\label{namespaceiterators}\index{iterators@{iterators}}
 
 
 namespace containing zip and enumerate functions  
 
 
-\doxysubsubsection*{Namespaces}
+\doxysubsubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}
+namespace \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}
 \begin{DoxyCompactList}\small\item\em namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{zip\+\_\+i}} (Iterators ...iterators) -\/$>$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}}$<$ std\+::tuple$<$ Iterators... $>$$>$
+{\footnotesize template$<$typename ... Iterators$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a66108b4863fd0dd49bd2a828dea2ad17}{zip\+\_\+i}} (Iterators ...iterators) -\/$>$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}}$<$ std\+::tuple$<$ Iterators... $>$ $>$
 \item 
 {\footnotesize template$<$typename ... Iterable$>$ }\\constexpr auto \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{zip}} (Iterable \&\&...iterable)
 \item 
@@ -33,16 +33,12 @@ namespace containing zip and enumerate functions
 namespace containing zip and enumerate functions 
 
 \doxysubsubsection{Function Documentation}
-\mbox{\Hypertarget{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}\label{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}} 
+\Hypertarget{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}\label{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848} 
 \index{iterators@{iterators}!const\_enumerate@{const\_enumerate}}
 \index{const\_enumerate@{const\_enumerate}!iterators@{iterators}}
 \doxyparagraph{\texorpdfstring{const\_enumerate()}{const\_enumerate()}}
 {\footnotesize\ttfamily template$<$typename Container , typename T  = std\+::size\+\_\+t$>$ \\
 constexpr auto iterators\+::const\+\_\+enumerate (\begin{DoxyParamCaption}\item[{Container \&\&}]{container,  }\item[{T}]{start = {\ttfamily T(0)},  }\item[{T}]{increment = {\ttfamily T(1)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
-
-
-
-
 
 enumerate variant that does not allow manipulation of the container elements
 
@@ -63,18 +59,14 @@ Function that can be used in range based loops to emulate the enumerate iterator
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-impl\+::\+Zip\+View that provides begin and end members to be used in range based for-\/loops. 
+impl\+::\+Zip\+View that provides begin and end members to be used in range based for-\/loops.   
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}\label{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}} 
+\Hypertarget{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}\label{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4} 
 \index{iterators@{iterators}!const\_zip@{const\_zip}}
 \index{const\_zip@{const\_zip}!iterators@{iterators}}
 \doxyparagraph{\texorpdfstring{const\_zip()}{const\_zip()}}
 {\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
 constexpr auto iterators\+::const\+\_\+zip (\begin{DoxyParamCaption}\item[{Iterable \&\&...}]{iterable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
-
-
-
-
 
 Zip variant that does not allow manipulation of the container elements
 
@@ -89,11 +81,11 @@ Function that can be used in range based loops to emulate the zip iterator from 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-impl\+::\+Zip\+View class that provides begin and end members to be used in range based for-\/loops 
+impl\+::\+Zip\+View class that provides begin and end members to be used in range based for-\/loops   
 \end{DoxyReturn}
 
 
-References iterators\+::impl\+::\+DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE().
+References \mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{iterators\+::impl\+::\+DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE()}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -103,16 +95,12 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}\label{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}} 
+\Hypertarget{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}\label{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3} 
 \index{iterators@{iterators}!const\_zip\_enumerate@{const\_zip\_enumerate}}
 \index{const\_zip\_enumerate@{const\_zip\_enumerate}!iterators@{iterators}}
 \doxyparagraph{\texorpdfstring{const\_zip\_enumerate()}{const\_zip\_enumerate()}}
 {\footnotesize\ttfamily template$<$typename ... Iterable$>$ \\
 constexpr auto iterators\+::const\+\_\+zip\+\_\+enumerate (\begin{DoxyParamCaption}\item[{Iterable \&\&...}]{iterable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
-
-
-
-
 
 zip\+\_\+enumerate variant that does not allow manipulation of the container elements
 
@@ -127,9 +115,9 @@ combination of zip and enumerate, i.\+e. returns an impl\+::\+Zip\+View that con
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-impl\+::\+Zip\+View with prepended enumerator 
+impl\+::\+Zip\+View with prepended enumerator   
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespaceiterators_aaea70262053f925d78710baa65075124}\label{namespaceiterators_aaea70262053f925d78710baa65075124}} 
+\Hypertarget{namespaceiterators_aaea70262053f925d78710baa65075124}\label{namespaceiterators_aaea70262053f925d78710baa65075124} 
 \index{iterators@{iterators}!enumerate@{enumerate}}
 \index{enumerate@{enumerate}!iterators@{iterators}}
 \doxyparagraph{\texorpdfstring{enumerate()}{enumerate()}}
@@ -155,7 +143,7 @@ Function that can be used in range based loops to emulate the enumerate iterator
 \begin{DoxyReturn}{Returns}
 impl\+::\+Zip\+View that provides begin and end members to be used in range based for-\/loops. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}\label{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}} 
+\Hypertarget{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}\label{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62} 
 \index{iterators@{iterators}!zip@{zip}}
 \index{zip@{zip}!iterators@{iterators}}
 \doxyparagraph{\texorpdfstring{zip()}{zip()}}
@@ -177,7 +165,7 @@ impl\+::\+Zip\+View class that provides begin and end members to be used in rang
 \end{DoxyReturn}
 
 
-References iterators\+::impl\+::\+DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE().
+References \mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{iterators\+::impl\+::\+DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE()}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -187,7 +175,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=322pt]{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}\label{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}} 
+\Hypertarget{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}\label{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa} 
 \index{iterators@{iterators}!zip\_enumerate@{zip\_enumerate}}
 \index{zip\_enumerate@{zip\_enumerate}!iterators@{iterators}}
 \doxyparagraph{\texorpdfstring{zip\_enumerate()}{zip\_enumerate()}}
@@ -207,14 +195,14 @@ combination of zip and enumerate, i.\+e. returns an impl\+::\+Zip\+View that con
 \begin{DoxyReturn}{Returns}
 impl\+::\+Zip\+View with prepended enumerator 
 \end{DoxyReturn}
-\mbox{\Hypertarget{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}\label{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}} 
+\Hypertarget{namespaceiterators_a66108b4863fd0dd49bd2a828dea2ad17}\label{namespaceiterators_a66108b4863fd0dd49bd2a828dea2ad17} 
 \index{iterators@{iterators}!zip\_i@{zip\_i}}
 \index{zip\_i@{zip\_i}!iterators@{iterators}}
 \doxyparagraph{\texorpdfstring{zip\_i()}{zip\_i()}}
 {\footnotesize\ttfamily template$<$typename ... Iterators$>$ \\
 constexpr auto iterators\+::zip\+\_\+i (\begin{DoxyParamCaption}\item[{Iterators ...}]{iterators }\end{DoxyParamCaption}) -\/$>$ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}}$<$std\+::tuple$<$Iterators...$>$$>$ \hspace{0.3cm}{\ttfamily [constexpr]}}
 
-Function that is used to create a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}} from an arbitrary number of iterators 
+Function that is used to create a \doxylink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator} from an arbitrary number of iterators 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Iterators} & type of iterators \\
 \hline
@@ -225,8 +213,8 @@ Function that is used to create a \mbox{\hyperlink{classiterators_1_1impl_1_1Zip
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}} 
+\doxylink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator} 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Zip\+Iterators have the same iterator category as the least powerful underlying operator. This means that for example, zipping a random access iterator and a bidirectional iterator only yields a bidirectional \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator}} 
+Zip\+Iterators have the same iterator category as the least powerful underlying operator. This means that for example, zipping a random access iterator and a bidirectional iterator only yields a bidirectional \doxylink{classiterators_1_1impl_1_1ZipIterator}{impl\+::\+Zip\+Iterator} 
 \end{DoxyNote}

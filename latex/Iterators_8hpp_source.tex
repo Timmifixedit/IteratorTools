@@ -1,0 +1,1220 @@
+\doxysubsection{Iterators.\+hpp}
+\hypertarget{Iterators_8hpp_source}{}\label{Iterators_8hpp_source}\mbox{\hyperlink{Iterators_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ Iterators.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ @author\ tim\ Luchterhand}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @date\ 10.09.21}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ @brief\ This\ file\ contains\ the\ definitions\ of\ Python-\/like\ zip-\/\ and\ enumerate-\/functions.\ They\ can\ be\ used\ in\ range}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ based\ for-\/loops\ to\ loop\ over\ multiple\ ranges\ at\ the\ same\ time,\ or\ to\ index\ a\ range\ while\ looping\ respectively.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{ifndef}\ \textcolor{preprocessor}{ITERATORTOOLS\_ITERATORS\_HPP}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{ITERATORTOOLS\_ITERATORS\_HPP}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{include}\ \textcolor{preprocessor}{<}\textcolor{preprocessor}{algorithm}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{include}\ \textcolor{preprocessor}{<}\textcolor{preprocessor}{iterator}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{include}\ \textcolor{preprocessor}{<}\textcolor{preprocessor}{tuple}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{REFERENCE}\textcolor{preprocessor}{(}\textcolor{preprocessor}{TYPE}\textcolor{preprocessor}{)}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{declval}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{add\_lvalue\_reference\_t}\textcolor{preprocessor}{<}\textcolor{preprocessor}{TYPE}\textcolor{preprocessor}{>>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{ALL\_NOEXCEPT}\textcolor{preprocessor}{(}\textcolor{preprocessor}{OP}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{keyword}{typename}\ \textcolor{preprocessor}{T}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \textcolor{preprocessor}{NAME}\ \textcolor{preprocessor}{\{}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \textcolor{preprocessor}{value}\ \textcolor{preprocessor}{=}\ \textcolor{keyword}{false}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\}}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{keyword}{typename}\ \textcolor{preprocessor}{...}\textcolor{preprocessor}{Ts}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \textcolor{preprocessor}{NAME}\ \textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{tuple}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Ts}\textcolor{preprocessor}{...}\textcolor{preprocessor}{>>}\ \textcolor{preprocessor}{\{}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \textcolor{preprocessor}{value}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{(}\textcolor{preprocessor}{...}\ \textcolor{preprocessor}{\&\&}\ \textcolor{keyword}{noexcept}\textcolor{preprocessor}{(}\textcolor{preprocessor}{OP}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\}}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{keyword}{typename}\ \textcolor{preprocessor}{T}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{\#\#}\textcolor{preprocessor}{\_v}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{<}\textcolor{preprocessor}{T}\textcolor{preprocessor}{>}\textcolor{preprocessor}{::}\textcolor{preprocessor}{value}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{ELEMENT1}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{get}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Idx}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple1}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{ELEMENT2}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{get}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Idx}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple2}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple2}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{BINARY\_TUPLE\_FOR\_EACH}\textcolor{preprocessor}{(}\textcolor{preprocessor}{OPERATION}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{keyword}{typename}\ \textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{,}\ \textcolor{keyword}{typename}\ \textcolor{preprocessor}{Tuple2}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{size\_t}\ \textcolor{preprocessor}{...}\textcolor{preprocessor}{Idx}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{\#\#}\textcolor{preprocessor}{Impl}\textcolor{preprocessor}{(}\textcolor{preprocessor}{Tuple1}\ \textcolor{preprocessor}{\&\&}\textcolor{preprocessor}{tuple1}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{Tuple2}\ \textcolor{preprocessor}{\&\&}\textcolor{preprocessor}{tuple2}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{index\_sequence}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Idx}\textcolor{preprocessor}{...}\textcolor{preprocessor}{>}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}\textcolor{preprocessor}{(}\textcolor{keyword}{noexcept}\textcolor{preprocessor}{(}\textcolor{preprocessor}{(}\textcolor{preprocessor}{OPERATION}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}\ \textcolor{preprocessor}{-\/>}\ \textcolor{keyword}{decltype}\textcolor{preprocessor}{(}\textcolor{preprocessor}{OPERATION}\textcolor{preprocessor}{)}\ \textcolor{preprocessor}{\{}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{preprocessor}{(}\textcolor{preprocessor}{OPERATION}\textcolor{preprocessor}{)}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{keyword}{typename}\ \textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{,}\ \textcolor{keyword}{typename}\ \textcolor{preprocessor}{Tuple2}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{(}\textcolor{preprocessor}{Tuple1}\ \textcolor{preprocessor}{\&\&}\textcolor{preprocessor}{tuple1}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{Tuple2}\ \textcolor{preprocessor}{\&\&}\textcolor{preprocessor}{tuple2}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}\textcolor{preprocessor}{(}\textcolor{keyword}{noexcept}\textcolor{preprocessor}{(}\textcolor{preprocessor}{NAME}\textcolor{preprocessor}{\#\#}\textcolor{preprocessor}{Impl}\textcolor{preprocessor}{(}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple1}\textcolor{preprocessor}{)}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple2}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple2}\textcolor{preprocessor}{)}\textcolor{preprocessor}{,}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{make\_index\_sequence}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{tuple\_size\_v}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{remove\_reference\_t}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>>}\textcolor{preprocessor}{>}\textcolor{preprocessor}{\{}\textcolor{preprocessor}{\}}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{-\/>}\ \textcolor{keyword}{decltype}\textcolor{preprocessor}{(}\textcolor{preprocessor}{NAME}\textcolor{preprocessor}{\#\#}\textcolor{preprocessor}{Impl}\textcolor{preprocessor}{(}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple1}\textcolor{preprocessor}{)}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple2}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple2}\textcolor{preprocessor}{)}\textcolor{preprocessor}{,}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{make\_index\_sequence}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{tuple\_size\_v}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{remove\_reference\_t}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>>}\textcolor{preprocessor}{>}\textcolor{preprocessor}{\{}\textcolor{preprocessor}{\}}\textcolor{preprocessor}{)}\textcolor{preprocessor}{)}\ \textcolor{preprocessor}{\{}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}\textcolor{preprocessor}{(}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{tuple\_size\_v}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{remove\_reference\_t}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>>}\ \textcolor{preprocessor}{==}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{tuple\_size\_v}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{remove\_reference\_t}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple2}\textcolor{preprocessor}{>>}\textcolor{preprocessor}{)}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{\#\#}\textcolor{preprocessor}{Impl}\textcolor{preprocessor}{(}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple1}\textcolor{preprocessor}{)}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{forward}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple2}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{tuple2}\textcolor{preprocessor}{)}\textcolor{preprocessor}{,}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{make\_index\_sequence}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{tuple\_size\_v}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{remove\_reference\_t}\textcolor{preprocessor}{<}\textcolor{preprocessor}{Tuple1}\textcolor{preprocessor}{>>}\textcolor{preprocessor}{>}\textcolor{preprocessor}{\{}\textcolor{preprocessor}{\}}\textcolor{preprocessor}{)}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{BINARY\_TUPLE\_FOR\_EACH\_FOLD}\textcolor{preprocessor}{(}\textcolor{preprocessor}{OPERATION}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{COMBINATOR}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{)}\ \mbox{\hyperlink{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}{BINARY\_TUPLE\_FOR\_EACH}}\textcolor{preprocessor}{(}\ \textcolor{preprocessor}{(}\ \textcolor{preprocessor}{(}\textcolor{preprocessor}{OPERATION}\textcolor{preprocessor}{)}\ \textcolor{preprocessor}{COMBINATOR}\ \textcolor{preprocessor}{...}\textcolor{preprocessor}{)}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{NAME}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{TYPE\_MAP\_DEFAULT}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{keyword}{typename}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \textcolor{preprocessor}{type\_to\_value}\ \textcolor{preprocessor}{\{}\textcolor{preprocessor}{\}}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{size\_t}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \textcolor{preprocessor}{value\_to\_type}\ \textcolor{preprocessor}{\{}\textcolor{preprocessor}{\}}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{TYPE\_MAP}\textcolor{preprocessor}{(}\textcolor{preprocessor}{TYPE}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{VALUE}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \textcolor{preprocessor}{type\_to\_value}\textcolor{preprocessor}{<}\textcolor{preprocessor}{TYPE}\textcolor{preprocessor}{>}\ \textcolor{preprocessor}{\{}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{size\_t}\ \textcolor{preprocessor}{value}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{VALUE}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\}}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \textcolor{preprocessor}{value\_to\_type}\textcolor{preprocessor}{<}\textcolor{preprocessor}{VALUE}\textcolor{preprocessor}{>}\textcolor{preprocessor}{\{}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}\textcolor{preprocessor}{(}\textcolor{preprocessor}{VALUE}\ \textcolor{preprocessor}{!=}\ 0\textcolor{preprocessor}{,}\ \textcolor{stringliteral}{"{}0\ is\ a\ reserved\ value"{}}\textcolor{preprocessor}{)}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ \textcolor{preprocessor}{type}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{TYPE}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\}}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{TYPE\_MAP\_ALIAS}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{keyword}{typename}\ \textcolor{preprocessor}{T}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{size\_t}\ \textcolor{preprocessor}{type\_to\_value\_v}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{type\_to\_value}\textcolor{preprocessor}{<}\textcolor{preprocessor}{T}\textcolor{preprocessor}{>}\textcolor{preprocessor}{::}\textcolor{preprocessor}{value}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\textcolor{preprocessor}{<}\textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{size\_t}\ \textcolor{preprocessor}{V}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ \textcolor{preprocessor}{value\_to\_type\_t}\ \textcolor{preprocessor}{=}\ \textcolor{keyword}{typename}\ \textcolor{preprocessor}{value\_to\_type}\textcolor{preprocessor}{<}\textcolor{preprocessor}{V}\textcolor{preprocessor}{>}\textcolor{preprocessor}{::}\textcolor{preprocessor}{type}\textcolor{preprocessor}{;}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{INSTANCE\_OF}\textcolor{preprocessor}{(}\textcolor{preprocessor}{TYPENAME}\textcolor{preprocessor}{)}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{declval}\textcolor{preprocessor}{<}\textcolor{preprocessor}{TYPENAME}\textcolor{preprocessor}{>}\textcolor{preprocessor}{(}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{INSTANCE\_OF\_IMPL}\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}\textcolor{preprocessor}{(}\textcolor{preprocessor}{Implementation}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{REQUIRES\_IMPL}\textcolor{preprocessor}{(}\textcolor{preprocessor}{TYPENAME}\textcolor{preprocessor}{,}\ \textcolor{preprocessor}{EXPRESSION}\textcolor{preprocessor}{)}\ \textcolor{keyword}{typename}\ \textcolor{preprocessor}{Implementation}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{TYPENAME}\textcolor{preprocessor}{,}\ \textcolor{keyword}{typename}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{void\_t}\textcolor{preprocessor}{<}\textcolor{keyword}{decltype}\textcolor{preprocessor}{(}\textcolor{preprocessor}{EXPRESSION}\textcolor{preprocessor}{)}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{REQUIRES}\textcolor{preprocessor}{(}\textcolor{preprocessor}{EXPRESSION}\textcolor{preprocessor}{)}\ \textcolor{keyword}{typename}\ \textcolor{preprocessor}{=}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{void\_t}\textcolor{preprocessor}{<}\textcolor{keyword}{decltype}\textcolor{preprocessor}{(}\textcolor{preprocessor}{EXPRESSION}\textcolor{preprocessor}{)}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{ifndef}\ \textcolor{preprocessor}{\_\_STD\_RANGES\_DISABLED\_\_}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{ifdef}\ \textcolor{preprocessor}{\_\_cpp\_lib\_ranges}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{include}\ \textcolor{preprocessor}{<}\textcolor{preprocessor}{ranges}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{DERIVE\_VIEW\_INTERFACE}\textcolor{preprocessor}{(}\textcolor{preprocessor}{CLASS}\textcolor{preprocessor}{)}\ \textcolor{preprocessor}{:}\ \textcolor{preprocessor}{std}\textcolor{preprocessor}{::}\textcolor{preprocessor}{ranges}\textcolor{preprocessor}{::}\textcolor{preprocessor}{view\_interface}\textcolor{preprocessor}{<}\textcolor{preprocessor}{CLASS}\textcolor{preprocessor}{>}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{\_\_USE\_VIEW\_INTERFACE\_\_}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{else}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{DERIVE\_VIEW\_INTERFACE}\textcolor{preprocessor}{(}\textcolor{preprocessor}{CLASS}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{endif}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{else}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{define}\ \textcolor{preprocessor}{DERIVE\_VIEW\_INTERFACE}\textcolor{preprocessor}{(}\textcolor{preprocessor}{CLASS}\textcolor{preprocessor}{)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{endif}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{/**}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ *\ @brief\ namespace\ containing\ zip\ and\ enumerate\ functions}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00098\ \textcolor{keyword}{namespace}\ \mbox{\hyperlink{namespaceiterators}{iterators}}\ \{}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ namespace\ containing\ structures\ and\ helpers\ used\ to\ implement\ zip\ and\ enumerate.}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ \ \ *\ Normally\ there\ is\ no\ need\ to\ use\ any\ of\ its\ members\ directly}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{namespace}\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ Proxy\ reference\ type\ that\ supports\ assignment\ and\ swap\ even\ on\ const\ instances.}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @details\ @copybrief}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Actual\ constness\ is\ determined\ by\ element\ constness}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @tparam\ Ts}}
+\DoxyCodeLine{00110\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}\ :\ \textcolor{keyword}{public}\ std::tuple<Ts...>\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ std::tuple<Ts...>::tuple;}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ Assignable\ =\ (\textcolor{keyword}{not}\ std::is\_const\_v<std::remove\_reference\_t<Ts>>\ \&\&\ ...);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Dummy\ =\ \textcolor{keywordtype}{int}>}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator=(\mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}\ \&\&other)\ \textcolor{keyword}{noexcept}((std::is\_nothrow\_move\_assignable\_v<std::remove\_reference\_t<Ts>>\ \&\&\ ...))}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ std::enable\_if\_t<std::is\_same\_v<Dummy,\ \textcolor{keywordtype}{int}>\ \textcolor{keyword}{and}\ Assignable,\ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}\ \&>\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selfAssignGuard(other))\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveAssign(*\textcolor{keyword}{this},\ other);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Us>}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ operator=(\textcolor{keyword}{const}\ std::tuple<Us...>\ \&other)\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selfAssignGuard(other))\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ copyAssign(*\textcolor{keyword}{this},\ other);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Us>}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ operator=(std::tuple<Us...>\ \&\&other)\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selfAssignGuard(other))\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveAssign(*\textcolor{keyword}{this},\ other);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Idx>}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ get()\ \textcolor{keyword}{const}\ \&\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<Idx>(\textcolor{keyword}{static\_cast}<std::tuple<Ts...>\textcolor{keyword}{const}\ \&>(*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Idx>}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ get()\ \&\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<Idx>(\textcolor{keyword}{static\_cast}<std::tuple<Ts...>\ \&>(*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Idx>}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ get()\ \textcolor{keyword}{const}\ \&\&\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<Idx>(\textcolor{keyword}{static\_cast}<std::tuple<Ts...>\ \textcolor{keyword}{const}\ \&\&>(*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Idx>}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ get()\ \&\&\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<Idx>(\textcolor{keyword}{static\_cast}<std::tuple<Ts...>\ \&\&>(*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Tuple>}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ swap(Tuple\ \&\&other)\ \textcolor{keyword}{const}\ -\/>\ std::enable\_if\_t<std::is\_same\_v<Tuple,\ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}>\ \textcolor{keyword}{and}\ Assignable>\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tmp\ =\ std::move(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ of\ forwarding\ reference\ because\ we\ always\ move,\ even\ const\ ref.}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveAssign(*\textcolor{keyword}{this},\ std::move(other));}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveAssign(other,\ std::move(tmp));}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ selfAssignGuard(\textcolor{keyword}{const}\ T\ \&t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}>)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&t\ ==\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}{BINARY\_TUPLE\_FOR\_EACH}}(((\mbox{\hyperlink{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}{ELEMENT1}}\ =\ \mbox{\hyperlink{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}{ELEMENT2}}),\ ...),\ copyAssign)}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}{BINARY\_TUPLE\_FOR\_EACH}}(((\mbox{\hyperlink{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}{ELEMENT1}}\ =\ std::move(\mbox{\hyperlink{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}{ELEMENT2}})),\ ...),\ moveAssign)}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ namespace\ containing\ type\ traits\ used\ in\ implementation\ of\ zip\ and\ enumerate}}
+\DoxyCodeLine{00193\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace}\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ Cond,\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ reference\_if\_t\ =\ std::conditional\_t<Cond,\ std::add\_lvalue\_reference\_t<T>,\ T>;}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ Cond,\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ const\_if\_t\ =\ std::conditional\_t<Cond,\ std::add\_const\_t<T>,\ T>;}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::void\_t<>>}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_container\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_container<T,\ std::void\_t<\textcolor{keyword}{decltype}(std::begin(std::declval<T>()),\ std::end(std::declval<T>()))>>}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ std::true\_type\ \{\};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_container\_v\ =\ is\_container<T>::value;}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::void\_t<>>}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_dereferencible\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_dereferencible<T,\ std::void\_t<\textcolor{keyword}{decltype}(*std::declval<T>())>>\ :\ std::true\_type\ \{\};}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_dereferencible<std::tuple<Ts...>,\ \textcolor{keywordtype}{void}>\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ (is\_dereferencible<Ts>::value\ \&\&\ ...);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_dereferencible\_v\ =\ is\_dereferencible<T>::value;}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::void\_t<>>}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_incrementable\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_incrementable<T,\ std::void\_t<\textcolor{keyword}{decltype}(++\mbox{\hyperlink{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}{REFERENCE}}(T))>>\ :\ std::true\_type\ \{\};}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_incrementable<std::tuple<Ts...>,\ \textcolor{keywordtype}{void}>\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ (is\_incrementable<Ts>::value\ \&\&\ ...);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_incrementable\_v\ =\ is\_incrementable<T>::value;}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{bool}\ B>}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ dereference\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ type\ =\ \textcolor{keywordtype}{void};}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ dereference<T,\ \textcolor{keyword}{true}>\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ type\ =\ \textcolor{keyword}{decltype}(*std::declval<T>());}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ dereference\_t\ =\ \textcolor{keyword}{typename}\ dereference<T,\ is\_dereferencible\_v<T>>::type;}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ values\{\};}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ values<std::tuple<Ts...>>\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ type\ =\ std::tuple<std::remove\_const\_t<std::remove\_reference\_t<dereference\_t<Ts>>>...>;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ values\_t\ =\ \textcolor{keyword}{typename}\ values<T>::type;}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ references\{\};}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ references<std::tuple<Ts...>>\ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ type\ =\ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}<dereference\_t<Ts>...>;}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ references\_t\ =\ \textcolor{keyword}{typename}\ references<T>::type;}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}{ALL\_NOEXCEPT}}(++\mbox{\hyperlink{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}{REFERENCE}}(Ts),\ is\_nothrow\_incrementible)}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}{ALL\_NOEXCEPT}}(-\/-\/\mbox{\hyperlink{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}{REFERENCE}}(Ts),\ is\_nothrow\_decrementible)}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}{ALL\_NOEXCEPT}}(*\mbox{\hyperlink{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}{REFERENCE}}(Ts),\ is\_nothrow\_dereferencible)}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}{ALL\_NOEXCEPT}}(\mbox{\hyperlink{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}{REFERENCE}}(Ts)\ +=\ 5,\ is\_nothrow\_compound\_assignable\_plus)}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a38b58967d6a0fcd398482b43cf8db546}{ALL\_NOEXCEPT}}(\mbox{\hyperlink{Iterators_8hpp_ae6ad1c0d20c1fb40f2284424fa26baa5}{REFERENCE}}(Ts)\ -\/=\ 5,\ is\_nothrow\_compound\_assignable\_minus)}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a63a8050bf06f087a431b829ba0b230a6}{TYPE\_MAP\_DEFAULT}}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}{TYPE\_MAP}}(std::input\_iterator\_tag,\ 1)}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}{TYPE\_MAP}}(std::forward\_iterator\_tag,\ 2)}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}{TYPE\_MAP}}(std::bidirectional\_iterator\_tag,\ 3)}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_ad6ba30daf7bd871e3cd9c45033a4d13a}{TYPE\_MAP}}(std::random\_access\_iterator\_tag,\ 4)}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{if}\ \_\_cplusplus\ \textcolor{preprocessor}{>}\ 201703L}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{TYPE\_MAP}}(\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{std}}::\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{contiguous\_iterator\_tag}},\ 5)}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{endif}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_abebf60cecd85510b3cc37cb415e07dde}{TYPE\_MAP\_ALIAS}}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::void\_t<>>}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ iterator\_category\_value\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ value\ =\ 0;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ iterator\_category\_value<T,\ std::void\_t<\textcolor{keyword}{typename}\ std::iterator\_traits<T>::iterator\_category>>\ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ value\ =\ type\_to\_value\_v<\textcolor{keyword}{typename}\ std::iterator\_traits<T>::iterator\_category>;}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Val>}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ iterator\_category\_from\_value\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ iterator\_category\ =\ value\_to\_type\_t<Val>;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ iterator\_category\_from\_value<0>\ \{\};}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ minimum\_category\ \{\};}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ minimum\_category<std::tuple<Ts...>>\ \{}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ value\ =\ std::min(\{iterator\_category\_value<Ts>::value...\});}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::size\_t\ minimum\_category\_v\ =\ minimum\_category<T>::value;}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::void\_t<>>}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_random\_accessible\ \{}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_random\_accessible<T,\ std::void\_t<\textcolor{keyword}{typename}\ std::iterator\_traits<T>::iterator\_category>>\ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ std::is\_base\_of\_v<std::random\_access\_iterator\_tag,}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::iterator\_traits<T>::iterator\_category>;}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_random\_accessible<std::tuple<Ts...>,\ std::void\_t<value\_to\_type\_t<minimum\_category\_v<std::tuple<Ts...>>>>>\ \{}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ std::is\_base\_of\_v<std::random\_access\_iterator\_tag,}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\_to\_type\_t<minimum\_category\_v<std::tuple<Ts...>>>>;}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_random\_accessible\_v\ =\ is\_random\_accessible<T>::value;}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::void\_t<>>}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_bidirectional\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_bidirectional<T,\ std::void\_t<\textcolor{keyword}{typename}\ std::iterator\_traits<T>::iterator\_category>>\ \{}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ std::is\_base\_of\_v<std::bidirectional\_iterator\_tag,}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::iterator\_traits<T>::iterator\_category>;}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_bidirectional<std::tuple<Ts...>,\ std::void\_t<value\_to\_type\_t<minimum\_category\_v<std::tuple<Ts...>>>>>\ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ std::is\_base\_of\_v<std::bidirectional\_iterator\_tag,}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\_to\_type\_t<minimum\_category\_v<std::tuple<Ts...>>>>;}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_bidirectional\_v\ =\ is\_bidirectional<T>::value;}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ std::void\_t<>>}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ has\_size\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ has\_size<T,\ std::void\_t<\textcolor{keyword}{decltype}(std::size(std::declval<std::remove\_reference\_t<T>>()))>>}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ std::true\_type\ \{\};}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ has\_size<std::tuple<Ts...>>\ \{}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ (has\_size<Ts>::value\ \&\&...);}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ has\_size\_v\ =\ has\_size<T>::value;}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{template}<\textcolor{keyword}{typename}...>\ \textcolor{keyword}{typename}\ Template,\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_same\_template\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{template}<\textcolor{keyword}{typename}...>\ \textcolor{keyword}{typename}\ Template,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ is\_same\_template<Template,\ Template<Args...>>\ :\ std::true\_type\ \{\};}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...>\ \textcolor{keyword}{typename}\ Template,\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ is\_same\_template\_v\ =\ is\_same\_template<Template,}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::remove\_const\_t<std::remove\_reference\_t<T>>>::value;}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Offset,\ std::size\_t\ ...Idx>}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ index\_seq\_impl(std::index\_sequence<Idx...>)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::index\_sequence<(Idx\ +\ Offset)...>\{\};}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Start,\ std::size\_t\ End>}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ index\_seq()\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ index\_seq\_impl<Start>(std::make\_index\_sequence<End\ -\/\ Start>());}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Tuple,\ std::size\_t\ ...Idx1,\ std::size\_t\ ...Idx2>}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ tuple\_split\_impl(Tuple\ \&\&tuple,\ std::index\_sequence<Idx1...>,\ std::index\_sequence<Idx2...>)\ \{}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_pair(std::tuple<std::tuple\_element\_t<Idx1,\ Tuple>\&\&...>(std::get<Idx1>(std::forward<Tuple>(tuple))...),}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::tuple<std::tuple\_element\_t<Idx2,\ Tuple>\&\&...>(std::get<Idx2>(std::forward<Tuple>(tuple))...));}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Idx,\ \textcolor{keyword}{typename}\ Tuple>}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ tuple\_split(Tuple\ \&\&tuple)\ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tuple\_split\_impl(std::forward<Tuple>(tuple),}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_index\_sequence<Idx>(),}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\_seq<Idx,\ std::tuple\_size\_v<Tuple>>());}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{template}<\textcolor{keyword}{typename}>\ \textcolor{keyword}{typename}\ Predicate,\ std::size\_t\ Idx,\ \textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ std::size\_t\ index\_of()\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(Idx\ <\ \textcolor{keyword}{sizeof}...(Ts));}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (Predicate<std::tuple\_element\_t<Idx,\ std::tuple<Ts...>>>::value)\ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Idx;}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ index\_of<Predicate,\ Idx\ +\ 1,\ Ts...>();}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Tuple>}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ swap(Tuple\ \&\&a,\ Tuple\ \&\&b)}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ -\/>\ std::enable\_if\_t<\mbox{\hyperlink{namespaceiterators}{iterators}}::\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_same\_template\_v<\mbox{\hyperlink{namespaceiterators}{iterators}}::\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}},\ Tuple>>\ \{}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ std::forward<Tuple>(a).swap(std::forward<Tuple>(b));}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00426\ }
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00429\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ CRTP-\/class\ that\ provides\ additional\ pointer\ arithmetic\ operators\ synthesized\ from\ basic\ operators}}
+\DoxyCodeLine{00430\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @details\ @copybrief}}
+\DoxyCodeLine{00431\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Adds\ the\ following\ operators}}
+\DoxyCodeLine{00432\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ -\/\ postfix\ increment\ and\ decrement\ (requires\ the\ respective\ prefix\ operators)}}
+\DoxyCodeLine{00433\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ -\/\ array\ subscript\ operator[]\ (requires\ operator+\ and\ dereference\ operator)}}
+\DoxyCodeLine{00434\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ -\/\ binary\ arithmetic\ operators\ (requires\ compound\ assignment\ operators)}}
+\DoxyCodeLine{00435\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ -\/\ inequality\ comparison\ (requires\ operator==)}}
+\DoxyCodeLine{00436\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ -\/\ less\ than\ or\ equal\ comparison\ (requires\ operator>)}}
+\DoxyCodeLine{00437\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ -\/\ greater\ than\ or\ equal\ comparison\ (requires\ operator<)}}
+\DoxyCodeLine{00438\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @tparam\ Impl\ Base\ class}}
+\DoxyCodeLine{00439\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Impl>}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{SynthesizedOperators}}\ \{}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00444\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Array\ subscript\ operator}}
+\DoxyCodeLine{00445\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00446\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ index}}
+\DoxyCodeLine{00447\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ *(*this\ +\ n)}}
+\DoxyCodeLine{00448\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ *(\mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ +\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\textcolor{keyword}{typename}\ Implementation::difference\_type)))>}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}{operator}}[](\textcolor{keyword}{typename}\ Implementation::difference\_type\ n)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(*(\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}{declval}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}{Impl}}>()\ +\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a88d31e111d1908c2b427c4838827ba4d}{n}})))\ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *(\textcolor{keyword}{this}-\/>getImpl()\ +\ n);}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00456\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @copydoc\ SynthesizedOperators::operator[](typename\ Implementation::difference\_type\ n)}}
+\DoxyCodeLine{00457\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ *(\mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ +\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\textcolor{keyword}{typename}\ Implementation::difference\_type)))>}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{decltype}(\textcolor{keyword}{auto})\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}{operator}}[](\textcolor{keyword}{typename}\ Implementation::difference\_type\ n)}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(*(\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}{declval}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}{Impl}}>()\ +\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a64a55fe2137ee76e8a35ce6776962283}{n}})))\ \{}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *(\textcolor{keyword}{this}-\/>getImpl()\ +\ n);}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00465\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Postfix\ increment.\ Synthesized\ from\ prefix\ increment}}
+\DoxyCodeLine{00466\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00467\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ Instance\ of\ Impl}}
+\DoxyCodeLine{00468\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ ++\mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}})>}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ Impl\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{operator}}++(\textcolor{keywordtype}{int})}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(++\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{declval}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{Impl}}>())\ \&\&\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{is\_nothrow\_copy\_constructible\_v}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ac127a6481c354fab3db40d5a5d1578a9}{Impl}}>)\ \{}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tmp\ =\ \textcolor{keyword}{this}-\/>getImpl();}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this}-\/>getImpl().operator++();}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00478\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Postfix\ decrement.\ Synthesized\ from\ prefix\ decrement}}
+\DoxyCodeLine{00479\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00480\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ Instance\ of\ Impl}}
+\DoxyCodeLine{00481\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ -\/-\/\mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}})>}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ Impl\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{operator}}-\/-\/(\textcolor{keywordtype}{int})}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(-\/-\/\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{declval}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{Impl}}>())\ \&\&\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{is\_nothrow\_copy\_constructible\_v}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a4abbb126cce4b732e12e165649d4931d}{Impl}}>)\ \{}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tmp\ =\ \textcolor{keyword}{this}-\/>getImpl();}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this}-\/>getImpl().operator-\/-\/();}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00489\ }
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00491\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Binary\ +plus\ operator.\ Synthesized\ from\ compound\ assignment\ operator+=}}
+\DoxyCodeLine{00492\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00493\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ it\ left\ hand\ side}}
+\DoxyCodeLine{00494\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ right\ hand\ side}}
+\DoxyCodeLine{00495\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ Instance\ of\ Impl}}
+\DoxyCodeLine{00496\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ \mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ +=\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\textcolor{keyword}{typename}\ Implementation::difference\_type))\ >}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a3b3d7a5bcf23615dec977fdf4db078f2}{operator}}+(Impl\ it,\ \textcolor{keyword}{typename}\ Implementation::difference\_type\ n)}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a3b3d7a5bcf23615dec977fdf4db078f2}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a3b3d7a5bcf23615dec977fdf4db078f2}{declval}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a3b3d7a5bcf23615dec977fdf4db078f2}{Impl}}>()\ +=\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a3b3d7a5bcf23615dec977fdf4db078f2}{n}}))\ \{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it\ +=\ n;}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00505\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Binary\ +plus\ operator.\ Synthesized\ from\ compound\ assignment\ operator+=}}
+\DoxyCodeLine{00506\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00507\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ left\ hand\ side}}
+\DoxyCodeLine{00508\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ it\ right\ hand\ side}}
+\DoxyCodeLine{00509\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ Instance\ of\ Impl}}
+\DoxyCodeLine{00510\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ \mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ +=\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\textcolor{keyword}{typename}\ Implementation::difference\_type))>}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a91effc3d9fdab40658acfc89d47d5836}{operator}}+(\textcolor{keyword}{typename}\ Implementation::difference\_type\ n,\ Impl\ it)}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a91effc3d9fdab40658acfc89d47d5836}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a91effc3d9fdab40658acfc89d47d5836}{declval}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a91effc3d9fdab40658acfc89d47d5836}{Impl}}>()\ +=\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a91effc3d9fdab40658acfc89d47d5836}{n}}))\ \{}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it\ +=\ n;}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00519\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Binary\ minus\ operator.\ Synthesized\ from\ compound\ assignment\ operator-\/=}}
+\DoxyCodeLine{00520\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00521\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ it\ left\ hand\ side}}
+\DoxyCodeLine{00522\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ right\ hand\ side}}
+\DoxyCodeLine{00523\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ Instance\ of\ Impl}}
+\DoxyCodeLine{00524\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ \mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ -\/=\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\textcolor{keyword}{typename}\ Implementation::difference\_type))\ >}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a6630ab092e56885571e1792b4cbf41b8}{operator}}-\/(Impl\ it,\ \textcolor{keyword}{typename}\ Implementation::difference\_type\ n)}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a6630ab092e56885571e1792b4cbf41b8}{std}}::\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a6630ab092e56885571e1792b4cbf41b8}{declval}}<\mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a6630ab092e56885571e1792b4cbf41b8}{Impl}}>()\ -\/=\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a6630ab092e56885571e1792b4cbf41b8}{n}}))\ \{}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it\ -\/=\ n;}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00533\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Inequality\ comparison}}
+\DoxyCodeLine{00534\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ T\ type\ of\ right\ hand\ side}}
+\DoxyCodeLine{00535\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00536\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00537\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if\ this\ is\ not\ equal\ to\ other}}
+\DoxyCodeLine{00538\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ \mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ ==\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(T))>}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ae717fa1d3db284c846e8252a04578586}{operator}}!=(\textcolor{keyword}{const}\ T\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ ==\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_ae717fa1d3db284c846e8252a04578586}{other}}))\ \{}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(\textcolor{keyword}{this}-\/>getImpl()==\ other);}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00545\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Less\ than\ or\ equal\ comparison}}
+\DoxyCodeLine{00546\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ T\ type\ of\ right\ hand\ side}}
+\DoxyCodeLine{00547\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00548\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00549\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if\ this\ is\ not\ greater\ than\ other}}
+\DoxyCodeLine{00550\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ \mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ >\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(T))>}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a9c1c35b51fc142d9ab4ed9c4f98cda23}{operator}}<=(\textcolor{keyword}{const}\ T\&\ rhs)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ >\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a9c1c35b51fc142d9ab4ed9c4f98cda23}{rhs}}))\ \{}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(\textcolor{keyword}{this}-\/>getImpl()>\ rhs);}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00557\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Greater\ than\ or\ equal\ comparison}}
+\DoxyCodeLine{00558\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ T\ type\ of\ right\ hand\ side}}
+\DoxyCodeLine{00559\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Implementation\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00560\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00561\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if\ this\ is\ not\ less\ than\ other}}
+\DoxyCodeLine{00562\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \mbox{\hyperlink{Iterators_8hpp_ac44b13e4d73581acfa47c6f125e6ca01}{REQUIRES\_IMPL}}(Impl,\ \mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ <\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(T))>}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a030d4bf4dbe3b8f1a2c5d32255045ca1}{operator}}>=(\textcolor{keyword}{const}\ T\&\ rhs)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{Iterators_8hpp_a666c996cc910464e7755c0acd27963ff}{INSTANCE\_OF\_IMPL}}\ <\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators_a030d4bf4dbe3b8f1a2c5d32255045ca1}{rhs}}))\ \{}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(\textcolor{keyword}{this}-\/>getImpl()\ <\ rhs);}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ Impl\ \&getImpl()\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast}<Impl\ \&>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00572\ }
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ Impl\ \&getImpl()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast}<\textcolor{keyword}{const}\ Impl\ \&>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ SynthesizedOperators()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Impl;}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00580\ }
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00582\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ Class\ combining\ multiple\ iterators\ into\ one.\ Use\ it\ to\ iterate\ over\ multiple\ ranges\ at\ the\ same\ time.}}
+\DoxyCodeLine{00583\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @details\ @copybrief}}
+\DoxyCodeLine{00584\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ ZipIterators\ only\ support\ the\ operators\ of\ the\ least\ powerful\ underling\ iterator.\ Zipping\ a\ random\ access}}
+\DoxyCodeLine{00585\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ iterator\ (e.g.\ from\ std::vector)\ and\ a\ bidirectional\ iterator\ (e.g.\ from\ std::list)\ results\ in\ a}}
+\DoxyCodeLine{00586\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ bidirectional\ iterator.\ All\ operators\ are\ SFINAE\ friendly.}}
+\DoxyCodeLine{00587\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00588\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ ZipIterators\ return\ a\ tuple\ of\ references\ to\ the\ range\ elements.\ When\ using}}
+\DoxyCodeLine{00589\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ structured\ bindings,\ no\ additional\ reference\ binding\ is\ necessary.}}
+\DoxyCodeLine{00590\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00591\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Let\ \`{}\`{}\`{}z```\ be\ a\ ZipIterator\ composed\ from\ two\ \`{}\`{}\`{}std::vector<int>```}}
+\DoxyCodeLine{00592\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{00593\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ auto\ [val1,\ val2]\ =\ *z;\ //\ val1\ and\ val2\ are\ references\ to\ the\ vector\ elements}}
+\DoxyCodeLine{00594\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ val1\ =\ 17;\ //\ this\ will\ change\ the\ respective\ value\ in\ the\ first\ vector}}
+\DoxyCodeLine{00595\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{00596\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @tparam\ Iterators\ Underlying\ iterator\ types}}
+\DoxyCodeLine{00597\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Iterators>}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::iterator\_category\_from\_value<\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::minimum\_category\_v<Iterators>>,}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{SynthesizedOperators}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Iterators>>\ \{}
+\DoxyCodeLine{00602\ }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ value\_type\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::values\_t<Iterators>;}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ reference\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::references\_t<Iterators>;}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ pointer\ =\ \textcolor{keywordtype}{void};}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ difference\_type\ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a6a3b1a0ca91042a10f15f0bb9ba5ba14}{BINARY\_TUPLE\_FOR\_EACH\_FOLD}}(\mbox{\hyperlink{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}{ELEMENT1}}\ ==\ \mbox{\hyperlink{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}{ELEMENT2}},\ ||,\ oneEqual)}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a6a3b1a0ca91042a10f15f0bb9ba5ba14}{BINARY\_TUPLE\_FOR\_EACH\_FOLD}}(\mbox{\hyperlink{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}{ELEMENT1}}\ <\ \mbox{\hyperlink{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}{ELEMENT2}},\ \&\&,\ allLess)}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a6a3b1a0ca91042a10f15f0bb9ba5ba14}{BINARY\_TUPLE\_FOR\_EACH\_FOLD}}(\mbox{\hyperlink{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}{ELEMENT1}}\ >\ \mbox{\hyperlink{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}{ELEMENT2}},\ \&\&,\ allGreater)}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_ac83c15c3d1019e7660593a3d57088757}{BINARY\_TUPLE\_FOR\_EACH}}(std::min<difference\_type>(\{\mbox{\hyperlink{Iterators_8hpp_a853623b6f71cfe4156f3df4decb13ee4}{ELEMENT1}}\ -\/\ \mbox{\hyperlink{Iterators_8hpp_a0be66a22323a6cef912609a97b32dda8}{ELEMENT2}}\ ...\}),\ minDifference)}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ Iterators\ iterators;}
+\DoxyCodeLine{00615\ }
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{SynthesizedOperators}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}>::operator++;}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{SynthesizedOperators}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}>::operator-\/-\/;}
+\DoxyCodeLine{00619\ }
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ ZipIterator()\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \textcolor{keyword}{constexpr}\ ZipIterator(}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Iterators\ \&iterators)\ \textcolor{keyword}{noexcept}(std::is\_nothrow\_copy\_constructible\_v<Iterators>)}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ iterators(iterators)\ \{\}}
+\DoxyCodeLine{00625\ }
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00627\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Increments\ all\ underlying\ iterators\ by\ one}}
+\DoxyCodeLine{00628\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Its\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00629\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00630\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Its\ =\ Iterators,\ \textcolor{keyword}{typename}\ =\ std::enable\_if\_t<\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_incrementable\_v<Its>>>}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}\ \&\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a7eb76b98a6d5e72f2a72f04c54191e0f}{operator}}++()\ \textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a7eb76b98a6d5e72f2a72f04c54191e0f}{traits}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a7eb76b98a6d5e72f2a72f04c54191e0f}{is\_nothrow\_incrementible\_v}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a7eb76b98a6d5e72f2a72f04c54191e0f}{Iterators}}>)\ \{}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([](\textcolor{keyword}{auto}\ \&\&...it)\ \{\ (++it,\ ...);\ \},\ iterators);}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00638\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @name\ bidirectional\ iteration}}
+\DoxyCodeLine{00639\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @brief\ the\ following\ operators\ are\ only\ available\ if\ all\ underlying\ iterators\ support\ bidirectional}}
+\DoxyCodeLine{00640\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ access}}
+\DoxyCodeLine{00641\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{///@\{}}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00645\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Decrements\ all\ underlying\ iterators\ by\ one.\ Only\ available\ if\ all\ iterators\ support\ at\ least}}
+\DoxyCodeLine{00646\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ bidirectional\ access}}
+\DoxyCodeLine{00647\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ IsBidirectional\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00648\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00649\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ IsBidirectional\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_bidirectional\_v<Iterators>>}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae15e1a6fef87300048324c74ec3464af}{operator}}-\/-\/()\ \textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae15e1a6fef87300048324c74ec3464af}{traits}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae15e1a6fef87300048324c74ec3464af}{is\_nothrow\_decrementible\_v}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae15e1a6fef87300048324c74ec3464af}{Iterators}}>)}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ std::enable\_if\_t<IsBidirectional,\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}\ \&>\ \{}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([](\textcolor{keyword}{auto}\ \&\&...it)\ \{\ (-\/-\/it,\ ...);\ \},\ iterators);}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00656\ }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{///@\}}}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00660\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @name\ random\ access\ operators}}
+\DoxyCodeLine{00661\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @brief\ the\ following\ operators\ are\ only\ available\ if\ all\ underlying\ iterators\ support\ random\ access}}
+\DoxyCodeLine{00662\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00663\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{///@\{}}
+\DoxyCodeLine{00665\ }
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00667\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Compound\ assignment\ increment.\ Increments\ all\ underlying\ iterators\ by\ n.\ Only\ available\ if\ all\ underlying}}
+\DoxyCodeLine{00668\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ iterators\ support\ at\ least\ random\ access}}
+\DoxyCodeLine{00669\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ IsRandomAccessible\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00670\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ increment}}
+\DoxyCodeLine{00671\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00672\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ IsRandomAccessible\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_random\_accessible\_v<Iterators>>}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a59a11fe5cf8970a8e5223da4b16e5faa}{operator}}+=(difference\_type\ n)\ \textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a59a11fe5cf8970a8e5223da4b16e5faa}{traits}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a59a11fe5cf8970a8e5223da4b16e5faa}{is\_nothrow\_compound\_assignable\_plus\_v}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a59a11fe5cf8970a8e5223da4b16e5faa}{Iterators}}>)}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ std::enable\_if\_t<IsRandomAccessible,\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}\ \&>\ \{}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([n](\textcolor{keyword}{auto}\ \&\&...it)\ \{((it\ +=\ n),\ ...);\},\ iterators);}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00679\ }
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00681\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Compound\ assignment\ decrement.\ Decrements\ all\ underlying\ iterators\ by\ n.\ Only\ available\ if\ all\ underlying}}
+\DoxyCodeLine{00682\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ iterators\ support\ at\ least\ random\ access}}
+\DoxyCodeLine{00683\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ IsRandomAccessible\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00684\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ decrement}}
+\DoxyCodeLine{00685\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00686\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ IsRandomAccessible\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_random\_accessible\_v<Iterators>>}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a30b8acceb80b6a6d6b7322a04f4a19a8}{operator}}-\/=(difference\_type\ n)\ \textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a30b8acceb80b6a6d6b7322a04f4a19a8}{traits}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a30b8acceb80b6a6d6b7322a04f4a19a8}{is\_nothrow\_compound\_assignable\_minus\_v}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a30b8acceb80b6a6d6b7322a04f4a19a8}{Iterators}}>)}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ std::enable\_if\_t<IsRandomAccessible,\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}\ \&>\ \{}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([n](\textcolor{keyword}{auto}\ \&\&...it)\ \{((it\ -\/=\ n),\ ...);\},\ iterators);}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00693\ }
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00695\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Returns\ the\ minimum\ pairwise\ difference\ n\ between\ all\ underlying\ iterators\ of\ *this\ and\ other,\ such\ that}}
+\DoxyCodeLine{00696\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ (other\ +\ n)\ ==\ *this}}
+\DoxyCodeLine{00697\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Only\ available\ if\ all\ underlying\ iterators\ support\ at\ least\ random\ access}}
+\DoxyCodeLine{00698\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Its\ Iterator\ types\ of\ right\ hand\ side}}
+\DoxyCodeLine{00699\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ IsRandomAccessible\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00700\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00701\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ integer\ n\ such\ that\ (other\ +\ n)\ ==\ *this}}
+\DoxyCodeLine{00702\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Its,\ \textcolor{keywordtype}{bool}\ IsRandomAccessible\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_random\_accessible\_v<Iterators>,\ \mbox{\hyperlink{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}{REQUIRES}}(}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}::minDifference(\mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Iterators),\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Its)))>}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ac7fe1f94be624275fde05b2504f3cc02}{operator}}-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Its>\ \&other)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ std::enable\_if\_t<IsRandomAccessible,\ difference\_type>\ \{}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ minDifference(iterators,\ other.getIterators());}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00711\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Pairwise\ less\ comparison\ of\ underlying\ iterators}}
+\DoxyCodeLine{00712\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Only\ available\ if\ all\ underlying\ iterators\ support\ at\ least\ random\ access}}
+\DoxyCodeLine{00713\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Its\ Iterator\ types\ of\ right\ hand\ side}}
+\DoxyCodeLine{00714\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ IsRandomAccessible\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00715\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00716\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if\ all\ underlying\ iterators\ compare\ less\ to\ the\ corresponding\ iterators\ from\ other}}
+\DoxyCodeLine{00717\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Its,\ \textcolor{keywordtype}{bool}\ IsRandomAccessible\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_random\_accessible\_v<Iterators>,\ \mbox{\hyperlink{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}{REQUIRES}}(}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}::allLess(\mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Iterators),\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Its)))>}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a432c98956315cda29667c74a2bb28546}{operator}}<(\textcolor{keyword}{const}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Its>\ \&other)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a432c98956315cda29667c74a2bb28546}{ZipIterator}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a432c98956315cda29667c74a2bb28546}{allLess}}(\mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a432c98956315cda29667c74a2bb28546}{Iterators}}),\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a432c98956315cda29667c74a2bb28546}{Its}}))))}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\ std::enable\_if\_t<IsRandomAccessible,\ \textcolor{keywordtype}{bool}>\ \{}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ allLess(iterators,\ other.getIterators());}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00725\ }
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00727\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Pairwise\ grater\ comparison\ of\ underlying\ iterators}}
+\DoxyCodeLine{00728\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Only\ available\ if\ all\ underlying\ iterators\ support\ at\ least\ random\ access}}
+\DoxyCodeLine{00729\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Its\ Iterator\ types\ of\ right\ hand\ side}}
+\DoxyCodeLine{00730\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ IsRandomAccessible\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00731\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00732\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if\ all\ underlying\ iterators\ compare\ greater\ to\ the\ corresponding\ iterators\ from\ other}}
+\DoxyCodeLine{00733\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Its,\ \textcolor{keywordtype}{bool}\ IsRandomAccessible\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_random\_accessible\_v<Iterators>,\ \mbox{\hyperlink{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}{REQUIRES}}(}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}::allGreater(\mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Iterators),\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Its)))\ >}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_abba60a43db375d329b9c3c56c60e20eb}{operator}}>(\textcolor{keyword}{const}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Its>\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_abba60a43db375d329b9c3c56c60e20eb}{ZipIterator}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_abba60a43db375d329b9c3c56c60e20eb}{allGreater}}(}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_abba60a43db375d329b9c3c56c60e20eb}{Iterators}}),\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_abba60a43db375d329b9c3c56c60e20eb}{Its}}))))\ -\/>\ std::enable\_if\_t<IsRandomAccessible,\ \textcolor{keywordtype}{bool}>\ \{}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ allGreater(iterators,\ other.getIterators());}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{///@\}}}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00744\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Pairwise\ equality\ comparison\ of\ underlying\ iterators}}
+\DoxyCodeLine{00745\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Its\ Iterator\ types\ of\ right\ hand\ side}}
+\DoxyCodeLine{00746\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00747\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if\ at\ least\ one\ underlying\ iterator\ compares\ equal\ to\ the\ corresponding\ iterator\ from\ other}}
+\DoxyCodeLine{00748\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Its,\ \mbox{\hyperlink{Iterators_8hpp_a90361d8eaf2535bfbf5596fa333eba6c}{REQUIRES}}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}::oneEqual(\mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Iterators),\ \mbox{\hyperlink{Iterators_8hpp_a82140db4a1a43174610c0c290c808926}{INSTANCE\_OF}}(Its)))>}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{operator}}==(\textcolor{keyword}{const}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Its>\ \&other)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{ZipIterator}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{oneEqual}}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{std}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{declval}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{Iterators}}>(),\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{other}}.\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_a6a6b8e94ab0837d630a3fdfa7d4222da}{getIterators}}())))\ \{}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oneEqual(iterators,\ other.getIterators());}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00754\ }
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00756\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Dereferences\ all\ underlying\ iterators\ and\ returns\ a\ tuple\ of\ the\ resulting\ range\ reference\ types}}
+\DoxyCodeLine{00757\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Its\ SFINAE\ guard,\ do\ not\ specify}}
+\DoxyCodeLine{00758\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ tuple\ of\ references\ to\ range\ elements}}
+\DoxyCodeLine{00759\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Its\ =\ Iterators,\ \textcolor{keyword}{typename}\ =\ std::enable\_if\_t<\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_dereferencible\_v<Its>>>}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ reference\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae5b01da779596bfc50fd5e897cfee667}{operator}}*()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}(\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae5b01da779596bfc50fd5e897cfee667}{traits}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae5b01da779596bfc50fd5e897cfee667}{is\_nothrow\_dereferencible\_v}}<\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_ae5b01da779596bfc50fd5e897cfee667}{Iterators}}>)\ \{}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::apply([](\textcolor{keyword}{auto}\ \&\&...it)\ \{\ \textcolor{keywordflow}{return}\ reference(*it...);\ \},\ iterators);}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00764\ }
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00766\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Getter\ for\ underlying\ iterators}}
+\DoxyCodeLine{00767\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ Const\ reference\ to\ underlying\ iterators}}
+\DoxyCodeLine{00768\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator_af72afb220554db01495b519aa0851fd5}{getIterators}}()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ -\/>\ \textcolor{keyword}{const}\ Iterators\&\ \{}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterators;}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00773\ }
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00775\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ Zip-\/view\ that\ provides\ begin()\ and\ end()\ member\ functions.\ Use\ to\ loop\ over\ multiple\ ranges\ at\ the}}
+\DoxyCodeLine{00776\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ same\ time\ using\ ranged\ based\ for-\/loops.}}
+\DoxyCodeLine{00777\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @details\ @copybrief}}
+\DoxyCodeLine{00778\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Ranges\ are\ captured\ by\ lvalue\ reference,\ no\ copying\ occurs.\ Temporaries\ are\ allowed\ as\ well\ in\ which\ case}}
+\DoxyCodeLine{00779\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ storage\ is\ moved\ into\ the\ zip-\/view.}}
+\DoxyCodeLine{00780\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @tparam\ Iterable\ Underlying\ range\ types}}
+\DoxyCodeLine{00781\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Iterable>}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{ZipView}}\ \mbox{\hyperlink{Iterators_8hpp_a0eb8636970b600380a4ca8a50506cca5}{DERIVE\_VIEW\_INTERFACE}}(ZipView<Iterable...>)\ \{}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ ContainerTuple\ =\ std::tuple<Iterable...>;}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ Const>}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ Iterators\ =\ std::tuple<\textcolor{keyword}{decltype}(std::begin(}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::declval<std::add\_lvalue\_reference\_t<\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::const\_if\_t<Const,\ std::remove\_reference\_t<Iterable>>>>()))...>;}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ Const>}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ Sentinels\ =\ std::tuple<\textcolor{keyword}{decltype}(std::end(}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::declval<std::add\_lvalue\_reference\_t<\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::const\_if\_t<Const,\ std::remove\_reference\_t<Iterable>>>>()))...>;}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ IteratorTuple\ =\ Iterators<\textcolor{keyword}{false}>;}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ SentinelTuple\ =\ Sentinels<\textcolor{keyword}{false}>;}
+\DoxyCodeLine{00794\ }
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Tuple,\ std::size\_t\ ...Idx>}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ sizeImpl(\textcolor{keyword}{const}\ Tuple\ \&contTuple,\ std::index\_sequence<Idx...>)\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::min(\{std::size(std::get<Idx>(contTuple))...\});}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00801\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ CTor.\ Binds\ reference\ to\ ranges\ or\ takes\ ownership\ in\ case\ of\ rvalue\ references}}
+\DoxyCodeLine{00802\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ Container\ range\ types}}
+\DoxyCodeLine{00803\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ containers\ arbitrary\ number\ of\ ranges}}
+\DoxyCodeLine{00804\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Container>}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{explicit}\ ZipView(Container\ \&\&...containers)\ :}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ containers(std::forward<Container>(containers)...)\ \{\}}
+\DoxyCodeLine{00808\ }
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \ \ \ ZipView()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00810\ }
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00813\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ *\ Returns\ a\ ZipIterator\ to\ the\ first\ elements\ of\ the\ underlying\ ranges}}
+\DoxyCodeLine{00814\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ ZipIterator\ created\ by\ invoking\ std::begin\ on\ all\ underlying\ ranges}}
+\DoxyCodeLine{00815\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ begin()\ \{}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<IteratorTuple>(}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([](\textcolor{keyword}{auto}\ \&\&...c)\ \{\ \textcolor{keywordflow}{return}\ IteratorTuple(std::begin(c)...);\ \},\ containers));}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00820\ }
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00822\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ *\ Returns\ a\ ZipIterator\ to\ the\ elements\ following\ the\ last\ elements\ of\ the\ the\ underlying\ ranges}}
+\DoxyCodeLine{00823\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ ZipIterator\ created\ by\ invoking\ std::end\ on\ all\ underlying\ ranges}}
+\DoxyCodeLine{00824\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ end()\ \{}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<SentinelTuple>(}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([](\textcolor{keyword}{auto}\ \&\&...c)\ \{\ \textcolor{keywordflow}{return}\ SentinelTuple(std::end(c)...);\ \},\ containers));}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00829\ }
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00831\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @copydoc\ ZipView::begin()}}
+\DoxyCodeLine{00832\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @note\ returns\ a\ ZipIterator\ that\ does\ not\ allow\ changing\ the\ ranges'\ elements}}
+\DoxyCodeLine{00833\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ C\ =\ \textcolor{keyword}{true}>}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ begin()\ \textcolor{keyword}{const}\ -\/>\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Iterators<C>>\ \{}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Iterators<\textcolor{keyword}{true}>>(}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([](\textcolor{keyword}{auto}\ \&\&...c)\ \{\ \textcolor{keywordflow}{return}\ Iterators<\textcolor{keyword}{true}>(std::begin(c)...);\ \},\ containers));}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00839\ }
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00841\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @copydoc\ ZipView::end()}}
+\DoxyCodeLine{00842\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ C\ =\ \textcolor{keyword}{true}>}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ end()\ \textcolor{keyword}{const}\ -\/>\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Sentinels<C>>\ \{}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<Sentinels<\textcolor{keyword}{true}>>(}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([](\textcolor{keyword}{auto}\ \&\&...c)\ \{\ \textcolor{keywordflow}{return}\ Sentinels<\textcolor{keyword}{true}>(std::end(c)...);\ \},\ containers));}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00848\ }
+\DoxyCodeLine{00849\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{ifndef}\ \textcolor{preprocessor}{\_\_USE\_VIEW\_INTERFACE\_\_}}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00851\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Array\ subscript\ operator\ (no\ bounds\ are\ checked)}}
+\DoxyCodeLine{00852\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ IsRandomAccess\ SFINAE\ helper,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00853\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ index\ index}}
+\DoxyCodeLine{00854\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ zip\ view\ element\ at\ given\ index}}
+\DoxyCodeLine{00855\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ IsRandomAccess\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_random\_accessible\_v<IteratorTuple>,}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ =\ std::enable\_if\_t<IsRandomAccess>>}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator[](std::size\_t\ index)\ \{}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ begin()[index];}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00861\ }
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00863\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @copydoc\ ZipView::operator[](std::size\_t\ index)}}
+\DoxyCodeLine{00864\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ C\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ IsRandomAccess\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::is\_random\_accessible\_v<Iterators<C>>,}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ =\ std::enable\_if\_t<IsRandomAccess>>}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator[](std::size\_t\ index)\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ begin()[index];}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00870\ }
+\DoxyCodeLine{00871\ }
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00873\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Returns\ the\ smallest\ size\ of\ all\ containers.\ Only\ available\ if\ all\ containers\ know\ their\ size}}
+\DoxyCodeLine{00874\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @tparam\ HasSize\ SFINAE\ guard,\ do\ not\ specify\ explicitly}}
+\DoxyCodeLine{00875\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ smallest\ size\ of\ all\ containers}}
+\DoxyCodeLine{00876\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ HasSize\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::has\_size\_v<ContainerTuple>>}
+\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ size()\ \textcolor{keyword}{const}\ -\/>\ std::enable\_if\_t<HasSize,\ std::size\_t>\ \{}
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizeImpl(containers,\ std::make\_index\_sequence<std::tuple\_size\_v<ContainerTuple>>());}
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00881\ }
+\DoxyCodeLine{00882\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{endif}}
+\DoxyCodeLine{00883\ }
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ ContainerTuple\ containers;}
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00887\ }
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00889\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ represents\ the\ unreachable\ end\ of\ an\ infinite\ sequence}}
+\DoxyCodeLine{00890\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}\ \{\};}
+\DoxyCodeLine{00892\ }
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00894\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Signum\ function}}
+\DoxyCodeLine{00895\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @tparam\ T\ arbitrary\ scalar\ type}}
+\DoxyCodeLine{00896\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @param\ val\ function\ argument}}
+\DoxyCodeLine{00897\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @return\ +1\ if\ val\ >=\ 0,\ -\/1\ else}}
+\DoxyCodeLine{00898\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}}(T\ val)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val\ <\ 0\ ?\ T(-\/1)\ :\ T(1);}
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00903\ }
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00905\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ Iterator\ of\ an\ infinite\ sequence\ of\ numbers.\ Simply\ increments\ an\ internal\ counter}}
+\DoxyCodeLine{00906\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @tparam\ Type\ of\ the\ counter\ (most\ of\ the\ time\ this\ is\ \`{}\`{}\`{}std::size\_t```)}}
+\DoxyCodeLine{00907\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T\ =\ std::size\_t>}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{SynthesizedOperators}}<\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}<T>>\ \{}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ value\_type\ =\ T;}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ reference\ =\ T;}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ pointer\ =\ \textcolor{keywordtype}{void};}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ iterator\_category\ =\ std::random\_access\_iterator\_tag;}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ difference\_type\ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_integral\_v<T>\ \&\&\ !std::is\_floating\_point\_v<T>);}
+\DoxyCodeLine{00916\ }
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{SynthesizedOperators}}<\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}<T>>::operator++;}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{SynthesizedOperators}}<\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}<T>>::operator-\/-\/;}
+\DoxyCodeLine{00919\ }
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00921\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ CTor.}}
+\DoxyCodeLine{00922\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ begin\ start\ of\ number\ sequence}}
+\DoxyCodeLine{00923\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ increment\ step\ size\ (default\ is\ 1)}}
+\DoxyCodeLine{00924\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @note\ Depending\ on\ the\ template\ type\ T,\ increment\ can\ also\ be\ negative.}}
+\DoxyCodeLine{00925\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_ae628a33cb0964bde115964409f6da573}{CounterIterator}}(T\ begin,\ T\ increment\ =\ T(1))\ \textcolor{keyword}{noexcept}:}
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ counter(begin),\ increment(increment)\ \{\}}
+\DoxyCodeLine{00928\ }
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ CounterIterator()\ \textcolor{keyword}{noexcept}:\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}(T(0))\ \{\}}
+\DoxyCodeLine{00930\ }
+\DoxyCodeLine{00931\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00932\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Increments\ value\ by\ increment}}
+\DoxyCodeLine{00933\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00934\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00935\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_aa109203374e6c54062b79300784470ff}{operator}}++()\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00936\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ counter\ +=\ increment;}
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00939\ }
+\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00941\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Decrements\ value\ by\ increment}}
+\DoxyCodeLine{00942\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00943\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a8e993ee435276e3489394811efe44fe2}{operator}}-\/-\/()\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ counter\ -\/=\ increment;}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00948\ }
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00950\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Compound\ assignment\ increment.\ Increments\ value\ by\ n\ times\ increment}}
+\DoxyCodeLine{00951\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ number\ of\ steps}}
+\DoxyCodeLine{00952\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00953\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_ae2eb6ecf2886553150a00a660a0574ad}{operator}}+=(difference\_type\ n)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ counter\ +=\ n\ *\ increment;}
+\DoxyCodeLine{00956\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00958\ }
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00960\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Compound\ assignment\ decrement.\ Increments\ value\ by\ n\ times\ increment}}
+\DoxyCodeLine{00961\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ n\ number\ of\ steps}}
+\DoxyCodeLine{00962\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ reference\ to\ this}}
+\DoxyCodeLine{00963\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&\mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a460659266bbe25b7971ef6c0eaf322e8}{operator}}-\/=(difference\_type\ n)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00965\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ counter\ -\/=\ n\ *\ increment;}
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00968\ }
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00970\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Difference\ between\ two\ CounterIterators}}
+\DoxyCodeLine{00971\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00972\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ integer\ \`{}\`{}\`{}n```\ with\ the\ smallest\ possible\ absolute\ value\ such\ that\ \`{}\`{}\`{}other\ +\ n\ <=\ *this```}}
+\DoxyCodeLine{00973\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @note\ When\ other\ has\ the\ same\ increment\ as\ \`{}\`{}\`{}*this```,\ then\ the\ returned\ value\ is\ guaranteed\ to}}
+\DoxyCodeLine{00974\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ fulfil\ \`{}\`{}\`{}other\ +\ n\ ==\ *this```.\ In\ the\ following\ example,\ this\ is\ not\ the\ case:}}
+\DoxyCodeLine{00975\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{00976\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ CounterIterator\ a(8,\ 1);}}
+\DoxyCodeLine{00977\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ CounterIterator\ b(4,\ 3);}}
+\DoxyCodeLine{00978\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ auto\ diff\ =\ a\ -\/\ b;\ //\ yields\ 1\ since\ b\ +\ 1\ <=\ a}}
+\DoxyCodeLine{00979\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{00980\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ difference\_type\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_aae3503939118a88f236495ad2119a153}{operator}}-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast}<difference\_type>((counter\ -\/\ other.counter)\ /\ other.increment);}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00984\ }
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00986\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Equality\ comparison.}}
+\DoxyCodeLine{00987\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{00988\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if\ counter\ of\ left\ and\ right\ hand\ side\ are\ equal}}
+\DoxyCodeLine{00989\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_aa6ff7f1e59a44dae1ad2bea14daed6e3}{operator}}==(\textcolor{keyword}{const}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ counter\ ==\ other.counter;}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00993\ }
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{00995\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Equality\ comparison\ with\ Unreachable\ sentinel}}
+\DoxyCodeLine{00996\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ false}}
+\DoxyCodeLine{00997\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a455a65528f43401763790321d58ee755}{operator}}==(\textcolor{keyword}{const}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&,\ \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}})\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00999\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01001\ }
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01003\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @copydoc\ operator==(const\ CounterIterator\ \&,\ Unreachable)}}
+\DoxyCodeLine{01004\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_abab3c2aebec8ca723bca5379ff19ad1c}{operator}}==(\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01008\ }
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ operator!=(\mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01012\ }
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01014\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Less\ comparison\ of\ internal\ counters\ with\ respect\ to\ increment\ of\ this\ instance}}
+\DoxyCodeLine{01015\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{01016\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if}}
+\DoxyCodeLine{01017\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{01018\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ sgn(increment)\ **this\ <\ *other\ sgn(increment)}}
+\DoxyCodeLine{01019\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{01020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ where\ \`{}\`{}\`{}sgn```\ is\ the\ signum}}
+\DoxyCodeLine{01021\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ function}}
+\DoxyCodeLine{01022\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @note\ If\ increment\ is\ negative\ then\ both\ sides\ of\ the\ inequality\ are\ multiplied\ with\ -\/1.}}
+\DoxyCodeLine{01023\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ For\ example:\ let\ \`{}\`{}\`{}it1\ =\ 5```\ and\ \`{}\`{}\`{}it2\ =\ -\/2```\ be\ two\ CounterIterators\ where\ \`{}\`{}\`{}it1```\ has\ negative}}
+\DoxyCodeLine{01024\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ increment.\ Then\ \`{}\`{}\`{}it1\ <\ it2```\ is\ true.}}
+\DoxyCodeLine{01025\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_acde3796fad42d4fe454aef93d62f0b81}{operator}}<(\textcolor{keyword}{const}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sgn(increment)\ *\ \ counter\ <\ sgn(increment)\ *\ other.counter;}
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01029\ }
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01031\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Greater\ comparison\ of\ internal\ counters\ with\ respect\ to\ increment\ of\ this\ instance}}
+\DoxyCodeLine{01032\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ other\ right\ hand\ side}}
+\DoxyCodeLine{01033\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ true\ if}}
+\DoxyCodeLine{01034\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{01035\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ sgn(increment)\ **this\ >\ *other\ sgn(increment)}}
+\DoxyCodeLine{01036\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ \`{}\`{}\`{}}}
+\DoxyCodeLine{01037\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ where\ \`{}\`{}\`{}sgn```\ is\ the\ signum}}
+\DoxyCodeLine{01038\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @note\ If\ increment\ is\ negative\ then\ both\ sides\ of\ the\ inequality\ are\ multiplied\ with\ -\/1.}}
+\DoxyCodeLine{01039\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ For\ example:\ let\ \`{}\`{}\`{}it1\ =\ 5```\ and\ \`{}\`{}\`{}it2\ =\ -\/2```\ be\ two\ CounterIterators\ where\ \`{}\`{}\`{}it1```\ has\ negative}}
+\DoxyCodeLine{01040\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ increment.\ Then\ \`{}\`{}\`{}it1\ >\ it2```\ is\ false.}}
+\DoxyCodeLine{01041\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a65d50acd247099b31723ef38c271f372}{operator}}>(\textcolor{keyword}{const}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{01043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sgn(increment)\ *\ counter\ >\ sgn(increment)\ *\ other.counter;}
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01045\ }
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01047\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ Produces\ the\ counter\ value}}
+\DoxyCodeLine{01048\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ value\ of\ internal\ counter}}
+\DoxyCodeLine{01049\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator_a1d5a1ef5c6ecea7d799ae683427191c3}{operator}}*()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ counter;}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01053\ }
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \ \ T\ counter;}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ \ \ T\ increment;}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{01058\ }
+\DoxyCodeLine{01059\ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01060\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @brief\ Represents\ an\ infinite\ range\ of\ numbers}}
+\DoxyCodeLine{01061\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @tparam\ T\ type\ of\ number\ range}}
+\DoxyCodeLine{01062\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T\ =\ std::size\_t>}
+\DoxyCodeLine{01064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{CounterRange}}\ \{}
+\DoxyCodeLine{01065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ CTor}}
+\DoxyCodeLine{01067\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ start\ start\ of\ the\ range}}
+\DoxyCodeLine{01068\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @param\ increment\ step\ size}}
+\DoxyCodeLine{01069\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @note\ Depending\ on\ the\ template\ type\ T,\ increment\ can\ also\ be\ negative.}}
+\DoxyCodeLine{01070\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange_a2d1e512bf18c56bbbc1ff3fc7baa63ae}{CounterRange}}(T\ start\ =\ T(0),\ T\ increment\ =\ T(1))\ \textcolor{keyword}{noexcept}:}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ start(start),\ increment(increment)\ \{\}}
+\DoxyCodeLine{01073\ }
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01075\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ CounterIterator\ representing\ the\ beginning\ of\ the\ sequence}}
+\DoxyCodeLine{01076\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \ \ \ \ \ \ [[\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{nodiscard}}]]\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}<T>\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange_a65e5a7337cef288f1800132d51e70937}{begin}}()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{CounterIterator}}<T>(start,\ increment);}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01080\ }
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01082\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ *\ @return\ Sentinel\ object\ representing\ the\ unreachable\ end\ of\ the\ sequence}}
+\DoxyCodeLine{01083\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ \ \ \ \ [[\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{nodiscard}}]]\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}\ \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange_acf860843fb5a6bfb46306230b0336729}{end}}()\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}\{\};}
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01087\ }
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \ \ \ \ \ \ T\ start;}
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ \ \ \ \ T\ increment;}
+\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{01092\ \ \ \ \ \}}
+\DoxyCodeLine{01093\ }
+\DoxyCodeLine{01094\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01095\ \textcolor{comment}{\ \ \ \ \ *\ Function\ that\ is\ used\ to\ create\ a\ impl::ZipIterator\ from\ an\ arbitrary\ number\ of\ iterators}}
+\DoxyCodeLine{01096\ \textcolor{comment}{\ \ \ \ \ *\ @tparam\ Iterators\ type\ of\ iterators}}
+\DoxyCodeLine{01097\ \textcolor{comment}{\ \ \ \ \ *\ @param\ iterators\ arbitrary\ number\ of\ iterators}}
+\DoxyCodeLine{01098\ \textcolor{comment}{\ \ \ \ \ *\ @return\ impl::ZipIterator}}
+\DoxyCodeLine{01099\ \textcolor{comment}{\ \ \ \ \ *\ @note\ ZipIterators\ have\ the\ same\ iterator\ category\ as\ the\ least\ powerful\ underlying\ operator.\ This\ means\ that}}
+\DoxyCodeLine{01100\ \textcolor{comment}{\ \ \ \ \ *\ for\ example,\ zipping\ a\ random\ access\ iterator\ and\ a\ bidirectional\ iterator\ only\ yields\ a\ bidirectional}}
+\DoxyCodeLine{01101\ \textcolor{comment}{\ \ \ \ \ *\ impl::ZipIterator}}
+\DoxyCodeLine{01102\ \textcolor{comment}{\ \ \ \ \ *\ @relatesalso\ impl::ZipIterator}}
+\DoxyCodeLine{01103\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{01104\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Iterators>}
+\DoxyCodeLine{01105\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceiterators_a66108b4863fd0dd49bd2a828dea2ad17}{zip\_i}}(Iterators\ ...iterators)\ -\/>\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<std::tuple<Iterators...>>\ \{}
+\DoxyCodeLine{01106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ IteratorTuple\ =\ std::tuple<Iterators...>;}
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{ZipIterator}}<IteratorTuple>(IteratorTuple(std::move(iterators)...));}
+\DoxyCodeLine{01108\ \ \ \ \ \}}
+\DoxyCodeLine{01109\ }
+\DoxyCodeLine{01110\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01111\ \textcolor{comment}{\ \ \ \ \ *\ Function\ that\ can\ be\ used\ in\ range\ based\ loops\ to\ emulate\ the\ zip\ iterator\ from\ python.}}
+\DoxyCodeLine{01112\ \textcolor{comment}{\ \ \ \ \ *\ As\ in\ python:\ if\ the\ passed\ containers\ have\ different\ lengths,\ the\ container\ with\ the\ least\ items\ decides}}
+\DoxyCodeLine{01113\ \textcolor{comment}{\ \ \ \ \ *\ the\ overall\ range}}
+\DoxyCodeLine{01114\ \textcolor{comment}{\ \ \ \ \ *\ @tparam\ Iterable\ Container\ types\ that\ support\ iteration}}
+\DoxyCodeLine{01115\ \textcolor{comment}{\ \ \ \ \ *\ @param\ iterable\ Arbitrary\ number\ of\ containers}}
+\DoxyCodeLine{01116\ \textcolor{comment}{\ \ \ \ \ *\ @return\ impl::ZipView\ class\ that\ provides\ begin\ and\ end\ members\ to\ be\ used\ in\ range\ based\ for-\/loops}}
+\DoxyCodeLine{01117\ \textcolor{comment}{\ \ \ \ \ *\ @relatesalso\ impl::ZipView}}
+\DoxyCodeLine{01118\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{01119\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Iterable>}
+\DoxyCodeLine{01120\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{zip}}(Iterable\ \&\&...iterable)\ \{}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{ZipView}}<Iterable...>(std::forward<Iterable>(iterable)...);}
+\DoxyCodeLine{01122\ \ \ \ \ \}}
+\DoxyCodeLine{01123\ }
+\DoxyCodeLine{01124\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01125\ \textcolor{comment}{\ \ \ \ \ *\ Zip\ variant\ that\ does\ not\ allow\ manipulation\ of\ the\ container\ elements}}
+\DoxyCodeLine{01126\ \textcolor{comment}{\ \ \ \ \ *}}
+\DoxyCodeLine{01127\ \textcolor{comment}{\ \ \ \ \ *\ @copydoc\ zip}}
+\DoxyCodeLine{01128\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{01129\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Iterable>}
+\DoxyCodeLine{01130\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}{const\_zip}}(Iterable\ \&\&...iterable)\ \{}
+\DoxyCodeLine{01131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{ZipView}}<\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}::reference\_if\_t<std::is\_lvalue\_reference\_v<Iterable>,}
+\DoxyCodeLine{01132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::add\_const\_t<std::remove\_reference\_t<Iterable>>>...>(std::forward<Iterable>(iterable)...);}
+\DoxyCodeLine{01133\ \ \ \ \ \}}
+\DoxyCodeLine{01134\ }
+\DoxyCodeLine{01135\ \ \ \ \ \textcolor{keyword}{namespace}\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}\{}
+\DoxyCodeLine{01136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ TZip,\ \textcolor{keyword}{typename}\ ...Iterable>}
+\DoxyCodeLine{01137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ zip\_enumerate\_impl(TZip\ \&\&tZip,\ Iterable\ \&\&...iterable)\ \{}
+\DoxyCodeLine{01138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\textcolor{keyword}{sizeof}...(Iterable)\ ==\ 0\ ||\ !(std::is\_integral\_v<std::remove\_reference\_t<Iterable>>\ ||\ ...))\ \{}
+\DoxyCodeLine{01139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::forward<TZip>(tZip)(\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange_a2d1e512bf18c56bbbc1ff3fc7baa63ae}{::}}\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{CounterRange}}\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange_a2d1e512bf18c56bbbc1ff3fc7baa63ae}{(}}0ul\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange_a2d1e512bf18c56bbbc1ff3fc7baa63ae}{,}}\ 1ul\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange_a2d1e512bf18c56bbbc1ff3fc7baa63ae}{)}},\ std::forward<Iterable>(iterable)...);}
+\DoxyCodeLine{01140\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ CtrRangeArgsIdx\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::index\_of<std::is\_integral,\ 0,}
+\DoxyCodeLine{01142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::remove\_reference\_t<Iterable>...>();}
+\DoxyCodeLine{01143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(CtrRangeArgsIdx\ >=\ \textcolor{keyword}{sizeof}...(Iterable)\ -\/\ 2);}
+\DoxyCodeLine{01144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [its,\ enumArgs]\ =\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::tuple\_split<CtrRangeArgsIdx>(}
+\DoxyCodeLine{01145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::forward\_as\_tuple(std::forward<Iterable>(iterable)...));}
+\DoxyCodeLine{01146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::apply(std::forward<TZip>(tZip),\ std::tuple\_cat(std::make\_tuple(}
+\DoxyCodeLine{01147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_from\_tuple<\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{CounterRange}}<}
+\DoxyCodeLine{01148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::remove\_reference\_t<std::tuple\_element\_t<0,\ \textcolor{keyword}{decltype}(enumArgs)>>>>(}
+\DoxyCodeLine{01149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enumArgs)),\ std::move(its)));}
+\DoxyCodeLine{01150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01152\ \ \ \ \ \}}
+\DoxyCodeLine{01153\ }
+\DoxyCodeLine{01154\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01155\ \textcolor{comment}{\ \ \ \ \ *\ Function\ that\ can\ be\ used\ in\ range\ based\ loops\ to\ emulate\ the\ enumerate\ iterator\ from\ python.}}
+\DoxyCodeLine{01156\ \textcolor{comment}{\ \ \ \ \ *\ @tparam\ Container\ Container\ type\ that\ supports\ iteration}}
+\DoxyCodeLine{01157\ \textcolor{comment}{\ \ \ \ \ *\ @tparam\ T\ type\ of\ enumerate\ counter\ (default\ std::size\_t)}}
+\DoxyCodeLine{01158\ \textcolor{comment}{\ \ \ \ \ *\ @param\ container\ Source\ container}}
+\DoxyCodeLine{01159\ \textcolor{comment}{\ \ \ \ \ *\ @param\ start\ Optional\ index\ offset\ (default\ 0)}}
+\DoxyCodeLine{01160\ \textcolor{comment}{\ \ \ \ \ *\ @param\ increment\ Optional\ index\ increment\ (default\ 1)}}
+\DoxyCodeLine{01161\ \textcolor{comment}{\ \ \ \ \ *\ @return\ impl::ZipView\ that\ provides\ begin\ and\ end\ members\ to\ be\ used\ in\ range\ based\ for-\/loops.}}
+\DoxyCodeLine{01162\ \textcolor{comment}{\ \ \ \ \ *\ @relatesalso\ impl::ZipView}}
+\DoxyCodeLine{01163\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{01164\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container,\ \textcolor{keyword}{typename}\ T\ =\ std::size\_t>}
+\DoxyCodeLine{01165\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}}(Container\ \&\&container,\ T\ start\ =\ T(0),\ T\ increment\ =\ T(1))\ \{}
+\DoxyCodeLine{01166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ zip(\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{CounterRange}}(start,\ increment),\ std::forward<Container>(container));}
+\DoxyCodeLine{01167\ \ \ \ \ \}}
+\DoxyCodeLine{01168\ }
+\DoxyCodeLine{01169\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01170\ \textcolor{comment}{\ \ \ \ \ *\ enumerate\ variant\ that\ does\ not\ allow\ manipulation\ of\ the\ container\ elements}}
+\DoxyCodeLine{01171\ \textcolor{comment}{\ \ \ \ \ *}}
+\DoxyCodeLine{01172\ \textcolor{comment}{\ \ \ \ \ *\ @copydoc\ enumerate}}
+\DoxyCodeLine{01173\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{01174\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container,\ \textcolor{keyword}{typename}\ T\ =\ std::size\_t>}
+\DoxyCodeLine{01175\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceiterators_a3be2fcec3205019f5a2fe3806adc6848}{const\_enumerate}}(Container\ \&\&container,\ T\ start\ =\ T(0),\ T\ increment\ =\ T(1))\ \{}
+\DoxyCodeLine{01176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ const\_zip(\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{CounterRange}}(start,\ increment),\ std::forward<Container>(container));}
+\DoxyCodeLine{01177\ \ \ \ \ \}}
+\DoxyCodeLine{01178\ }
+\DoxyCodeLine{01179\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01180\ \textcolor{comment}{\ \ \ \ \ *\ combination\ of\ zip\ and\ enumerate,\ i.e.\ returns\ an\ impl::ZipView\ that\ contains\ an\ enumerator\ at\ the\ first\ position}}
+\DoxyCodeLine{01181\ \textcolor{comment}{\ \ \ \ \ *\ @tparam\ Iterable\ Types\ of\ arguments}}
+\DoxyCodeLine{01182\ \textcolor{comment}{\ \ \ \ \ *\ @param\ iterable\ arbitrary\ number\ of\ iterables\ followed\ by\ optionally\ a\ start\ and\ an\ increment}}
+\DoxyCodeLine{01183\ \textcolor{comment}{\ \ \ \ \ *\ @return\ impl::ZipView\ with\ prepended\ enumerator}}
+\DoxyCodeLine{01184\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{01185\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Iterable>}
+\DoxyCodeLine{01186\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceiterators_afe2a1812cc476954035d3148aa8a05fa}{zip\_enumerate}}(Iterable\ \&\&...iterable)\ \{}
+\DoxyCodeLine{01187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::zip\_enumerate\_impl([](\textcolor{keyword}{auto}\ \&\&...\ args)\ \{\ \textcolor{keywordflow}{return}\ zip(std::forward<\textcolor{keyword}{decltype}(args)>(args)...);\ \},}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::forward<Iterable>(iterable)...);}
+\DoxyCodeLine{01189\ \ \ \ \ \}}
+\DoxyCodeLine{01190\ }
+\DoxyCodeLine{01191\ \ \ \ \ \textcolor{comment}{/**}}
+\DoxyCodeLine{01192\ \textcolor{comment}{\ \ \ \ \ *\ zip\_enumerate\ variant\ that\ does\ not\ allow\ manipulation\ of\ the\ container\ elements}}
+\DoxyCodeLine{01193\ \textcolor{comment}{\ \ \ \ \ *}}
+\DoxyCodeLine{01194\ \textcolor{comment}{\ \ \ \ \ *\ @copydoc\ zip\_enumerate}}
+\DoxyCodeLine{01195\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{01196\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Iterable>}
+\DoxyCodeLine{01197\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespaceiterators_a1b9f472bc8b0244a8224a550967002a3}{const\_zip\_enumerate}}(Iterable\ \&\&...iterable)\ \{}
+\DoxyCodeLine{01198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::zip\_enumerate\_impl([](\textcolor{keyword}{auto}\ \&\&...\ args)\ \{\ \textcolor{keywordflow}{return}\ const\_zip(std::forward<\textcolor{keyword}{decltype}(args)>(args)...);\ \},}
+\DoxyCodeLine{01199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::forward<Iterable>(iterable)...);}
+\DoxyCodeLine{01200\ \ \ \ \ \}}
+\DoxyCodeLine{01201\ }
+\DoxyCodeLine{01202\ \}}
+\DoxyCodeLine{01203\ }
+\DoxyCodeLine{01204\ \textcolor{keyword}{namespace}\ std\ \{}
+\DoxyCodeLine{01205\ }
+\DoxyCodeLine{01206\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{01207\ \ \ \ \ \textcolor{keyword}{struct}\ tuple\_size<\mbox{\hyperlink{namespaceiterators}{iterators}}::\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}\ <\ Ts...>>\ :\ integral\_constant<std::size\_t,\ \textcolor{keyword}{sizeof}...(Ts)>\ \{\};}
+\DoxyCodeLine{01208\ }
+\DoxyCodeLine{01209\ \ \ \ \ \textcolor{keyword}{template}<std::size\_t\ Idx,\ \textcolor{keyword}{typename}\ ...Ts>}
+\DoxyCodeLine{01210\ \ \ \ \ \textcolor{keyword}{struct}\ tuple\_element<Idx,\ \mbox{\hyperlink{namespaceiterators}{iterators}}::\mbox{\hyperlink{namespaceiterators_1_1impl}{impl}}::\mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{RefTuple}}<Ts...>>\ \{}
+\DoxyCodeLine{01211\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ type\ =\ std::tuple\_element\_t<Idx,\ std::tuple<Ts...>>;}
+\DoxyCodeLine{01212\ \ \ \ \ \};}
+\DoxyCodeLine{01213\ \}}
+\DoxyCodeLine{01214\ }
+\DoxyCodeLine{01215\ \textcolor{preprocessor}{\#}\textcolor{preprocessor}{endif}\ \textcolor{comment}{//ITERATORTOOLS\_ITERATORS\_HPP}}
+
+\end{DoxyCode}

@@ -1,7 +1,11 @@
 <map id="iterators::impl::ZipIterator&lt; Iterators &gt;" name="iterators::impl::ZipIterator&lt; Iterators &gt;">
-<area shape="rect" id="node1" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="695,65,885,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="444,5,645,76"/>
-<area shape="rect" id="node3" title=" " alt="" coords="16,13,196,69"/>
-<area shape="rect" id="node4" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="444,101,645,157"/>
-<area shape="rect" id="node5" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="5,108,207,149"/>
+<area shape="rect" id="Node000001" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="695,64,885,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="444,5,645,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="659,58,695,64,694,70,658,63"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="16,13,196,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="209,37,444,37,444,43,209,43"/>
+<area shape="rect" id="Node000004" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="444,99,645,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="658,104,694,98,695,103,659,109"/>
+<area shape="rect" id="Node000005" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="5,107,207,147"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="220,124,444,124,444,129,220,129"/>
 </map>

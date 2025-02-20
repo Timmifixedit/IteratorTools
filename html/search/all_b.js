@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['zip_36',['zip',['../namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62',1,'iterators']]],
-  ['zip_5fenumerate_37',['zip_enumerate',['../namespaceiterators.html#afe2a1812cc476954035d3148aa8a05fa',1,'iterators']]],
-  ['zip_5fi_38',['zip_i',['../classiterators_1_1impl_1_1ZipIterator.html#aad6554b6b37a9fd1a1163079a83e50bf',1,'iterators::impl::ZipIterator::zip_i()'],['../namespaceiterators.html#acd7ca481d3b479c30879e611baaac1da',1,'iterators::zip_i()']]],
-  ['zipiterator_39',['ZipIterator',['../classiterators_1_1impl_1_1ZipIterator.html',1,'iterators::impl']]]
+  ['sgn_0',['sgn',['../namespaceiterators_1_1impl.html#a4a6de0fc2d081e6c204370100dd4d658',1,'iterators::impl']]],
+  ['synthesizedoperators_1',['SynthesizedOperators',['../structiterators_1_1impl_1_1SynthesizedOperators.html',1,'iterators::impl']]],
+  ['synthesizedoperators_3c_20counteriterator_3c_20std_3a_3asize_5ft_20_3e_20_3e_2',['SynthesizedOperators&lt; CounterIterator&lt; std::size_t &gt; &gt;',['../structiterators_1_1impl_1_1SynthesizedOperators.html',1,'iterators::impl']]],
+  ['synthesizedoperators_3c_20zipiterator_3c_20iterators_20_3e_20_3e_3',['SynthesizedOperators&lt; ZipIterator&lt; Iterators &gt; &gt;',['../structiterators_1_1impl_1_1SynthesizedOperators.html',1,'iterators::impl']]]
 ];

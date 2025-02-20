@@ -1,5 +1,7 @@
 <map id="iterators::impl::DERIVE_VIEW_INTERFACE" name="iterators::impl::DERIVE_VIEW_INTERFACE">
-<area shape="rect" id="node1" title="Zip&#45;view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa..." alt="" coords="200,23,371,65"/>
-<area shape="rect" id="node2" href="$namespaceiterators.html#a12e6f5a7c31da947017d513b58e57dd4" title=" " alt="" coords="5,5,152,32"/>
-<area shape="rect" id="node3" href="$namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62" title=" " alt="" coords="27,56,131,83"/>
+<area shape="rect" id="Node000001" title="Zip&#45;view that provides begin() and end() member functions. Use to loop over multiple ranges at the sa..." alt="" coords="200,23,371,63"/>
+<area shape="rect" id="Node000002" href="$namespaceiterators.html#a12e6f5a7c31da947017d513b58e57dd4" title=" " alt="" coords="5,5,152,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,34,152,30,153,24,187,29"/>
+<area shape="rect" id="Node000003" href="$namespaceiterators.html#a420098bf63d0d2600a2c5afdf6602f62" title=" " alt="" coords="27,55,131,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,57,131,64,130,59,186,52"/>
 </map>

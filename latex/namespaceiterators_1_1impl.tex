@@ -1,57 +1,54 @@
-\hypertarget{namespaceiterators_1_1impl}{}\doxysubsection{iterators\+::impl Namespace Reference}
-\label{namespaceiterators_1_1impl}\index{iterators::impl@{iterators::impl}}
+\doxysubsection{iterators\+::impl Namespace Reference}
+\hypertarget{namespaceiterators_1_1impl}{}\label{namespaceiterators_1_1impl}\index{iterators::impl@{iterators::impl}}
 
 
 namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly  
 
 
-\doxysubsubsection*{Namespaces}
+\doxysubsubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}
+namespace \mbox{\hyperlink{namespaceiterators_1_1impl_1_1traits}{traits}}
 \begin{DoxyCompactList}\small\item\em namespace containing type traits used in implementation of zip and enumerate \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Classes}
+\doxysubsubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator of an infinite sequence of numbers. Simply increments an internal counter. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{Counter\+Range}}
+\begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{Ref\+Tuple}}
 \begin{DoxyCompactList}\small\item\em Proxy reference type that supports assignment and swap even on const instances. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1SynthesizedOperators}{Synthesized\+Operators}}
 \begin{DoxyCompactList}\small\item\em CRTP-\/class that provides additional pointer arithmetic operators synthesized from basic operators. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}
-\begin{DoxyCompactList}\small\item\em Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structiterators_1_1impl_1_1Unreachable}{Unreachable}}
 \begin{DoxyCompactList}\small\item\em represents the unreachable end of an infinite sequence \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterIterator}{Counter\+Iterator}}
-\begin{DoxyCompactList}\small\item\em Iterator of an infinite sequence of numbers. Simply increments an internal counter. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{Counter\+Range}}
-\begin{DoxyCompactList}\small\item\em Represents an infinite range of numbers. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+class \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd}\label{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd}} 
+\Hypertarget{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd}\label{namespaceiterators_1_1impl_a4e0f27aa5bf98ed2680b215a975d3bdd} 
 {\footnotesize template$<$std\+::size\+\_\+t Offset, std\+::size\+\_\+t ... Idx$>$ }\\constexpr auto {\bfseries index\+\_\+seq\+\_\+impl} (std\+::index\+\_\+sequence$<$ Idx... $>$) noexcept
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a}\label{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a}} 
+\Hypertarget{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a}\label{namespaceiterators_1_1impl_a110c3ccb102f725455b0bc991938493a} 
 {\footnotesize template$<$std\+::size\+\_\+t Start, std\+::size\+\_\+t End$>$ }\\constexpr auto {\bfseries index\+\_\+seq} () noexcept
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5}\label{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5}} 
+\Hypertarget{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5}\label{namespaceiterators_1_1impl_aab92c47cfbee44190b2bd7fe40800df5} 
 {\footnotesize template$<$typename Tuple , std\+::size\+\_\+t ... Idx1, std\+::size\+\_\+t ... Idx2$>$ }\\constexpr auto {\bfseries tuple\+\_\+split\+\_\+impl} (Tuple \&\&tuple, std\+::index\+\_\+sequence$<$ Idx1... $>$, std\+::index\+\_\+sequence$<$ Idx2... $>$)
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a}\label{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a}} 
+\Hypertarget{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a}\label{namespaceiterators_1_1impl_a26a39d27b24543092a4594fa6b2d585a} 
 {\footnotesize template$<$std\+::size\+\_\+t Idx, typename Tuple $>$ }\\constexpr auto {\bfseries tuple\+\_\+split} (Tuple \&\&tuple)
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}\label{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}} 
+\Hypertarget{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189}\label{namespaceiterators_1_1impl_a60af380e2d8600b5a36e97a305cfb189} 
 {\footnotesize template$<$template$<$ typename $>$ typename Predicate, std\+::size\+\_\+t Idx, typename ... Ts$>$ }\\constexpr std\+::size\+\_\+t {\bfseries index\+\_\+of} () noexcept
 \item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a03b10fa21c536027d355f789fe8a133c}\label{namespaceiterators_1_1impl_a03b10fa21c536027d355f789fe8a133c}} 
-{\footnotesize template$<$typename Tuple $>$ }\\constexpr auto {\bfseries swap} (Tuple \&\&a, Tuple \&\&b) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ iterators\+::impl\+::traits\+::is\+\_\+same\+\_\+template\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{iterators\+::impl\+::\+Ref\+Tuple}}, Tuple $>$$>$
+\Hypertarget{namespaceiterators_1_1impl_ae37b794bcc7cf3cdda11e28613325f76}\label{namespaceiterators_1_1impl_ae37b794bcc7cf3cdda11e28613325f76} 
+{\footnotesize template$<$typename Tuple $>$ }\\constexpr auto {\bfseries swap} (Tuple \&\&a, Tuple \&\&b) -\/$>$ std\+::enable\+\_\+if\+\_\+t$<$ iterators\+::impl\+::traits\+::is\+\_\+same\+\_\+template\+\_\+v$<$ \mbox{\hyperlink{structiterators_1_1impl_1_1RefTuple}{iterators\+::impl\+::\+Ref\+Tuple}}, Tuple $>$ $>$
 \item 
 {\footnotesize template$<$typename ... Iterable$>$ }\\struct Zip\+View \mbox{\hyperlink{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}{DERIVE\+\_\+\+VIEW\+\_\+\+INTERFACE}} (Zip\+View$<$ Iterable... $>$)
 \begin{DoxyCompactList}\small\item\em Zip-\/view that provides begin() and end() member functions. Use to loop over multiple ranges at the same time using ranged based for-\/loops. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\constexpr T \mbox{\hyperlink{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}{sgn}} (T val) noexcept
-\item 
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a4d17f112e09f27269d91c03f2a511cd8}\label{namespaceiterators_1_1impl_a4d17f112e09f27269d91c03f2a511cd8}} 
-{\footnotesize template$<$typename TZip , typename ... Iterable$>$ }\\constexpr auto {\bfseries zip\+\_\+enumerate\+\_\+impl} (TZip \&\&t\+Zip, Iterable \&\&...iterable)
 \end{DoxyCompactItemize}
 
 
@@ -59,7 +56,7 @@ struct \mbox{\hyperlink{structiterators_1_1impl_1_1CounterRange}{Counter\+Range}
 namespace containing structures and helpers used to implement zip and enumerate. Normally there is no need to use any of its members directly 
 
 \doxysubsubsection{Function Documentation}
-\mbox{\Hypertarget{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}\label{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}} 
+\Hypertarget{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319}\label{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319} 
 \index{iterators::impl@{iterators::impl}!DERIVE\_VIEW\_INTERFACE@{DERIVE\_VIEW\_INTERFACE}}
 \index{DERIVE\_VIEW\_INTERFACE@{DERIVE\_VIEW\_INTERFACE}!iterators::impl@{iterators::impl}}
 \doxyparagraph{\texorpdfstring{DERIVE\_VIEW\_INTERFACE()}{DERIVE\_VIEW\_INTERFACE()}}
@@ -85,15 +82,19 @@ CTor. Binds reference to ranges or takes ownership in case of rvalue references
 {\em containers} & arbitrary number of ranges\\
 \hline
 \end{DoxyParams}
-Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} to the first elements of the underlying ranges \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} created by invoking std\+::begin on all underlying ranges
+Returns a \doxylink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator} to the first elements of the underlying ranges \begin{DoxyReturn}{Returns}
+\doxylink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator} created by invoking std\+::begin on all underlying ranges
 \end{DoxyReturn}
-Returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} to the elements following the last elements of the the underlying ranges \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} created by invoking std\+::end on all underlying ranges
+Returns a \doxylink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator} to the elements following the last elements of the the underlying ranges \begin{DoxyReturn}{Returns}
+\doxylink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator} created by invoking std\+::end on all underlying ranges
 \end{DoxyReturn}
+
+
 \begin{DoxyNote}{Note}
-returns a \mbox{\hyperlink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator}} that does not allow changing the ranges\textquotesingle{} elements
+returns a \doxylink{classiterators_1_1impl_1_1ZipIterator}{Zip\+Iterator} that does not allow changing the ranges\textquotesingle{} elements
 \end{DoxyNote}
+
+
 Array subscript operator (no bounds are checked) 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Is\+Random\+Access} & SFINAE helper, do not specify explicitly \\
@@ -107,6 +108,8 @@ Array subscript operator (no bounds are checked)
 \begin{DoxyReturn}{Returns}
 zip view element at given index
 \end{DoxyReturn}
+
+
 Returns the smallest size of all containers. Only available if all containers know their size 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Has\+Size} & SFINAE guard, do not specify explicitly \\
@@ -117,7 +120,7 @@ smallest size of all containers
 \end{DoxyReturn}
 
 
-Referenced by iterators\+::const\+\_\+zip(), and iterators\+::zip().
+Referenced by \mbox{\hyperlink{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}{iterators\+::const\+\_\+zip()}}, and \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{iterators\+::zip()}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -127,7 +130,7 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{namespaceiterators_1_1impl_ae1458ff0b91eca33d4f79aecb8421319_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}\label{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}} 
+\Hypertarget{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658}\label{namespaceiterators_1_1impl_a4a6de0fc2d081e6c204370100dd4d658} 
 \index{iterators::impl@{iterators::impl}!sgn@{sgn}}
 \index{sgn@{sgn}!iterators::impl@{iterators::impl}}
 \doxyparagraph{\texorpdfstring{sgn()}{sgn()}}
@@ -145,5 +148,5 @@ Signum function
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-+1 if val $>$= 0, -\/1 else 
++1 if val \texorpdfstring{$>$}{>}= 0, -\/1 else 
 \end{DoxyReturn}

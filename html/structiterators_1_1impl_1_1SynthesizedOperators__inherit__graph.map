@@ -1,7 +1,11 @@
 <map id="iterators::impl::SynthesizedOperators&lt; Impl &gt;" name="iterators::impl::SynthesizedOperators&lt; Impl &gt;">
-<area shape="rect" id="node1" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="5,53,207,94"/>
-<area shape="rect" id="node2" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="444,5,645,61"/>
-<area shape="rect" id="node4" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="444,85,645,141"/>
-<area shape="rect" id="node3" href="$structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="703,13,877,54"/>
-<area shape="rect" id="node5" href="$classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="695,93,885,134"/>
+<area shape="rect" id="Node000001" title="CRTP&#45;class that provides additional pointer arithmetic operators synthesized from basic operators." alt="" coords="5,77,207,117"/>
+<area shape="rect" id="Node000002" href="$structiterators_1_1impl_1_1CounterIterator.html" title="Iterator of an infinite sequence of numbers. Simply increments an internal counter." alt="" coords="458,5,631,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,71,230,60,349,41,458,29,458,35,349,46,231,65,185,76"/>
+<area shape="rect" id="Node000003" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="444,70,645,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,95,444,95,444,100,220,100"/>
+<area shape="rect" id="Node000004" href="$structiterators_1_1impl_1_1SynthesizedOperators.html" title=" " alt="" coords="444,149,645,203"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="220,115,444,155,443,161,219,120"/>
+<area shape="rect" id="Node000005" href="$classiterators_1_1impl_1_1ZipIterator.html" title="Class combining multiple iterators into one. Use it to iterate over multiple ranges at the same time." alt="" coords="695,156,885,196"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="659,173,695,173,695,179,659,179"/>
 </map>

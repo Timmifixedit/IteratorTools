@@ -1,6 +1,8 @@
+\doxysection{zip and enumerate iterators}
+\hypertarget{index}{}\label{index}\index{zip and enumerate iterators@{zip and enumerate iterators}}
 \label{index_md_README}%
 \Hypertarget{index_md_README}%
- \href{https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml}{\texttt{ }} \hypertarget{index_autotoc_md0}{}\doxysubsection{Python-\/like Zip and Enumerate Iterators}\label{index_autotoc_md0}
+ \href{https://github.com/Timmifixedit/IteratorTools/actions/workflows/unit_tests.yml}{\texttt{ }} \hypertarget{index_autotoc_md0}{}\doxysubsection{\texorpdfstring{Python-\/like Zip and Enumerate Iterators}{Python-like Zip and Enumerate Iterators}}\label{index_autotoc_md0}
 C++-\/implementation of Python-\/like zip-\/ and enumerate-\/iterators which can be used in range-\/based for loops along with structured bindings to iterate over multiple containers at the same time. Requires C++17.
 
 The library has been tested on the following compilers\+:
@@ -15,49 +17,49 @@ The library has been tested on the following compilers\+:
 \item C++17 support\+: clang-\/9 to clang-\/17
 \item C++20 ranges compatibility\+: clang-\/16 and clang-\/17
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{index_autotoc_md1}{}\doxysubsubsection{Properties}\label{index_autotoc_md1}
-The {\ttfamily zip}-\/class is a container-\/wrapper for arbitrary iterable containers. It provides the member functions {\ttfamily begin()} and {\ttfamily end()} enabling it to be used in range-\/based for loops to iterate over multiple containers at the same time. The {\ttfamily enuerate}-\/function is a special case of {\ttfamily zip} and uses a \char`\"{}counting container\char`\"{} (similar to {\ttfamily std\+::ranges\+::iota}) to provide an index. Additionally, const-\/versions exist which do not allow the manipulation of the container elements.\hypertarget{index_autotoc_md2}{}\doxysubsubsection{Code Examples}\label{index_autotoc_md2}
+\end{DoxyItemize}\hypertarget{index_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{Properties}{Properties}}\label{index_autotoc_md1}
+The {\ttfamily zip}-\/class is a container-\/wrapper for arbitrary iterable containers. It provides the member functions {\ttfamily begin()} and {\ttfamily end()} enabling it to be used in range-\/based for loops to iterate over multiple containers at the same time. The {\ttfamily enuerate}-\/function is a special case of {\ttfamily zip} and uses a "{}counting container"{} (similar to {\ttfamily std\+::ranges\+::iota}) to provide an index. Additionally, const-\/versions exist which do not allow the manipulation of the container elements.\hypertarget{index_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{Code Examples}{Code Examples}}\label{index_autotoc_md2}
 The syntax is mostly similar to Python\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include <list>}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Iterators_8hpp}{Iterators.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Iterators_8hpp}{Iterators.hpp}}"{}}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceiterators}{iterators}};}
-\DoxyCodeLine{std::list<std::string> strings\{\textcolor{stringliteral}{"{}a"{}}, \textcolor{stringliteral}{"{}b"{}}, \textcolor{stringliteral}{"{}c"{}}\};}
-\DoxyCodeLine{std::vector<int> numbers\{1, 2, 3\};}
-\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} [\textcolor{keywordtype}{string}, number] : \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{zip}}(strings, numbers)) \{}
-\DoxyCodeLine{    \textcolor{comment}{// 'string' and 'number' are references to the container element}}
-\DoxyCodeLine{    \textcolor{keywordtype}{string} += std::to\_string(number); }
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespaceiterators}{iterators}};}
+\DoxyCodeLine{std::list<std::string>\ strings\{\textcolor{stringliteral}{"{}a"{}},\ \textcolor{stringliteral}{"{}b"{}},\ \textcolor{stringliteral}{"{}c"{}}\};}
+\DoxyCodeLine{std::vector<int>\ numbers\{1,\ 2,\ 3\};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [\textcolor{keywordtype}{string},\ number]\ :\ \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{zip}}(strings,\ numbers))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 'string'\ and\ 'number'\ are\ references\ to\ the\ container\ element}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{string}\ +=\ std::to\_string(number);\ }
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{// now 'strings' contains \{"{}a1"{}, "{}b2"{}, "{}c3"{}\}}}
+\DoxyCodeLine{\textcolor{comment}{//\ now\ 'strings'\ contains\ \{"{}a1"{},\ "{}b2"{},\ "{}c3"{}\}}}
 
 \end{DoxyCode}
  The for loop uses so called {\ttfamily Zip\+Iterator}s which point to tuples which in turn contain references to the container elements. Therefore, no copying occurs and manipulation of the container elements is possible. Observe that the structured binding captures by value (since the values are themselves references).
 
 If you want to prohibit manipulation, you can use {\ttfamily const\+\_\+zip} 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceiterators}{iterators}};}
-\DoxyCodeLine{std::list<std::string> strings\{\textcolor{stringliteral}{"{}a"{}}, \textcolor{stringliteral}{"{}b"{}}, \textcolor{stringliteral}{"{}c"{}}\};}
-\DoxyCodeLine{std::vector<int> numbers\{1, 2, 3\};}
-\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} [\textcolor{keywordtype}{string}, number] : \mbox{\hyperlink{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}{const\_zip}}(strings, numbers)) \{}
-\DoxyCodeLine{    \textcolor{comment}{// string += std::to\_string(number);  error, string is readonly!}}
-\DoxyCodeLine{    std::cout << \textcolor{keywordtype}{string} << \textcolor{stringliteral}{"{} "{}} << number << std::endl;}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespaceiterators}{iterators}};}
+\DoxyCodeLine{std::list<std::string>\ strings\{\textcolor{stringliteral}{"{}a"{}},\ \textcolor{stringliteral}{"{}b"{}},\ \textcolor{stringliteral}{"{}c"{}}\};}
+\DoxyCodeLine{std::vector<int>\ numbers\{1,\ 2,\ 3\};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [\textcolor{keywordtype}{string},\ number]\ :\ \mbox{\hyperlink{namespaceiterators_a12e6f5a7c31da947017d513b58e57dd4}{const\_zip}}(strings,\ numbers))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ string\ +=\ std::to\_string(number);\ \ error,\ string\ is\ readonly!}}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{keywordtype}{string}\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ number\ <<\ std::endl;}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
  Additionally, you can use {\ttfamily zip\+\_\+i} to manually zip iterators or pointers\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceiterators}{iterators}};}
-\DoxyCodeLine{std::list<std::string> strings\{\textcolor{stringliteral}{"{}a"{}}, \textcolor{stringliteral}{"{}b"{}}, \textcolor{stringliteral}{"{}c"{}}\};}
-\DoxyCodeLine{std::vector<int> numbers\{1, 2, 3\};}
-\DoxyCodeLine{\textcolor{keyword}{auto} zipBegin = \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{zip\_i}}(strings.begin(), numbers.begin());}
-\DoxyCodeLine{\textcolor{keyword}{auto} zipEnd = \mbox{\hyperlink{namespaceiterators_acd7ca481d3b479c30879e611baaac1da}{zip\_i}}(strings.end(), numbers.end());}
-\DoxyCodeLine{\textcolor{keywordflow}{while} (zipBegin != zipEnd) \{}
-\DoxyCodeLine{    \textcolor{keyword}{auto} [s, num] = *zipBegin;}
-\DoxyCodeLine{    \textcolor{comment}{// ...}}
-\DoxyCodeLine{    ++zipBegin;}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespaceiterators}{iterators}};}
+\DoxyCodeLine{std::list<std::string>\ strings\{\textcolor{stringliteral}{"{}a"{}},\ \textcolor{stringliteral}{"{}b"{}},\ \textcolor{stringliteral}{"{}c"{}}\};}
+\DoxyCodeLine{std::vector<int>\ numbers\{1,\ 2,\ 3\};}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ zipBegin\ =\ \mbox{\hyperlink{namespaceiterators_a66108b4863fd0dd49bd2a828dea2ad17}{zip\_i}}(strings.begin(),\ numbers.begin());}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ zipEnd\ =\ \mbox{\hyperlink{namespaceiterators_a66108b4863fd0dd49bd2a828dea2ad17}{zip\_i}}(strings.end(),\ numbers.end());}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (zipBegin\ !=\ zipEnd)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ [s,\ num]\ =\ *zipBegin;}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{\ \ \ \ ++zipBegin;}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
@@ -65,31 +67,31 @@ If you want to prohibit manipulation, you can use {\ttfamily const\+\_\+zip}
 
 As in Python, the shortest range decides the overall range\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceiterators}{iterators}};}
-\DoxyCodeLine{std::list<std::string> strings\{\textcolor{stringliteral}{"{}a"{}}, \textcolor{stringliteral}{"{}b"{}}, \textcolor{stringliteral}{"{}c"{}}\};}
-\DoxyCodeLine{std::vector<int> numbers\{1, 2, 3, 4, 5, 6\};}
-\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} [\textcolor{keywordtype}{string}, number] : \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{zip}}(strings, numbers)) \{}
-\DoxyCodeLine{    std::cout << \textcolor{keywordtype}{string} << \textcolor{stringliteral}{"{} "{}} << number << \textcolor{stringliteral}{"{} | "{}}}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespaceiterators}{iterators}};}
+\DoxyCodeLine{std::list<std::string>\ strings\{\textcolor{stringliteral}{"{}a"{}},\ \textcolor{stringliteral}{"{}b"{}},\ \textcolor{stringliteral}{"{}c"{}}\};}
+\DoxyCodeLine{std::vector<int>\ numbers\{1,\ 2,\ 3,\ 4,\ 5,\ 6\};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [\textcolor{keywordtype}{string},\ number]\ :\ \mbox{\hyperlink{namespaceiterators_a420098bf63d0d2600a2c5afdf6602f62}{zip}}(strings,\ numbers))\ \{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{keywordtype}{string}\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ number\ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}}
 \DoxyCodeLine{\}}
-\DoxyCodeLine{\textcolor{comment}{// prints a 1 | b 2 | c 3 |}}
+\DoxyCodeLine{\textcolor{comment}{//\ prints\ a\ 1\ |\ b\ 2\ |\ c\ 3\ |}}
 
 \end{DoxyCode}
 
 
 The {\ttfamily enumerate}-\/function works similarly. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceiterators}{iterators}};}
-\DoxyCodeLine{std::list<std::string> strings\{\textcolor{stringliteral}{"{}a"{}}, \textcolor{stringliteral}{"{}b"{}}, \textcolor{stringliteral}{"{}c"{}}\};}
-\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} [index, \textcolor{keywordtype}{string}] : \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}}(strings)) \{}
-\DoxyCodeLine{    \textcolor{keywordtype}{string} += std::to\_string(index); }
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespaceiterators}{iterators}};}
+\DoxyCodeLine{std::list<std::string>\ strings\{\textcolor{stringliteral}{"{}a"{}},\ \textcolor{stringliteral}{"{}b"{}},\ \textcolor{stringliteral}{"{}c"{}}\};}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [index,\ \textcolor{keywordtype}{string}]\ :\ \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}}(strings))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{string}\ +=\ std::to\_string(index);\ }
 \DoxyCodeLine{\}}
-\DoxyCodeLine{\textcolor{comment}{// now 'strings' contains \{"{}a0"{}, "{}b1"{}, "{}c2"{}\}}}
+\DoxyCodeLine{\textcolor{comment}{//\ now\ 'strings'\ contains\ \{"{}a0"{},\ "{}b1"{},\ "{}c2"{}\}}}
 
 \end{DoxyCode}
  Also, an optional offset can be specified\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} [index, \textcolor{keywordtype}{string}] : \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}}(strings, 4)) \{ \textcolor{comment}{// index starts from 4}}
-\DoxyCodeLine{    ...}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [index,\ \textcolor{keywordtype}{string}]\ :\ \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}}(strings,\ 4))\ \{\ \textcolor{comment}{//\ index\ starts\ from\ 4}}
+\DoxyCodeLine{\ \ \ \ ...}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
@@ -97,13 +99,13 @@ The {\ttfamily enumerate}-\/function works similarly.
 
 In case temporary containers are used, {\ttfamily zip} and {\ttfamily enumerate} will take ownership of the containers to guarantee well-\/defined memory access. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} [index, number] : \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}}(std::array\{53, 21, 17\})) \{}
-\DoxyCodeLine{    \textcolor{comment}{// enumerate takes ownership of the array. The elements}}
-\DoxyCodeLine{    \textcolor{comment}{// can safely be accessed and manipulated}}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [index,\ number]\ :\ \mbox{\hyperlink{namespaceiterators_aaea70262053f925d78710baa65075124}{enumerate}}(std::array\{53,\ 21,\ 17\}))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ enumerate\ takes\ ownership\ of\ the\ array.\ The\ elements}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ can\ safely\ be\ accessed\ and\ manipulated}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md3}{}\doxysubsubsection{Doxygen Documentation}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{Doxygen Documentation}{Doxygen Documentation}}\label{index_autotoc_md3}
 
 \begin{DoxyItemize}
 \item \href{https://timmifixedit.github.io/IteratorTools/html/index.html}{\texttt{ HTML}}

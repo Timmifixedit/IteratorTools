@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['begin_0',['begin',['../structiterators_1_1impl_1_1CounterRange.html#a10758381331044ecc50c52e892a0b1c7',1,'iterators::impl::CounterRange']]]
+  ['and_20enumerate_20iterators_0',['and enumerate iterators',['../index.html#autotoc_md0',1,'Python-like Zip and Enumerate Iterators'],['../index.html',1,'zip and enumerate iterators']]]
 ];

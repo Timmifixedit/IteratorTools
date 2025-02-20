@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reftuple_28',['RefTuple',['../structiterators_1_1impl_1_1RefTuple.html',1,'iterators::impl']]]
+  ['like_20zip_20and_20enumerate_20iterators_0',['Python-like Zip and Enumerate Iterators',['../index.html#autotoc_md0',1,'']]]
 ];
