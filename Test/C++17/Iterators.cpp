@@ -5,6 +5,7 @@
 #include <type_traits>
 #include <deque>
 #include <unordered_map>
+#include <algorithm>
 #include "Iterators.hpp"
 #include "utils.hpp"
 
@@ -649,6 +650,25 @@ TEST(Iterators, stl_algos_sort) {
     std::sort(zView.begin(), zView.end(), [](auto a, auto b) { return std::get<1>(a) < std::get<1>(b); });
     EXPECT_EQ(strings, (std::array<std::string, 4>{"d", "b", "c", "a"}));
     EXPECT_EQ(priorities, (std::array{0, 1, 2, 7}));
+}
+
+TEST(Iterators, stl_algos_sort_large) {
+    using namespace iterators;
+    std::vector<std::string> data;
+    std::vector<int> priorities;
+    std::vector<std::pair<std::string, int>> gt;
+    for (int i = 0; i < 1000; ++i) {
+        data.emplace_back(std::to_string(i));
+        priorities.emplace_back(-i);
+        gt.emplace_back(data.back(), priorities.back());
+    }
+    auto zView = zip(data, priorities);
+    std::sort(zView.begin(), zView.end(), [](auto a, auto b) { return std::get<1>(a) < std::get<1>(b); });
+    std::sort(gt.begin(), gt.end(), [](const auto &a, const auto &b){return std::get<1>(a) < std::get<1>(b); });
+    for (int i = 0; i < 1000; ++i) {
+        EXPECT_EQ(data.at(i), std::get<0>(gt.at(i)));
+        EXPECT_EQ(priorities.at(i), std::get<1>(gt.at(i)));
+    }
 }
 
 TEST(Iterators, noexcept_stl_containers) {

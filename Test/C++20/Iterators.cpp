@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <algorithm>
+#include <numeric>
 #include "Iterators.hpp"
 
 TEST(cpp20_compat, view_concat) {
@@ -61,6 +63,23 @@ TEST(cpp20_compat, range_algo_copy) {
     EXPECT_EQ(numbers1, (std::vector{1, 2, 3, 4, 4}));
 }
 
+TEST(cpp20_compat, range_algo_copy_large) {
+    using namespace iterators;
+    using namespace std::views;
+    std::list<int> numbers(1000);
+    std::vector<int> numbers1(1000);
+    std::iota(numbers.begin(), numbers.end(), 0);
+    std::iota(numbers1.begin(), numbers1.end(), -1000);
+    auto zView = zip(numbers, numbers1);
+    std::ranges::copy(zView | std::views::drop(1), zView.begin());
+    EXPECT_TRUE(std::ranges::equal(numbers | take(999), iota(1, 1000)));
+    EXPECT_TRUE(std::ranges::equal(numbers1 | take(999), iota(-999, 0)));
+    EXPECT_EQ(numbers.size(), 1000);
+    EXPECT_EQ(numbers1.size(), 1000);
+    EXPECT_EQ(numbers.back(), 999);
+    EXPECT_EQ(numbers1.back(), -1);
+}
+
 TEST(cpp20_compat, range_algo_sort) {
     using namespace iterators;
     std::array<std::string, 4> strings{"a", "b", "c", "d"};
@@ -69,6 +88,24 @@ TEST(cpp20_compat, range_algo_sort) {
     std::ranges::sort(zView, {}, [](const auto &tpl) { return std::get<1>(tpl); });
     EXPECT_EQ(strings, (std::array<std::string, 4>{"d", "b", "c", "a"}));
     EXPECT_EQ(priorities, (std::array{0, 1, 2, 7}));
+}
+
+TEST(cpp20_compat, range_algo_sort_large) {
+    using namespace iterators;
+    std::vector<int> data;
+    std::vector<int> priorities;
+    std::vector<std::pair<int, int>> gt;
+    for (int i = 0; i < 1000; ++i) {
+        data.emplace_back(i);
+        priorities.emplace_back(-i);
+        gt.emplace_back(data.back(), priorities.back());
+    }
+
+    auto zView = zip(data, priorities);
+    std::ranges::sort(zView, {}, [](const auto &tpl) { return std::get<1>(tpl); });
+    std::ranges::sort(gt, {}, [](const auto &tpl) { return std::get<1>(tpl); });
+    EXPECT_TRUE(std::ranges::equal(data, gt | std::views::elements<0>));
+    EXPECT_TRUE(std::ranges::equal(priorities, gt | std::views::elements<1>));
 }
 
 TEST(cpp20_compat, range_members) {
