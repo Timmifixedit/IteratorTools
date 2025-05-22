@@ -167,10 +167,9 @@ namespace iterators {
 
             template<typename Tuple>
             constexpr auto swap(Tuple &&other) const -> std::enable_if_t<std::is_same_v<Tuple, RefTuple> and Assignable> {
-                auto tmp = std::move(*this);
-                // move of forwarding reference because we always move, even const ref.
-                moveAssign(*this, std::move(other));
-                moveAssign(other, std::move(tmp));
+                using NonConstTuple = std::remove_const_t<std::remove_reference_t<Tuple>>;
+                auto * const _this = const_cast<RefTuple *>(this);
+                static_cast<std::tuple<Ts...>*>(_this)->swap(const_cast<NonConstTuple&>(other));
             }
 
 
